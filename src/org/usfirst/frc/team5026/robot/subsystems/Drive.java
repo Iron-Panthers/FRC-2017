@@ -22,12 +22,11 @@ public class Drive extends Subsystem {
 	}
 	
 	public void setLeftRightMotors(double left, double right) {
-		hardware.leftMotor.set(left);
-		hardware.rightMotor.set(right);
+		drive.setLeftRightMotorOutputs(left, right);
 	}
 	
-	public void useArcadeDrive(double yAxis, double xAxis) {
-		drive.arcadeDrive(yAxis, xAxis);
+	public void useArcadeDrive(double xAxis, double yAxis) {
+		drive.arcadeDrive(xAxis, yAxis);
 	}
 	
 	public void stopMotors() {

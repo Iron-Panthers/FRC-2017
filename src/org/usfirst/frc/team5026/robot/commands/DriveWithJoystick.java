@@ -1,10 +1,10 @@
 package org.usfirst.frc.team5026.robot.commands;
 
+import org.usfirst.frc.team5026.robot.Robot;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
-
-import org.usfirst.frc.team5026.robot.Robot;
-import org.usfirst.frc.team5026.robot.subsystems.Drive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -29,7 +29,8 @@ public class DriveWithJoystick extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.drive.useArcadeDrive(joystick.getY(), joystick.getX());
+		SmartDashboard.putNumber("JoyX",joystick.getX());
+		Robot.drive.useArcadeDrive(joystick.getX(), joystick.getY());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
