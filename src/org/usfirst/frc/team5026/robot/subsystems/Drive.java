@@ -3,6 +3,7 @@ package org.usfirst.frc.team5026.robot.subsystems;
 import org.usfirst.frc.team5026.robot.Hardware;
 import org.usfirst.frc.team5026.robot.Robot;
 import org.usfirst.frc.team5026.robot.RobotMap;
+import org.usfirst.frc.team5026.robot.commands.DriveWithJoystick;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -29,19 +30,14 @@ public class Drive extends Subsystem {
 		drive.arcadeDrive(yAxis, xAxis);
 	}
 	
-	public void setJoystick(Joystick joystick) {
-		drive.arcadeDrive(joystick);
-	}
-	
 	public void stopMotors() {
-		hardware.leftMotor.set(0);
-		hardware.rightMotor.set(0);
+		this.setLeftRightMotors(0, 0);
 	}
 
 	@Override
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
-		
+		setDefaultCommand(new DriveWithJoystick(joystick));
 	}
 	
 }
