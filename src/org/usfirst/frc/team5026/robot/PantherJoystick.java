@@ -14,35 +14,28 @@ public class PantherJoystick extends Joystick{
 	
 	
 	public double getDeadzoneX() {
-		
-
-		double newX = 0;
-
-		newX = this.getDeadzoneMagnitude(Constants.DEADZONE) * Math.cos(this.getDirectionDegrees());
-		return newX;
+		return this.getAdjustedJoystickValue(this.getMagnitude(), this.getX());
 	}
 	
-	public double getDeadzoneY() {
-		
-		double newY = 0;
-		
-		newY = this.getDeadzoneMagnitude(Constants.DEADZONE) * Math.sin(this.getDirectionDegrees());
-		return newY;
+	public double getDeadzoneY() {		
+		return this.getAdjustedJoystickValue(this.getMagnitude(), this.getY());
 	}
 	
-	public double getDeadzoneMagnitude(float deadzone) {
+	public double getMagnitude() {
 		double xVal = this.getX();
 		double yVal = this.getY();
 		double magnitude = Math.sqrt(xVal * xVal + yVal * yVal);
-		
-		if(magnitude < deadzone) {
-			xVal = 0;
-			yVal = 0;
+
+		return magnitude;
+	}
+	
+	public double getAdjustedJoystickValue(double magnitude, double xy) {
+		if (magnitude < Constants.DEADZONE) {
+			return 0;
 		}
 		else {
-			magnitude = (magnitude - deadzone) / (1 - deadzone);
+			return (xy / magnitude) * ((magnitude - Constants.DEADZONE) / (1 - Constants.DEADZONE));
 		}
-		return magnitude;
 	}
 	/*
 	public throttleMode() {
