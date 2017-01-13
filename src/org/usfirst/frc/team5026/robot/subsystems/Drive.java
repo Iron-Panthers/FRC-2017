@@ -21,13 +21,9 @@ public class Drive extends Subsystem {
 		setDefaultCommand(new ArcadeDrive());
 	}
 	
-	private void setDefaultCommand(ArcadeDrive arcadeDrive) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	public void useArcadeDrive(Joystick stick) {
-		drive.arcadeDrive(Robot.hardware.stick.getY(), Robot.hardware.stick.getX());
+		drive.arcadeDrive(Robot.hardware.stick.getY(), -Robot.hardware.stick.getX());
 	}
 	
 	public void setLeftRightMotors(double leftMotor, double rightMotor) {
