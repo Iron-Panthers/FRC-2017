@@ -11,8 +11,8 @@ public class Hardware {
 	
 	public Hardware() {
 		
-		Spark leftMotor = new Spark(RobotMap.leftMotor);
-		Spark rightMotor = new Spark(RobotMap.rightMotor);
-		Joystick stick = new Joystick(RobotMap.stick);
+		leftMotor = new Spark(RobotMap.leftMotor);
+		rightMotor = new Spark(RobotMap.rightMotor);
+		stick = new Joystick(RobotMap.stick);
 	}
 }
