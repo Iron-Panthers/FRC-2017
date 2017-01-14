@@ -34,7 +34,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		// chooser.addObject("My Auto", new MyAutoCommand());
 		hardware = new Hardware();
 		drive = new Drive();
 		talonMotor = new TalonMotor();

@@ -12,6 +12,7 @@ public class MoveMotorBackward extends Command{
     public MoveMotorBackward() {
         // Use requires() here to declare subsystem dependencies
         requires(Robot.talonMotor);
+        talonMotor = Robot.talonMotor;
     }
 
     // Called just before this Command runs the first time
@@ -31,7 +32,7 @@ public class MoveMotorBackward extends Command{
 
     // Called once after isFinished returns true
     protected void end() {
-    	talonMotor.stopMotor();
+    	
     }
 
     // Called when another command which requires one or more of the same
