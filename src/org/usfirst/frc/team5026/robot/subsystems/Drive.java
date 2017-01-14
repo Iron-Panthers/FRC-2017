@@ -17,7 +17,7 @@ public class Drive extends Subsystem {
 	private Hardware hardware;
 	
 	public Drive() {
-		joystick = new PantherJoystick(RobotMap.driveJoystick);
+		joystick = new PantherJoystick(RobotMap.DRIVE_JOYSTICK);
 		hardware = Robot.hardware;
 		drive = new RobotDrive(hardware.leftMotor, hardware.rightMotor);
 	}
