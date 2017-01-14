@@ -23,7 +23,6 @@ public class PantherJoystick extends Joystick{
 		super(port);
 	}
 	
-	
 	public double getScaledDeadzoneX() {
 		return this.getAdjustedJoystickValue(this.getMagnitude(), this.getX() * Constants.X_SCALING);
 	}
