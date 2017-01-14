@@ -34,7 +34,7 @@ public class DriveWithJoystick extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		SmartDashboard.putNumber("JoyX",joystick.getX());
+		SmartDashboard.putNumber("JoyY",joystick.getScaledDeadzoneY());
 		Robot.drive.useArcadeDrive(joystick.getScaledDeadzoneY(), -joystick.getScaledDeadzoneX());
 	}
 
