@@ -5,6 +5,7 @@ import org.usfirst.frc.team5026.robot.PantherJoystick;
 import org.usfirst.frc.team5026.robot.Robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -14,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class DriveWithJoystick extends Command {
 	
 	private PantherJoystick joystick;
+	private RobotDrive drive;
 	
 	public DriveWithJoystick(PantherJoystick joystick) {
 		// Use requires() here to declare subsystem dependencies
@@ -33,7 +35,7 @@ public class DriveWithJoystick extends Command {
 	@Override
 	protected void execute() {
 		SmartDashboard.putNumber("JoyX",joystick.getX());
-		Robot.drive.useArcadeDrive(joystick.getDeadzoneY() * Constants.Y_SCALING, -joystick.getDeadzoneX() * Constants.X_SCALING);
+		Robot.drive.useArcadeDrive(joystick.getScaledDeadzoneY(), -joystick.getScaledDeadzoneX());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

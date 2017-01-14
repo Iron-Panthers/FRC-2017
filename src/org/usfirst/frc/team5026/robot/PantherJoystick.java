@@ -24,12 +24,12 @@ public class PantherJoystick extends Joystick{
 	}
 	
 	
-	public double getDeadzoneX() {
-		return this.getAdjustedJoystickValue(this.getMagnitude(), this.getX());
+	public double getScaledDeadzoneX() {
+		return this.getAdjustedJoystickValue(this.getMagnitude(), this.getX() * Constants.DEADZONE);
 	}
 	
-	public double getDeadzoneY() {		
-		return this.getAdjustedJoystickValue(this.getMagnitude(), this.getY());
+	public double getScaledDeadzoneY() {		
+		return this.getAdjustedJoystickValue(this.getMagnitude(), this.getY() * Constants.DEADZONE);
 	}
 	
 	public double getMagnitude() {
