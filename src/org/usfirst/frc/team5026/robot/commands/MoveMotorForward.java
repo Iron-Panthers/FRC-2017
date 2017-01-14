@@ -12,6 +12,7 @@ public class MoveMotorForward extends Command {
     public MoveMotorForward() {
         // Use requires() here to declare subsystem dependencies
         requires(Robot.talonMotor);
+        talonMotor = Robot.talonMotor;
     }
 
     // Called just before this Command runs the first time

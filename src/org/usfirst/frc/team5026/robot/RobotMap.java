@@ -25,7 +25,7 @@ public class RobotMap {
 	
 	public static int TALON_MOTOR = 2;
 	
-	public static int BOARD_BUTTON_1 = 1;
-	public static int BOARD_BUTTON_2 = 2;
+	public static int BOARD_BUTTON_1 = 2;
+	public static int BOARD_BUTTON_2 = 3;
 }
 
