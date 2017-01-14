@@ -57,7 +57,7 @@ public class OI {
 		boardButton2 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_2);
 	}
 	public void mapButtonBoard() {
-		boardButton1.whileHeld(new MoveMotorForward());
-		boardButton1.whileHeld(new MoveMotorBackward());
+		boardButton1.whenPressed(new MoveMotorForward());
+		boardButton1.whenPressed(new MoveMotorBackward());
 	}
 }
