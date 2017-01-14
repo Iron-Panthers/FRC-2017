@@ -3,21 +3,19 @@ package org.usfirst.frc.team5026.robot.subsystems;
 import org.usfirst.frc.team5026.robot.Hardware;
 import org.usfirst.frc.team5026.robot.PantherJoystick;
 import org.usfirst.frc.team5026.robot.Robot;
-import org.usfirst.frc.team5026.robot.RobotMap;
 import org.usfirst.frc.team5026.robot.commands.DriveWithJoystick;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Drive extends Subsystem {
 	private RobotDrive drive;
 	
-	private PantherJoystick joystick;
+	public PantherJoystick joystick;
 	private Hardware hardware;
 	
 	public Drive() {
-		joystick = new PantherJoystick(RobotMap.DRIVE_JOYSTICK);
+		joystick = Robot.oi.buttonBoard;
 		hardware = Robot.hardware;
 		drive = new RobotDrive(hardware.leftMotor, hardware.rightMotor);
 	}

@@ -10,8 +10,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class TalonMotor extends Subsystem{
 	private Hardware hardware;
-	private OI oi;
-	private Joystick buttonBoard;
 	
 	
 	@Override
@@ -22,7 +20,6 @@ public class TalonMotor extends Subsystem{
 	
 	public TalonMotor() {
 		hardware = Robot.hardware;
-		buttonBoard = oi.buttonBoard;
 	}
 	
 	public void stopMotor() {

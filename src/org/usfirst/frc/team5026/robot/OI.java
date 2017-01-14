@@ -42,22 +42,22 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
 	
-	public Joystick buttonBoard;
+	public PantherJoystick buttonBoard;
 	
 	public Button boardButton1;
 	public Button boardButton2;
 	
 	public OI() {
-		buttonBoard = new Joystick(RobotMap.BUTTON_JOYSTICK);
+		buttonBoard = new PantherJoystick(RobotMap.DRIVE_JOYSTICK);
+		
+		initButtonBoard();
+	}
+	public void initButtonBoard() {
 		boardButton1 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_1);
 		boardButton2 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_2);
 	}
-	
-	public void moveMotorForward() {
+	public void mapButtonBoard() {
 		boardButton1.whileHeld(new MoveMotorForward());
-	}
-	
-	public void moveMotorBackward() {
 		boardButton1.whileHeld(new MoveMotorBackward());
 	}
 }
