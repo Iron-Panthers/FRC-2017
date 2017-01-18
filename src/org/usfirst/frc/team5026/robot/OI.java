@@ -2,7 +2,7 @@ package org.usfirst.frc.team5026.robot;
 
 import org.usfirst.frc.team5026.robot.commands.MoveMotorBackward;
 import org.usfirst.frc.team5026.robot.commands.MoveMotorForward;
-import org.usfirst.frc.team5026.robot.commands.TurnRobot90Degrees;
+import org.usfirst.frc.team5026.robot.commands.TurnRobot90DegreesClockwise;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -62,6 +62,6 @@ public class OI {
 	public void mapButtonBoard() {
 		boardButton1.whileHeld(new MoveMotorForward());
 		boardButton2.whileHeld(new MoveMotorBackward());
-		boardButton3.whenPressed(new TurnRobot90Degrees());
+		boardButton3.whenPressed(new TurnRobot90DegreesClockwise());
 	}
 }

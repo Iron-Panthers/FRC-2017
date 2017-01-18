@@ -7,6 +7,5 @@ public class Constants {
 	public static final float DEADZONE = 0.1f;
 	// Gyro Constants
 	public static final double PERCENTAGE = 0.05; 
-	public static final double DEGREE = 90;
 	public static final double SPEED = 0.5;
 }

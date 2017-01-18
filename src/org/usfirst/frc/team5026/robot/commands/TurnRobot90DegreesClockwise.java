@@ -6,22 +6,21 @@ import org.usfirst.frc.team5026.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class TurnRobot90Degrees extends Command{
+public class TurnRobot90DegreesClockwise extends Command{
 
-	private Hardware hardware;
+	private double target;
 	
-	public TurnRobot90Degrees() {
+	public TurnRobot90DegreesClockwise(double target) {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.drive);
-		hardware = Robot.hardware;
+		this.target = target;
+		
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		Robot.drive.stopMotors();
-		hardware.gyro.calibrate();
-		
+		Robot.drive.setRotate(target);
 	}
 
 	
@@ -34,12 +33,13 @@ public class TurnRobot90Degrees extends Command{
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return Math.abs(Constants.DEGREE - hardware.gyro.getAngle()) <= Constants.DEGREE * Constants.PERCENTAGE;	
+		return Robot.drive.isTurnFinished();
 	}
 
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
+		Robot.drive.stopMotors();
 	}
 
 	// Called when another command which requires one or more of the same
