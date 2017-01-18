@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5026.robot.subsystems;
 
+import org.usfirst.frc.team5026.robot.Constants;
 import org.usfirst.frc.team5026.robot.Hardware;
 import org.usfirst.frc.team5026.robot.PantherJoystick;
 import org.usfirst.frc.team5026.robot.Robot;
@@ -30,6 +31,21 @@ public class Drive extends Subsystem {
 	
 	public void stopMotors() {
 		this.setLeftRightMotors(0, 0);
+	}
+	
+	//one spark controller is backwards, testing if values need to be opposite
+	public void rotateRobot(double speed) {
+		if (Constants.DEGREE - hardware.gyro.getAngle() <= Constants.DEGREE * Constants.PERCENTAGE) {
+    		Robot.drive.setLeftRightMotors(speed, speed);
+    	} 
+		else if(Constants.DEGREE - hardware.gyro.getAngle() >= 1){
+    		Robot.drive.setLeftRightMotors(-speed, -speed);
+    	}
+	}
+	
+	public void setRotate() {
+		stopMotors();
+		hardware.gyro.calibrate();
 	}
 
 	@Override
