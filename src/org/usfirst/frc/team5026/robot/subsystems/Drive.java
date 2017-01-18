@@ -43,7 +43,7 @@ public class Drive extends Subsystem {
 		if (targetAngle - gyro.getAngle() <= targetAngle * Constants.PERCENTAGE) {
     		Robot.drive.setLeftRightMotors(speed, speed);
     	} 
-		else if(targetAngle - gyro.getAngle() >= 1){
+		else if(targetAngle - gyro.getAngle() >= targetAngle * Constants.PERCENTAGE){
     		Robot.drive.setLeftRightMotors(-speed, -speed);
     	}
 	}

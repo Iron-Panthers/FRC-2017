@@ -28,5 +28,6 @@ public class RobotMap {
 	public static int BOARD_BUTTON_1 = 2;
 	public static int BOARD_BUTTON_2 = 3;
 	public static int BOARD_BUTTON_3 = 4;
+	public static int BOARD_BUTTON_4 = 5;
 }
 
