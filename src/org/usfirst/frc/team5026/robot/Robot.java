@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team5026.robot;
 
+import org.usfirst.frc.team5026.robot.subsystems.Climb;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -21,6 +22,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static Hardware hardware;
 	public static Drive drive;
+	public static Climb climb;
 
 	Command autonomousCommand;
 	SendableChooser <Command> chooser = new SendableChooser<>();
@@ -35,6 +37,7 @@ public class Robot extends IterativeRobot {
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		hardware = new Hardware();
 		drive = new Drive();
+		climb = new Climb();
 	}
 
 	/**

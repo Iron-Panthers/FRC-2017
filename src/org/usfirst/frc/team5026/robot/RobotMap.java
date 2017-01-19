@@ -21,4 +21,7 @@ public class RobotMap {
 	public static int driveMotorRight = 0;
 	
 	public static int driveJoystick = 1;
+	
+	public static int CLIMB_MOTOR_LEFT = 2;
+	public static int CLIMB_MOTOR_RIGHT = 3;
 }
