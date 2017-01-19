@@ -22,11 +22,11 @@ public class OI {
 	   
 	  public void initButtons() { 
 		  climbUp = new JoystickButton(joystick, 2);
-	    	climbDown = new JoystickButton(joystick, 3);
+		  climbDown = new JoystickButton(joystick, 3);
 	  } 
 	   
 	  public void mapButtons() { 
-		  	climbUp.whenPressed(new ClimbUp());
-	    	climbDown.whenPressed(new ClimbDown());
+		  climbUp.whenPressed(new ClimbUp());
+		  climbDown.whenPressed(new ClimbDown());
 	  } 
 }
