@@ -10,12 +10,16 @@ public class Hardware {
 	public Spark leftMotor;
 	public Spark rightMotor;
 	public Talon talonMotor;
+	public Talon climbRightMotor;
+	public Talon climbLeftMotor;
 	public Gyro gyro;
 
 	public Hardware() {
 		leftMotor = new Spark(RobotMap.DRIVE_MOTOR_LEFT);
 		rightMotor = new Spark(RobotMap.DRIVE_MOTOR_RIGHT);
 		talonMotor = new Talon(RobotMap.TALON_MOTOR);
+		climbRightMotor = new Talon(RobotMap.CLIMB_MOTOR_RIGHT);
+		climbLeftMotor = new Talon(RobotMap.CLIMB_MOTOR_LEFT);
 		gyro = new ADXRS450_Gyro(Port.kOnboardCS0);
 
 	}
