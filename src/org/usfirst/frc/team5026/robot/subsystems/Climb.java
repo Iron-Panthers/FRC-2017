@@ -12,6 +12,4 @@ public class Climb {
 		hardware = Robot.hardware;
 	}
 	
-	public 
-	
 }
