@@ -38,6 +38,7 @@ public class Robot extends IterativeRobot {
 		hardware = new Hardware();
 		drive = new Drive();
 		climb = new Climb();
+		oi.mapButtons();
 	}
 
 	/**

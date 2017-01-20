@@ -26,7 +26,7 @@ public class OI {
 	  } 
 	   
 	  public void mapButtons() { 
-		  climbUp.whenPressed(new ClimbUp());
-		  climbDown.whenPressed(new ClimbDown());
+		  climbUp.whileHeld(new ClimbUp());
+		  climbDown.whileHeld(new ClimbDown());
 	  } 
 }

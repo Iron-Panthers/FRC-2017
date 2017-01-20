@@ -15,8 +15,8 @@ public class Hardware {
 
 	public Hardware() {
 		
-		CANTalon[] leftArray = {new CANTalon(0), new CANTalon(1), new CANTalon(2)};
-		CANTalon[] rightArray = {new CANTalon(3), new CANTalon(4), new CANTalon(5)};
+		CANTalon[] leftArray = {new CANTalon(1), new CANTalon(2), new CANTalon(3)};
+		CANTalon[] rightArray = {new CANTalon(4), new CANTalon(5), new CANTalon(6)};
 		boolean[] inverted = {true, false, false};
 		
 		leftDrive = new MotorGroup(leftArray, inverted);
