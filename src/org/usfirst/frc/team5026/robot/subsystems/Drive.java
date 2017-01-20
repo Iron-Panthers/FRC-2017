@@ -16,7 +16,7 @@ public class Drive extends Subsystem {
 	public Drive() {
 		joystick = Robot.oi.joystick;
 		hardware = Robot.hardware;
-		drive = new RobotDrive(hardware.leftMotor, hardware.rightMotor);
+		drive = new RobotDrive(hardware.leftDrive, hardware.rightDrive);
 	}
 	
 	public void setLeftRightMotors(double left, double right) {
