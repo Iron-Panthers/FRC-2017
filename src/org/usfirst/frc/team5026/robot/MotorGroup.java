@@ -1,17 +1,15 @@
 package org.usfirst.frc.team5026.robot;
 
-import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.SpeedController;
 
 
 public class MotorGroup {
 	
-	public Spark[] leftMotors;
-	public Spark[] rightMotors;
+	public SpeedController[] motors;
 	public boolean[] isInverted;
 	
-	public MotorGroup(Spark[] leftMotors, Spark[] rightMotors, boolean[] isInverted) {
-		this.leftMotors = leftMotors;
-		this.rightMotors = rightMotors;
+	public MotorGroup(SpeedController[] motors, boolean[] isInverted) {
+		this.motors = motors;
 		this.isInverted = isInverted;
 	}
 	
@@ -24,20 +22,12 @@ public class MotorGroup {
 	
 	public void set(double speed) {
 		// TODO Auto-generated method stub
-		for (int i = 0; i < leftMotors.length; i++) {
+		for (int i = 0; i < motors.length; i++) {
 			if (isInverted[i]) {
-				leftMotors[i].set(-speed);
+				motors[i].set(-speed);
 			}
 			else {
-				leftMotors[i].set(speed);
-			}
-		}
-		for (int i = 0; i < rightMotors.length; i++) {
-			if (isInverted[i]) {
-				rightMotors[i].set(-speed);
-			}
-			else {
-				rightMotors[i].set(speed);
+				motors[i].set(speed);
 			}
 		}
 	}
