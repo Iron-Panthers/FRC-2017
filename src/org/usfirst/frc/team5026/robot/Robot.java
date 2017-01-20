@@ -3,6 +3,7 @@ package org.usfirst.frc.team5026.robot;
 
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.TalonMotor;
+import org.usfirst.frc.team5026.robot.subsystems.TalonMotorWithSwitch;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -23,6 +24,7 @@ public class Robot extends IterativeRobot {
 	public static Hardware hardware;
 	public static Drive drive;
 	public static TalonMotor talonMotor;
+	public static TalonMotorWithSwitch talonMotorSwitch;
 
 	Command autonomousCommand;
 	SendableChooser <Command> chooser = new SendableChooser<>();
@@ -38,6 +40,7 @@ public class Robot extends IterativeRobot {
 		drive = new Drive();
 		talonMotor = new TalonMotor();
 		oi.mapButtonBoard();
+		talonMotorSwitch = new TalonMotorWithSwitch();
 	}
 
 	/**
