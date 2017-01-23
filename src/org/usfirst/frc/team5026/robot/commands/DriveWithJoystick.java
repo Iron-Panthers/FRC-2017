@@ -18,40 +18,32 @@ public class DriveWithJoystick extends Command {
 	private RobotDrive drive;
 	
 	public DriveWithJoystick(PantherJoystick joystick) {
-		// Use requires() here to declare subsystem dependencies
 		requires(Robot.drive);
 		this.joystick = joystick;
 	}
 
-	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
 		Robot.drive.stopMotors();
 		
 	}
 
-	
-	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		SmartDashboard.putNumber("JoyY",joystick.getScaledDeadzoneY());
+//		SmartDashboard.putNumber("JoyY",joystick.getScaledDeadzoneY());
 		Robot.drive.useArcadeDrive(joystick.getScaledDeadzoneY(), -joystick.getScaledDeadzoneX());
 	}
 
-	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
 		return false;
 	}
 
-	// Called once after isFinished returns true
 	@Override
 	protected void end() {
 		Robot.drive.stopMotors();
 	}
 
-	// Called when another command which requires one or more of the same
-	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
 		Robot.drive.stopMotors();

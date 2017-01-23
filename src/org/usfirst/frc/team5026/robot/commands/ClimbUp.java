@@ -10,28 +10,22 @@ public class ClimbUp extends Command {
         requires(Robot.climb);
     }
 
-    // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.climb.stop();
     }
 
-    // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.climb.climbUp(0.5);
+    	Robot.climb.climbUp(0.65);
     }
 
-    // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return false;
     }
 
-    // Called once after isFinished returns true
     protected void end() {
     	Robot.climb.stop();
     }
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
     protected void interrupted() {
     	end();
     }

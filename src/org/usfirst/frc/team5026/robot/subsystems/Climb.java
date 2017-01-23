@@ -16,12 +16,12 @@ public class Climb extends Subsystem {
 		rightClimb = Robot.hardware.climbRight;
 	}
 	
-	public void climbUp(double motorSpeed)
+	public void climbDown(double motorSpeed)
 	{
 		leftClimb.set(motorSpeed);
 		rightClimb.set(-motorSpeed);
 	}
-	public void climbDown(double motorSpeed)
+	public void climbUp(double motorSpeed)
 	{
 		leftClimb.set(-motorSpeed);
 		rightClimb.set(motorSpeed);
@@ -33,8 +33,7 @@ public class Climb extends Subsystem {
 	}
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+    	
     }
 }
 
