@@ -4,9 +4,8 @@ import org.usfirst.frc.team5026.robot.Hardware;
 import org.usfirst.frc.team5026.robot.PantherJoystick;
 import org.usfirst.frc.team5026.robot.Robot;
 import org.usfirst.frc.team5026.robot.RobotMap;
-import org.usfirst.frc.team5026.robot.commands.DriveWithJoystick;
+import org.usfirst.frc.team5026.robot.commands.drive.DriveWithJoystick;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -36,7 +35,6 @@ public class Drive extends Subsystem {
 
 	@Override
 	protected void initDefaultCommand() {
-		// TODO Auto-generated method stub
 		setDefaultCommand(new DriveWithJoystick(joystick));
 	}
 	
