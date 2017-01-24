@@ -7,8 +7,8 @@ public class Hardware {
 	public Spark rightMotor;
 
 	public Hardware() {
-		leftMotor = new Spark(RobotMap.driveMotorLeft);
-		rightMotor = new Spark(RobotMap.driveMotorRight);
+		leftMotor = new Spark(RobotMap.DRIVE_MOTOR_LEFT);
+		rightMotor = new Spark(RobotMap.DRIVE_MOTOR_RIGHT);
 		
 
 	}

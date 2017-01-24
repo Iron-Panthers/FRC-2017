@@ -1,44 +1,64 @@
 package org.usfirst.frc.team5026.robot;
 
-import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.SpeedController;
 
 
-public class MotorGroup {
+public class MotorGroup implements SpeedController {
 	
-	public Spark[] leftMotors;
-	public Spark[] rightMotors;
-	public boolean[] isInverted;
+	public SpeedController[] motors;
+	private boolean isInverted;
+	private double speed;
 	
-	public MotorGroup(Spark[] leftMotors, Spark[] rightMotors, boolean[] isInverted) {
-		this.leftMotors = leftMotors;
-		this.rightMotors = rightMotors;
+	public MotorGroup(boolean isInverted, SpeedController... motors) {
+		this.motors = motors;
 		this.isInverted = isInverted;
+		this.speed = 0;
 	}
 	
+	@Override
 	public void pidWrite(double output) {
-	}
-	
-	public double get() {
-		return 0;
-	}
-	
-	public void set(double speed) {
-		// TODO Auto-generated method stub
-		for (int i = 0; i < leftMotors.length; i++) {
-			if (isInverted[i]) {
-				leftMotors[i].set(-speed);
-			}
-			else {
-				leftMotors[i].set(speed);
-			}
+		for (SpeedController m: motors) {
+			m.pidWrite(output);
 		}
-		for (int i = 0; i < rightMotors.length; i++) {
-			if (isInverted[i]) {
-				rightMotors[i].set(-speed);
-			}
-			else {
-				rightMotors[i].set(speed);
-			}
+	}
+	
+	@Override
+	public double get() {
+		return speed;
+	}
+	
+	@Override
+	public void set(double speed) {
+		this.speed = speed;
+		for (SpeedController m: motors) {
+			m.set(speed);
+		}
+	}
+
+	@Override
+	public void setInverted(boolean isInverted) {
+		this.isInverted = isInverted;
+		for (SpeedController m: motors) {
+			m.setInverted(isInverted);
+		}
+	}
+
+	@Override
+	public boolean getInverted() {
+		return this.isInverted;
+	}
+
+	@Override
+	public void disable() {
+		for (SpeedController m: motors) {
+			m.disable();
+		}
+	}
+
+	@Override
+	public void stopMotor() {
+		for (SpeedController m: motors) {
+			m.stopMotor();
 		}
 	}
 }
