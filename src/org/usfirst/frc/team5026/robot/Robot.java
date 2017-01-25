@@ -1,7 +1,7 @@
 
 package org.usfirst.frc.team5026.robot;
 
-import org.usfirst.frc.team5026.robot.subsystems.Climb;
+import org.usfirst.frc.team5026.robot.subsystems.Climber;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.TalonMotor;
 import org.usfirst.frc.team5026.robot.subsystems.TalonMotorWithSwitch;
@@ -26,7 +26,7 @@ public class Robot extends IterativeRobot {
 	public static Drive drive;
 	public static TalonMotor talonMotor;
 	public static TalonMotorWithSwitch talonMotorSwitch;
-	public static Climb climb;
+	public static Climber climber;
 
 	Command autonomousCommand;
 	SendableChooser <Command> chooser = new SendableChooser<>();
@@ -43,7 +43,7 @@ public class Robot extends IterativeRobot {
 		talonMotor = new TalonMotor();
 		talonMotorSwitch = new TalonMotorWithSwitch();
 		oi.mapButtonBoard();
-		climb = new Climb();
+		climber = new Climber();
 	}
 
 	/**
