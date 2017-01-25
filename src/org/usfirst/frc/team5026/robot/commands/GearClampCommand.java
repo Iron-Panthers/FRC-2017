@@ -18,7 +18,6 @@ public class GearClampCommand extends Command{
 	}
 	protected void execute(){
 		if(gearclamp.hasGear()){
-			Robot.gearclamp.wait(Constants.CLAMP_WAIT_TIME);;
 			Robot.gearclamp.elevateClamp();
 		}
 	}
