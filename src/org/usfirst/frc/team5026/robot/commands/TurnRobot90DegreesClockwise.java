@@ -1,48 +1,39 @@
 package org.usfirst.frc.team5026.robot.commands;
 
 import org.usfirst.frc.team5026.robot.Constants;
-import org.usfirst.frc.team5026.robot.PantherJoystick;
+import org.usfirst.frc.team5026.robot.Hardware;
 import org.usfirst.frc.team5026.robot.Robot;
 
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-/**
- *
- */
-public class DriveWithJoystick extends Command {
+public class TurnRobot90DegreesClockwise extends Command{
+
+	private double target;
 	
-	private PantherJoystick joystick;
-	private RobotDrive drive;
-	
-	public DriveWithJoystick(PantherJoystick joystick) {
+	public TurnRobot90DegreesClockwise(double target) {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.drive);
-		this.joystick = joystick;
+		this.target = target;
+		
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		Robot.drive.stopMotors();
-		
+		Robot.drive.setRotate(target);
 	}
 
 	
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		SmartDashboard.putNumber("JoyX", joystick.getScaledDeadzoneX());
-		SmartDashboard.putNumber("JoyY",joystick.getScaledDeadzoneY());
-		Robot.drive.useArcadeDrive(joystick.getScaledDeadzoneY(), -joystick.getScaledDeadzoneX());
+		Robot.drive.rotateRobot(Constants.SPEED);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return false;
+		return Robot.drive.isTurnFinished();
 	}
 
 	// Called once after isFinished returns true
@@ -57,4 +48,5 @@ public class DriveWithJoystick extends Command {
 	protected void interrupted() {
 		Robot.drive.stopMotors();
 	}
+
 }

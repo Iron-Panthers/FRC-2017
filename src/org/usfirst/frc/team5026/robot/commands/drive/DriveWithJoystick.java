@@ -1,11 +1,8 @@
-package org.usfirst.frc.team5026.robot.commands;
+package org.usfirst.frc.team5026.robot.commands.drive;
 
-import org.usfirst.frc.team5026.robot.Constants;
 import org.usfirst.frc.team5026.robot.PantherJoystick;
 import org.usfirst.frc.team5026.robot.Robot;
 
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -15,7 +12,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class DriveWithJoystick extends Command {
 	
 	private PantherJoystick joystick;
-	private RobotDrive drive;
 	
 	public DriveWithJoystick(PantherJoystick joystick) {
 		// Use requires() here to declare subsystem dependencies
@@ -34,8 +30,6 @@ public class DriveWithJoystick extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		SmartDashboard.putNumber("JoyX", joystick.getScaledDeadzoneX());
-		SmartDashboard.putNumber("JoyY",joystick.getScaledDeadzoneY());
 		Robot.drive.useArcadeDrive(joystick.getScaledDeadzoneY(), -joystick.getScaledDeadzoneX());
 	}
 
