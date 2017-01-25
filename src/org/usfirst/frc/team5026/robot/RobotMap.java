@@ -21,4 +21,11 @@ public class RobotMap {
 	public static int driveMotorRight = 0;
 	
 	public static int driveJoystick = 1;
-}
+	
+	public static int leftPistonForward = 2;
+	public static int leftPistonReverse = 3;
+	public static int rightPistonForward = 4;
+	public static int rightPistonReverse = 5;
+	
+	public static int gearBannerSensor = 1;
+	}
