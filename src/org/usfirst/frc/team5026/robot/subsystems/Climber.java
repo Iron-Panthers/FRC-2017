@@ -9,14 +9,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Climber extends Subsystem {
 	
-	private OI oi;
-	private Hardware hardware;
 	private Talon leftClimb;
 	private Talon rightClimb;
 	
 	public Climber() {
-		oi = new OI();
-		hardware = new Hardware();
 		leftClimb = Robot.hardware.climbLeftMotor;
 		rightClimb = Robot.hardware.climbRightMotor;
 		
@@ -29,7 +25,7 @@ public class Climber extends Subsystem {
 	
 	public void setClimbMotors(double speed) {
 		leftClimb.set(speed);
-		rightClimb.set(speed);
+		rightClimb.set(-speed);
 	}
 	
 	public void initDefaultCommand(){	

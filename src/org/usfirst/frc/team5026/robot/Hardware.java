@@ -17,22 +17,15 @@ public class Hardware {
 	
 	public Gyro gyro;
 	
-	public DigitalInput talonSwitch;
-	
 	public DoubleSolenoid leftClampPiston;
 	public DoubleSolenoid rightClampPiston;
 	public DigitalInput gearClampSensor;
 
 	public Hardware() {
-		gearClampSensor = new DigitalInput(RobotMap.gearBannerSensor);
 		leftMotor = new Talon(RobotMap.DRIVE_MOTOR_LEFT);
 		rightMotor = new Talon(RobotMap.DRIVE_MOTOR_RIGHT);
-		talonMotor = new Talon(RobotMap.TALON_MOTOR);
 		climbRightMotor = new Talon(RobotMap.CLIMB_MOTOR_RIGHT);
 		climbLeftMotor = new Talon(RobotMap.CLIMB_MOTOR_LEFT);
-		gyro = new ADXRS450_Gyro(Port.kOnboardCS0);
-		talonSwitch = new DigitalInput(RobotMap.TALON_SWITCH);
-		leftClampPiston = new DoubleSolenoid(RobotMap.leftPistonForward, RobotMap.leftPistonReverse);
-		rightClampPiston = new DoubleSolenoid(RobotMap.rightPistonForward, RobotMap.rightPistonReverse);
+		//gyro = new ADXRS450_Gyro(Port.kOnboardCS0);
 	}
 }
