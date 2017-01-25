@@ -7,6 +7,7 @@ import org.usfirst.frc.team5026.robot.commands.MoveMotorForwardWithSwitch;
 import org.usfirst.frc.team5026.robot.commands.TurnRobot90DegreesClockwise;
 import org.usfirst.frc.team5026.robot.commands.TurnRobot90DegreesCounterclockwise;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -44,7 +45,8 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
 	
-	public PantherJoystick buttonBoard;
+	public Joystick buttonBoard;
+	public PantherJoystick driveJoystick;
 	
 	public Button boardButton1;
 	public Button boardButton2;
@@ -54,7 +56,8 @@ public class OI {
 	public Button boardButton6;
 	
 	public OI() {
-		buttonBoard = new PantherJoystick(RobotMap.DRIVE_JOYSTICK);
+		buttonBoard = new Joystick(RobotMap.BUTTON_JOYSTICK);
+		driveJoystick = new PantherJoystick(RobotMap.DRIVE_JOYSTICK);
 		
 		initButtonBoard();
 	}
