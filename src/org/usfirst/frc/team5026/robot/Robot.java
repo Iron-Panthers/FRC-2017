@@ -1,7 +1,10 @@
 
 package org.usfirst.frc.team5026.robot;
 
+import org.usfirst.frc.team5026.robot.subsystems.Climb;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
+import org.usfirst.frc.team5026.robot.subsystems.TalonMotor;
+import org.usfirst.frc.team5026.robot.subsystems.TalonMotorWithSwitch;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -21,6 +24,9 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static Hardware hardware;
 	public static Drive drive;
+	public static TalonMotor talonMotor;
+	public static TalonMotorWithSwitch talonMotorSwitch;
+	public static Climb climb;
 
 	Command autonomousCommand;
 	SendableChooser <Command> chooser = new SendableChooser<>();
@@ -32,9 +38,12 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		// chooser.addObject("My Auto", new MyAutoCommand());
 		hardware = new Hardware();
 		drive = new Drive();
+		talonMotor = new TalonMotor();
+		talonMotorSwitch = new TalonMotorWithSwitch();
+		oi.mapButtonBoard();
+		climb = new Climb();
 	}
 
 	/**
