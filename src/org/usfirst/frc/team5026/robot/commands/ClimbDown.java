@@ -18,7 +18,8 @@ public class ClimbDown extends Command {
     }
 
     protected void execute() {
-    	Robot.climb.climbDown(0.5);
+    	double climbSpeed = 0.4;
+    	Robot.climb.climbDown(climbSpeed);
     }
 
     protected boolean isFinished() {

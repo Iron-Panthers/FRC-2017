@@ -2,6 +2,7 @@ package org.usfirst.frc.team5026.robot;
 
 import org.usfirst.frc.team5026.robot.commands.ClimbDown;
 import org.usfirst.frc.team5026.robot.commands.ClimbUp;
+import org.usfirst.frc.team5026.robot.commands.ClimbUpSlower;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -14,6 +15,7 @@ public class OI {
 	  public PantherJoystick joystick; 
 	  public Button climbUp; 
 	  public Button climbDown;
+	  public Button climbUpSlower;
 	   
 	  public OI() { 
 		  joystick = new PantherJoystick(RobotMap.driveJoystick); 
@@ -23,10 +25,12 @@ public class OI {
 	  public void initButtons() { 
 		  climbUp = new JoystickButton(joystick, 2);
 		  climbDown = new JoystickButton(joystick, 3);
+		  climbUpSlower = new JoystickButton(joystick, 1);
 	  } 
 	   
 	  public void mapButtons() { 
 		  climbUp.whileHeld(new ClimbUp());
 		  climbDown.whileHeld(new ClimbDown());
+		  climbUpSlower.whileHeld(new ClimbUpSlower());
 	  } 
 }

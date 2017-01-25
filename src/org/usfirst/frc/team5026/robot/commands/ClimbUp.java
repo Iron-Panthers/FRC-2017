@@ -15,7 +15,7 @@ public class ClimbUp extends Command {
     }
 
     protected void execute() {
-    	Robot.climb.climbUp(0.65);
+    	Robot.climb.climbUp(1);
     }
 
     protected boolean isFinished() {
