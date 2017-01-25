@@ -2,6 +2,7 @@ package org.usfirst.frc.team5026.robot;
 
 import org.usfirst.frc.team5026.robot.commands.TurnRobot90DegreesClockwise;
 import org.usfirst.frc.team5026.robot.commands.TurnRobot90DegreesCounterclockwise;
+import org.usfirst.frc.team5026.robot.commands.climb.ClimbUp;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -48,6 +49,7 @@ public class OI {
 	public Button boardButton4;
 	public Button boardButton5;
 	public Button boardButton6;
+	public Button boardButton7;
 	
 	public OI() {
 		buttonBoard = new PantherJoystick(RobotMap.DRIVE_JOYSTICK);
@@ -61,9 +63,11 @@ public class OI {
 		boardButton4 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_4);
 		boardButton5 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_5);
 		boardButton6 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_6);
+		boardButton7 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_7);
 	}
 	public void mapButtonBoard() {
 		boardButton3.whenPressed(new TurnRobot90DegreesClockwise(90));
 		boardButton4.whenPressed(new TurnRobot90DegreesCounterclockwise(90));
+		boardButton7.whenPressed(new ClimbUp());
 	}
 }
