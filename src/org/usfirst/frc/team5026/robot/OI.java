@@ -66,8 +66,8 @@ public class OI {
 		boardButton7 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_7);
 	}
 	public void mapButtonBoard() {
-		boardButton3.whenPressed(new TurnRobot90DegreesClockwise(90));
-		boardButton4.whenPressed(new TurnRobot90DegreesCounterclockwise(90));
-		boardButton7.whenPressed(new ClimbUp());
+//		boardButton3.whenPressed(new TurnRobot90DegreesClockwise(90));
+//		boardButton4.whenPressed(new TurnRobot90DegreesCounterclockwise(90));
+		boardButton2.whileHeld(new ClimbUp());
 	}
 }
