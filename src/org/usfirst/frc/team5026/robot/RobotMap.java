@@ -38,4 +38,9 @@ public class RobotMap {
 	
 	public static final int TALON_SWITCH = 1;
 }
+	public static int gearBannerSensor = 1;
+	public static int rightPistonReverse = 5;
+	public static int rightPistonForward = 4;
+	public static int leftPistonReverse = 3;
+	public static int leftPistonForward = 2;
 
