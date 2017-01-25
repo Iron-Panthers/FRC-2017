@@ -23,7 +23,6 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static Hardware hardware;
 	public static Drive drive;
-	public static Climb climb;
 	public static GearClamp gearclamp;
 	public static Climber climber;
 
