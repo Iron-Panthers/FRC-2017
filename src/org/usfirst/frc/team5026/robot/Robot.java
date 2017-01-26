@@ -24,8 +24,6 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static Hardware hardware;
 	public static Drive drive;
-	public static TalonMotor talonMotor;
-	public static TalonMotorWithSwitch talonMotorSwitch;
 	public static Climb climb;
 
 	Command autonomousCommand;
@@ -40,10 +38,9 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		hardware = new Hardware();
 		drive = new Drive();
-		talonMotor = new TalonMotor();
-		talonMotorSwitch = new TalonMotorWithSwitch();
-		oi.mapButtonBoard();
 		climb = new Climb();
+		
+		oi.mapButtonBoard();
 	}
 
 	/**

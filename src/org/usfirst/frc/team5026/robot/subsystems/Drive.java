@@ -20,7 +20,7 @@ public class Drive extends Subsystem {
 	private double targetAngle;
 	
 	public Drive() {
-		joystick = Robot.oi.buttonBoard;
+		joystick = Robot.oi.driveJoystick;
 		hardware = Robot.hardware;
 		drive = new RobotDrive(hardware.leftMotor, hardware.rightMotor);
 		gyro = hardware.gyro;
