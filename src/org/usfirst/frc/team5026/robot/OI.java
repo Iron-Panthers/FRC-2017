@@ -1,7 +1,9 @@
 package org.usfirst.frc.team5026.robot;
 
 import org.usfirst.frc.team5026.robot.commands.climb.ClimbUp;
-import org.usfirst.frc.team5026.robot.commands.GearClampCommand;
+import org.usfirst.frc.team5026.robot.commands.gear.GearClampCommand;
+import org.usfirst.frc.team5026.robot.commands.gear.GearUnClampCommand;
+
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -67,6 +69,7 @@ public class OI {
 	}
 	public void mapButtonBoard() {
 		boardButton2.whenPressed(new GearClampCommand());
+		boardButton3.whenPressed(new GearUnClampCommand());
 		boardButton1.whileHeld(new ClimbUp());
 	}
 }

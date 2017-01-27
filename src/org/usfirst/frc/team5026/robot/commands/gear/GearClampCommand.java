@@ -1,4 +1,4 @@
-package org.usfirst.frc.team5026.robot.commands;
+package org.usfirst.frc.team5026.robot.commands.gear;
 
 import org.usfirst.frc.team5026.robot.Constants;
 import org.usfirst.frc.team5026.robot.Robot;
@@ -16,18 +16,18 @@ public class GearClampCommand extends Command{
 		requires(Robot.gearclamp);
 	}
 	protected void initialize(){
-		Robot.gearclamp.lowerClamp();
+		setTimeout(Constants.CLAMP_WAIT_TIME);
 	}
 	protected void execute(){
-		if(gearclamp.hasGear()){
-			Timer.delay(Constants.CLAMP_WAIT_TIME);
-			Robot.gearclamp.elevateClamp();
-		}
 	}
-	@Override
 	protected boolean isFinished() {
-		// TODO Auto-generated method stub
-		return false;
+		return gearclamp.hasGear() || isTimedOut();
+	}
+	protected void end() {
+		Robot.gearclamp.elevateClamp();
+	}
+	protected void interrupted() {
+		Robot.gearclamp.lowerClamp();
 	}
 
 }

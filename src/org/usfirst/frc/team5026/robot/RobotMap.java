@@ -41,6 +41,11 @@ public class RobotMap {
 	public static final int BOARD_BUTTON_5 = 5;
 	public static final int BOARD_BUTTON_6 = 6;
 	public static final int BOARD_BUTTON_7 = 7;
+	
+	public static final int leftPistonForward = 2;
+	public static final int leftPistonReverse = 3;
+	public static final int rightPistonForward = 4;
+	public static final int rightPistonReverse = 5;
 }
 	
 
