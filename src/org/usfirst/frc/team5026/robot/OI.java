@@ -54,8 +54,7 @@ public class OI {
 	public OI() {
 		driveJoystick = new PantherJoystick(RobotMap.DRIVE_JOYSTICK);
 		buttonBoard = new PantherJoystick(RobotMap.BUTTON_JOYSTICK);
-		
-		
+
 		initButtonBoard();
 	}
 	public void initButtonBoard() {

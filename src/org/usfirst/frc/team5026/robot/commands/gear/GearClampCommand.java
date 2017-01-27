@@ -10,7 +10,6 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 
 public class GearClampCommand extends Command{
 
-	private GearClamp gearclamp;
 	
 	public GearClampCommand(){
 		requires(Robot.gearclamp);
@@ -21,7 +20,9 @@ public class GearClampCommand extends Command{
 	protected void execute(){
 	}
 	protected boolean isFinished() {
-		return gearclamp.hasGear() || isTimedOut();
+	//	return gearclamp.hasGear() || isTimedOut();
+//		return isTimedOut();
+		return true;
 	}
 	protected void end() {
 		Robot.gearclamp.elevateClamp();
