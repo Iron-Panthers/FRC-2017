@@ -34,12 +34,12 @@ public class Hardware {
 
 	public Hardware() {
 		// Drive Motors
-		leftMotor_1 = new CANTalon(RobotMap.DRIVE_MOTOR_LEFT);
-		leftMotor_2 = new CANTalon(RobotMap.DRIVE_MOTOR_LEFT);
-		leftMotor_3 = new CANTalon(RobotMap.DRIVE_MOTOR_LEFT);
-		rightMotor_1 = new CANTalon(RobotMap.DRIVE_MOTOR_RIGHT);
-		rightMotor_2 = new CANTalon(RobotMap.DRIVE_MOTOR_RIGHT);
-		rightMotor_3 = new CANTalon(RobotMap.DRIVE_MOTOR_RIGHT);
+		leftMotor_1 = new CANTalon(RobotMap.DRIVE_MOTOR_LEFT_1);
+		leftMotor_2 = new CANTalon(RobotMap.DRIVE_MOTOR_LEFT_2);
+		leftMotor_3 = new CANTalon(RobotMap.DRIVE_MOTOR_LEFT_3);
+		rightMotor_1 = new CANTalon(RobotMap.DRIVE_MOTOR_RIGHT_1);
+		rightMotor_2 = new CANTalon(RobotMap.DRIVE_MOTOR_RIGHT_2);
+		rightMotor_3 = new CANTalon(RobotMap.DRIVE_MOTOR_RIGHT_3);
 		leftMotor = new MotorGroup(invertedLeft, leftMotor_1, leftMotor_2, leftMotor_3);
 		rightMotor = new MotorGroup(invertedRight, rightMotor_1, rightMotor_2, rightMotor_3);
 		// Drive Excess
