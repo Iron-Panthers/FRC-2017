@@ -5,6 +5,8 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.SPI.Port;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DigitalInput;
 
 public class Hardware {
 	public Talon leftMotor;
@@ -15,8 +17,9 @@ public class Hardware {
 	
 	public Gyro gyro;
 	
-	public DigitalInput talonSwitch;
-	
+	public DoubleSolenoid leftClampPiston;
+	public DoubleSolenoid rightClampPiston;
+	public DigitalInput gearClampSensor;
 
 	public Hardware() {
 		leftMotor = new Talon(RobotMap.DRIVE_MOTOR_LEFT);

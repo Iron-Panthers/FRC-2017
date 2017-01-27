@@ -18,7 +18,7 @@ public class RobotMap {
 	// public static int rangefinderModule = 1;
 	
 	public static final int CLIMB_MOTOR_RIGHT = 3;
-	public static final int CLIMB_MOTOR_LEFT = 4;
+	public static final int CLIMB_MOTOR_LEFT = 2;
 
 	
 	public static final int DRIVE_MOTOR_LEFT = 0;
@@ -34,6 +34,7 @@ public class RobotMap {
 	public static final int BOARD_BUTTON_4 = 5;
 	public static final int BOARD_BUTTON_5 = 6;
 	public static final int BOARD_BUTTON_6 = 7;
-	
+	public static final int BOARD_BUTTON_7 = 8;
 }
+	
 
