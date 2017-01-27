@@ -67,8 +67,8 @@ public class OI {
 		
 	}
 	public void mapButtonBoard() {
+		boardButton1.whileHeld(new ClimbUp());
 		boardButton2.whenPressed(new GearClampCommand());
 		boardButton3.whenPressed(new GearUnClampCommand());
-		boardButton1.whileHeld(new ClimbUp());
 	}
 }
