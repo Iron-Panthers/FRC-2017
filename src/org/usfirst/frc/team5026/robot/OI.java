@@ -41,33 +41,12 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
 	
-	public PantherJoystick buttonBoard;
-	
-	public Button boardButton1;
-	public Button boardButton2;
-	public Button boardButton3;
-	public Button boardButton4;
-	public Button boardButton5;
-	public Button boardButton6;
-	public Button boardButton7;
 	
 	public OI() {
-		buttonBoard = new PantherJoystick(RobotMap.DRIVE_JOYSTICK);
-		
-		initButtonBoard();
 	}
 	public void initButtonBoard() {
-		boardButton1 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_1);
-		boardButton2 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_2);
-		boardButton3 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_3);
-		boardButton4 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_4);
-		boardButton5 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_5);
-		boardButton6 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_6);
-		boardButton7 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_7);
 	}
 	public void mapButtonBoard() {
-//		boardButton3.whenPressed(new TurnRobot90DegreesClockwise(90));
-//		boardButton4.whenPressed(new TurnRobot90DegreesCounterclockwise(90));
-		boardButton2.whileHeld(new ClimbUp());
+
 	}
 }
