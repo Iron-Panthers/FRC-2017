@@ -19,10 +19,11 @@ public class Drive extends Subsystem {
 	private DoubleSolenoid shifter;
 	
 	public Drive() {
-		joystick = new PantherJoystick(RobotMap.DRIVE_JOYSTICK);
-		drive = new RobotDrive(Robot.hardware.leftMotor, Robot.hardware.rightMotor);
+		joystick = Robot.oi.driveJoystick;
+		hardware = Robot.hardware;
+		drive = new RobotDrive(hardware.leftMotor, hardware.rightMotor);
+		gyro = hardware.gyro;
 		shifter = Robot.hardware.shifter;
-
 	}
 	
 	public void setLeftRightMotors(double left, double right) {

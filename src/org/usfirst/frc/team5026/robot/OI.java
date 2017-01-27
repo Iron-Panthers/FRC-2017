@@ -1,12 +1,6 @@
 package org.usfirst.frc.team5026.robot;
 
-import org.usfirst.frc.team5026.robot.commands.MoveMotorBackward;
-import org.usfirst.frc.team5026.robot.commands.MoveMotorBackwardWithSwitch;
-import org.usfirst.frc.team5026.robot.commands.MoveMotorForward;
-import org.usfirst.frc.team5026.robot.commands.MoveMotorForwardWithSwitch;
-import org.usfirst.frc.team5026.robot.commands.TurnRobot90DegreesClockwise;
-import org.usfirst.frc.team5026.robot.commands.TurnRobot90DegreesCounterclockwise;
-
+import org.usfirst.frc.team5026.robot.commands.climb.ClimbUp;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -45,33 +39,18 @@ public class OI {
 	// button.whenReleased(new ExampleCommand());
 	
 	public PantherJoystick buttonBoard;
-	
-	public Button boardButton1;
-	public Button boardButton2;
-	public Button boardButton3;
-	public Button boardButton4;
-	public Button boardButton5;
-	public Button boardButton6;
+	public PantherJoystick driveJoystick;
 	
 	public OI() {
-		buttonBoard = new PantherJoystick(RobotMap.DRIVE_JOYSTICK);
+		driveJoystick = new PantherJoystick(RobotMap.DRIVE_JOYSTICK);
+		buttonBoard = new PantherJoystick(RobotMap.BUTTON_JOYSTICK);
+		
 		
 		initButtonBoard();
 	}
 	public void initButtonBoard() {
-		boardButton1 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_1);
-		boardButton2 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_2);
-		boardButton3 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_3);
-		boardButton4 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_4);
-		boardButton5 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_5);
-		boardButton6 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_6);
 	}
 	public void mapButtonBoard() {
-		boardButton1.whileHeld(new MoveMotorForward());
-		boardButton2.whileHeld(new MoveMotorBackward());
-		boardButton3.whenPressed(new TurnRobot90DegreesClockwise(90));
-		boardButton4.whenPressed(new TurnRobot90DegreesCounterclockwise(90));
-		boardButton5.whenPressed(new MoveMotorForwardWithSwitch());
-		boardButton6.whenPressed(new MoveMotorBackwardWithSwitch());
+		boardButton1.whileHeld(new ClimbUp());
 	}
 }
