@@ -34,13 +34,13 @@ public class RobotMap {
 	public static final int SOLENOID_SHIFTER_FORWARD = 0;
 	public static final int SOLENOID_SHIFTER_REVERSE = 1;
 	
-	public static final int BOARD_BUTTON_1 = 2;
-	public static final int BOARD_BUTTON_2 = 3;
-	public static final int BOARD_BUTTON_3 = 4;
-	public static final int BOARD_BUTTON_4 = 5;
-	public static final int BOARD_BUTTON_5 = 6;
-	public static final int BOARD_BUTTON_6 = 7;
-	public static final int BOARD_BUTTON_7 = 8;
+	public static final int BOARD_BUTTON_1 = 1;
+	public static final int BOARD_BUTTON_2 = 2;
+	public static final int BOARD_BUTTON_3 = 3;
+	public static final int BOARD_BUTTON_4 = 4;
+	public static final int BOARD_BUTTON_5 = 5;
+	public static final int BOARD_BUTTON_6 = 6;
+	public static final int BOARD_BUTTON_7 = 7;
 }
 	
 
