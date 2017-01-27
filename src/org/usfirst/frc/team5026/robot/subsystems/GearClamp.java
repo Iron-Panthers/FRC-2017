@@ -20,14 +20,19 @@ public class GearClamp extends Subsystem {
   } 
  
   public void elevateClamp(){ 
-    hardware.gearClampPiston.set(Value.kForward); 
+	  hardware.gearClampPiston.set(Value.kForward);
   } 
   public void lowerClamp(){ 
 	  System.out.println("down boi");
-    hardware.gearClampPiston.set(Value.kReverse); 
+	  hardware.gearClampPiston.set(Value.kReverse); 
   } 
   public boolean hasGear(){ 
-    return Robot.hardware.gearClampSensor.get(); 
+	  return Robot.hardware.gearClampSensor.get(); 
   } 
-   
-} 
+  public void pushGear(){
+	  hardware.gearPegPiston.set(Value.kForward);
+  }
+  public void pullGear(){
+	  hardware.gearPegPiston.set(Value.kReverse);
+  }
+}
