@@ -1,4 +1,4 @@
-package org.usfirst.frc.team5026.robot.commands.drive;
+package org.usfirst.frc.team5026.robot.commands.misc;
 
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.TimedCommand;
@@ -6,12 +6,12 @@ import edu.wpi.first.wpilibj.command.TimedCommand;
 /**
  *
  */
-public class DriveForTime extends TimedCommand {
+public class RunMotorForTime extends TimedCommand {
 	
 	private SpeedController motor;
 	private double power;
 	
-    public DriveForTime(SpeedController motor, double power, double time) {
+    public RunMotorForTime(SpeedController motor, double power, double time) {
     	super(time);
     	this.power = power;
     }
