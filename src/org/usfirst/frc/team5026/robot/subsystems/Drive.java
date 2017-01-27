@@ -17,6 +17,10 @@ public class Drive extends Subsystem {
 	
 	private PantherJoystick joystick;
 	private DoubleSolenoid shifter;
+	Gyro gyro;
+	Hardware hardware;
+	
+	private double targetAngle;
 	
 	public Drive() {
 		joystick = Robot.oi.driveJoystick;
