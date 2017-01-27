@@ -6,13 +6,14 @@ import edu.wpi.first.wpilibj.SpeedController;
 public class MotorGroup implements SpeedController {
 	
 	public SpeedController[] motors;
-	private boolean isInverted;
 	private double speed;
 	
-	public MotorGroup(boolean isInverted, SpeedController... motors) {
+	public MotorGroup(boolean[] isInverted, SpeedController... motors) {
 		this.motors = motors;
-		this.isInverted = isInverted;
 		this.speed = 0;
+		for (int i = 0; i < motors.length; i++) {
+			motors[i].setInverted(isInverted[i]);
+		}
 	}
 	
 	@Override
@@ -37,15 +38,12 @@ public class MotorGroup implements SpeedController {
 
 	@Override
 	public void setInverted(boolean isInverted) {
-		this.isInverted = isInverted;
-		for (SpeedController m: motors) {
-			m.setInverted(isInverted);
-		}
+		// TODO: FIX
 	}
 
 	@Override
 	public boolean getInverted() {
-		return this.isInverted;
+		return false;
 	}
 
 	@Override

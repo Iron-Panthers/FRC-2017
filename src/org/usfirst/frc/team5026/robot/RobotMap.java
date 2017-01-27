@@ -21,8 +21,12 @@ public class RobotMap {
 	public static final int CLIMB_MOTOR_LEFT = 2;
 
 	
-	public static final int DRIVE_MOTOR_LEFT = 0;
-	public static final int DRIVE_MOTOR_RIGHT = 1;
+	public static final int DRIVE_MOTOR_LEFT_1 = 1;
+	public static final int DRIVE_MOTOR_LEFT_2 = 2;
+	public static final int DRIVE_MOTOR_LEFT_3 = 3;
+	public static final int DRIVE_MOTOR_RIGHT_1 = 4;
+	public static final int DRIVE_MOTOR_RIGHT_2 = 5;
+	public static final int DRIVE_MOTOR_RIGHT_3 = 6;
 	
 	public static final int DRIVE_JOYSTICK = 0;
 	public static final int BUTTON_JOYSTICK = 1;
@@ -30,13 +34,13 @@ public class RobotMap {
 	public static final int SOLENOID_SHIFTER_FORWARD = 0;
 	public static final int SOLENOID_SHIFTER_REVERSE = 1;
 	
-	public static final int BOARD_BUTTON_1 = 2;
-	public static final int BOARD_BUTTON_2 = 3;
-	public static final int BOARD_BUTTON_3 = 4;
-	public static final int BOARD_BUTTON_4 = 5;
-	public static final int BOARD_BUTTON_5 = 6;
-	public static final int BOARD_BUTTON_6 = 7;
-	public static final int BOARD_BUTTON_7 = 8;
+	public static final int BOARD_BUTTON_1 = 1;
+	public static final int BOARD_BUTTON_2 = 2;
+	public static final int BOARD_BUTTON_3 = 3;
+	public static final int BOARD_BUTTON_4 = 4;
+	public static final int BOARD_BUTTON_5 = 5;
+	public static final int BOARD_BUTTON_6 = 6;
+	public static final int BOARD_BUTTON_7 = 7;
 }
 	
 
