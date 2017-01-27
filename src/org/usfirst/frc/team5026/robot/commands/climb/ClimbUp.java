@@ -1,43 +1,47 @@
-package org.usfirst.frc.team5026.robot.commands;
+package org.usfirst.frc.team5026.robot.commands.climb;
 
 import org.usfirst.frc.team5026.robot.Robot;
-import org.usfirst.frc.team5026.robot.subsystems.TalonMotorWithSwitch;
+import org.usfirst.frc.team5026.robot.subsystems.Climber;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class MoveMotorBackwardWithSwitch extends Command{
+public class ClimbUp extends Command {
 
-	private TalonMotorWithSwitch talonMotorSwitch;
+	private Climber climber;
 	
-    public MoveMotorBackwardWithSwitch() {
+    public ClimbUp() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.talonMotorSwitch);
-        talonMotorSwitch = Robot.talonMotorSwitch;
+        requires(Robot.climber);
+        climber = Robot.climber;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	talonMotorSwitch.stopMotor();
+    	climber.stopClimb();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	talonMotorSwitch.setMotorNegative();
+    	//run joystick to climb
+    	climber.setClimbMotors(Robot.oi.buttonBoard.getY());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+    	return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	
+    	climber.stopClimb();
+    	System.out.println("CLIMB END");
+ 
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	talonMotorSwitch.stopMotor();
+    		end();
+    		System.out.println("CLIMB INTERRUPTED");
     }
 }

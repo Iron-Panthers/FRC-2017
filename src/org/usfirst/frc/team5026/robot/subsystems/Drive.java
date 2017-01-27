@@ -6,6 +6,8 @@ import org.usfirst.frc.team5026.robot.PantherJoystick;
 import org.usfirst.frc.team5026.robot.Robot;
 import org.usfirst.frc.team5026.robot.commands.DriveWithJoystick;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
@@ -13,21 +15,32 @@ import edu.wpi.first.wpilibj.interfaces.Gyro;
 public class Drive extends Subsystem {
 	private RobotDrive drive;
 	
-	public PantherJoystick joystick;
-	private Hardware hardware;
-	private Gyro gyro;
+	private PantherJoystick joystick;
+	private DoubleSolenoid shifter;
+	Gyro gyro;
+	Hardware hardware;
 	
 	private double targetAngle;
 	
 	public Drive() {
-		joystick = Robot.oi.buttonBoard;
+		joystick = Robot.oi.driveJoystick;
 		hardware = Robot.hardware;
 		drive = new RobotDrive(hardware.leftMotor, hardware.rightMotor);
 		gyro = hardware.gyro;
+		shifter = Robot.hardware.shifter;
 	}
 	
 	public void setLeftRightMotors(double left, double right) {
 		drive.setLeftRightMotorOutputs(left, right);
+	} 
+	
+	public void setGear(GearPosition pos) {
+		switch (pos) {
+		case HIGH:
+			shifter.set(Value.kForward);
+		case LOW:
+			shifter.set(Value.kReverse);
+		}
 	}
 	
 	public void useArcadeDrive(double yAxis, double xAxis) {
@@ -59,7 +72,6 @@ public class Drive extends Subsystem {
 
 	@Override
 	protected void initDefaultCommand() {
-		// TODO Auto-generated method stub
 		setDefaultCommand(new DriveWithJoystick(joystick));
 	}
 	
