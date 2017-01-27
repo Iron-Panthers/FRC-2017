@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5026.robot;
 
+import org.usfirst.frc.team5026.robot.commands.GearClampCommand;
 import org.usfirst.frc.team5026.robot.commands.TurnRobot90DegreesClockwise;
 import org.usfirst.frc.team5026.robot.commands.TurnRobot90DegreesCounterclockwise;
 
@@ -63,6 +64,7 @@ public class OI {
 		boardButton6 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_6);
 	}
 	public void mapButtonBoard() {
+		boardButton2.whenPressed(new GearClampCommand());
 		boardButton3.whenPressed(new TurnRobot90DegreesClockwise(90));
 		boardButton4.whenPressed(new TurnRobot90DegreesCounterclockwise(90));
 	}
