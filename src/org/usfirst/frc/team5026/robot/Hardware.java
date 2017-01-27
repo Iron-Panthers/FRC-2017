@@ -14,6 +14,7 @@ public class Hardware {
 	public Talon talonMotor;
 	public Talon climbRightMotor;
 	public Talon climbLeftMotor;
+	public DoubleSolenoid shifter;
 	
 	public Gyro gyro;
 	
@@ -27,5 +28,6 @@ public class Hardware {
 		climbRightMotor = new Talon(RobotMap.CLIMB_MOTOR_RIGHT);
 		climbLeftMotor = new Talon(RobotMap.CLIMB_MOTOR_LEFT);
 		gyro = new ADXRS450_Gyro(Port.kOnboardCS0);
+		shifter = new DoubleSolenoid(1,0,1);
 	}
 }
