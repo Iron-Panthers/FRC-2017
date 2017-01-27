@@ -28,8 +28,7 @@ public class Hardware {
 	
 	public Gyro gyro;
 	
-	public DoubleSolenoid leftClampPiston;
-	public DoubleSolenoid rightClampPiston;
+	public DoubleSolenoid gearClampPiston;
 	public DigitalInput gearClampSensor;
 
 	public Hardware() {
@@ -48,5 +47,7 @@ public class Hardware {
 		
 		climbRightMotor = new Talon(RobotMap.CLIMB_MOTOR_RIGHT);
 		climbLeftMotor = new Talon(RobotMap.CLIMB_MOTOR_LEFT);
+		gyro = new ADXRS450_Gyro(Port.kOnboardCS0);
+		gearClampPiston = new DoubleSolenoid(1, RobotMap.gearPistonForward, RobotMap.gearPistonReverse);
 	}
 }
