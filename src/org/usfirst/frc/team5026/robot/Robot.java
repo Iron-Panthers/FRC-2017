@@ -1,7 +1,6 @@
 
 package org.usfirst.frc.team5026.robot;
 
-import org.usfirst.frc.team5026.robot.subsystems.Climber;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
 
@@ -24,7 +23,6 @@ public class Robot extends IterativeRobot {
 	public static Hardware hardware;
 	public static Drive drive;
 	public static GearClamp gearclamp;
-	public static Climber climber;
 
 	Command autonomousCommand;
 	SendableChooser <Command> chooser = new SendableChooser<>();
@@ -41,7 +39,6 @@ public class Robot extends IterativeRobot {
 		hardware = new Hardware();
 		drive = new Drive();
 		oi.mapButtonBoard();
-		climber = new Climber();
 	}
 
 	/**
