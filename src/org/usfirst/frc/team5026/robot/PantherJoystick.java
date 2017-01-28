@@ -18,9 +18,11 @@ import edu.wpi.first.wpilibj.Joystick;
 public class PantherJoystick extends Joystick{
 	
 	int joystickThrottleValue;
+	public boolean goingForward;
 	
 	public PantherJoystick(int port) {
 		super(port);
+		goingForward = true;
 	}
 	
 	public double getScaledDeadzoneX() {
@@ -28,7 +30,9 @@ public class PantherJoystick extends Joystick{
 	}
 	
 	public double getScaledDeadzoneY() {		
-		return this.getAdjustedJoystickValue(this.getMagnitude(), this.getY() * Constants.Y_SCALING, Constants.DEADZONE_Y);
+		double val = this.getAdjustedJoystickValue(this.getMagnitude(), this.getY() * Constants.Y_SCALING, Constants.DEADZONE_Y);
+		if (goingForward) return val;
+		return -val;
 	}
 	
 	public double getMagnitude() {
@@ -43,8 +47,10 @@ public class PantherJoystick extends Joystick{
 		if (magnitude < deadzone) {
 			return 0;
 		}
-		else {
+		else if(magnitude < 1){
 			return (xy / magnitude) * ((magnitude - deadzone) / (1 - deadzone));
+		}else{
+			return magnitude;
 		}
 	}
 	/*
