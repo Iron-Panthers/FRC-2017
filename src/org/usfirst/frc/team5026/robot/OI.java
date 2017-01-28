@@ -1,8 +1,10 @@
 package org.usfirst.frc.team5026.robot;
 
-import org.usfirst.frc.team5026.robot.commands.climb.ClimbUp;
+import org.usfirst.frc.team5026.robot.commands.drive.DriveSwapForwards;
 import org.usfirst.frc.team5026.robot.commands.gear.GearClampCommand;
 import org.usfirst.frc.team5026.robot.commands.gear.GearUnClampCommand;
+import org.usfirst.frc.team5026.robot.commands.intake.IntakeIn;
+import org.usfirst.frc.team5026.robot.commands.intake.IntakeOut;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -13,36 +15,14 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class OI {
 	
-	//// CREATING BUTTONS
-	// One type of button is a joystick button which is any button on a
-	//// joystick.
-	// You create one by telling it which joystick it's on and which button
-	// number it is.
-	// Joystick stick = new Joystick(port);
-	// Button button = new JoystickButton(stick, buttonNumber);
-
-	// There are a few additional built in buttons you can use. Additionally,
-	// by subclassing Button you can create custom triggers and bind those to
-	// commands the same as any other Button.
-
-	//// TRIGGERING COMMANDS WITH BUTTONS
-	// Once you have a button, it's trivial to bind it to a button in one of
-	// three ways:
-
-	// Start the command when the button is pressed and let it run the command
-	// until it is finished as determined by it's isFinished method.
-	// button.whenPressed(new ExampleCommand());
-
-	// Run the command while the button is being held down and interrupt it once
-	// the button is released.
-	// button.whileHeld(new ExampleCommand());
-
-	// Start the command when the button is released and let it run the command
-	// until it is finished as determined by it's isFinished method.
-	// button.whenReleased(new ExampleCommand());
-	
 	public PantherJoystick buttonBoard;
 	public PantherJoystick driveJoystick;
+	
+	public Button driveButton1;
+	public Button driveButton2;
+	public Button driveButton3;
+	public Button driveButton4;
+	public Button driveButton5;
 	
 	public Button boardButton1; 
 	public Button boardButton2; 
@@ -65,10 +45,18 @@ public class OI {
 	    boardButton5 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_5); 
 	    boardButton6 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_6);
 		
+	    driveButton1 = new JoystickButton(driveJoystick, 1); //TODO: Add RobotMappings
+	    driveButton2 = new JoystickButton(driveJoystick, 2);
+	    driveButton3 = new JoystickButton(driveJoystick, 3);
+	    driveButton4 = new JoystickButton(driveJoystick, 4);
+	    driveButton5 = new JoystickButton(driveJoystick, 5);
 	}
 	public void mapButtonBoard() {
-		boardButton2.whenPressed(new GearClampCommand());
-		boardButton3.whenPressed(new GearUnClampCommand());
-		boardButton1.whileHeld(new ClimbUp());
+//		boardButton1.whileHeld(new ClimbUp());
+		driveButton1.whileHeld(new DriveSwapForwards());
+		driveButton2.whenPressed(new GearUnClampCommand());
+		driveButton3.whenPressed(new GearClampCommand());
+		driveButton4.whileHeld(new IntakeIn());
+		driveButton5.whileHeld(new IntakeOut());
 	}
 }

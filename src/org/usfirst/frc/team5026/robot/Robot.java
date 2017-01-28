@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -41,6 +42,7 @@ public class Robot extends IterativeRobot {
 		drive = new Drive();
 		climber = new Climber();
 		gearclamp = new GearClamp();
+		SmartDashboard.putData(Scheduler.getInstance());
 		oi.mapButtonBoard();
 		chooser.addDefault(name, object);
 		// The name should be joystick type, the object is: new JoystickChoose(proper joystick type);

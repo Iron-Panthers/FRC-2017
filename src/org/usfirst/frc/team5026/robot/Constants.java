@@ -11,4 +11,7 @@ public class Constants {
 	public static final double PERCENTAGE = 0.05; 
 	public static final double SPEED = 0.5;
 	public static final double CLAMP_WAIT_TIME = 0.5;
+	
+	public static final double INTAKE_SPEED = 0.7;
+	public static final double OUTTAKE_SPEED = 0.7;
 }
