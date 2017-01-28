@@ -4,10 +4,12 @@ public enum JoystickType {
 	BLUE(Constants.DEADZONE_X, Constants.DEADZONE_Y),
 	SPINNY(Constants.DEADZONE_X, Constants.DEADZONE_Y);
 	
-	private float deadzoneX;
-	private float deadzoneY;
+	public float deadzoneX;
+	public float deadzoneY;
 	JoystickType(float deadzoneX, float deadzoneY) {
 		this.deadzoneX = deadzoneX;
 		this.deadzoneY = deadzoneY;
 	}
 }
+
+//JoystickType.RED;

@@ -18,17 +18,18 @@ import edu.wpi.first.wpilibj.Joystick;
 public class PantherJoystick extends Joystick{
 	
 	int joystickThrottleValue;
+	private JoystickType joystickType;
 	
 	public PantherJoystick(int port) {
 		super(port);
 	}
 	
 	public double getScaledDeadzoneX() {
-		return this.getAdjustedJoystickValue(this.getMagnitude(), this.getX() * Constants.X_SCALING, Constants.DEADZONE_X);
+		return this.getAdjustedJoystickValue(this.getMagnitude(), this.getX() * Constants.X_SCALING, joystickType.deadzoneX);
 	}
 	
 	public double getScaledDeadzoneY() {		
-		return this.getAdjustedJoystickValue(this.getMagnitude(), this.getY() * Constants.Y_SCALING, Constants.DEADZONE_Y);
+		return this.getAdjustedJoystickValue(this.getMagnitude(), this.getY() * Constants.Y_SCALING, joystickType.deadzoneY);
 	}
 	
 	public double getMagnitude() {
@@ -46,6 +47,10 @@ public class PantherJoystick extends Joystick{
 		else {
 			return (xy / magnitude) * ((magnitude - deadzone) / (1 - deadzone));
 		}
+	}
+	
+	public void setJoystickType(JoystickType joystickType) {
+		this.joystickType = joystickType;
 	}
 	/*
 	public throttleMode() {
