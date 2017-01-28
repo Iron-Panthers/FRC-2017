@@ -23,7 +23,7 @@ public class ClimbUp extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	//run joystick to climb
-    	climber.setClimbMotors(Robot.oi.buttonBoard.getY());
+    	climber.setClimbMotors(-Robot.oi.buttonBoard.getY());
     }
 
     // Make this return true when this Command no longer needs to run execute()
