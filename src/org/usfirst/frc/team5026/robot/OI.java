@@ -3,8 +3,6 @@ package org.usfirst.frc.team5026.robot;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveSwapForwards;
 import org.usfirst.frc.team5026.robot.commands.gear.GearClampCommand;
 import org.usfirst.frc.team5026.robot.commands.gear.GearUnClampCommand;
-import org.usfirst.frc.team5026.robot.commands.intake.IntakeIn;
-import org.usfirst.frc.team5026.robot.commands.intake.IntakeOut;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -56,7 +54,5 @@ public class OI {
 		driveButton1.whileHeld(new DriveSwapForwards());
 		driveButton2.whenPressed(new GearUnClampCommand());
 		driveButton3.whenPressed(new GearClampCommand());
-		driveButton4.whileHeld(new IntakeIn());
-		driveButton5.whileHeld(new IntakeOut());
 	}
 }

@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team5026.robot;
 
+import org.usfirst.frc.team5026.robot.commands.JoystickChoose;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
@@ -44,10 +45,10 @@ public class Robot extends IterativeRobot {
 		gearclamp = new GearClamp();
 		SmartDashboard.putData(Scheduler.getInstance());
 		oi.mapButtonBoard();
-		chooser.addDefault(name, object);
+		chooser.addDefault("Red Joystick", new JoystickChoose(JoystickType.RED));
 		// The name should be joystick type, the object is: new JoystickChoose(proper joystick type);
-		chooser.addObject(name, object);
-		chooser.addObject(name, object);
+		chooser.addObject("Blue Joystick", new JoystickChoose(JoystickType.BLUE));
+		chooser.addObject("Spinny Joystick", new JoystickChoose(JoystickType.SPINNY));
 	}
 
 	/**

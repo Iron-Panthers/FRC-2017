@@ -16,7 +16,7 @@ public class JoystickChoose extends Command {
 		this.joystickType = joystickType;
 	}
 	protected void initialize() {
-		Robot.oi.driveJoystick.setJoystickType(); // pass in joystick type
+		Robot.oi.driveJoystick.setJoystickType(joystickType); // pass in joystick type
 	}
 
 	@Override
