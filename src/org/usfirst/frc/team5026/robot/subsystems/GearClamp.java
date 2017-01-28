@@ -23,7 +23,6 @@ public class GearClamp extends Subsystem {
 	  hardware.gearClampPiston.set(Value.kForward);
   } 
   public void lowerClamp(){ 
-	  System.out.println("down boi");
 	  hardware.gearClampPiston.set(Value.kReverse); 
   } 
   public boolean hasGear(){ 

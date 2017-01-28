@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class GearPushCommand extends Command {
 
     public GearPushCommand() {
-    	requires(Robot.gearclamp)
+    	requires(Robot.gearclamp);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -29,8 +29,8 @@ public class GearPushCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        //return isTimedOut();
-    	return true;
+        //return isTimed
+    	return false;
     }
 
     // Called once after isFinished returns true
