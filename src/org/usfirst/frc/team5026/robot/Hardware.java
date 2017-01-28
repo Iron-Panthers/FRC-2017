@@ -16,14 +16,18 @@ public class Hardware {
 	public CANTalon rightMotor_1;
 	public CANTalon rightMotor_2;
 	public CANTalon rightMotor_3;
+	
 	public MotorGroup leftMotor;
 	public MotorGroup rightMotor;
+	
 	private boolean[] invertedLeft = {true, false, false};
 	private boolean[] invertedRight = {true, false, false};
 	//TODO: Need to fix inverted with new gearbox!
 	
 	public Talon climbRightMotor;
 	public Talon climbLeftMotor;
+	public Talon intake;
+	
 	public DoubleSolenoid shifter;
 	
 	public Gyro gyro;
@@ -39,14 +43,17 @@ public class Hardware {
 		rightMotor_1 = new CANTalon(RobotMap.DRIVE_MOTOR_RIGHT_1);
 		rightMotor_2 = new CANTalon(RobotMap.DRIVE_MOTOR_RIGHT_2);
 		rightMotor_3 = new CANTalon(RobotMap.DRIVE_MOTOR_RIGHT_3);
+		
 		leftMotor = new MotorGroup(invertedLeft, leftMotor_1, leftMotor_2, leftMotor_3);
 		rightMotor = new MotorGroup(invertedRight, rightMotor_1, rightMotor_2, rightMotor_3);
+		
 		// Drive Excess
 		gyro = new ADXRS450_Gyro(Port.kOnboardCS0);
 		shifter = new DoubleSolenoid(1,RobotMap.SOLENOID_SHIFTER_FORWARD,RobotMap.SOLENOID_SHIFTER_REVERSE);
 		
 		climbRightMotor = new Talon(RobotMap.CLIMB_MOTOR_RIGHT);
 		climbLeftMotor = new Talon(RobotMap.CLIMB_MOTOR_LEFT);
+		intake = new Talon(RobotMap.INTAKE_MOTOR);
 		gyro = new ADXRS450_Gyro(Port.kOnboardCS0);
 		gearClampPiston = new DoubleSolenoid(1, RobotMap.gearPistonForward, RobotMap.gearPistonReverse);
 	}
