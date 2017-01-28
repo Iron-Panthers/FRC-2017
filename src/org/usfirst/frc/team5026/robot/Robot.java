@@ -42,6 +42,10 @@ public class Robot extends IterativeRobot {
 		climber = new Climber();
 		gearclamp = new GearClamp();
 		oi.mapButtonBoard();
+		chooser.addDefault(name, object);
+		// The name should be joystick type, the object is: new JoystickChoose(proper joystick type);
+		chooser.addObject(name, object);
+		chooser.addObject(name, object);
 	}
 
 	/**
@@ -96,7 +100,8 @@ public class Robot extends IterativeRobot {
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
-		// this line or comment it out.
+		// this line or comment it out. 
+		chooser.getSelected().start();
 	}
 
 	/**
