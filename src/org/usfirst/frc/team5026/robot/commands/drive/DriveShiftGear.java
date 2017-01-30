@@ -1,7 +1,7 @@
 package org.usfirst.frc.team5026.robot.commands.drive;
 
 import org.usfirst.frc.team5026.robot.Robot;
-import org.usfirst.frc.team5026.robot.subsystems.GearPosition;
+import org.usfirst.frc.team5026.util.GearPosition;
 
 import edu.wpi.first.wpilibj.command.Command;
 

@@ -1,4 +1,6 @@
-package org.usfirst.frc.team5026.robot;
+package org.usfirst.frc.team5026.util;
+
+import org.usfirst.frc.team5026.robot.RobotMap;
 
 import com.ctre.CANTalon;
 
