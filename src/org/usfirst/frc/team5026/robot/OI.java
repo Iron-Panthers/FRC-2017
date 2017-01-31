@@ -1,11 +1,10 @@
 package org.usfirst.frc.team5026.robot;
 
-import org.usfirst.frc.team5026.robot.commands.climb.ClimbUp;
-import org.usfirst.frc.team5026.robot.commands.gear.GearClampCommand;
-import org.usfirst.frc.team5026.robot.commands.gear.GearUnClampCommand;
-
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import org.usfirst.frc.team5026.robot.commands.climber.ClimberUpWithJoystick;
+import org.usfirst.frc.team5026.robot.commands.gear.GearClampCommand;
+import org.usfirst.frc.team5026.robot.commands.gear.GearUnClampCommand;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -67,7 +66,7 @@ public class OI {
 		
 	}
 	public void mapButtonBoard() {
-		boardButton1.whileHeld(new ClimbUp());
+		boardButton1.whileHeld(new ClimberUpWithJoystick());
 		boardButton2.whenPressed(new GearClampCommand());
 		boardButton3.whenPressed(new GearUnClampCommand());
 	}

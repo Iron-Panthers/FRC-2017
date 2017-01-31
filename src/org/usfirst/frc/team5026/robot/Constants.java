@@ -12,6 +12,6 @@ public class Constants {
 	public static final double SPEED = 0.5;
 	public static final double CLAMP_WAIT_TIME = 0.5;
 	
-	//Climb Constants
+	//Climber Constants
 	public static final double SLOW_CLIMB = 0.3;
 }
