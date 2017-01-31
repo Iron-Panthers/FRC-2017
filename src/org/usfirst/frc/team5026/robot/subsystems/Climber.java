@@ -11,8 +11,8 @@ public class Climber extends Subsystem {
 	private Talon rightClimb;
 	
 	public Climber() {
-		leftClimb = Robot.hardware.climbLeftMotor;
-		rightClimb = Robot.hardware.climbRightMotor;
+		leftClimb = Robot.hardware.climberLeftMotor;
+		rightClimb = Robot.hardware.climberRightMotor;
 		
 	}
 	

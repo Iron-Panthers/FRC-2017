@@ -22,8 +22,8 @@ public class Hardware {
 	private boolean[] invertedRight = {true, false, false};
 	//TODO: Need to fix inverted with new gearbox!
 	
-	public Talon climbRightMotor;
-	public Talon climbLeftMotor;
+	public Talon climberRightMotor;
+	public Talon climberLeftMotor;
 	public DoubleSolenoid shifter;
 	
 	public Gyro gyro;
@@ -45,8 +45,8 @@ public class Hardware {
 		gyro = new ADXRS450_Gyro(Port.kOnboardCS0);
 		shifter = new DoubleSolenoid(1,RobotMap.SOLENOID_SHIFTER_FORWARD,RobotMap.SOLENOID_SHIFTER_REVERSE);
 		
-		climbRightMotor = new Talon(RobotMap.CLIMB_MOTOR_RIGHT);
-		climbLeftMotor = new Talon(RobotMap.CLIMB_MOTOR_LEFT);
+		climberRightMotor = new Talon(RobotMap.CLIMBER_MOTOR_RIGHT);
+		climberLeftMotor = new Talon(RobotMap.CLIMBER_MOTOR_LEFT);
 		gyro = new ADXRS450_Gyro(Port.kOnboardCS0);
 		gearClampPiston = new DoubleSolenoid(1, RobotMap.gearPistonForward, RobotMap.gearPistonReverse);
 	}
