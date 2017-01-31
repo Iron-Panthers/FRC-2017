@@ -15,15 +15,12 @@ public class GearClampCommand extends Command{
 		requires(Robot.gearclamp);
 	}
 	protected void initialize(){
-		setTimeout(Constants.CLAMP_WAIT_TIME);
 	}
 	protected void execute(){
 		Robot.gearclamp.elevateClamp();
 	}
 	protected boolean isFinished() {
-	//	return gearclamp.hasGear() || isTimedOut();
-//		return isTimedOut();
-		return false;
+		return Robot.gearclamp.hasGear();
 	}
 	protected void end() {
 		//Robot.gearclamp.elevateClamp();
