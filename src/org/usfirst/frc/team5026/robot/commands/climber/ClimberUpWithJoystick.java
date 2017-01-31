@@ -21,7 +21,14 @@ public class ClimberUpWithJoystick extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	climber.setClimbMotors(Robot.oi.buttonBoard.getY());
+        double joystickY = Robot.oi.buttonBoard.getY();
+        double speed;
+        if (joystickY <= 0.0) {
+            speed = (0.41 * joystickY) + 0.71;
+        } else {
+            speed = Math.sqrt(0.0841 * joystickY) + 0.71;
+        }
+    	climber.setClimbMotors(speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()

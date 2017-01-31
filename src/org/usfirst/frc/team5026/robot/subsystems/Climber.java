@@ -23,16 +23,18 @@ public class Climber extends Subsystem {
 	
 	public void setClimbMotors(double speed) {
 		leftClimb.set(speed);
-		rightClimb.set(-speed);
+		rightClimb.set(speed); //Should not be negative?? -- used to be rightClimb.set(-speed);
 	}
 	
 	public void slowClimb() { 
 		leftClimb.set(Constants.CLIMBER_SLOW);
 		rightClimb.set(Constants.CLIMBER_SLOW);
 	}
-	
+
 	//public double getMotorOutput() {}
-	
-	public void initDefaultCommand(){	
+
+	@Override
+	public void initDefaultCommand() {
+
 	}
 }
