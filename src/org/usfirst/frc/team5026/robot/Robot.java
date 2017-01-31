@@ -49,6 +49,7 @@ public class Robot extends IterativeRobot {
 		// The name should be joystick type, the object is: new JoystickChoose(proper joystick type);
 		chooser.addObject("Blue Joystick", new JoystickChoose(JoystickType.BLUE));
 		chooser.addObject("Spinny Joystick", new JoystickChoose(JoystickType.SPINNY));
+		SmartDashboard.putData("Joystick Type", chooser);
 	}
 
 	/**
@@ -64,6 +65,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		chooser.getSelected().start();
 	}
 
 	/**
