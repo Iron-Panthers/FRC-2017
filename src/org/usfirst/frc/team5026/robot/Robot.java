@@ -37,12 +37,15 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		// chooser.addObject("My Auto", new MyAutoCommand());
 		hardware = new Hardware();
+		initSubsystems();
+	}
+	
+	private void initSubsystems() {
 		drive = new Drive();
 		climber = new Climber();
 		gearclamp = new GearClamp();
-		oi.mapButtonBoard();
+		oi.mapButtonBoard(); // Must be last line
 	}
 
 	/**
