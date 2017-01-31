@@ -1,15 +1,14 @@
-package org.usfirst.frc.team5026.robot.commands.climb;
+package org.usfirst.frc.team5026.robot.commands.climber;
 
+import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team5026.robot.Robot;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
 
-import edu.wpi.first.wpilibj.command.Command;
-
-public class ClimbUp extends Command {
+public class ClimberStop extends Command {
 
 	private Climber climber;
 	
-    public ClimbUp() {
+    public ClimberStop() {
         // Use requires() here to declare subsystem dependencies
         requires(Robot.climber);
         climber = Robot.climber;
@@ -22,7 +21,7 @@ public class ClimbUp extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	climber.setClimbMotors(Robot.oi.buttonBoard.getY());
+    	climber.stopClimb();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -33,14 +32,12 @@ public class ClimbUp extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	climber.stopClimb();
-    	System.out.println("CLIMB END");
- 
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
     		end();
-    		System.out.println("CLIMB INTERRUPTED");
     }
 }
+

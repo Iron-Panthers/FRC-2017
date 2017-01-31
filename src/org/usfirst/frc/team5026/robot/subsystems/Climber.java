@@ -1,10 +1,9 @@
 package org.usfirst.frc.team5026.robot.subsystems;
 
-import org.usfirst.frc.team5026.robot.Constants;
-import org.usfirst.frc.team5026.robot.Robot;
-
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import org.usfirst.frc.team5026.robot.Constants;
+import org.usfirst.frc.team5026.robot.Robot;
 
 public class Climber extends Subsystem {
 	
@@ -28,8 +27,8 @@ public class Climber extends Subsystem {
 	}
 	
 	public void slowClimb() { 
-		leftClimb.set(Constants.SLOW_CLIMB);
-		rightClimb.set(Constants.SLOW_CLIMB);
+		leftClimb.set(Constants.CLIMBER_SLOW);
+		rightClimb.set(Constants.CLIMBER_SLOW);
 	}
 	
 	//public double getMotorOutput() {}
