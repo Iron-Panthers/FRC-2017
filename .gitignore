@@ -1,5 +1,7 @@
 *.class
 
+# Eclipse files
+.classpath
 sysProps.xml
 */bin/.classpath
 
