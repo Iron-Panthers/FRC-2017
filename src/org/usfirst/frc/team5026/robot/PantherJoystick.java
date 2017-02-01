@@ -28,11 +28,11 @@ public class PantherJoystick extends Joystick{
 	}
 	
 	public double getScaledDeadzoneX() {
-		return this.getAdjustedJoystickValue(this.getMagnitude(), this.getX() * joystickType.scalingX, joystickType.deadzoneX);
+		return this.getDeadzoneJoystickValue(this.getMagnitude(), this.getX() * joystickType.scalingX, joystickType.deadzoneX);
 	}
 	
 	public double getScaledDeadzoneY() {		
-		double val = this.getAdjustedJoystickValue(this.getMagnitude(), this.getY() * joystickType.scalingY, joystickType.deadzoneY);
+		double val = this.getDeadzoneJoystickValue(this.getMagnitude(), this.getY() * joystickType.scalingY, joystickType.deadzoneY);
 		if (Math.abs(val) < joystickType.scalingYMax ) {
 			if (goingForward) return val;
 			return -val;
@@ -53,7 +53,7 @@ public class PantherJoystick extends Joystick{
 		return magnitude;
 	}
 	
-	public double getAdjustedJoystickValue(double magnitude, double xy, float deadzone) {
+	public double getDeadzoneJoystickValue(double magnitude, double xy, float deadzone) {
 		if (magnitude < deadzone) {
 			return 0;
 		}
