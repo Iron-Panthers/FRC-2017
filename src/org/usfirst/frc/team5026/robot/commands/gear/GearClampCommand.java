@@ -20,9 +20,7 @@ public class GearClampCommand extends Command{
 	protected void execute(){
 	}
 	protected boolean isFinished() {
-	//	return gearclamp.hasGear() || isTimedOut();
-//		return isTimedOut();
-		return true;
+		return Robot.gearclamp.hasGear();
 	}
 	protected void end() {
 		Robot.gearclamp.elevateClamp();

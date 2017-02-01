@@ -29,6 +29,7 @@ public class Hardware {
 	public Gyro gyro;
 	
 	public DoubleSolenoid gearClampPiston;
+	public DoubleSolenoid gearPushPiston;
 	public DigitalInput gearClampSensor;
 
 	public Hardware() {
