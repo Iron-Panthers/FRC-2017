@@ -27,7 +27,7 @@ public class ClimberUpWrap extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return false;	//return false so long as its noto wile hgeld
     }
 
     // Called once after isFinished returns true
