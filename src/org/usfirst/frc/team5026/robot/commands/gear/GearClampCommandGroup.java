@@ -27,8 +27,8 @@ public class GearClampCommandGroup extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new WaitForGear());
-    	addSequential(new WaitCommand(Constants.CLAMP_WAIT_TIME));
-    	addSequential(new GearClampCommand());
+    	addSequential(new WaitForGear());//Waits until gear is in the clamp
+    	addSequential(new WaitCommand(Constants.CLAMP_WAIT_TIME));//delay
+    	addSequential(new GearClampCommand());//clamps gear
     }
 }

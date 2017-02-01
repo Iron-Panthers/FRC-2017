@@ -15,6 +15,7 @@ public class GearUnClampCommand extends Command {
 
     protected void initialize() {
     	Robot.gearclamp.lowerClamp();
+    	//Unclamps
     }
 
     protected void execute() {

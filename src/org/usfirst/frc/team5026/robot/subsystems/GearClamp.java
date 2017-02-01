@@ -20,13 +20,16 @@ public class GearClamp extends Subsystem {
   } 
  
   public void elevateClamp(){ 
-    hardware.gearClampPiston.set(Value.kForward); 
+    hardware.gearClampPiston.set(Value.kForward);
+    //Clamps
   } 
   public void lowerClamp(){ 
     hardware.gearClampPiston.set(Value.kReverse); 
+    //Unclamps
   } 
   public boolean hasGear(){ 
-    return Robot.hardware.gearClampSensor.get(); 
+    return Robot.hardware.gearClampSensor.get();
+    //Banner sensor on the gear clamp that detects whether there's a gear in it
   } 
    
 } 
