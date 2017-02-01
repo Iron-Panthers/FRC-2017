@@ -2,7 +2,7 @@ package org.usfirst.frc.team5026.util;
 
 public class Constants {
 	// Joystick Constants
-	public static final float X_SCALING = 0.7f;
+	public static final float X_SCALING = 0.75f;
 	public static final float Y_SCALING = 0.85f; 
 	public static final float DEADZONE_X = 0.0563f;
 	public static final float DEADZONE_Y = 0.0512f;
