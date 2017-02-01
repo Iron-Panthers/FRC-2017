@@ -3,6 +3,8 @@ package org.usfirst.frc.team5026.robot;
 
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
+import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
+import org.usfirst.frc.team5026.util.Hardware;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -22,7 +24,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static Hardware hardware;
 	public static Drive drive;
-	//public static GearClamp gearclamp;
+	public static GearClamp gearclamp;
 	public static Climber climber;
 
 	Command autonomousCommand;
@@ -35,11 +37,15 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		// chooser.addObject("My Auto", new MyAutoCommand());
 		hardware = new Hardware();
+		initSubsystems();
+	}
+	
+	private void initSubsystems() {
 		drive = new Drive();
 		climber = new Climber();
-		oi.mapButtonBoard();
+		gearclamp = new GearClamp();
+		oi.mapButtonBoard(); // Must be last line
 	}
 
 	/**
@@ -112,5 +118,5 @@ public class Robot extends IterativeRobot {
 	public void testPeriodic() {
 		LiveWindow.run();
 	}
-	
+   	
 }
