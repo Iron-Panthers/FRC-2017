@@ -35,6 +35,8 @@ public class Climber extends Subsystem {
 	}
 	
 	public void repel() {
+		//sets motors to a constant of -0.2.
+		
 		leftClimb.set(Constants.CLIMBER_REPEL);
 		rightClimb.set(Constants.CLIMBER_REPEL);
 	}
