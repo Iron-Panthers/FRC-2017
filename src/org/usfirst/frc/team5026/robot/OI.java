@@ -1,10 +1,16 @@
 package org.usfirst.frc.team5026.robot;
 
-import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import org.usfirst.frc.team5026.robot.commands.climber.ClimberRepel;
+import org.usfirst.frc.team5026.robot.commands.climber.ClimberSlow;
+import org.usfirst.frc.team5026.robot.commands.climber.ClimberUpClimb;
+import org.usfirst.frc.team5026.robot.commands.climber.ClimberUpLatch;
 import org.usfirst.frc.team5026.robot.commands.climber.ClimberUpWithJoystick;
+import org.usfirst.frc.team5026.robot.commands.climber.ClimberUpWrap;
 import org.usfirst.frc.team5026.robot.commands.gear.GearClampCommand;
 import org.usfirst.frc.team5026.robot.commands.gear.GearUnClampCommand;
+
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -49,6 +55,8 @@ public class OI {
 	public Button boardButton4; 
 	public Button boardButton5; 
 	public Button boardButton6;
+	public Button boardButton7;
+	public Button boardButton8;
 	
 	public OI() {
 		driveJoystick = new PantherJoystick(RobotMap.DRIVE_JOYSTICK);
@@ -63,11 +71,18 @@ public class OI {
 	    boardButton4 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_4); 
 	    boardButton5 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_5); 
 	    boardButton6 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_6);
+	    boardButton7 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_7);
+	    boardButton8 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_8);
 		
 	}
 	public void mapButtonBoard() {
 		boardButton1.whileHeld(new ClimberUpWithJoystick());
-		boardButton2.whenPressed(new GearClampCommand());
-		boardButton3.whenPressed(new GearUnClampCommand());
+		boardButton2.whileHeld(new ClimberSlow());
+		boardButton3.whileHeld(new ClimberUpClimb());
+		boardButton4.whileHeld(new ClimberUpLatch());
+		boardButton5.whileHeld(new ClimberUpWrap());
+		boardButton6.whenPressed(new GearClampCommand());
+		boardButton7.whenPressed(new GearUnClampCommand());
+		boardButton8.whileHeld(new ClimberRepel());
 	}
 }

@@ -13,8 +13,10 @@ public class Constants {
 	public static final double CLAMP_WAIT_TIME = 0.5;
 	
 	//Climber Constants
+	public static final double CLIMBER_REPEL = -0.2;
 	public static final double CLIMBER_SLOW = 0.3;
 	public static final double CLIMBER_LATCH = 0.3;
 	public static final double CLIMBER_WRAP = 0.71;
 	public static final double CLIMBER_CLIMB = 1.0;
+	public static final double CLIMB_CURVE = 0.0841;
 }

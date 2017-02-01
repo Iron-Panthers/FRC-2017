@@ -1,16 +1,20 @@
 package org.usfirst.frc.team5026.robot.commands.climber;
 
-import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team5026.robot.Robot;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
 
-public class ClimberStop extends Command {
+import edu.wpi.first.wpilibj.command.Command;
 
-	private Climber climber;
+/**
+ *
+ */
+public class ClimberRepel extends Command {
 	
-    public ClimberStop() {
-        requires(Robot.climber);
-        climber = Robot.climber;
+	public Climber climber;
+	
+    public ClimberRepel() {
+    	requires(Robot.climber);
+    	climber = Robot.climber;
     }
 
     protected void initialize() {
@@ -18,11 +22,11 @@ public class ClimberStop extends Command {
     }
 
     protected void execute() {
-    	climber.stopClimb();
+    	climber.repel();
     }
 
     protected boolean isFinished() {
-    	return false;
+        return false;
     }
 
     protected void end() {
@@ -30,7 +34,6 @@ public class ClimberStop extends Command {
     }
 
     protected void interrupted() {
-    		end();
+    	end();
     }
 }
-
