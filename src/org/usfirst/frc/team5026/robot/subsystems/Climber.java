@@ -2,7 +2,9 @@ package org.usfirst.frc.team5026.robot.subsystems;
 
 import org.usfirst.frc.team5026.robot.Constants;
 import org.usfirst.frc.team5026.robot.Robot;
+import org.usfirst.frc.team5026.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -10,6 +12,7 @@ public class Climber extends Subsystem {
 	
 	private Talon leftClimb;
 	private Talon rightClimb;
+	private PowerDistributionPanel pdp;
 	
 	public Climber() {
 		leftClimb = Robot.hardware.climberLeftMotor;
@@ -54,7 +57,12 @@ public class Climber extends Subsystem {
 	    return speed;
 	}
 
-	//public double getMotorOutput() {}
+	public void pollMotorOutput() {
+		
+		if(pdp.getCurrent(RobotMap.CLIMBER_MOTOR_RIGHT) > 100 || pdp.getCurrent(RobotMap.CLIMBER_MOTOR_LEFT) > 100) {
+			stopClimb();
+		}
+	}
 
 	@Override
 	public void initDefaultCommand() {
