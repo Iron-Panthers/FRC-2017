@@ -20,6 +20,7 @@ public class ClimberUpWrap extends Command {
 
     protected void execute() {
         climber.setClimbMotors(Constants.CLIMBER_WRAP_SPEED);
+        climber.update();
     }
 
     protected boolean isFinished() {

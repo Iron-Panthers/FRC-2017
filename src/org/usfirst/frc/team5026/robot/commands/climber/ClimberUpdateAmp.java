@@ -23,7 +23,7 @@ public class ClimberUpdateAmp extends Command {
 
     protected void execute() {
     	climber.pollMotorOutput();
-    	climber.update();
+    	
     }
 
     protected boolean isFinished() {

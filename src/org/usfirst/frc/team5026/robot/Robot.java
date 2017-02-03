@@ -6,6 +6,7 @@ import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -25,7 +26,6 @@ public class Robot extends IterativeRobot {
 	public static Drive drive;
 	public static GearClamp gearclamp;
 	public static Climber climber;
-
 	Command autonomousCommand;
 	SendableChooser <Command> chooser = new SendableChooser<>();
 
@@ -41,6 +41,7 @@ public class Robot extends IterativeRobot {
 		drive = new Drive();
 		climber = new Climber();
 		gearclamp = new GearClamp();
+		
 		oi.mapButtonBoard();
 	}
 

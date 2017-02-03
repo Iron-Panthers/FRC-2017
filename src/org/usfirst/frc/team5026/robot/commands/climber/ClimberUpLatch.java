@@ -20,6 +20,7 @@ public class ClimberUpLatch extends Command {
 
     protected void execute() {
         climber.setClimbMotors(Constants.CLIMBER_LATCH_SPEED);
+        climber.update();
     }
 
     protected boolean isFinished() {

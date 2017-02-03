@@ -25,8 +25,6 @@ public class Climber extends Subsystem {
 		rightClimb = Robot.hardware.climberRightMotor;
 		
 		pdp = new PowerDistributionPanel();
-		rightMotorOutput = pdp.getCurrent(RobotMap.CLIMBER_MOTOR_RIGHT);
-		leftMotorOutput = pdp.getCurrent(RobotMap.CLIMBER_MOTOR_LEFT);
 	}
 	
 	public void stopClimb() {
@@ -74,8 +72,10 @@ public class Climber extends Subsystem {
 	
 	public void update() {
 		//must be called continuously
-		System.out.println(leftMotorOutput); 
-		System.out.println(rightMotorOutput); 
+		rightMotorOutput = pdp.getCurrent(RobotMap.CLIMBER_MOTOR_RIGHT);
+		leftMotorOutput = pdp.getCurrent(RobotMap.CLIMBER_MOTOR_LEFT);
+		SmartDashboard.putNumber("Left", leftMotorOutput);
+		SmartDashboard.putNumber("right", rightMotorOutput);
 	}
 
 	@Override

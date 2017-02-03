@@ -21,6 +21,7 @@ public class ClimberUpWithJoystick extends Command {
     	//modifies climbing joystick to fit curve in climbScaling()
     	
     	climber.setClimbMotors(climber.climbScaling());
+    	climber.update();
     }
 
     protected boolean isFinished() {
