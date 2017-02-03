@@ -23,6 +23,9 @@ public class Drive extends Subsystem {
 	
 	private double targetAngle;
 	
+	private double startingEncoderPos;
+	private double targetEncoderPos;
+	
 	public Drive() {
 		joystick = Robot.oi.driveJoystick;
 		hardware = Robot.hardware;
@@ -69,6 +72,22 @@ public class Drive extends Subsystem {
 	}
 	public boolean isTurnFinished() {
 		return Math.abs(targetAngle - gyro.getAngle()) <= targetAngle * Constants.PERCENTAGE;	
+	}
+	
+	public void driveStraightForDistance(double distance, double speed) {
+		//try using different motors, or just add a getEncPosition method in motorgroup
+		startingEncoderPos = hardware.leftMotor_2.getEncPosition();
+		targetEncoderPos = startingEncoderPos + ((distance / Constants.WHEEL_CIRCUMFERENCE) * Constants.ENCODER_TICKS_PER_ROTATION);
+		
+		if(Math.abs(hardware.leftMotor_2.getEncPosition() - startingEncoderPos) < targetEncoderPos) {
+			Robot.drive.setLeftRightMotors(speed, speed);
+		} else {
+			Robot.drive.setLeftRightMotors(-speed, -speed);
+		}
+	}
+	
+	public boolean isFinishedDrivingDistance() {
+		return Math.abs(hardware.leftMotor_2.getEncPosition() - startingEncoderPos) < targetEncoderPos;
 	}
 
 	@Override
