@@ -18,6 +18,7 @@ public class ClimberSlow extends Command {
 
     protected void initialize() {
     	climber.stopClimb();
+    	System.out.println("Slow");
     }
 
     protected void execute() {
