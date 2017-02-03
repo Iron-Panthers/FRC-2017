@@ -8,16 +8,23 @@ import org.usfirst.frc.team5026.robot.commands.climber.ClimberStop;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Climber extends Subsystem {
 	
 	private Talon leftClimb;
 	private Talon rightClimb;
+	
 	private PowerDistributionPanel pdp;
+	private double leftMotorOutput;
+	private double rightMotorOutput;
 	
 	public Climber() {
 		leftClimb = Robot.hardware.climberLeftMotor;
 		rightClimb = Robot.hardware.climberRightMotor;
+		
+		leftMotorOutput = pdp.getCurrent(RobotMap.CLIMBER_MOTOR_LEFT);
+		rightMotorOutput = pdp.getCurrent(RobotMap.CLIMBER_MOTOR_RIGHT);
 		
 	}
 	
@@ -47,22 +54,28 @@ public class Climber extends Subsystem {
 	public double climbScaling() {
 		// A piecewise graph such that the motor and joystick values varies 
 	    // linearly from -1 <= x <= 0 and varies quadratically from 0 <= x <= 1.
-		
+		double speed;
 		double joystickY = Robot.oi.buttonBoard.getY();		//currently accesses raw Y-values, will implement Daniel's adjustments
-	    double speed;
-	    if (joystickY <= Constants.CLIMBER_CURVE_SWAP) {
+		
+	    if (joystickY <= Constants.CLIMBER_CURVE_SWAP) {	//linear joystick curve
 	        speed = (Constants.CLIMBER_WRAP_SPEED * joystickY) + Constants.CLIMBER_WRAP_SPEED;
-	    } else {
+	    } else {	//quadratic joystick curve
 	        speed = Math.sqrt(Constants.CLIMBER_CURVE * joystickY) + Constants.CLIMBER_WRAP_SPEED;
 	    }
 	    return speed;
 	}
 
 	public void pollMotorOutput() {
-		if(pdp.getCurrent(RobotMap.CLIMBER_MOTOR_RIGHT) > Constants.CLIMBER_STALL_LIMIT || 
-		pdp.getCurrent(RobotMap.CLIMBER_MOTOR_LEFT) > Constants.CLIMBER_STALL_LIMIT) {
+		if(leftMotorOutput > Constants.CLIMBER_STALL_LIMIT || rightMotorOutput > Constants.CLIMBER_STALL_LIMIT) {
 			stopClimb();
 		}
+	}
+	
+	public void update() {
+		//must be called continuously
+		
+		SmartDashboard.putNumber("Left Amp", leftMotorOutput);
+		SmartDashboard.putNumber("Right Amp", rightMotorOutput);
 	}
 
 	@Override
