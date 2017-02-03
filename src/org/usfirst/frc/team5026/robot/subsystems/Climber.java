@@ -74,8 +74,8 @@ public class Climber extends Subsystem {
 	
 	public void update() {
 		//must be called continuously
-		
-		
+		 SmartDashboard.putNumber("Left Amp", leftMotorOutput); 
+		 SmartDashboard.putNumber("Right Amp", rightMotorOutput); 
 	}
 
 	@Override
