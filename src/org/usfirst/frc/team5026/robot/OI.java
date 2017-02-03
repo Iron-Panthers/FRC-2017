@@ -1,6 +1,6 @@
 package org.usfirst.frc.team5026.robot;
 
-import org.usfirst.frc.team5026.robot.commands.climber.ClimberRepel;
+import org.usfirst.frc.team5026.robot.commands.climber.ClimberRappel;
 import org.usfirst.frc.team5026.robot.commands.climber.ClimberSlow;
 import org.usfirst.frc.team5026.robot.commands.climber.ClimberUpClimb;
 import org.usfirst.frc.team5026.robot.commands.climber.ClimberUpLatch;
@@ -83,6 +83,6 @@ public class OI {
 		boardButton5.whileHeld(new ClimberUpWrap());
 		boardButton6.whenPressed(new GearClampCommand());
 		boardButton7.whenPressed(new GearUnClampCommand());
-		boardButton8.whileHeld(new ClimberRepel());
+		boardButton8.whileHeld(new ClimberRappel());
 	}
 }

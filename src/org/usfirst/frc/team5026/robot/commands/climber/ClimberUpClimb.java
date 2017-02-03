@@ -19,7 +19,7 @@ public class ClimberUpClimb extends Command {
     }
 
     protected void execute() {
-        climber.setClimbMotors(Constants.CLIMBER_CLIMB);
+        climber.setClimbMotors(Constants.CLIMBER_CLIMB_SPEED);
     }
 
     protected boolean isFinished() {

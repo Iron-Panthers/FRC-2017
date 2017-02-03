@@ -3,6 +3,7 @@ package org.usfirst.frc.team5026.robot.subsystems;
 import org.usfirst.frc.team5026.robot.Constants;
 import org.usfirst.frc.team5026.robot.Robot;
 import org.usfirst.frc.team5026.robot.RobotMap;
+import org.usfirst.frc.team5026.robot.commands.climber.ClimberStop;
 
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.Talon;
@@ -33,39 +34,39 @@ public class Climber extends Subsystem {
 	public void slowClimb() { 
 		//sets motors to a constant of 0.3.
 		
-		leftClimb.set(Constants.CLIMBER_SLOW);
-		rightClimb.set(Constants.CLIMBER_SLOW);
+		leftClimb.set(Constants.CLIMBER_SLOW_SPEED);
+		rightClimb.set(Constants.CLIMBER_SLOW_SPEED);
 	}
 	
-	public void repel() {
+	public void rappel() {
 		//sets motors to a constant of -0.2.
 		
-		leftClimb.set(Constants.CLIMBER_REPEL);
-		rightClimb.set(Constants.CLIMBER_REPEL);
+		leftClimb.set(Constants.CLIMBER_RAPPEL_SPEED);
+		rightClimb.set(Constants.CLIMBER_RAPPEL_SPEED);
 	}
 	public double climbScaling() {
 		// A piecewise graph such that the motor and joystick values varies 
 	    // linearly from -1 <= x <= 0 and varies quadratically from 0 <= x <= 1.
 		
-		double joystickY = Robot.oi.buttonBoard.getY();
+		double joystickY = Robot.oi.buttonBoard.getY();		//currently accesses raw Y-values, will implement Daniel's adjustments
 	    double speed;
-	    if (joystickY <= 0.0) {
-	        speed = (Constants.CLIMBER_WRAP * joystickY) + Constants.CLIMBER_WRAP;
+	    if (joystickY <= Constants.CLIMBER_CURVE_SWAP) {
+	        speed = (Constants.CLIMBER_WRAP_SPEED * joystickY) + Constants.CLIMBER_WRAP_SPEED;
 	    } else {
-	        speed = Math.sqrt(Constants.CLIMB_CURVE * joystickY) + Constants.CLIMBER_WRAP;
+	        speed = Math.sqrt(Constants.CLIMBER_CURVE * joystickY) + Constants.CLIMBER_WRAP_SPEED;
 	    }
 	    return speed;
 	}
 
 	public void pollMotorOutput() {
-		
-		if(pdp.getCurrent(RobotMap.CLIMBER_MOTOR_RIGHT) > 100 || pdp.getCurrent(RobotMap.CLIMBER_MOTOR_LEFT) > 100) {
+		if(pdp.getCurrent(RobotMap.CLIMBER_MOTOR_RIGHT) > Constants.CLIMBER_STALL_LIMIT || 
+		pdp.getCurrent(RobotMap.CLIMBER_MOTOR_LEFT) > Constants.CLIMBER_STALL_LIMIT) {
 			stopClimb();
 		}
 	}
 
 	@Override
 	public void initDefaultCommand() {
-
+		setDefaultCommand(new ClimberStop());
 	}
 }

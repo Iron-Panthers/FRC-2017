@@ -8,11 +8,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ClimberRepel extends Command {
+public class ClimberRappel extends Command {
 	
 	public Climber climber;
 	
-    public ClimberRepel() {
+    public ClimberRappel() {
     	requires(Robot.climber);
     	climber = Robot.climber;
     }
@@ -22,7 +22,7 @@ public class ClimberRepel extends Command {
     }
 
     protected void execute() {
-    	climber.repel();
+    	climber.rappel();
     }
 
     protected boolean isFinished() {
