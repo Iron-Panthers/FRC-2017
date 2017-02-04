@@ -8,6 +8,7 @@ import org.usfirst.frc.team5026.robot.commands.climber.ClimberUpWithJoystick;
 import org.usfirst.frc.team5026.robot.commands.climber.ClimberUpWrap;
 import org.usfirst.frc.team5026.robot.commands.gear.GearClampCommand;
 import org.usfirst.frc.team5026.robot.commands.gear.GearUnClampCommand;
+import org.usfirst.frc.team5026.util.PantherJoystick;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;

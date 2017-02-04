@@ -1,7 +1,7 @@
 package org.usfirst.frc.team5026.robot.subsystems; 
  
-import org.usfirst.frc.team5026.robot.Hardware;
 import org.usfirst.frc.team5026.robot.Robot;
+import org.usfirst.frc.team5026.util.Hardware;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem; 
