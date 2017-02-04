@@ -27,7 +27,6 @@ public class Robot extends IterativeRobot {
 	public static Drive drive;
 	public static GearClamp gearclamp;
 	public static Climber climber;
-
 	Command autonomousCommand;
 	SendableChooser <Command> chooser = new SendableChooser<>();
 
