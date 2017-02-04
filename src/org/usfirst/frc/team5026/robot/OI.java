@@ -49,12 +49,7 @@ public class OI {
 	}
 	public void mapButtonBoard() {
 		boardButton1.whileHeld(new ClimberUpWithJoystick());
-		boardButton2.whileHeld(new ClimberSlow());
-		boardButton3.whileHeld(new ClimberUpClimb());
-		boardButton4.whileHeld(new ClimberUpLatch());
-		boardButton5.whileHeld(new ClimberUpWrap());
 		boardButton6.whenPressed(new GearClampCommand());
 		boardButton7.whenPressed(new GearUnClampCommand());
-		boardButton8.whileHeld(new ClimberRappel());
 	}
 }
