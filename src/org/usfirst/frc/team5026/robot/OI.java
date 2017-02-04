@@ -1,11 +1,7 @@
 package org.usfirst.frc.team5026.robot;
 
-import org.usfirst.frc.team5026.robot.commands.climber.ClimberRappel;
-import org.usfirst.frc.team5026.robot.commands.climber.ClimberSlow;
-import org.usfirst.frc.team5026.robot.commands.climber.ClimberUpClimb;
-import org.usfirst.frc.team5026.robot.commands.climber.ClimberUpLatch;
 import org.usfirst.frc.team5026.robot.commands.climber.ClimberUpWithJoystick;
-import org.usfirst.frc.team5026.robot.commands.climber.ClimberUpWrap;
+import org.usfirst.frc.team5026.robot.commands.drive.DriveShiftGear;
 import org.usfirst.frc.team5026.robot.commands.gear.GearClampCommand;
 import org.usfirst.frc.team5026.robot.commands.gear.GearUnClampCommand;
 import org.usfirst.frc.team5026.util.PantherJoystick;
@@ -20,6 +16,15 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI {
 	public PantherJoystick buttonBoard;
 	public PantherJoystick driveJoystick;
+	
+	public Button driveButton1; 
+	public Button driveButton2; 
+	public Button driveButton3; 
+	public Button driveButton4; 
+	public Button driveButton5; 
+	public Button driveButton6;
+	public Button driveButton7;
+	public Button driveButton8;
 	
 	public Button boardButton1; 
 	public Button boardButton2; 
@@ -37,6 +42,8 @@ public class OI {
 		initButtonBoard();
 	}
 	public void initButtonBoard() {
+		driveButton1 = new JoystickButton(driveJoystick, RobotMap.DRIVE_BUTTON_1);
+		
 		boardButton1 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_1); 
 	    boardButton2 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_2); 
 	    boardButton3 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_3); 
@@ -48,6 +55,7 @@ public class OI {
 		
 	}
 	public void mapButtonBoard() {
+		driveButton1.whenPressed(new DriveShiftGear());
 		boardButton1.whileHeld(new ClimberUpWithJoystick());
 		boardButton6.whenPressed(new GearClampCommand());
 		boardButton7.whenPressed(new GearUnClampCommand());

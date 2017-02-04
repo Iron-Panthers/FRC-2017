@@ -18,6 +18,7 @@ public class Drive extends Subsystem {
 	
 	private PantherJoystick joystick;
 	private DoubleSolenoid shifter;
+	private GearPosition pos = GearPosition.LOW;
 	Gyro gyro;
 	Hardware hardware;
 	
@@ -35,7 +36,14 @@ public class Drive extends Subsystem {
 		drive.setLeftRightMotorOutputs(left, right);
 	} 
 	
-	public void setGear(GearPosition pos) {
+	public void setGear() {
+		switch (pos) {
+		case HIGH:
+			pos = GearPosition.LOW;
+		case LOW:
+			pos = GearPosition.HIGH;
+		}
+		// Flip flops gear position
 		switch (pos) {
 		case HIGH:
 			shifter.set(Value.kForward);
