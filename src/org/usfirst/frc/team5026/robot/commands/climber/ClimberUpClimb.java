@@ -20,12 +20,11 @@ public class ClimberUpClimb extends Command {
     }
 
     protected void execute() {
-        climber.setClimbMotors(Constants.CLIMBER_CLIMB_SPEED);
-        climber.update();
+    	climber.fastClimb();
     }
 
     protected boolean isFinished() {
-        return false;
+        return climber.hasResistance();
     }
 
     protected void end() {

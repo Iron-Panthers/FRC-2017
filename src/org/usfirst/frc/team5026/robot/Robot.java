@@ -41,7 +41,6 @@ public class Robot extends IterativeRobot {
 		drive = new Drive();
 		climber = new Climber();
 		gearclamp = new GearClamp();
-		
 		oi.mapButtonBoard();
 	}
 

@@ -18,24 +18,21 @@ public class ClimberUpWithJoystick extends Command {
     }
 
     protected void execute() {
-    	//modifies climbing joystick to fit curve in climbScaling()
-    	
-    	climber.setClimbMotors(climber.climbScaling());
-    	climber.update();
+    	climber.scaledClimb();
     }
 
     protected boolean isFinished() {
-    	return false;
+    	return climber.hasResistance();
     }
 
     protected void end() {
     	climber.stopClimb();
-    	System.out.println("CLIMBER END");
+    	System.out.println("JOY CLIMBER END");
  
     }
 
     protected void interrupted() {
    		end();
-   		System.out.println("CLIMBER INTERRUPTED");
+   		System.out.println("JOY CLIMBER INTERRUPTED");
     }
 }

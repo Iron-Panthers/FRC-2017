@@ -19,12 +19,11 @@ public class ClimberUpLatch extends Command {
     }
 
     protected void execute() {
-        climber.setClimbMotors(Constants.CLIMBER_LATCH_SPEED);
-        climber.update();
+        climber.latchClimb();
     }
 
     protected boolean isFinished() {
-        return false;
+        return climber.hasResistance();
     }
 
     protected void end() {

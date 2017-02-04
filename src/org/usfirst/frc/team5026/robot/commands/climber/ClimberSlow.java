@@ -23,11 +23,10 @@ public class ClimberSlow extends Command {
 
     protected void execute() {
     	climber.slowClimb();
-    	climber.update();
     }
 
     protected boolean isFinished() {
-        return false;
+        return climber.hasResistance();
     }
 
     protected void end() {

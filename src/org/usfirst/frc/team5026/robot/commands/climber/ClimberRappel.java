@@ -27,7 +27,7 @@ public class ClimberRappel extends Command {
     }
 
     protected boolean isFinished() {
-        return false;
+        return climber.hasResistance();
     }
 
     protected void end() {

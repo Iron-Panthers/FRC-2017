@@ -19,12 +19,11 @@ public class ClimberUpWrap extends Command {
     }
 
     protected void execute() {
-        climber.setClimbMotors(Constants.CLIMBER_WRAP_SPEED);
-        climber.update();
+        climber.wrapClimb();
     }
 
     protected boolean isFinished() {
-        return false;	//return false so long as its not while held
+        return climber.hasResistance();
     }
 
     protected void end() {
