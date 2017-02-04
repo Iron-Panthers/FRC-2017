@@ -18,8 +18,8 @@ public class Hardware {
 	public CANTalon rightMotor_3;
 	public MotorGroup leftMotor;
 	public MotorGroup rightMotor;
-	private boolean[] invertedLeft = {true, false, false};
-	private boolean[] invertedRight = {true, false, false};
+	private boolean[] invertedLeft = {false, false, false};
+	private boolean[] invertedRight = {false, false, false};
 	//TODO: Need to fix inverted with new gearbox!
 	
 	public Talon climberRightMotor;
