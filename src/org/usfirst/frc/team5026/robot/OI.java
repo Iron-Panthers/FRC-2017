@@ -60,7 +60,7 @@ public class OI {
 	}
 	public void mapButtonBoard() {
 		driveButton1.whileHeld(new DriveSwapForwards());
-		driveButton2.whenPressed(new DriveShiftGear());
+		driveButton3.whenPressed(new DriveShiftGear());
 		
 		boardButton1.whileHeld(new ClimberUpWithJoystick());
 		boardButton6.whenPressed(new GearClampCommand());
