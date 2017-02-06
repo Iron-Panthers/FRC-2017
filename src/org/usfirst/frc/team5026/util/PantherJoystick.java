@@ -1,7 +1,5 @@
 package org.usfirst.frc.team5026.util; 
  
-import org.usfirst.frc.team5026.robot.JoystickType;
-
 import edu.wpi.first.wpilibj.Joystick; 
  
 /*  
