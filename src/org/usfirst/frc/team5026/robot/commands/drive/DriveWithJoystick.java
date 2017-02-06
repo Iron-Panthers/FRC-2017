@@ -31,8 +31,9 @@ public class DriveWithJoystick extends Command {
 	@Override
 	protected void execute() {
 		Robot.drive.useArcadeDrive(joystick.getScaledDeadzoneY(), -joystick.getScaledDeadzoneX());
-		SmartDashboard.putNumber("JoyY", joystick.getScaledDeadzoneY());
+		SmartDashboard.putNumber("JoyY", -joystick.getScaledDeadzoneY());
 		SmartDashboard.putNumber("JoyX", -joystick.getScaledDeadzoneX());
+		SmartDashboard.putBoolean("Joystick is Forward?", joystick.goingForward);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

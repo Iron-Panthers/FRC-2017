@@ -1,7 +1,7 @@
 package org.usfirst.frc.team5026.robot.subsystems;
 
 import org.usfirst.frc.team5026.robot.Robot;
-import org.usfirst.frc.team5026.robot.commands.DriveWithJoystick;
+import org.usfirst.frc.team5026.robot.commands.drive.DriveWithJoystick;
 import org.usfirst.frc.team5026.util.Constants;
 import org.usfirst.frc.team5026.util.GearPosition;
 import org.usfirst.frc.team5026.util.Hardware;

@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5026.robot;
 
+import org.usfirst.frc.team5026.robot.commands.drive.DriveSwapForwards;
 import org.usfirst.frc.team5026.robot.commands.climber.ClimberUpWithJoystick;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveShiftGear;
 import org.usfirst.frc.team5026.robot.commands.gear.GearClampCommand;
@@ -53,12 +54,18 @@ public class OI {
 	    boardButton7 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_7);
 	    boardButton8 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_8);
 		
+	    driveButton1 = new JoystickButton(driveJoystick, 1); //TODO: Add RobotMappings
+	    driveButton2 = new JoystickButton(driveJoystick, 2);
+	    driveButton3 = new JoystickButton(driveJoystick, 3);
+	    driveButton4 = new JoystickButton(driveJoystick, 4);
+	    driveButton5 = new JoystickButton(driveJoystick, 5);
 	}
 	public void mapButtonBoard() {
-		driveButton1.whenPressed(new DriveShiftGear());
 		
 		boardButton1.whileHeld(new ClimberUpWithJoystick());
 		boardButton6.whenPressed(new GearClampCommand());
 		boardButton7.whenPressed(new GearUnClampCommand());
+		driveButton1.whileHeld(new DriveSwapForwards());
+		driveButton1.whenPressed(new DriveShiftGear());
 	}
 }
