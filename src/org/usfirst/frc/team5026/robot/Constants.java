@@ -11,5 +11,4 @@ public class Constants {
 	public static final double PERCENTAGE = 0.05; 
 	public static final double SPEED = 0.5;
 	public static final double CLAMP_WAIT_TIME = 0.5;
-	public static final double PUSH_PEG_PISTON_WAIT_TIME = 0.5;
 }

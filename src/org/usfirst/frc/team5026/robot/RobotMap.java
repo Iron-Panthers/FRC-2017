@@ -44,9 +44,6 @@ public class RobotMap {
 	
 	public static final int gearPistonForward = 2;
 	public static final int gearPistonReverse = 3;
-	public static final int gearPegPistonForward = 4;
-	public static final int gearPegPistonReverse = 5;
-	public static final int gearClampBannerSensor = 2;
 }
 	
 
