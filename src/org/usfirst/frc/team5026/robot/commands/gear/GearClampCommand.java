@@ -25,7 +25,7 @@ public class GearClampCommand extends Command{
 		return true;
 	}
 	protected void end() {
-		Robot.gearclamp.elevateClamp();
+		Robot.gearclamp.clampGear();
 	}
 	protected void interrupted() {
 		Robot.gearclamp.lowerClamp();
