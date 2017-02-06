@@ -43,8 +43,6 @@ public class OI {
 		initButtonBoard();
 	}
 	public void initButtonBoard() {
-		driveButton1 = new JoystickButton(driveJoystick, RobotMap.DRIVE_BUTTON_1);
-		
 		boardButton1 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_1); 
 	    boardButton2 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_2); 
 	    boardButton3 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_3); 
@@ -54,18 +52,18 @@ public class OI {
 	    boardButton7 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_7);
 	    boardButton8 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_8);
 		
-	    driveButton1 = new JoystickButton(driveJoystick, 1); //TODO: Add RobotMappings
-	    driveButton2 = new JoystickButton(driveJoystick, 2);
-	    driveButton3 = new JoystickButton(driveJoystick, 3);
-	    driveButton4 = new JoystickButton(driveJoystick, 4);
-	    driveButton5 = new JoystickButton(driveJoystick, 5);
+	    driveButton1 = new JoystickButton(driveJoystick, RobotMap.DRIVE_BUTTON_1); //TODO: Add RobotMappings
+	    driveButton2 = new JoystickButton(driveJoystick, RobotMap.DRIVE_BUTTON_2);
+	    driveButton3 = new JoystickButton(driveJoystick, RobotMap.DRIVE_BUTTON_3);
+	    driveButton4 = new JoystickButton(driveJoystick, RobotMap.DRIVE_BUTTON_4);
+	    driveButton5 = new JoystickButton(driveJoystick, RobotMap.DRIVE_BUTTON_5);
 	}
 	public void mapButtonBoard() {
+		driveButton1.whileHeld(new DriveSwapForwards());
+		driveButton2.whenPressed(new DriveShiftGear());
 		
 		boardButton1.whileHeld(new ClimberUpWithJoystick());
 		boardButton6.whenPressed(new GearClampCommand());
 		boardButton7.whenPressed(new GearUnClampCommand());
-		driveButton1.whileHeld(new DriveSwapForwards());
-		driveButton1.whenPressed(new DriveShiftGear());
 	}
 }
