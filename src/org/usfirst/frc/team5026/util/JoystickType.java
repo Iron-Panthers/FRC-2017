@@ -1,4 +1,7 @@
-package org.usfirst.frc.team5026.robot;
+package org.usfirst.frc.team5026.util;
+
+import org.usfirst.frc.team5026.util.Constants;
+
 public enum JoystickType {
 	RED(Constants.DEADZONE_X_RED, Constants.DEADZONE_Y_RED, Constants.X_SCALING_RED, Constants.Y_SCALING_RED, Constants.DEADZONE_Y_MAX_RED),
 	BLUE(Constants.DEADZONE_X_BLUE, Constants.DEADZONE_Y_BLUE, Constants.X_SCALING_BLUE, Constants.Y_SCALING_BLUE, Constants.DEADZONE_Y_MAX_BLUE),
