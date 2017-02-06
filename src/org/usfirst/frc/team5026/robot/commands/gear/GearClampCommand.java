@@ -17,7 +17,7 @@ public class GearClampCommand extends Command{
 	protected void initialize(){
 	}
 	protected void execute(){
-		Robot.gearclamp.elevateClamp();
+		Robot.gearclamp.clampOnGear();
 		//Clamps the gear
 	}
 	protected boolean isFinished() {

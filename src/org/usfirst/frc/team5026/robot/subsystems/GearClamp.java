@@ -19,7 +19,7 @@ public class GearClamp extends Subsystem {
      
   } 
  
-  public void elevateClamp(){ 
+  public void clampOnGear(){ 
     hardware.gearClampPiston.set(Value.kForward);
     //Clamps
   } 
