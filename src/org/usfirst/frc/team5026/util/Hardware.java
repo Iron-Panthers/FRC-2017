@@ -50,5 +50,6 @@ public class Hardware {
 		climberLeftMotor = new Talon(RobotMap.CLIMBER_MOTOR_LEFT);
 		gyro = new ADXRS450_Gyro(Port.kOnboardCS0);
 		gearClampPiston = new DoubleSolenoid(1, RobotMap.gearPistonForward, RobotMap.gearPistonReverse);
+		gearClampSensor = new DigitalInput(RobotMap.gearClampSensor);
 	}
 }
