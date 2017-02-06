@@ -31,6 +31,8 @@ public class Hardware {
 	
 	public DoubleSolenoid gearClampPiston;
 	public DigitalInput gearClampSensor;
+	
+	public LEDDisplay led;
 
 	public Hardware() {
 		// Drive Motors
@@ -51,5 +53,7 @@ public class Hardware {
 		gyro = new ADXRS450_Gyro(Port.kOnboardCS0);
 		gearClampPiston = new DoubleSolenoid(1, RobotMap.gearPistonForward, RobotMap.gearPistonReverse);
 		gearClampSensor = new DigitalInput(RobotMap.gearClampSensor);
+		
+		led = new LEDDisplay(RobotMap.CAN_LED_PORT);
 	}
 }

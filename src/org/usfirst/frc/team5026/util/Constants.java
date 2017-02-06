@@ -38,4 +38,5 @@ public class Constants {
 	  public static final double CLIMBER_CURVE = 0.0841;    //Graphed and tested to generously comply to secondary driver 
 	   
 	  public static final double CLIMBER_STALL_LIMIT = 2.0;  //The current(A) at which the climber motors stall. 
+	  public static final double LED_TIME_DEFAULT = 3;
 	} 

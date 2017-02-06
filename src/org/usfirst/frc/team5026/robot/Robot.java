@@ -5,6 +5,8 @@ import org.usfirst.frc.team5026.robot.commands.JoystickChoose;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
+import org.usfirst.frc.team5026.util.Color;
+import org.usfirst.frc.team5026.util.ColorTime;
 import org.usfirst.frc.team5026.util.Hardware;
 import org.usfirst.frc.team5026.util.JoystickType;
 
@@ -111,6 +113,11 @@ public class Robot extends IterativeRobot {
 		// continue until interrupted by another command, remove
 		// this line or comment it out. 
 		chooser.getSelected().start();
+//		hardware.led.cycle(Color.GOLD, Color.SILVER, Color.DEEP_MAGENTA, Color.PERSIAN_GREEN, Color.MALACHITE, Color.WHITE, Color.BLACK);
+//		hardware.led.fade(Color.GOLD, Color.SILVER, Color.DEEP_MAGENTA, Color.PERSIAN_GREEN, Color.MALACHITE, Color.WHITE, Color.BLACK);
+//		hardware.led.setColor(Color.MALACHITE);
+//		hardware.led.blinkLED(4);
+		hardware.led.flash(Color.PERSIAN_GREEN);
 	}
 
 	/**
@@ -119,6 +126,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		
 	}
 
 	/**
