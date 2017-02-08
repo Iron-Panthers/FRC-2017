@@ -1,9 +1,10 @@
 package org.usfirst.frc.team5026.robot.subsystems;
 
-import org.usfirst.frc.team5026.util.Constants;
 import org.usfirst.frc.team5026.robot.Robot;
 import org.usfirst.frc.team5026.robot.RobotMap;
 import org.usfirst.frc.team5026.robot.commands.climber.ClimberStop;
+import org.usfirst.frc.team5026.util.ClimberSpeedType;
+import org.usfirst.frc.team5026.util.Constants;
 
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.Talon;
@@ -19,6 +20,9 @@ public class Climber extends Subsystem {
 	private double leftMotorOutput;
 	private double rightMotorOutput;
 	
+	private int currentSpeedIndex; //0: LATCH, 1: WRAP, 2: FLOOR
+	private double cycledSpeed;
+	
 	public Climber() {
 		
 		leftClimb = Robot.hardware.climberLeftMotor;
@@ -27,6 +31,8 @@ public class Climber extends Subsystem {
 		pdp = new PowerDistributionPanel();
 		rightMotorOutput = pdp.getCurrent(RobotMap.CLIMBER_MOTOR_RIGHT);
 		leftMotorOutput = pdp.getCurrent(RobotMap.CLIMBER_MOTOR_LEFT);
+		
+		currentSpeedIndex = 0;
 	}
 	
 	public void setClimbMotors(double speed) {
@@ -34,6 +40,13 @@ public class Climber extends Subsystem {
 		leftClimb.set(speed);
 		rightClimb.set(speed);
 	}
+	
+	public void setClimbMotors() {
+		//new method that uses an instance variable that is 'speed' from cycle method
+		postMotorOutput();
+		setClimbMotors(cycledSpeed);
+	}
+	
 	
 	public void stopClimb() {
 		leftClimb.stopMotor();
@@ -66,6 +79,14 @@ public class Climber extends Subsystem {
 			return true;
 		}
 		return false;
+	}
+	
+	public void cycleClimberSpeedType() {
+		//cycles speed type in increasing order
+		if(currentSpeedIndex < ClimberSpeedType.values().length - 1)
+			cycledSpeed = ClimberSpeedType.values()[currentSpeedIndex+1].speed;	//wut is 'speed?' wut valu is dos dis moodifly?
+		else
+			cycledSpeed = ClimberSpeedType.values()[0].speed;
 	}
 
 	public void postMotorOutput() {
