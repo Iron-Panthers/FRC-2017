@@ -4,7 +4,7 @@ import org.usfirst.frc.team5026.robot.Constants;
 import org.usfirst.frc.team5026.robot.Hardware;
 import org.usfirst.frc.team5026.robot.PantherJoystick;
 import org.usfirst.frc.team5026.robot.Robot;
-import org.usfirst.frc.team5026.robot.commands.DriveWithJoystick;
+import org.usfirst.frc.team5026.robot.commands.drive.DriveWithJoystick;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;

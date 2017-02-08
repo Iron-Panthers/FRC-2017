@@ -1,6 +1,6 @@
 package org.usfirst.frc.team5026.robot;
 
-import org.usfirst.frc.team5026.robot.commands.climb.ClimbUp;
+import org.usfirst.frc.team5026.robot.commands.drive.DriveSwapForwards;
 import org.usfirst.frc.team5026.robot.commands.gear.GearClampCommand;
 import org.usfirst.frc.team5026.robot.commands.gear.GearUnClampCommand;
 import org.usfirst.frc.team5026.robot.commands.intake.IntakeIn;
@@ -17,6 +17,12 @@ public class OI {
 	
 	public PantherJoystick buttonBoard;
 	public PantherJoystick driveJoystick;
+	
+	public Button driveButton1;
+	public Button driveButton2;
+	public Button driveButton3;
+	public Button driveButton4;
+	public Button driveButton5;
 	
 	public Button boardButton1; 
 	public Button boardButton2; 
@@ -39,12 +45,18 @@ public class OI {
 	    boardButton5 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_5); 
 	    boardButton6 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_6);
 		
+	    driveButton1 = new JoystickButton(driveJoystick, 1); //TODO: Add RobotMappings
+	    driveButton2 = new JoystickButton(driveJoystick, 2);
+	    driveButton3 = new JoystickButton(driveJoystick, 3);
+	    driveButton4 = new JoystickButton(driveJoystick, 4);
+	    driveButton5 = new JoystickButton(driveJoystick, 5);
 	}
 	public void mapButtonBoard() {
-		boardButton1.whileHeld(new ClimbUp());
-		boardButton2.whenPressed(new GearClampCommand());
-		boardButton3.whenPressed(new GearUnClampCommand());
-		boardButton4.whileHeld(new IntakeIn());
-		boardButton5.whileHeld(new IntakeOut());
+//		boardButton1.whileHeld(new ClimbUp());
+		driveButton1.whileHeld(new DriveSwapForwards());
+		driveButton2.whenPressed(new GearUnClampCommand());
+		driveButton3.whenPressed(new GearClampCommand());
+		driveButton4.whileHeld(new IntakeIn());
+		driveButton5.whileHeld(new IntakeOut());
 	}
 }
