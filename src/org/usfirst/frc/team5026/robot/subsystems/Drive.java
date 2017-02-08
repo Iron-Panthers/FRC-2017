@@ -1,7 +1,7 @@
 package org.usfirst.frc.team5026.robot.subsystems;
 
 import org.usfirst.frc.team5026.robot.Robot;
-import org.usfirst.frc.team5026.robot.commands.DriveWithJoystick;
+import org.usfirst.frc.team5026.robot.commands.drive.DriveWithJoystick;
 import org.usfirst.frc.team5026.util.Constants;
 import org.usfirst.frc.team5026.util.GearPosition;
 import org.usfirst.frc.team5026.util.Hardware;
@@ -18,6 +18,7 @@ public class Drive extends Subsystem {
 	
 	private PantherJoystick joystick;
 	private DoubleSolenoid shifter;
+	private GearPosition pos = GearPosition.LOW;
 	Gyro gyro;
 	Hardware hardware;
 	
@@ -35,7 +36,14 @@ public class Drive extends Subsystem {
 		drive.setLeftRightMotorOutputs(left, right);
 	} 
 	
-	public void setGear(GearPosition pos) {
+	public void setGear() {
+		switch (pos) {
+		case HIGH:
+			pos = GearPosition.LOW;
+		case LOW:
+			pos = GearPosition.HIGH;
+		}
+		// Flip flops gear position
 		switch (pos) {
 		case HIGH:
 			shifter.set(Value.kForward);
