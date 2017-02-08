@@ -74,10 +74,10 @@ public class Drive extends Subsystem {
 		return Math.abs(targetAngle - gyro.getAngle()) <= targetAngle * Constants.PERCENTAGE;	
 	}
 	
-	public void driveStraightForDistance(double distance, double speed) {
+	public void driveStraightForDistance(double inches, double speed) {
 		//try using different motors, or just add a getEncPosition method in motorgroup
 		startingEncoderPos = hardware.leftMotor_2.getEncPosition();
-		targetEncoderPos = startingEncoderPos + ((distance / Constants.WHEEL_CIRCUMFERENCE) * Constants.ENCODER_TICKS_PER_ROTATION);
+		targetEncoderPos = startingEncoderPos + ((inches / Constants.WHEEL_CIRCUMFERENCE) * Constants.ENCODER_TICKS_PER_ROTATION);
 		
 		if(Math.abs(hardware.leftMotor_2.getEncPosition() - startingEncoderPos) < targetEncoderPos) {
 			Robot.drive.setLeftRightMotors(speed, speed);
@@ -87,7 +87,7 @@ public class Drive extends Subsystem {
 	}
 	
 	public boolean isFinishedDrivingDistance() {
-		return Math.abs(hardware.leftMotor_2.getEncPosition() - startingEncoderPos) < targetEncoderPos;
+		return Math.abs(hardware.leftMotor_2.getEncPosition() - startingEncoderPos) == targetEncoderPos;
 	}
 
 	@Override

@@ -1,6 +1,5 @@
 package org.usfirst.frc.team5026.robot;
 
-import org.usfirst.frc.team5026.robot.commands.climb.ClimbUp;
 import org.usfirst.frc.team5026.robot.commands.gear.GearClampCommand;
 import org.usfirst.frc.team5026.robot.commands.gear.GearUnClampCommand;
 import org.usfirst.frc.team5026.util.PantherJoystick;
@@ -70,6 +69,5 @@ public class OI {
 	public void mapButtonBoard() {
 		boardButton2.whenPressed(new GearClampCommand());
 		boardButton3.whenPressed(new GearUnClampCommand());
-		boardButton1.whileHeld(new ClimbUp());
 	}
 }
