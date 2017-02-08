@@ -117,7 +117,8 @@ public class Robot extends IterativeRobot {
 //		hardware.led.fade(Color.GOLD, Color.SILVER, Color.DEEP_MAGENTA, Color.PERSIAN_GREEN, Color.MALACHITE, Color.WHITE, Color.BLACK);
 //		hardware.led.setColor(Color.MALACHITE);
 //		hardware.led.blinkLED(4);
-		hardware.led.flash(Color.PERSIAN_GREEN);
+		hardware.led.flash(Color.PAKISTAN_GREEN);
+//		hardware.led.cycle(Color.PERSIAN_GREEN, Color.DEEP_MAGENTA, Color.MEDIUM_SPRING_GREEN, Color.ELECTRIC_INDIGO, Color.YELLOW, Color.BLACK);
 	}
 
 	/**
@@ -126,7 +127,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		
 	}
 
 	/**
