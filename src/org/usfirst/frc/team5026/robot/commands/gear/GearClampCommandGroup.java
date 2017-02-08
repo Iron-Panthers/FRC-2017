@@ -5,8 +5,6 @@ import org.usfirst.frc.team5026.util.Constants;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
 
-import org.usfirst.frc.team5026.util.Constants;
-
 /**
  *
  */
