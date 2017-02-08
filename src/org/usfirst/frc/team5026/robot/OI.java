@@ -1,11 +1,5 @@
 package org.usfirst.frc.team5026.robot;
 
-import org.usfirst.frc.team5026.robot.commands.climber.ClimberRappel;
-import org.usfirst.frc.team5026.robot.commands.climber.ClimberSlow;
-import org.usfirst.frc.team5026.robot.commands.climber.ClimberUpClimb;
-import org.usfirst.frc.team5026.robot.commands.climber.ClimberUpLatch;
-import org.usfirst.frc.team5026.robot.commands.climber.ClimberUpWithJoystick;
-import org.usfirst.frc.team5026.robot.commands.climber.ClimberUpWrap;
 import org.usfirst.frc.team5026.robot.commands.gear.GearClampCommand;
 import org.usfirst.frc.team5026.robot.commands.gear.GearUnClampCommand;
 import org.usfirst.frc.team5026.util.PantherJoystick;
@@ -48,13 +42,7 @@ public class OI {
 		
 	}
 	public void mapButtonBoard() {
-		boardButton1.whileHeld(new ClimberUpWithJoystick());
-		boardButton2.whileHeld(new ClimberSlow());
-		boardButton3.whileHeld(new ClimberUpClimb());
-		boardButton4.whileHeld(new ClimberUpLatch());
-		boardButton5.whileHeld(new ClimberUpWrap());
 		boardButton6.whenPressed(new GearClampCommand());
 		boardButton7.whenPressed(new GearUnClampCommand());
-		boardButton8.whileHeld(new ClimberRappel());
 	}
 }

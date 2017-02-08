@@ -13,11 +13,11 @@ public class Constants {
 	public static final double CLAMP_WAIT_TIME = 0.5;
 	
 	//Climber Constants
-	public static final double CLIMBER_RAPPEL_SPEED = -0.2;	//quality of unloader's life
-	public static final double CLIMBER_SLOW_SPEED = 0.1;	//original: 0.3, changed for testing thresholds
-	public static final double CLIMBER_LATCH_SPEED = 0.3;	//Tested multiple times with driver, comfortable speed NEED INCREASE
-	public static final double CLIMBER_WRAP_SPEED = 0.71;	//Soft average, tested once, will need to be optimized a bit further
-	public static final double CLIMBER_FLOOR_SPEED = 1.0;	//Floors motors
+	public static final double CLIMBER_SPEED_RAPPEL = -0.2;	//quality of unloader's life
+	public static final double CLIMBER_SPEED_SLOW = 0.1;	//original: 0.3, changed for testing thresholds
+	public static final double CLIMBER_SPEED_LATCH = 0.3;	//Tested multiple times with driver, comfortable speed NEED INCREASE
+	public static final double CLIMBER_SPEED_WRAP = 0.71;	//Soft average, tested once, will need to be optimized a bit further
+	public static final double CLIMBER_SPEED_FLOOR = 1.0;	//Floors motors
 	public static final double CLIMBER_CURVE_SWAP = 0.0;	//The value in which the joystick switches from linear to quadratic
 	public static final double CLIMBER_CURVE = 0.0841;		//Graphed and tested to generously comply to secondary driver
 	

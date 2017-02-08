@@ -29,8 +29,8 @@ public class Climber extends Subsystem {
 		leftMotorOutput = pdp.getCurrent(RobotMap.CLIMBER_MOTOR_LEFT);
 	}
 	
-	private void setClimbMotors(double speed) {
-		pollMotorOutput();
+	public void setClimbMotors(double speed) {
+		postMotorOutput();
 		leftClimb.set(speed);
 		rightClimb.set(speed);
 	}
@@ -39,32 +39,7 @@ public class Climber extends Subsystem {
 		leftClimb.stopMotor();
 		rightClimb.stopMotor();
 	}
-	
-	public void rappel() {
-		//sets motors to a constant of -0.2.
-		setClimbMotors(Constants.CLIMBER_RAPPEL_SPEED);
-	}
-	
-	public void slowClimb() { 
-		//sets motors to a constant of 0.3.
-		setClimbMotors(Constants.CLIMBER_SLOW_SPEED);
-	}
-	
-	public void latchClimb() {
-		//sets motors to a constant of 0.3.
-		setClimbMotors(Constants.CLIMBER_LATCH_SPEED);
-	}
-	
-	public void wrapClimb() {
-		//sets motors to a constant of 0.71.
-		setClimbMotors(Constants.CLIMBER_WRAP_SPEED);
-	}
-	
-	public void fastClimb() {
-		//sets motors to a constant of 1.0.
-		setClimbMotors(Constants.CLIMBER_FLOOR_SPEED);
-	}
-	
+		
 	public void scaledClimb() {
 		//sets motors to joystick control with curve from climbScaling().
 		setClimbMotors(climbScaling());
@@ -77,22 +52,23 @@ public class Climber extends Subsystem {
 		double joystickY = Robot.oi.buttonBoard.getY();		//currently accesses raw Y-values, will implement Daniel's adjustments
 		
 	    if (joystickY <= Constants.CLIMBER_CURVE_SWAP) {	//linear joystick curve
-	        speed = (Constants.CLIMBER_WRAP_SPEED * joystickY) + Constants.CLIMBER_WRAP_SPEED;
+	        speed = (Constants.CLIMBER_SPEED_WRAP * joystickY) + Constants.CLIMBER_SPEED_WRAP;
 	    } else {	//quadratic joystick curve
-	        speed = Math.sqrt(Constants.CLIMBER_CURVE * joystickY) + Constants.CLIMBER_WRAP_SPEED;
+	        speed = Math.sqrt(Constants.CLIMBER_CURVE * joystickY) + Constants.CLIMBER_SPEED_WRAP;
 	    }
 	    return speed;
 	}
 	
 	public boolean hasResistance() {
-		if(leftMotorOutput > Constants.CLIMBER_STALL_LIMIT || rightMotorOutput > Constants.CLIMBER_STALL_LIMIT) {
-			System.out.println("STALLING");
+		if((leftMotorOutput > Constants.CLIMBER_STALL_LIMIT || 
+			rightMotorOutput > Constants.CLIMBER_STALL_LIMIT)) {
+			System.out.println("RESISTANCE DETECTED");
 			return true;
 		}
 		return false;
 	}
 
-	public void pollMotorOutput() {
+	public void postMotorOutput() {
 		SmartDashboard.putNumber("Left", leftMotorOutput);
 		SmartDashboard.putNumber("right", rightMotorOutput);
 	}
