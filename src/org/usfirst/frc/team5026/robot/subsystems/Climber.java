@@ -1,15 +1,14 @@
 package org.usfirst.frc.team5026.robot.subsystems;
 
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
+import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team5026.robot.Robot;
 import org.usfirst.frc.team5026.robot.RobotMap;
 import org.usfirst.frc.team5026.robot.commands.climber.ClimberStop;
 import org.usfirst.frc.team5026.util.ClimberSpeedType;
 import org.usfirst.frc.team5026.util.Constants;
-
-import edu.wpi.first.wpilibj.PowerDistributionPanel;
-import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Climber extends Subsystem {
 	
@@ -66,7 +65,7 @@ public class Climber extends Subsystem {
 		
 	    if (joystickY <= Constants.CLIMBER_CURVE_SWAP) {	//linear joystick curve
 	        speed = (Constants.CLIMBER_SPEED_WRAP * joystickY) + Constants.CLIMBER_SPEED_WRAP;
-	    } else {	//quadratic joystick curve
+	    } else {	//square root joystick curve
 	        speed = Math.sqrt(Constants.CLIMBER_CURVE * joystickY) + Constants.CLIMBER_SPEED_WRAP;
 	    }
 	    return speed;

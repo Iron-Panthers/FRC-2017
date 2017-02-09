@@ -10,7 +10,8 @@ public class ClimberResistanceSequence extends CommandGroup {
 	//runs climber motors and with a built in time
     public ClimberResistanceSequence(double speed) {
         addSequential(new WaitCommand(1));
-        addSequential(new ClimberUpClimb(speed));
+        addParallel(new ClimberUpClimb(speed)); // I'm not really sure if this is correct but i checked wpilib
+        addSequential(new ClimberCheckResistance());
         addSequential(new ClimberStop());
     }
 }

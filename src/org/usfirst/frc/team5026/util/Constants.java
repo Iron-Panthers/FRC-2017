@@ -28,7 +28,6 @@ public class Constants {
 	public static final double SPEED = 0.5; 
 	public static final double CLAMP_WAIT_TIME = 0.5; 
 	   
-	//Climber Constants 
 	//Climber Constants
 	public static final double CLIMBER_SPEED_RAPPEL = -0.2;	//quality of unloader's life
 	public static final double CLIMBER_SPEED_SLOW = 0.1;	//original: 0.3, changed for testing thresholds
