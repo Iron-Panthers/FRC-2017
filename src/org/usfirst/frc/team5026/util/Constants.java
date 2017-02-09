@@ -16,4 +16,7 @@ public class Constants {
 	public static final double WHEEL_DIAMETER = 4;	//in inches
 	public static final double WHEEL_CIRCUMFERENCE = Math.PI * WHEEL_DIAMETER;
 	public static final int ENCODER_TICKS_PER_ROTATION = 256;	//we don't actually know the value yet
+	
+	//AUto COnstants
+	public static final double STRAIGHT_DRIVE_SPEED = 0.5;
 }

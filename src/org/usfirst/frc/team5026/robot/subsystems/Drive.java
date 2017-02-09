@@ -74,20 +74,17 @@ public class Drive extends Subsystem {
 		return Math.abs(targetAngle - gyro.getAngle()) <= targetAngle * Constants.PERCENTAGE;	
 	}
 	
-	public void driveStraightForDistance(double inches, double speed) {
-		//try using different motors, or just add a getEncPosition method in motorgroup
-		startingEncoderPos = hardware.leftMotor_2.getEncPosition();
-		targetEncoderPos = startingEncoderPos + ((inches / Constants.WHEEL_CIRCUMFERENCE) * Constants.ENCODER_TICKS_PER_ROTATION);
-		
-		if(Math.abs(hardware.leftMotor_2.getEncPosition() - startingEncoderPos) < targetEncoderPos) {
-			Robot.drive.setLeftRightMotors(speed, speed);
-		} else {
-			Robot.drive.setLeftRightMotors(-speed, -speed);
-		}
+	public void startDriveDistance(double inches) {
+		startingEncoderPos = hardware.leftMotor.getEncPosition(); //"leftMotor" cringe
+		targetEncoderPos = ((inches / Constants.WHEEL_CIRCUMFERENCE) * Constants.ENCODER_TICKS_PER_ROTATION);
+	}
+	public void driveStraight(double speed) {
+		//try using different motors, or just add a getEncPosition method in motorgroup		
+		Robot.drive.setLeftRightMotors(speed, speed);
 	}
 	
 	public boolean isFinishedDrivingDistance() {
-		return Math.abs(hardware.leftMotor_2.getEncPosition() - startingEncoderPos) == targetEncoderPos;
+		return Math.abs(hardware.leftMotor.getEncPosition() - startingEncoderPos) > targetEncoderPos; //im deeply angry
 	}
 
 	@Override
