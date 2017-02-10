@@ -1,16 +1,19 @@
 
 package org.usfirst.frc.team5026.robot;
 
+import org.usfirst.frc.team5026.robot.commands.JoystickChoose;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
+import org.usfirst.frc.team5026.util.Hardware;
+import org.usfirst.frc.team5026.util.JoystickType;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -36,13 +39,21 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		// chooser.addObject("My Auto", new MyAutoCommand());
 		hardware = new Hardware();
+		initSubsystems();
+	}
+	
+	private void initSubsystems() {
 		drive = new Drive();
 		climber = new Climber();
 		gearclamp = new GearClamp();
-		
 		oi.mapButtonBoard();
+		SmartDashboard.putData(Scheduler.getInstance());
+		chooser.addDefault("Red Joystick", new JoystickChoose(JoystickType.RED));
+		// The name should be joystick type, the object is: new JoystickChoose(proper joystick type);
+		chooser.addObject("Blue Joystick", new JoystickChoose(JoystickType.BLUE));
+		chooser.addObject("Spinny Joystick", new JoystickChoose(JoystickType.SPINNY));
+		SmartDashboard.putData("Joystick Type", chooser);
 	}
 
 	/**
@@ -58,6 +69,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		chooser.getSelected().start();
 	}
 
 	/**
@@ -97,7 +109,8 @@ public class Robot extends IterativeRobot {
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
-		// this line or comment it out.
+		// this line or comment it out. 
+		chooser.getSelected().start();
 	}
 
 	/**

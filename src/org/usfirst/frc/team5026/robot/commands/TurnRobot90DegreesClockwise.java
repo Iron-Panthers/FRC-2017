@@ -1,8 +1,8 @@
 package org.usfirst.frc.team5026.robot.commands;
 
-import org.usfirst.frc.team5026.robot.Constants;
-import org.usfirst.frc.team5026.robot.Hardware;
 import org.usfirst.frc.team5026.robot.Robot;
+import org.usfirst.frc.team5026.util.Constants;
+import org.usfirst.frc.team5026.util.Hardware;
 
 import edu.wpi.first.wpilibj.command.Command;
 

@@ -7,18 +7,16 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveShiftGear extends Command {
-
-    public DriveShiftGear() {
-        requires(Robot.drive);
-    }
+public class DriveSwapForwards extends Command {
 
     protected void initialize() {
-    	Robot.drive.setGear();
+    	Robot.oi.driveJoystick.goingForward = false;
     }
 
     protected boolean isFinished() {
-        return true;
+        return false;
     }
-    
+    protected void end() {
+    	Robot.oi.driveJoystick.goingForward=true;
+    }
 }

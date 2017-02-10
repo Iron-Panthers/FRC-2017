@@ -1,4 +1,6 @@
-package org.usfirst.frc.team5026.robot;
+package org.usfirst.frc.team5026.util;
+
+import org.usfirst.frc.team5026.robot.RobotMap;
 
 import com.ctre.CANTalon;
 
@@ -18,9 +20,8 @@ public class Hardware {
 	public CANTalon rightMotor_3;
 	public MotorGroup leftMotor;
 	public MotorGroup rightMotor;
-	private boolean[] invertedLeft = {true, false, false};
-	private boolean[] invertedRight = {true, false, false};
-	//TODO: Need to fix inverted with new gearbox!
+	private boolean[] invertedLeft = {false, false, false};
+	private boolean[] invertedRight = {false, false, false};
 	
 	public Talon climberRightMotor;
 	public Talon climberLeftMotor;
@@ -49,5 +50,6 @@ public class Hardware {
 		climberLeftMotor = new Talon(RobotMap.CLIMBER_MOTOR_LEFT);
 		gyro = new ADXRS450_Gyro(Port.kOnboardCS0);
 		gearClampPiston = new DoubleSolenoid(1, RobotMap.gearPistonForward, RobotMap.gearPistonReverse);
+		gearClampSensor = new DigitalInput(RobotMap.gearClampSensor);
 	}
 }

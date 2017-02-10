@@ -1,40 +1,38 @@
 package org.usfirst.frc.team5026.robot.commands.climber;
 
-import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team5026.robot.Robot;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ClimberSlow extends Command {
+public class ClimberCycleSpeed extends Command {
 
-	public Climber climber;
+	private Climber climber;
+	private boolean cycleType;	//when true, cycle increases. When false, cycle decreases.
 	
-    public ClimberSlow() {
+    public ClimberCycleSpeed(boolean cycleType) {
     	requires(Robot.climber);
     	climber = Robot.climber;
+    	this.cycleType = cycleType;
     }
 
     protected void initialize() {
-    	climber.stopClimb();
-    	System.out.println("Slow");
+    	climber.cycleClimberSpeedType(cycleType);
     }
 
     protected void execute() {
-    	climber.slowClimb();
-    	climber.update();
     }
 
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     protected void end() {
-    	climber.stopClimb();
     }
 
     protected void interrupted() {
-    	end();
     }
 }

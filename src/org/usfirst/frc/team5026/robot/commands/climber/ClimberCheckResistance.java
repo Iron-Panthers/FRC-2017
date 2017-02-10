@@ -8,33 +8,28 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ClimberRappel extends Command {
+public class ClimberCheckResistance extends Command {
+	private Climber climber;
 	
-	public Climber climber;
-	
-    public ClimberRappel() {
-    	requires(Robot.climber);
-    	climber = Robot.climber;
+    public ClimberCheckResistance() {
+        requires(Robot.climber);
+        climber = Robot.climber;
     }
 
     protected void initialize() {
-        System.out.println("Rappel");
-    	climber.stopClimb();
+    	climber.hasResistance();
     }
 
     protected void execute() {
-    	climber.rappel();
     }
 
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     protected void end() {
-    	climber.stopClimb();
     }
 
     protected void interrupted() {
-    	end();
     }
 }

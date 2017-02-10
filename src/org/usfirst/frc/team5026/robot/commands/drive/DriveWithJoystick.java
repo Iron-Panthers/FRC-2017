@@ -1,7 +1,7 @@
 package org.usfirst.frc.team5026.robot.commands.drive;
 
-import org.usfirst.frc.team5026.robot.PantherJoystick;
 import org.usfirst.frc.team5026.robot.Robot;
+import org.usfirst.frc.team5026.util.PantherJoystick;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -30,7 +30,10 @@ public class DriveWithJoystick extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.drive.useArcadeDrive(joystick.getScaledDeadzoneY(), -joystick.getScaledDeadzoneX());
+		Robot.drive.useArcadeDrive(joystick.getScaledDeadzoneY(), joystick.getScaledDeadzoneX());
+		SmartDashboard.putNumber("JoyY", -joystick.getScaledDeadzoneY());
+		SmartDashboard.putNumber("JoyX", -joystick.getScaledDeadzoneX());
+		SmartDashboard.putBoolean("Joystick is Forward?", joystick.goingForward);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
