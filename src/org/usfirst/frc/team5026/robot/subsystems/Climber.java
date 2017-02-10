@@ -74,7 +74,7 @@ public class Climber extends Subsystem {
 		// A piecewise graph such that the motor and joystick values varies 
 	    // linearly from -1 <= x <= 0 and varies quadratically from 0 <= x <= 1.
 		double speed;
-		double joystickY = Robot.oi.buttonBoard.getY();		//currently accesses raw Y-values, will implement Daniel's adjustments
+		double joystickY = Robot.oi.buttonBoard.getY();		//currently accesses raw Y-values, will implement Daniel's adjustments, NEEDS INVERSION
 		
 	    if (joystickY <= Constants.CLIMBER_CURVE_SWAP) {	//linear joystick curve
 	        speed = (Constants.CLIMBER_WRAP_SPEED * joystickY) + Constants.CLIMBER_WRAP_SPEED;
