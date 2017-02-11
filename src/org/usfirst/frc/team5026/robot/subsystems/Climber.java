@@ -28,8 +28,6 @@ public class Climber extends Subsystem {
 		rightClimb = Robot.hardware.climberRightMotor;
 		
 		pdp = new PowerDistributionPanel();
-		rightMotorOutput = pdp.getCurrent(RobotMap.CLIMBER_MOTOR_RIGHT);
-		leftMotorOutput = pdp.getCurrent(RobotMap.CLIMBER_MOTOR_LEFT);
 		
 		currentSpeedIndex = 0;
 	}
@@ -58,6 +56,9 @@ public class Climber extends Subsystem {
 	}
 	
 	public boolean hasResistance() {
+		rightMotorOutput = pdp.getCurrent(RobotMap.CLIMBER_MOTOR_RIGHT);
+		leftMotorOutput = pdp.getCurrent(RobotMap.CLIMBER_MOTOR_LEFT);
+		
 		if((leftMotorOutput > Constants.CLIMBER_STALL_LIMIT || 
 			rightMotorOutput > Constants.CLIMBER_STALL_LIMIT)) {
 			System.out.println("RESISTANCE DETECTED");
