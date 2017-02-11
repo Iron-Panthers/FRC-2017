@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5026.robot;
 
+import org.usfirst.frc.team5026.robot.commands.climber.ClimberRappel;
 import org.usfirst.frc.team5026.robot.commands.climber.ClimberUpWithJoystick;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveShiftGear;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveSwapForwards;
@@ -63,6 +64,7 @@ public class OI {
 		driveButton3.whenPressed(new DriveShiftGear());
 		
 		boardButton1.whileHeld(new ClimberUpWithJoystick());
+		boardButton3.whileHeld(new ClimberRappel());
 		boardButton6.whenPressed(new GearClampCommand());
 		boardButton7.whenPressed(new GearUnClampCommand());
 	}
