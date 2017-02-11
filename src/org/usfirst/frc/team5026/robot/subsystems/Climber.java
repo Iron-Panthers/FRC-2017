@@ -20,8 +20,7 @@ public class Climber extends Subsystem {
 	private double leftMotorOutput;
 	private double rightMotorOutput;
 	
-	private int currentSpeedIndex; //0: LATCH, 1: WRAP, //2: FLOOR
-	private double cycledSpeed;
+	public int currentSpeedIndex; //0: LATCH, 1: WRAP
 	
 	public Climber() {
 		
@@ -41,36 +40,21 @@ public class Climber extends Subsystem {
 		rightClimb.set(speed);
 	}
 	
-	public void setClimbMotors() {
-		//new method that uses an instance variable that is 'speed' from cycle method
-		postMotorOutput();
-		setClimbMotors(cycledSpeed);
-	}
-	
-	
 	public void stopClimb() {
 		leftClimb.stopMotor();
 		rightClimb.stopMotor();
 	}
-	/*	
-	public void scaledClimb() {
-		//sets motors to joystick control with curve from climbScaling().
-		setClimbMotors(climbScaling());
-	}
-	*/
-	
-	public double climbScaling(ClimberSpeedType scaleType) {
+
+	public void climbScaling() {
 		// A piecewise graph such that the motor and joystick values varies 
 	    // linearly from -1 <= x <= 0 and varies quadratically from 0 <= x <= 1.
-		double speed;
-		double joystickY = Robot.oi.buttonBoard.getY();		//currently accesses raw Y-values, will implement Daniel's adjustments
+		double joystickY = -Robot.oi.buttonBoard.getY();		//currently accesses raw Y-values, will implement Daniel's adjustments
 		
 	    if (joystickY <= Constants.CLIMBER_SLOPE_SWAP) {	//linear joystick curve
-	        speed = (scaleType.speed * joystickY) + scaleType.speed;
+	       setClimbMotors(ClimberSpeedType.values()[currentSpeedIndex].speed * joystickY + ClimberSpeedType.values()[currentSpeedIndex].speed);
 	    } else {	//square root joystick curve
-	        speed = Math.sqrt(scaleType.curve * joystickY) + scaleType.speed;
+	       setClimbMotors(Math.sqrt(ClimberSpeedType.values()[currentSpeedIndex].curve * joystickY) + ClimberSpeedType.values()[currentSpeedIndex].speed);
 	    }
-	    return speed;
 	}
 	
 	public boolean hasResistance() {
@@ -82,19 +66,11 @@ public class Climber extends Subsystem {
 		return false;
 	}
 	
-	public void cycleClimberSpeedType(boolean cycleUp) {
-		if(cycleUp) {	//cycles speed type up, resets when it increases past amount of speed types
-			if(currentSpeedIndex < ClimberSpeedType.values().length - 1) {
-				cycledSpeed = ClimberSpeedType.values()[currentSpeedIndex + 1].speed;
-			} else {
-				cycledSpeed = ClimberSpeedType.values()[0].speed;
-			}
-		} else {		//cycles speed type down, resets when it decreases past the first index
-			if(currentSpeedIndex != 0) {
-				cycledSpeed = ClimberSpeedType.values()[currentSpeedIndex - 1].speed;
-			} else {
-				cycledSpeed = ClimberSpeedType.values()[ClimberSpeedType.values().length - 1].speed;
-			}
+	public void cycleClimberSpeedType() {
+		if(currentSpeedIndex < ClimberSpeedType.values().length - 1) {
+			currentSpeedIndex += 1;
+		} else {
+			currentSpeedIndex = 0;
 		}
 	}
 

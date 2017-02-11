@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
  */
 public class ClimberSequence extends CommandGroup {
 	//runs climber motors and with a built in time
-    public ClimberSequence(double speed) {
+    public ClimberSequence() {
         addSequential(new WaitCommand(1));
-        addSequential(new ClimberUpClimb(speed));
+        addSequential(new ClimberUpClimb()); //hasResistance()
         addSequential(new ClimberStop());
     }
 }
