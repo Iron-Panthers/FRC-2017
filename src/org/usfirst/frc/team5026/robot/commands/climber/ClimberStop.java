@@ -17,15 +17,13 @@ public class ClimberStop extends Command {
 
     protected void initialize() {
     	climber.stopClimb();
-    	System.out.println("Stop");
     }
 
     protected void execute() {
-    	climber.stopClimb();
     }
 
     protected boolean isFinished() {
-    	return false;
+    	return true;
     }
 
     protected void end() {

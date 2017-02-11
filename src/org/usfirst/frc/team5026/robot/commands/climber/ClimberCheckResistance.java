@@ -5,35 +5,31 @@ import org.usfirst.frc.team5026.robot.subsystems.Climber;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ClimberUpLatch extends Command {
-
-    private Climber climber;
-
-    public ClimberUpLatch() {
+/**
+ *
+ */
+public class ClimberCheckResistance extends Command {
+	private Climber climber;
+	
+    public ClimberCheckResistance() {
         requires(Robot.climber);
         climber = Robot.climber;
     }
 
     protected void initialize() {
-        climber.stopClimb();
+    	climber.hasResistance();
     }
 
     protected void execute() {
-        climber.latchClimb();
     }
 
     protected boolean isFinished() {
-        return climber.hasResistance();
+        return true;
     }
 
     protected void end() {
-        climber.stopClimb();
-        System.out.println("CLIMBER LATCH END");
-
     }
 
     protected void interrupted() {
-        end();
-        System.out.println("CLIMBER LATCH INTERRUPTED");
     }
 }

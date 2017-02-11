@@ -1,5 +1,8 @@
 package org.usfirst.frc.team5026.robot;
 
+import org.usfirst.frc.team5026.robot.commands.climber.ClimberCycleSpeed;
+import org.usfirst.frc.team5026.robot.commands.climber.ClimberRappel;
+import org.usfirst.frc.team5026.robot.commands.climber.ClimberSequence;
 import org.usfirst.frc.team5026.robot.commands.climber.ClimberUpWithJoystick;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveDrivebaseForTime;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveShiftGear;
@@ -60,11 +63,11 @@ public class OI {
 	    driveButton5 = new JoystickButton(driveJoystick, RobotMap.DRIVE_BUTTON_5);
 	}
 	public void mapButtonBoard() {
-		driveButton1.whileHeld(new DriveSwapForwards());
 		driveButton3.whenPressed(new DriveShiftGear());
-		
-		boardButton1.whileHeld(new ClimberUpWithJoystick());
 		boardButton6.whenPressed(new GearClampCommand());
 		boardButton7.whenPressed(new GearUnClampCommand());
+		boardButton1.whileHeld(new ClimberSequence());
+		boardButton2.whenPressed(new ClimberCycleSpeed());
+		boardButton8.whileHeld(new ClimberRappel());
 	}
 }
