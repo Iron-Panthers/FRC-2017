@@ -25,6 +25,7 @@ public class Drive extends Subsystem {
 	
 	private double startingEncoderPos;
 	private double targetEncoderPos;
+	private boolean backwards;
 	
 	public Drive() {
 		joystick = Robot.oi.driveJoystick;
@@ -75,16 +76,29 @@ public class Drive extends Subsystem {
 	}
 	
 	public void startDriveDistance(double inches) {
+		backwards = false;
+		if(inches < 0) {
+			backwards = true; 
+		}
 		startingEncoderPos = hardware.leftMotor.getEncPosition(); //"leftMotor" cringe
-		targetEncoderPos = ((inches / Constants.WHEEL_CIRCUMFERENCE) * Constants.ENCODER_TICKS_PER_ROTATION);
+		//which gear ratio ????????????????????????????
+		targetEncoderPos = (startingEncoderPos + (Constants.LOW_GEAR_RATIO * (inches / Constants.WHEEL_CIRCUMFERENCE) * Constants.ENCODER_TICKS_PER_ROTATION));
 	}
+		
 	public void driveStraight(double speed) {
-		//try using different motors, or just add a getEncPosition method in motorgroup		
-		Robot.drive.setLeftRightMotors(speed, speed);
+		//try using different motors, or just add a getEncPosition method in motorgroup
+		if(backwards) {
+			Robot.drive.setLeftRightMotors(-speed, -speed);
+		} else {
+			Robot.drive.setLeftRightMotors(speed, speed);
+		}
 	}
 	
 	public boolean isFinishedDrivingDistance() {
-		return Math.abs(hardware.leftMotor.getEncPosition() - startingEncoderPos) > targetEncoderPos; //im deeply angry
+		if(backwards) {
+			return hardware.leftMotor.getEncPosition() < targetEncoderPos; 
+		}
+		return hardware.leftMotor.getEncPosition() > targetEncoderPos; 
 	}
 
 	@Override

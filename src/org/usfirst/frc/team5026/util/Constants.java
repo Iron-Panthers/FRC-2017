@@ -19,4 +19,6 @@ public class Constants {
 	
 	//AUto COnstants
 	public static final double STRAIGHT_DRIVE_SPEED = 0.5;
+	public static final double LOW_GEAR_RATIO = 13.5;
+	public static final double HIGH_GEAR_RATIO = 5.1; 
 }

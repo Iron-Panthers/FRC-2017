@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5026.robot;
 
-import org.usfirst.frc.team5026.robot.commands.autonomous.DriveStraightForSetDistance;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoSequenceDriveStraightTurn_A_lot;
+import org.usfirst.frc.team5026.robot.commands.autonomous.Turn45DegreesLeft;
 import org.usfirst.frc.team5026.robot.commands.gear.GearClampCommand;
 import org.usfirst.frc.team5026.robot.commands.gear.GearUnClampCommand;
 import org.usfirst.frc.team5026.util.PantherJoystick;
@@ -70,5 +71,6 @@ public class OI {
 	public void mapButtonBoard() {
 		boardButton2.whenPressed(new GearClampCommand());
 		boardButton3.whenPressed(new GearUnClampCommand());
+		boardButton4.whenPressed(new AutoSequenceDriveStraightTurn_A_lot());
 	}
 }
