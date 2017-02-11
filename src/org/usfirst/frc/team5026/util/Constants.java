@@ -36,5 +36,5 @@ public class Constants {
 	public static final double CLIMBER_SLOPE_WRAP = 0.0152;	//caps motors at 83.33% V (10/12 V), previously set at 0.0841 (capped at 100% V)
 	public static final double CLIMBER_SLOPE_LATCH = 0.04;	//Graphed, not tested, to allow for slower climbing speeds
 	
-	public static final double CLIMBER_STALL_LIMIT = 2.0;	//The current(A) at which the climber motors stall.
+	public static final double CLIMBER_STALL_LIMIT = 1.5;	//The current(A) at which the climber motors stall.
 } 
