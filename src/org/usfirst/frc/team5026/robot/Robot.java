@@ -3,9 +3,11 @@ package org.usfirst.frc.team5026.robot;
 
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDoNothing;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoSequenceDriveStraightTurn_A_lot;
+import org.usfirst.frc.team5026.robot.commands.autonomous.DriveSequenceCheckErrorInDistance;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
+import org.usfirst.frc.team5026.util.Constants;
 import org.usfirst.frc.team5026.util.Hardware;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -42,10 +44,14 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		hardware = new Hardware();
 		initSubsystems();
+		
+		SmartDashboard.putNumber(Constants.DRIVE_DISTANCE_RAMP_SMD_NAME, Constants.STRAIGHT_DRIVE_SPEED);
+		
 		autoChooser.addDefault("Nothing", new AutoDoNothing());
 		// Everytime u write a new auto, do autoChooser.addObject("NAME OF AUTO", new AUTOCOMMAND);
 		// Do that here
-		autoChooser.addObject("Driv foward, than bak", new AutoSequenceDriveStraightTurn_A_lot());
+		autoChooser.addObject("Drive forward, than back", new AutoSequenceDriveStraightTurn_A_lot());
+		autoChooser.addObject("Drive Distance Encoder Error Test", new DriveSequenceCheckErrorInDistance());
 		SmartDashboard.putData("Autonomous Chooser", autoChooser);
 	}
 	
