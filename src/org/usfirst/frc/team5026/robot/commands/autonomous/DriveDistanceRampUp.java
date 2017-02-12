@@ -5,11 +5,13 @@ import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.util.Constants;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveDistanceRampUp extends Command {
 	
-	private double distance;	//in inches
-	private double ramp = 0.1;
+	private double distance = 0;	//in inches
+	private double ramp = 1;
+	private double inc = 0.01;
 	private double speed;
 	
 	public DriveDistanceRampUp(double distance) {
@@ -22,9 +24,13 @@ public class DriveDistanceRampUp extends Command {
 		this.distance = distance;
 		this.speed = speed;
 	}
+	public DriveDistanceRampUp() {
+		speed = Constants.STRAIGHT_DRIVE_SPEED;
+	}
 	
 	@Override
 	protected void initialize() {
+		distance = SmartDashboard.getNumber(Constants.DRIVE_DISTANCE_RAMP_SMD_NAME, 50);
 		Robot.drive.stopMotors();
 		Robot.drive.startDriveDistance(distance);
 	}
@@ -32,9 +38,14 @@ public class DriveDistanceRampUp extends Command {
 	
 	@Override
 	protected void execute() {
+		SmartDashboard.putNumber("RAW FINISH ENCODER", Robot.drive.targetEncoderPos);
+    	SmartDashboard.putNumber("RAW CURRENT ENCODER", Robot.drive.getEnc());
+    	SmartDashboard.putNumber("RAW START ENCODER", Robot.drive.startingEncoderPos);
 		Robot.drive.driveStraight(speed * ramp);
 		if (ramp < 1) {
-			ramp += 0.01;
+			ramp += inc;
+		} else if (ramp > 1) {
+			ramp = 1;
 		}
 	}
 

@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5026.robot.commands.autonomous;
 
+import org.usfirst.frc.team5026.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -8,12 +10,12 @@ import edu.wpi.first.wpilibj.command.Command;
 public class AutoDoNothing extends Command {
 
     public AutoDoNothing() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        requires(Robot.drive);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.drive.stopMotors();
     }
 
     // Called repeatedly when this Command is scheduled to run

@@ -15,7 +15,7 @@ public class Constants {
 	//Encoder constants
 	public static final double WHEEL_DIAMETER = 4;	//in inches
 	public static final double WHEEL_CIRCUMFERENCE = Math.PI * WHEEL_DIAMETER;
-	public static final int ENCODER_TICKS_PER_ROTATION = 256;	//we don't actually know the value yet
+	public static final int ENCODER_TICKS_PER_ROTATION = 4096;	//we don't actually know the value yet
 	
 	//Auto COnstants
 	public static final String DRIVE_DISTANCE_RAMP_SMD_NAME = "DriveRampDistance(inches)"; 

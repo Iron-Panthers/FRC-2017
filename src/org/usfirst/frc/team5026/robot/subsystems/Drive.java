@@ -81,6 +81,12 @@ public class Drive extends Subsystem {
 	}
 	
 	public void startDriveDistance(double inches) {
+		try {
+			gyro.reset();
+		} catch (NullPointerException e) {
+			// No gyro
+		}
+		
 		backwards = false;
 		if(inches < 0) {
 			backwards = true; 
@@ -88,6 +94,9 @@ public class Drive extends Subsystem {
 		startingEncoderPos = encMotor.getEncPosition(); //"leftMotor" cringe
 		//which gear ratio ????????????????????????????
 		targetEncoderPos = (startingEncoderPos + (Constants.LOW_GEAR_RATIO * (inches / Constants.WHEEL_CIRCUMFERENCE) * Constants.ENCODER_TICKS_PER_ROTATION));
+	}
+	public int getEnc() {
+		return encMotor.getEncPosition();
 	}
 	public double getDistanceError() {
 		// In inches

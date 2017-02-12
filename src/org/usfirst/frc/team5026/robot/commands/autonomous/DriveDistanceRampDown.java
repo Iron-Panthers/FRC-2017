@@ -7,8 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class DriveDistanceRampDown extends Command {
 	
-	private double ramp = 1;
+	private double ramp = 0;
 	private double speed;
+	private double inc = 0.01;
 	
 	public DriveDistanceRampDown() {
 		requires(Robot.drive);
@@ -27,7 +28,7 @@ public class DriveDistanceRampDown extends Command {
 	@Override
 	protected void execute() {
 		Robot.drive.driveStraight(speed * ramp);
-		ramp -= 0.01;
+		ramp -= inc;
 	}
 
 	@Override

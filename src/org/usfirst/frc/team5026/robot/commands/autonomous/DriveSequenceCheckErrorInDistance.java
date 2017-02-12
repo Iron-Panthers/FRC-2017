@@ -1,10 +1,10 @@
 package org.usfirst.frc.team5026.robot.commands.autonomous;
 
 import org.usfirst.frc.team5026.robot.commands.drive.DriveCheckError;
-import org.usfirst.frc.team5026.util.Constants;
+import org.usfirst.frc.team5026.robot.commands.drive.DriveDrivebaseForTime;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 
 /**
  *
@@ -12,8 +12,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class DriveSequenceCheckErrorInDistance extends CommandGroup {
 
     public DriveSequenceCheckErrorInDistance() {
-        addSequential(new DriveDistanceRampUp(SmartDashboard.getNumber(Constants.DRIVE_DISTANCE_RAMP_SMD_NAME, 50)));
-        addSequential(new DriveDistanceRampDown());
-        addSequential(new DriveCheckError());
+//        addSequential(new DriveDistanceRampUp());
+//        addSequential(new DriveDistanceRampDown());
+//        addSequential(new DriveCheckError());
+        
+        addParallel(new DriveDrivebaseForTime(0.75, 0.75, 1));
+        addSequential(new WaitCommand(1));
+        addSequential(new AutoDoNothing());
     }
 }
