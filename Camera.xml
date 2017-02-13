@@ -1,5 +1,20 @@
 <xml version="1.0">
 <dashboard>
+	<widget field="right" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="234" y="46"/>
+	</widget>
+	<widget field="Left" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="234" y="23"/>
+	</widget>
+	<widget field="Joystick is Forward?" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="234" y="0"/>
+	</widget>
+	<widget field="Joystick Type" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
+		<location x="0" y="84"/>
+	</widget>
+	<widget field="Scheduler" type="Scheduler" class="edu.wpi.first.smartdashboard.gui.elements.Scheduler">
+		<location x="37" y="0"/>
+	</widget>
 	<widget field="JoyX" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="0" y="61"/>
 	</widget>

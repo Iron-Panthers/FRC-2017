@@ -2,18 +2,17 @@ package org.usfirst.frc.team5026.robot.commands.climber;
 
 import org.usfirst.frc.team5026.robot.Robot;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
+import org.usfirst.frc.team5026.util.ClimberSpeedType;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 public class ClimberUpClimb extends Command {
 
     private Climber climber;
-    private double speed;
 
-    public ClimberUpClimb(double speed) {
+    public ClimberUpClimb() {
         requires(Robot.climber);
         climber = Robot.climber;
-        this.speed = speed;
     }
 
     protected void initialize() {
@@ -22,7 +21,7 @@ public class ClimberUpClimb extends Command {
     }
 
     protected void execute() {
-    	climber.setClimbMotors(speed);
+    	climber.climbScaling();
     }
 
     protected boolean isFinished() {
@@ -31,8 +30,6 @@ public class ClimberUpClimb extends Command {
 
     protected void end() {
         climber.stopClimb();
-        System.out.println("CLIMBER END");
-
     }
 
     protected void interrupted() {

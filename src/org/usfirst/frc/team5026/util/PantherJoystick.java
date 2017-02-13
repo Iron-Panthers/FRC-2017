@@ -26,7 +26,11 @@ public class PantherJoystick extends Joystick{
   } 
    
   public double getScaledDeadzoneX() { 
-    return this.getDeadzoneJoystickValue(this.getMagnitude(), this.getX() * joystickType.scalingX, joystickType.deadzoneX); 
+	double val = this.getDeadzoneJoystickValue(this.getMagnitude(), this.getX() * joystickType.scalingX, joystickType.deadzoneX); 
+	if (Math.abs(val) < joystickType.deadzoneX) {
+		return 0;
+	}
+    return val;
   } 
    
   public double getScaledDeadzoneY() {     
@@ -52,6 +56,7 @@ public class PantherJoystick extends Joystick{
   } 
    
   public double getDeadzoneJoystickValue(double magnitude, double xy, float deadzone) { 
+	// Need to fix so that the x doesnt change when we move drastically in the y
     if (magnitude < deadzone) { 
       return 0; 
     } 

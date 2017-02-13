@@ -1,37 +1,37 @@
 package org.usfirst.frc.team5026.robot.commands.climber;
 
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import org.usfirst.frc.team5026.robot.Robot;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
 
-public class ClimberStop extends Command {
+import edu.wpi.first.wpilibj.command.Command;
+
+/**
+ *
+ */
+public class ClimberCycleSpeed extends Command {
 
 	private Climber climber;
 	
-    public ClimberStop() {
-        requires(Robot.climber);
-        climber = Robot.climber;
+    public ClimberCycleSpeed() {
+    	//requires(Robot.climber);		disabled require to smooth transition
+    	climber = Robot.climber;
     }
 
     protected void initialize() {
-    	climber.stopClimb();
+    	climber.cycleClimberSpeedType();
+    	System.out.println("cycled");
     }
 
     protected void execute() {
     }
 
     protected boolean isFinished() {
-    	return true;
+        return true;
     }
 
     protected void end() {
-    	climber.stopClimb();
     }
 
     protected void interrupted() {
-    		end();
     }
 }
-

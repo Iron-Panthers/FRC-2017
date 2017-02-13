@@ -1,29 +1,32 @@
 package org.usfirst.frc.team5026.robot.commands.climber;
 
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import org.usfirst.frc.team5026.robot.Robot;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
+import org.usfirst.frc.team5026.util.Constants;
 
-public class ClimberStop extends Command {
+import edu.wpi.first.wpilibj.command.Command;
+
+/**
+ *
+ */
+public class ClimberRappel extends Command {
 
 	private Climber climber;
 	
-    public ClimberStop() {
-        requires(Robot.climber);
-        climber = Robot.climber;
+    public ClimberRappel() {
+    	requires(Robot.climber);
+    	climber = Robot.climber;
     }
 
     protected void initialize() {
-    	climber.stopClimb();
     }
 
     protected void execute() {
+    	climber.setClimbMotors(Constants.CLIMBER_SPEED_RAPPEL);
     }
 
     protected boolean isFinished() {
-    	return true;
+        return false;
     }
 
     protected void end() {
@@ -31,7 +34,6 @@ public class ClimberStop extends Command {
     }
 
     protected void interrupted() {
-    		end();
+    	end();
     }
 }
-

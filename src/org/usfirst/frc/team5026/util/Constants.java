@@ -30,12 +30,11 @@ public class Constants {
 	   
 	//Climber Constants
 	public static final double CLIMBER_SPEED_RAPPEL = -0.2;	//quality of unloader's life
-	public static final double CLIMBER_SPEED_SLOW = 0.1;	//original: 0.3, changed for testing thresholds
-	public static final double CLIMBER_SPEED_LATCH = 0.3;	//Tested multiple times with driver, comfortable speed NEED INCREASE
+	public static final double CLIMBER_SPEED_LATCH = 0.3;	//Tested multiple times with driver, comfortable speed NEED INCREASE !!!!!TEST FRIDAY!!!!!!!
 	public static final double CLIMBER_SPEED_WRAP = 0.71;	//Soft average, tested once, will need to be optimized a bit further
-	public static final double CLIMBER_SPEED_FLOOR = 1.0;	//Floors motors
-	public static final double CLIMBER_CURVE_SWAP = 0.0;	//The value in which the joystick switches from linear to quadratic
-	public static final double CLIMBER_CURVE = 0.0841;		//Graphed and tested to generously comply to secondary driver
-
-	public static final double CLIMBER_STALL_LIMIT = 2.0;	//The current(A) at which the climber motors stall.
+	public static final double CLIMBER_SLOPE_SWAP = 0.0;	//The value in which the joystick switches from linear to quadratic
+	public static final double CLIMBER_SLOPE_WRAP = 0.0152;	//caps motors at 83.33% V (10/12 V), previously set at 0.0841 (capped at 100% V)
+	public static final double CLIMBER_SLOPE_LATCH = 0.04;	//Graphed, not tested, to allow for slower climbing speeds
+	
+	public static final double CLIMBER_STALL_LIMIT = 5.0;	//The current(A) at which the climber motors stall.
 } 
