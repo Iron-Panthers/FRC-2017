@@ -4,26 +4,26 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team5026.robot.Robot;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
 
-public class ClimberUpClimb extends Command {
+public class ClimberUpClimbInitial extends Command {
 
     private Climber climber;
 
-    public ClimberUpClimb() {
+    public ClimberUpClimbInitial() {
         requires(Robot.climber);
         climber = Robot.climber;
     }
 
     protected void initialize() {
         climber.stopClimb();
-        System.out.println("Climber");
+        System.out.println("Climber Initial");
     }
 
     protected void execute() {
-    	climber.climbScaling();
+        climber.climbScaling();
     }
 
     protected boolean isFinished() {
-        return climber.hasResistance();
+        return false;
     }
 
     protected void end() {
