@@ -5,6 +5,7 @@ import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDoNothing;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoSequenceDriveStraightTurn_A_lot;
 import org.usfirst.frc.team5026.robot.commands.autonomous.DriveSequenceCheckErrorInDistance;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveDrivebaseForTime;
+import org.usfirst.frc.team5026.robot.commands.drive.DriveTurnXDegrees;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
@@ -54,6 +55,7 @@ public class Robot extends IterativeRobot {
 		autoChooser.addObject("Drive forward, than back", new AutoSequenceDriveStraightTurn_A_lot());
 		autoChooser.addObject("Drive Distance Encoder Error Test", new DriveSequenceCheckErrorInDistance());
 		autoChooser.addObject("Drive for 5 seconds", new DriveDrivebaseForTime(0.5, 0.5, 5));
+		autoChooser.addObject("Turn 45 degrees right", new DriveTurnXDegrees(45));
 		SmartDashboard.putData("Autonomous Chooser", autoChooser);
 	}
 	

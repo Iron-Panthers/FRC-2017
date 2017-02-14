@@ -25,6 +25,7 @@ public class Drive extends Subsystem {
 	public MotorGroup encMotor;
 	
 	public double targetAngle;
+	private boolean turningRight = true;
 	
 	public double startingEncoderPos;
 	public double targetEncoderPos;
@@ -62,10 +63,9 @@ public class Drive extends Subsystem {
 	
 	//one spark controller is backwards, testing if values need to be opposite
 	public void rotateRobot(double speed) {
-		if (targetAngle - gyro.getAngle() <= targetAngle * Constants.PERCENTAGE) {
-    		Robot.drive.setLeftRightMotors(speed, -speed);
-    	} 
-		else if(targetAngle - gyro.getAngle() >= targetAngle * Constants.PERCENTAGE){
+		if (turningRight) {
+    		Robot.drive.setLeftRightMotors(speed, -speed); 
+    	} else {
     		Robot.drive.setLeftRightMotors(-speed, speed);
     	}
 	}
@@ -74,40 +74,52 @@ public class Drive extends Subsystem {
 		targetAngle = angle;
 		stopMotors();
 		gyro.reset();
+		if(targetAngle > 0) {
+			turningRight = true;
+		} else {
+			turningRight = false;
+		}
 //		gyro.calibrate();
 	}
 	public boolean isTurnFinished() {
-		return Math.abs(targetAngle - gyro.getAngle()) <= targetAngle * Constants.PERCENTAGE;	
+		if(turningRight) {
+			return Math.abs(gyro.getAngle() - targetAngle) <= targetAngle * Constants.PERCENTAGE;
+		} else {
+			return Math.abs(gyro.getAngle() - targetAngle) > targetAngle * Constants.PERCENTAGE;
+		}
 	}
 	
 	public void startDriveDistance(double inches) {
 		try {
 			gyro.reset();
-		} catch (NullPointerException e) {
-			// No gyro
-		}
+		} catch (NullPointerException e) {/*No gyro*/}
 		
 		backwards = false;
 		if(inches < 0) {
 			backwards = true; 
 		}
 		startingEncoderPos = encMotor.getEncPosition(); //"leftMotor" cringe
-		//which gear ratio ????????????????????????????
-		targetEncoderPos = (startingEncoderPos + (Constants.LOW_GEAR_RATIO * (inches / Constants.WHEEL_CIRCUMFERENCE) * Constants.ENCODER_TICKS_PER_ROTATION));
+		targetEncoderPos = (startingEncoderPos + (Constants.GEAR_RATIO * (inches / Constants.WHEEL_CIRCUMFERENCE) * Constants.ENCODER_TICKS_PER_ROTATION));
 	}
 	public int getEnc() {
 		return encMotor.getEncPosition();
 	}
+	
 	public double getDistanceError() {
 		// In inches
 		// Make sure to use the correct ratio
-		return ((encMotor.getEncPosition() - targetEncoderPos) * Constants.WHEEL_CIRCUMFERENCE) / (Constants.LOW_GEAR_RATIO * Constants.ENCODER_TICKS_PER_ROTATION);
+		return ((encMotor.getEncPosition() - targetEncoderPos) * Constants.WHEEL_CIRCUMFERENCE) / (Constants.GEAR_RATIO * Constants.ENCODER_TICKS_PER_ROTATION);
 	}
 	public double getGyroError() {
 		// In degrees
 		return gyro.getAngle() - targetAngle;
 	}
-		
+	public void driveStraightWithTicks(double speed) {
+		/*while(encMotor.get() <= 57344){
+			
+		}*/
+	}
+	
 	public void driveStraight(double speed) {
 		//try using different motors, or just add a getEncPosition method in motorgroup
 		if(backwards) {
