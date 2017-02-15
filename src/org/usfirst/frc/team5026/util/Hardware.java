@@ -27,8 +27,8 @@ public class Hardware {
 	public Talon climberRightMotor;
 	public Talon climberLeftMotor;
 	
-	public boolean climberLeftInverted = false;
-	public boolean climberRightInverted = true;
+	public boolean climberLeftInverted = true;
+	public boolean climberRightInverted = false;
 	
 	public PowerDistributionPanel pdp = new PowerDistributionPanel();
 	
