@@ -1,0 +1,40 @@
+<xml version="1.0">
+<dashboard>
+	<widget field="right" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="234" y="46"/>
+	</widget>
+	<widget field="Left" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="234" y="23"/>
+	</widget>
+	<widget field="Joystick is Forward?" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="234" y="0"/>
+	</widget>
+	<widget field="Joystick Type" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
+		<location x="0" y="84"/>
+	</widget>
+	<widget field="Scheduler" type="Scheduler" class="edu.wpi.first.smartdashboard.gui.elements.Scheduler">
+		<location x="37" y="0"/>
+	</widget>
+	<widget field="JoyX" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="61"/>
+	</widget>
+	<widget field="JoyY" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="38"/>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.WebcamViewerExtensionCompat">
+		<location x="1089" y="384"/>
+		<height>231</height>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.CameraServerViewer">
+		<location x="46" y="97"/>
+		<width>948</width>
+		<height>855</height>
+		<property name="Camera Choice" value=""/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.ConnectionIndicator">
+		<location x="4" y="5"/>
+	</static-widget>
+</dashboard>
+<live-window>
+</live-window>
+</xml>

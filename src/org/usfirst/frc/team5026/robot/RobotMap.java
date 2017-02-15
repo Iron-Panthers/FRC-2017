@@ -17,16 +17,16 @@ public class RobotMap {
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
 	
-	public static final int CLIMB_MOTOR_RIGHT = 0;
-	public static final int CLIMB_MOTOR_LEFT = 1;
-	public static final int INTAKE_MOTOR = 2;
+	public static final int CLIMBER_MOTOR_RIGHT = 0;
+	public static final int CLIMBER_MOTOR_LEFT = 1;
+
 	
-	public static final int DRIVE_MOTOR_LEFT_1 = 1;
-	public static final int DRIVE_MOTOR_LEFT_2 = 2;
-	public static final int DRIVE_MOTOR_LEFT_3 = 3;
-	public static final int DRIVE_MOTOR_RIGHT_1 = 4;
-	public static final int DRIVE_MOTOR_RIGHT_2 = 5;
-	public static final int DRIVE_MOTOR_RIGHT_3 = 6;
+	public static final int DRIVE_MOTOR_LEFT_1 = 4;
+	public static final int DRIVE_MOTOR_LEFT_2 = 5;
+	public static final int DRIVE_MOTOR_LEFT_3 = 6;
+	public static final int DRIVE_MOTOR_RIGHT_1 = 1;
+	public static final int DRIVE_MOTOR_RIGHT_2 = 2;
+	public static final int DRIVE_MOTOR_RIGHT_3 = 3;
 	
 	public static final int DRIVE_JOYSTICK = 0;
 	public static final int BUTTON_JOYSTICK = 1;
@@ -41,9 +41,17 @@ public class RobotMap {
 	public static final int BOARD_BUTTON_5 = 5;
 	public static final int BOARD_BUTTON_6 = 6;
 	public static final int BOARD_BUTTON_7 = 7;
+	public static final int BOARD_BUTTON_8 = 8;
+	
+	public static final int DRIVE_BUTTON_1 = 1;
+	public static final int DRIVE_BUTTON_2 = 2;
+	public static final int DRIVE_BUTTON_3 = 3;
+	public static final int DRIVE_BUTTON_4 = 4;
+	public static final int DRIVE_BUTTON_5 = 5;
 	
 	public static final int gearPistonForward = 2;
 	public static final int gearPistonReverse = 3;
+	public static final int gearClampSensor = 0;
 }
 	
 

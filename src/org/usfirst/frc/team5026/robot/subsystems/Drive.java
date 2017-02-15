@@ -1,10 +1,11 @@
 package org.usfirst.frc.team5026.robot.subsystems;
 
-import org.usfirst.frc.team5026.robot.Constants;
-import org.usfirst.frc.team5026.robot.Hardware;
-import org.usfirst.frc.team5026.robot.PantherJoystick;
 import org.usfirst.frc.team5026.robot.Robot;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveWithJoystick;
+import org.usfirst.frc.team5026.util.Constants;
+import org.usfirst.frc.team5026.util.GearPosition;
+import org.usfirst.frc.team5026.util.Hardware;
+import org.usfirst.frc.team5026.util.PantherJoystick;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -17,6 +18,7 @@ public class Drive extends Subsystem {
 	
 	private PantherJoystick joystick;
 	private DoubleSolenoid shifter;
+	private GearPosition pos = GearPosition.LOW;
 	Gyro gyro;
 	Hardware hardware;
 	
@@ -34,13 +36,15 @@ public class Drive extends Subsystem {
 		drive.setLeftRightMotorOutputs(left, right);
 	} 
 	
-	public void setGear(GearPosition pos) {
-		switch (pos) {
-		case HIGH:
-			shifter.set(Value.kForward);
-		case LOW:
+	public void setGear() {
+		if (pos== GearPosition.LOW) {
+			pos = GearPosition.HIGH;
 			shifter.set(Value.kReverse);
+		} else {
+			pos = GearPosition.LOW;
+			shifter.set(Value.kForward);
 		}
+		// Flip flops gear position
 	}
 	
 	public void useArcadeDrive(double yAxis, double xAxis) {
