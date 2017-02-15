@@ -1,15 +1,6 @@
 *.class
 
 
-# Eclipse files
-
-.classpath
-
-sysProps.xml
-
-*/bin/.classpath
-
-
 # Mobile Tools for Java (J2ME)
 
 .mtj.tmp/
@@ -29,3 +20,14 @@ hs_err_pid
 /bin/
 hs_err_pid
 /bin/
+
+# Eclipse files
+
+.classpath
+
+sysProps.xml
+
+*/bin/.classpath
+
+
+hs_err_pid
