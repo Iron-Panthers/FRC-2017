@@ -23,7 +23,7 @@ public class ClimberUpClimbInitial extends Command {
     }
 
     protected boolean isFinished() {
-        return false;
+        return !Robot.oi.boardButton1.get();
     }
 
     protected void end() {
@@ -31,7 +31,5 @@ public class ClimberUpClimbInitial extends Command {
     }
 
     protected void interrupted() {
-        end();
-        System.out.println("CLIMBER INTERRUPTED");
     }
 }

@@ -35,7 +35,7 @@ public class Climber extends Subsystem {
 	public void setClimbMotors(double speed) {
 		postMotorOutput();
 		leftClimb.set(speed);
-		rightClimb.set(speed);
+		rightClimb.set(-speed);
 	}
 	
 	public void stopClimb() {
@@ -56,8 +56,8 @@ public class Climber extends Subsystem {
 	}
 	
 	public boolean hasResistance() {
-		rightMotorOutput = pdp.getCurrent(RobotMap.CLIMBER_MOTOR_RIGHT);
-		leftMotorOutput = pdp.getCurrent(RobotMap.CLIMBER_MOTOR_LEFT);
+		rightMotorOutput = pdp.getCurrent(RobotMap.CLIMBER_PDPMOTOR_RIGHT);
+		leftMotorOutput = pdp.getCurrent(RobotMap.CLIMBER_PDPMOTOR_LEFT);
 		
 		if((leftMotorOutput > Constants.CLIMBER_STALL_LIMIT || 
 			rightMotorOutput > Constants.CLIMBER_STALL_LIMIT)) {
@@ -76,8 +76,10 @@ public class Climber extends Subsystem {
 	}
 
 	public void postMotorOutput() {
-		SmartDashboard.putNumber("Left", leftMotorOutput);
-		SmartDashboard.putNumber("right", rightMotorOutput);
+		SmartDashboard.putNumber("Left Voltage", leftMotorOutput);
+		SmartDashboard.putNumber("Right Voltage", rightMotorOutput);
+		SmartDashboard.putNumber("Left Speed", leftClimb.get());
+		SmartDashboard.putNumber("Right Speed", rightClimb.get());
 	}
 	
 	@Override

@@ -16,14 +16,15 @@ public class ClimberStop extends Command {
     }
 
     protected void initialize() {
-    	climber.stopClimb();
     }
 
     protected void execute() {
+    	climber.stopClimb();
+    	System.out.println("STOPPED");
     }
 
     protected boolean isFinished() {
-    	return true;
+    	return !Robot.oi.boardButton1.get();
     }
 
     protected void end() {
@@ -31,7 +32,6 @@ public class ClimberStop extends Command {
     }
 
     protected void interrupted() {
-    		end();
     }
 }
 
