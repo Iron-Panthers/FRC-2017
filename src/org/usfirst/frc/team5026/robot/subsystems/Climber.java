@@ -17,6 +17,7 @@ public class Climber extends Subsystem {
 	private Talon rightClimb;
 	
 	private PowerDistributionPanel pdp;
+	
 	private double leftMotorOutput;
 	private double rightMotorOutput;
 	
@@ -26,8 +27,10 @@ public class Climber extends Subsystem {
 		
 		leftClimb = Robot.hardware.climberLeftMotor;
 		rightClimb = Robot.hardware.climberRightMotor;
+		leftClimb.setInverted(Robot.hardware.climberLeftInverted);
+		rightClimb.setInverted(Robot.hardware.climberRightInverted);
 		
-		pdp = new PowerDistributionPanel();
+		pdp = Robot.hardware.pdp;
 		
 		currentSpeedIndex = 0;
 	}
@@ -35,7 +38,7 @@ public class Climber extends Subsystem {
 	public void setClimbMotors(double speed) {
 		postMotorOutput();
 		leftClimb.set(speed);
-		rightClimb.set(speed);
+		rightClimb.set(speed);		//use setInverted(true)
 	}
 	
 	public void stopClimb() {
@@ -44,9 +47,9 @@ public class Climber extends Subsystem {
 	}
 
 	public void climbScaling() {
-		  // A piecewise graph such that the motor and joystick values varies 
+		// A piecewise graph such that the motor and joystick values varies 
 	    // linearly from -1 <= x <= 0 and varies quadratically from 0 <= x <= 1.
-      double joystickY = -Robot.oi.buttonBoard.getY();		//accesses raw Y-values
+		double joystickY = -Robot.oi.buttonBoard.getY();	//accesses raw Y-values
 		
 	    if (joystickY <= Constants.CLIMBER_SLOPE_SWAP) {	//linear joystick curve
 	       setClimbMotors(ClimberSpeedType.values()[currentSpeedIndex].speed * joystickY + ClimberSpeedType.values()[currentSpeedIndex].speed);
@@ -56,8 +59,8 @@ public class Climber extends Subsystem {
 	}
 	
 	public boolean hasResistance() {
-		rightMotorOutput = pdp.getCurrent(RobotMap.CLIMBER_MOTOR_RIGHT);
-		leftMotorOutput = pdp.getCurrent(RobotMap.CLIMBER_MOTOR_LEFT);
+		rightMotorOutput = pdp.getCurrent(RobotMap.CLIMBER_PDPMOTOR_RIGHT);
+		leftMotorOutput = pdp.getCurrent(RobotMap.CLIMBER_PDPMOTOR_LEFT);
 		
 		if((leftMotorOutput > Constants.CLIMBER_STALL_LIMIT || 
 			rightMotorOutput > Constants.CLIMBER_STALL_LIMIT)) {
@@ -76,8 +79,10 @@ public class Climber extends Subsystem {
 	}
 
 	public void postMotorOutput() {
-		SmartDashboard.putNumber("Left", leftMotorOutput);
-		SmartDashboard.putNumber("right", rightMotorOutput);
+		SmartDashboard.putNumber("Climber Left Voltage", leftMotorOutput);
+		SmartDashboard.putNumber("Climber Right Voltage", rightMotorOutput);
+		SmartDashboard.putNumber("CLimber Left Speed", leftClimb.get());
+		SmartDashboard.putNumber("Climber Right Speed", rightClimb.get());
 	}
 	
 	@Override

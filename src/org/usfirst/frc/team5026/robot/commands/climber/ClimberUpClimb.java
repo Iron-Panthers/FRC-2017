@@ -1,10 +1,8 @@
 package org.usfirst.frc.team5026.robot.commands.climber;
 
+import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team5026.robot.Robot;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
-import org.usfirst.frc.team5026.util.ClimberSpeedType;
-
-import edu.wpi.first.wpilibj.command.Command;
 
 public class ClimberUpClimb extends Command {
 
@@ -17,7 +15,7 @@ public class ClimberUpClimb extends Command {
 
     protected void initialize() {
         climber.stopClimb();
-        System.out.println("Climb");
+        System.out.println("Climber");
     }
 
     protected void execute() {
@@ -25,7 +23,7 @@ public class ClimberUpClimb extends Command {
     }
 
     protected boolean isFinished() {
-        return climber.hasResistance();
+        return climber.hasResistance() || !Robot.oi.boardButton1.get();
     }
 
     protected void end() {
@@ -33,7 +31,5 @@ public class ClimberUpClimb extends Command {
     }
 
     protected void interrupted() {
-        end();
-        System.out.println("CLIMBER INTERRUPTED");
     }
 }

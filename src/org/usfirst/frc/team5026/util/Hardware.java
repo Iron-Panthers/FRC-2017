@@ -7,6 +7,7 @@ import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SPI.Port;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
@@ -25,6 +26,12 @@ public class Hardware {
 	
 	public Talon climberRightMotor;
 	public Talon climberLeftMotor;
+	
+	public boolean climberLeftInverted = false;
+	public boolean climberRightInverted = true;
+	
+	public PowerDistributionPanel pdp = new PowerDistributionPanel();
+	
 	public DoubleSolenoid shifter;
 	
 	public Gyro gyro;

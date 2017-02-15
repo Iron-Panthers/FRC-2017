@@ -54,6 +54,7 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Blue Joystick", new JoystickChoose(JoystickType.BLUE));
 		chooser.addObject("Spinny Joystick", new JoystickChoose(JoystickType.SPINNY));
 		SmartDashboard.putData("Joystick Type", chooser);
+		SmartDashboard.putData(climber);
 	}
 
 	/**

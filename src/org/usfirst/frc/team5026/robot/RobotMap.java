@@ -20,6 +20,8 @@ public class RobotMap {
 	public static final int CLIMBER_MOTOR_RIGHT = 0;
 	public static final int CLIMBER_MOTOR_LEFT = 1;
 
+	public static final int CLIMBER_PDPMOTOR_RIGHT = 14;
+	public static final int CLIMBER_PDPMOTOR_LEFT = 15;
 	
 	public static final int DRIVE_MOTOR_LEFT_1 = 4;
 	public static final int DRIVE_MOTOR_LEFT_2 = 5;

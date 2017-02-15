@@ -13,7 +13,7 @@ public class ClimberCycleSpeed extends Command {
 	private Climber climber;
 	
     public ClimberCycleSpeed() {
-    	//requires(Robot.climber);		disabled require to smooth transition
+    	//no requires() to enable smooth transition between speed types
     	climber = Robot.climber;
     }
 
