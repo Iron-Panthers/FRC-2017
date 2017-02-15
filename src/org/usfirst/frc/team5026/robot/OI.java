@@ -66,6 +66,8 @@ public class OI {
 		
 		boardButton1.whileHeld(new ClimberSequence());
 		boardButton2.whenPressed(new ClimberCycleSpeed());
+		boardButton4.whileHeld(new IntakeIn());
+		boardButton5.whileHeld(new IntakeOut());
 		boardButton6.whenPressed(new GearClampCommand());
 		boardButton7.whenPressed(new GearUnClampCommand());
 		boardButton8.whileHeld(new ClimberRappel());
