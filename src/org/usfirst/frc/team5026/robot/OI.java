@@ -56,7 +56,7 @@ public class OI {
 		driveButton1.whileHeld(new DriveSwapForwards());
 		driveButton2.whenPressed(new GearUnClampCommand());
 		driveButton3.whenPressed(new GearClampCommand());
-		driveButton4.whileHeld(new IntakeIn());
-		driveButton5.whileHeld(new IntakeOut());
+		boardButton4.whileHeld(new IntakeIn());
+		boardButton5.whileHeld(new IntakeOut());
 	}
 }
