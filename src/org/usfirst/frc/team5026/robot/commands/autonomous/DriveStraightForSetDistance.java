@@ -2,6 +2,7 @@ package org.usfirst.frc.team5026.robot.commands.autonomous;
 
 import org.usfirst.frc.team5026.robot.Robot;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
+import org.usfirst.frc.team5026.util.Constants;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -18,17 +19,17 @@ public class DriveStraightForSetDistance extends Command {
 	@Override
 	protected void initialize() {
 		Robot.drive.stopMotors();
+		Robot.drive.startDriveDistance(distance);
 	}
 
 	
 	@Override
 	protected void execute() {
-		Robot.drive.driveStraightForDistance(distance, 0.7);
+		Robot.drive.driveStraight(Constants.STRAIGHT_DRIVE_SPEED);
 	}
 
 	@Override
 	protected boolean isFinished() {
-		// TODO Auto-generated method stub
 		return Robot.drive.isFinishedDrivingDistance();
 	}
 	

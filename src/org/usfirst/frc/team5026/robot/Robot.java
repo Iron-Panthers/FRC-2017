@@ -1,6 +1,8 @@
 
 package org.usfirst.frc.team5026.robot;
 
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDoNothing;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoSequenceDriveStraightTurn_A_lot;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
@@ -28,8 +30,8 @@ public class Robot extends IterativeRobot {
 	public static GearClamp gearclamp;
 	public static Climber climber;
 
-	Command autonomousCommand;
-	SendableChooser <Command> chooser = new SendableChooser<>();
+	Command autoCommand;
+	SendableChooser <Command> autoChooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -40,6 +42,11 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		hardware = new Hardware();
 		initSubsystems();
+		autoChooser.addDefault("Nothing", new AutoDoNothing());
+		// Everytime u write a new auto, do autoChooser.addObject("NAME OF AUTO", new AUTOCOMMAND);
+		// Do that here
+		autoChooser.addObject("Driv foward, than bak", new AutoSequenceDriveStraightTurn_A_lot());
+		SmartDashboard.putData("Autonomous Chooser", autoChooser);
 	}
 	
 	private void initSubsystems() {
@@ -86,6 +93,8 @@ public class Robot extends IterativeRobot {
 		 */
 
 		// schedule the autonomous command (example)
+		autoCommand = autoChooser.getSelected();
+		autoCommand.start();
 	}
 
 	/**

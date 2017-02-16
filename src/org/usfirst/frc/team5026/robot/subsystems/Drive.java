@@ -25,6 +25,7 @@ public class Drive extends Subsystem {
 	
 	private double startingEncoderPos;
 	private double targetEncoderPos;
+	private boolean backwards;
 	
 	public Drive() {
 		joystick = Robot.oi.driveJoystick;
@@ -74,20 +75,30 @@ public class Drive extends Subsystem {
 		return Math.abs(targetAngle - gyro.getAngle()) <= targetAngle * Constants.PERCENTAGE;	
 	}
 	
-	public void driveStraightForDistance(double distance, double speed) {
-		//try using different motors, or just add a getEncPosition method in motorgroup
-		startingEncoderPos = hardware.leftMotor_2.getEncPosition();
-		targetEncoderPos = startingEncoderPos + ((distance / Constants.WHEEL_CIRCUMFERENCE) * Constants.ENCODER_TICKS_PER_ROTATION);
+	public void startDriveDistance(double inches) {
+		backwards = false;
+		if(inches < 0) {
+			backwards = true; 
+		}
+		startingEncoderPos = hardware.leftMotor.getEncPosition(); //"leftMotor" cringe
+		//which gear ratio ????????????????????????????
+		targetEncoderPos = (startingEncoderPos + (Constants.LOW_GEAR_RATIO * (inches / Constants.WHEEL_CIRCUMFERENCE) * Constants.ENCODER_TICKS_PER_ROTATION));
+	}
 		
-		if(Math.abs(hardware.leftMotor_2.getEncPosition() - startingEncoderPos) < targetEncoderPos) {
-			Robot.drive.setLeftRightMotors(speed, speed);
-		} else {
+	public void driveStraight(double speed) {
+		//try using different motors, or just add a getEncPosition method in motorgroup
+		if(backwards) {
 			Robot.drive.setLeftRightMotors(-speed, -speed);
+		} else {
+			Robot.drive.setLeftRightMotors(speed, speed);
 		}
 	}
 	
 	public boolean isFinishedDrivingDistance() {
-		return Math.abs(hardware.leftMotor_2.getEncPosition() - startingEncoderPos) < targetEncoderPos;
+		if(backwards) {
+			return hardware.leftMotor.getEncPosition() < targetEncoderPos; 
+		}
+		return hardware.leftMotor.getEncPosition() > targetEncoderPos; 
 	}
 
 	@Override
