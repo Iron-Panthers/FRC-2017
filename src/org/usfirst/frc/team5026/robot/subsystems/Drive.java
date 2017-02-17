@@ -58,10 +58,10 @@ public class Drive extends Subsystem {
 	
 	//one spark controller is backwards, testing if values need to be opposite
 	public void rotateRobot(double speed) {
-		if (targetAngle - gyro.getAngle() <= targetAngle * Constants.PERCENTAGE) {
+		if (targetAngle - gyro.getAngle() <= targetAngle * Constants.PERCENTAGE_FOR_ERROR) {
     		Robot.drive.setLeftRightMotors(speed, speed);
     	} 
-		else if(targetAngle - gyro.getAngle() >= targetAngle * Constants.PERCENTAGE){
+		else if(targetAngle - gyro.getAngle() >= targetAngle * Constants.PERCENTAGE_FOR_ERROR){
     		Robot.drive.setLeftRightMotors(-speed, -speed);
     	}
 	}
@@ -72,7 +72,7 @@ public class Drive extends Subsystem {
 		gyro.calibrate();
 	}
 	public boolean isTurnFinished() {
-		return Math.abs(targetAngle - gyro.getAngle()) <= targetAngle * Constants.PERCENTAGE;	
+		return Math.abs(targetAngle - gyro.getAngle()) <= targetAngle * Constants.PERCENTAGE_FOR_ERROR;	
 	}
 	
 	public void startDriveDistance(double inches) {
