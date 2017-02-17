@@ -7,10 +7,16 @@ import org.usfirst.frc.team5026.robot.subsystems.Climber;
 public class ClimberUpClimb extends Command {
 
     private Climber climber;
+    private boolean initial;
 
-    public ClimberUpClimb() {
+    public ClimberUpClimb(boolean initial) {
         requires(Robot.climber);
         climber = Robot.climber;
+        this.initial = initial;
+    }
+
+    public ClimberUpClimb() {
+        this(false); //default check for resistance
     }
 
     protected void initialize() {
@@ -23,7 +29,11 @@ public class ClimberUpClimb extends Command {
     }
 
     protected boolean isFinished() {
-        return climber.hasResistance() || !Robot.oi.boardButton1.get();
+        if (initial) {
+            return !Robot.oi.boardButton1.get(); // No resistance check
+        } else {
+            return climber.hasResistance() || !Robot.oi.boardButton1.get();
+        }
     }
 
     protected void end() {
