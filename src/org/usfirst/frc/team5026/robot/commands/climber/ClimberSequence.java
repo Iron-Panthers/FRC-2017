@@ -13,6 +13,5 @@ public class ClimberSequence extends CommandGroup {
         addSequential(new WaitCommand(1));
         addSequential(new ClimberUpClimb(false));
         addSequential(new ClimberStop());
-        
     }
 }
