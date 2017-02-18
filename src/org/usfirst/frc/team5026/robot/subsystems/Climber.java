@@ -49,7 +49,7 @@ public class Climber extends Subsystem {
 	public void climbScaling() {
 		// A piecewise graph such that the motor and joystick values varies 
 	    // linearly from -1 <= x <= 0 and varies quadratically from 0 <= x <= 1.
-		double joystickY = -Robot.oi.buttonBoard.getY();	//accesses raw Y-values
+		double joystickY = Robot.oi.buttonBoard.getY();	//accesses raw Y-values
 		
 	    if (joystickY <= Constants.CLIMBER_SLOPE_SWAP) {	//linear joystick curve
 	       setClimbMotors(ClimberSpeedType.values()[currentSpeedIndex].speed * joystickY + ClimberSpeedType.values()[currentSpeedIndex].speed);

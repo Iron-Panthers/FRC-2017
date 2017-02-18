@@ -19,7 +19,6 @@ public class ClimberStop extends Command {
 
     protected void execute() {
     	climber.stopClimb();
-    	System.out.println("STOPPED");
     }
 
     protected boolean isFinished() {
