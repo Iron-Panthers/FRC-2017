@@ -48,6 +48,7 @@ public class Robot extends IterativeRobot {
 		initSubsystems();
 		
 		SmartDashboard.putNumber(Constants.DRIVE_DISTANCE_RAMP_SMD_NAME, 150);
+		SmartDashboard.putNumber(Constants.DRIVE_TURNXDEGREES_NAME, 0);
 		
 		autoChooser.addDefault("Nothing", new AutoDoNothing());
 		// Everytime u write a new auto, do autoChooser.addObject("NAME OF AUTO", new AUTOCOMMAND);
@@ -55,7 +56,7 @@ public class Robot extends IterativeRobot {
 		autoChooser.addObject("Drive forward, than back", new AutoSequenceDriveStraightTurn_A_lot());
 		autoChooser.addObject("Drive Distance Encoder Error Test", new DriveSequenceCheckErrorInDistance());
 		autoChooser.addObject("Drive for 5 seconds", new DriveDrivebaseForTime(0.5, 0.5, 5));
-		autoChooser.addObject("Turn 45 degrees right", new DriveTurnXDegrees(45));
+		autoChooser.addObject("Turn x degrees", new DriveTurnXDegrees());
 		SmartDashboard.putData("Autonomous Chooser", autoChooser);
 	}
 	

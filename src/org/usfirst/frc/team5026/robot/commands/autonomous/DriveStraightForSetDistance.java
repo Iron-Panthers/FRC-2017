@@ -25,12 +25,12 @@ public class DriveStraightForSetDistance extends Command {
 	
 	@Override
 	protected void execute() {
-		Robot.drive.driveStraight(Constants.STRAIGHT_DRIVE_SPEED);
+		Robot.drive.autoDriveDistance();
 	}
 
 	@Override
 	protected boolean isFinished() {
-		return Robot.drive.isFinishedDrivingDistance();
+		return Robot.drive.isFinishedDrivingDistance(Robot.drive.encLeftMotor) && Robot.drive.isFinishedDrivingDistance(Robot.drive.encRightMotor);
 	}
 	
 	@Override

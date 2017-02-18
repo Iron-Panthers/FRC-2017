@@ -1,7 +1,7 @@
 package org.usfirst.frc.team5026.robot.subsystems;
 
 import org.usfirst.frc.team5026.robot.Robot;
-import org.usfirst.frc.team5026.robot.commands.DriveWithJoystick;
+import org.usfirst.frc.team5026.robot.commands.drive.DriveWithJoystick;
 import org.usfirst.frc.team5026.util.Constants;
 import org.usfirst.frc.team5026.util.GearPosition;
 import org.usfirst.frc.team5026.util.Hardware;
@@ -22,13 +22,16 @@ public class Drive extends Subsystem {
 	public Gyro gyro;
 	Hardware hardware;
 	
-	public MotorGroup encMotor;
+	public MotorGroup encLeftMotor;
+	public MotorGroup encRightMotor;
 	
 	public double targetAngle;
 	private boolean turningRight = true;
 	
-	public double startingEncoderPos;
-	public double targetEncoderPos;
+	public double startingLeftEncoderPos;
+	public double startingRightEncoderPos;
+	public double targetLeftEncoderPos;
+	public double targetRightEncoderPos;
 	private boolean backwards;
 	
 	public Drive() {
@@ -37,7 +40,9 @@ public class Drive extends Subsystem {
 		drive = new RobotDrive(hardware.leftMotor, hardware.rightMotor);
 		gyro = hardware.gyro;
 		shifter = Robot.hardware.shifter;
-		encMotor = hardware.leftMotor;
+		
+		encLeftMotor = hardware.leftMotor;
+		encRightMotor = hardware.rightMotor;
 	}
 	
 	public void setLeftRightMotors(double left, double right) {
@@ -90,25 +95,24 @@ public class Drive extends Subsystem {
 	}
 	
 	public void startDriveDistance(double inches) {
-		try {
-			gyro.reset();
-		} catch (NullPointerException e) {/*No gyro*/}
-		
 		backwards = false;
 		if(inches < 0) {
 			backwards = true; 
 		}
-		startingEncoderPos = encMotor.getEncPosition(); //"leftMotor" cringe
-		targetEncoderPos = (startingEncoderPos + (Constants.GEAR_RATIO * (inches / Constants.WHEEL_CIRCUMFERENCE) * Constants.ENCODER_TICKS_PER_ROTATION));
+		startingLeftEncoderPos = encLeftMotor.getEncPosition(); //"leftMotor" cringe
+		targetLeftEncoderPos = (startingLeftEncoderPos + (Constants.GEAR_RATIO * (inches / Constants.WHEEL_CIRCUMFERENCE) * Constants.ENCODER_TICKS_PER_ROTATION));
+		
+		startingRightEncoderPos = encRightMotor.getEncPosition();
+		targetRightEncoderPos = (startingRightEncoderPos + (Constants.GEAR_RATIO * (inches / Constants.WHEEL_CIRCUMFERENCE) * Constants.ENCODER_TICKS_PER_ROTATION));
 	}
 	public int getEnc() {
-		return encMotor.getEncPosition();
+		return encLeftMotor.getEncPosition();
 	}
 	
 	public double getDistanceError() {
 		// In inches
 		// Make sure to use the correct ratio
-		return ((encMotor.getEncPosition() - targetEncoderPos) * Constants.WHEEL_CIRCUMFERENCE) / (Constants.GEAR_RATIO * Constants.ENCODER_TICKS_PER_ROTATION);
+		return ((encLeftMotor.getEncPosition() - targetLeftEncoderPos) * Constants.WHEEL_CIRCUMFERENCE) / (Constants.GEAR_RATIO * Constants.ENCODER_TICKS_PER_ROTATION);
 	}
 	public double getGyroError() {
 		// In degrees
@@ -122,18 +126,27 @@ public class Drive extends Subsystem {
 	
 	public void driveStraight(double speed) {
 		//try using different motors, or just add a getEncPosition method in motorgroup
-		if(backwards) {
-			Robot.drive.setLeftRightMotors(-speed, -speed);
-		} else {
-			Robot.drive.setLeftRightMotors(speed, speed);
-		}
+		this.encLeftMotor.set(backwards ? -1: 1 * speed);
 	}
 	
-	public boolean isFinishedDrivingDistance() {
+	public boolean isFinishedDrivingDistance(MotorGroup encMotor) {	//i'm sure there's a better way to do this
 		if(backwards) {
-			return encMotor.getEncPosition() < targetEncoderPos; 
+			return encMotor.getEncPosition() < targetLeftEncoderPos; 
 		}
-		return encMotor.getEncPosition() > targetEncoderPos; 
+		return encMotor.getEncPosition() > targetLeftEncoderPos;
+	} 
+	
+	public void autoDriveDistance() {
+		if(!isFinishedDrivingDistance(encLeftMotor)) {
+			this.encLeftMotor.set(backwards ? -1: 1 * Constants.STRAIGHT_DRIVE_SPEED);
+		} else {
+			this.encLeftMotor.stopMotor();
+		}
+		if(!isFinishedDrivingDistance(encRightMotor)) {
+			this.encRightMotor.set(backwards ? -1: 1 * Constants.STRAIGHT_DRIVE_SPEED);
+		} else {
+			this.encRightMotor.stopMotor();
+		}
 	}
 
 	@Override
