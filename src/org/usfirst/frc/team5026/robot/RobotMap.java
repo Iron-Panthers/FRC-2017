@@ -8,8 +8,8 @@ package org.usfirst.frc.team5026.robot;
  */
 public class RobotMap {
 	// CLIMBER MOTORS
-	public static final int CLIMBER_MOTOR_RIGHT = 0;
-	public static final int CLIMBER_MOTOR_LEFT = 1;
+	public static final int CLIMBER_MOTOR_RIGHT = 1;
+	public static final int CLIMBER_MOTOR_LEFT = 2;
 
 	public static final int CLIMBER_PDPMOTOR_RIGHT = 14;
 	public static final int CLIMBER_PDPMOTOR_LEFT = 15;
