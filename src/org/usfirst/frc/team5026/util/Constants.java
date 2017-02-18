@@ -23,7 +23,7 @@ public class Constants {
 	public static final float DEADZONE_Y_SPINNY = 0.0512f; 
 	public static final float DEADZONE_Y_MAX_SPINNY = 0.829f; 
 
-	// Gyro Constants 
+	//Gyro Constants 
 	public static final double PERCENTAGE = 0.05;  
 	public static final double SPEED = 0.5; 
 	public static final double CLAMP_WAIT_TIME = 0.5; 
@@ -37,4 +37,8 @@ public class Constants {
 	public static final double CLIMBER_SLOPE_LATCH = 0.04;	//allows for slower climbing speeds
 	
 	public static final double CLIMBER_STALL_LIMIT = 5.0;	//=[NEED TESTING]= The current(A) at which the climber motors stall.
+	
+	//Intake Constants
+	public static final double INTAKE_INTAKE_SPEED = 0.5;
+	public static final double INTAKE_OUTTAKE_SPEED = -0.5;
 } 

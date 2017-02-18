@@ -5,6 +5,7 @@ import org.usfirst.frc.team5026.robot.commands.JoystickChoose;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
+import org.usfirst.frc.team5026.robot.subsystems.Intake;
 import org.usfirst.frc.team5026.util.Hardware;
 import org.usfirst.frc.team5026.util.JoystickType;
 
@@ -29,6 +30,8 @@ public class Robot extends IterativeRobot {
 	public static Drive drive;
 	public static GearClamp gearclamp;
 	public static Climber climber;
+	public static Intake intake;
+	
 	Command autonomousCommand;
 	SendableChooser <Command> chooser = new SendableChooser<>();
 
@@ -41,13 +44,6 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		hardware = new Hardware();
 		initSubsystems();
-	}
-	
-	private void initSubsystems() {
-		drive = new Drive();
-		climber = new Climber();
-		gearclamp = new GearClamp();
-		oi.mapButtonBoard();
 		SmartDashboard.putData(Scheduler.getInstance());
 		chooser.addDefault("Red Joystick", new JoystickChoose(JoystickType.RED));
 		// The name should be joystick type, the object is: new JoystickChoose(proper joystick type);
@@ -55,6 +51,14 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Spinny Joystick", new JoystickChoose(JoystickType.SPINNY));
 		SmartDashboard.putData("Joystick Type", chooser);
 		SmartDashboard.putData(climber);
+	}
+	
+	private void initSubsystems() {
+		drive = new Drive();
+		climber = new Climber();
+		gearclamp = new GearClamp();
+		intake = new Intake();
+		oi.mapButtonBoard();
 	}
 
 	/**

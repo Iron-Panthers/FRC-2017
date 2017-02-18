@@ -30,6 +30,8 @@ public class Hardware {
 	public boolean climberLeftInverted = false;
 	public boolean climberRightInverted = true;
 	
+	public Talon intake;
+	
 	public PowerDistributionPanel pdp = new PowerDistributionPanel();
 	
 	public DoubleSolenoid shifter;
@@ -52,11 +54,12 @@ public class Hardware {
 		// Drive Excess
 		gyro = new ADXRS450_Gyro(Port.kOnboardCS0);
 		shifter = new DoubleSolenoid(1,RobotMap.SOLENOID_SHIFTER_FORWARD,RobotMap.SOLENOID_SHIFTER_REVERSE);
-		
+		// Climber, Gyro, Gear, Intake
 		climberRightMotor = new Talon(RobotMap.CLIMBER_MOTOR_RIGHT);
 		climberLeftMotor = new Talon(RobotMap.CLIMBER_MOTOR_LEFT);
 		gyro = new ADXRS450_Gyro(Port.kOnboardCS0);
 		gearClampPiston = new DoubleSolenoid(1, RobotMap.gearPistonForward, RobotMap.gearPistonReverse);
 		gearClampSensor = new DigitalInput(RobotMap.gearClampSensor);
+		intake = new Talon(RobotMap.INTAKE_MOTOR);
 	}
 }
