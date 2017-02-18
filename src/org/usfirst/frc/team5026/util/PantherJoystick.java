@@ -26,7 +26,7 @@ public class PantherJoystick extends Joystick{
   } 
    
   public double getScaledDeadzoneX() { 
-    return this.getDeadzoneJoystickValue(this.getMagnitude(), this.getX() * joystickType.scalingX, joystickType.deadzoneX + joystickType.bowtieScaling * (float) (getScaledDeadzoneY())); 
+    return this.getDeadzoneJoystickValue(this.getMagnitude(), this.getX() * joystickType.scalingX, joystickType.deadzoneX + joystickType.bowtieScaling * (float) (getY())); 
   } 
    
   public double getScaledDeadzoneY() {     
