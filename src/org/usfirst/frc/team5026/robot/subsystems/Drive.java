@@ -88,9 +88,9 @@ public class Drive extends Subsystem {
 	}
 	public boolean isTurnFinished() {
 		if(turningRight) {
-			return Math.abs(gyro.getAngle() - targetAngle) <= targetAngle * Constants.PERCENTAGE;
+			return Math.abs(gyro.getAngle() - targetAngle) <= targetAngle * Constants.PERCENTAGE_FOR_ERROR;
 		} else {
-			return Math.abs(gyro.getAngle() - targetAngle) > targetAngle * Constants.PERCENTAGE;
+			return Math.abs(gyro.getAngle() - targetAngle) > targetAngle * Constants.PERCENTAGE_FOR_ERROR;
 		}
 	}
 	

@@ -17,9 +17,9 @@ public class GearClamp extends Subsystem {
   protected void initDefaultCommand() { 
     // TODO Auto-generated method stub 
      
-  } 
+  }
  
-  public void elevateClamp(){ 
+  public void clampGear(){ 
     hardware.gearClampPiston.set(Value.kForward); 
   } 
   public void lowerClamp(){ 

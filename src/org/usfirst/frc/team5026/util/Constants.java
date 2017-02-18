@@ -8,7 +8,7 @@ public class Constants {
 	public static final float DEADZONE_Y = 0.0512f;
 	
 	// Gyro Constants
-	public static final double PERCENTAGE = 0.05; 
+	public static final double PERCENTAGE_FOR_ERROR = 0.05; 
 	public static final double TURN_SPEED = 0.5;
 	public static final double CLAMP_WAIT_TIME = 0.5;
 	
