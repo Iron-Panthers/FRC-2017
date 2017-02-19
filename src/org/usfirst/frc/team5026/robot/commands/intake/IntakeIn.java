@@ -34,5 +34,6 @@ public class IntakeIn extends Command {
     }
 
     protected void interrupted() {
+    	intake.stop();
     }
 }

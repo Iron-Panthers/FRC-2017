@@ -7,6 +7,8 @@ import org.usfirst.frc.team5026.robot.commands.drive.DriveShiftGear;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveSwapForwards;
 import org.usfirst.frc.team5026.robot.commands.gear.GearClampCommand;
 import org.usfirst.frc.team5026.robot.commands.gear.GearUnClampCommand;
+import org.usfirst.frc.team5026.robot.commands.intake.IntakeIn;
+import org.usfirst.frc.team5026.robot.commands.intake.IntakeOut;
 import org.usfirst.frc.team5026.util.PantherJoystick;
 
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -66,8 +68,8 @@ public class OI {
 		
 		boardButton1.whileHeld(new ClimberSequence());
 		boardButton2.whenPressed(new ClimberCycleSpeed());
-//		boardButton4.whileHeld(new IntakeIn());
-//		boardButton5.whileHeld(new IntakeOut());
+		boardButton4.whileHeld(new IntakeIn());
+		boardButton5.whileHeld(new IntakeOut());
 		boardButton6.whenPressed(new GearClampCommand());
 		boardButton7.whenPressed(new GearUnClampCommand());
 		boardButton8.whileHeld(new ClimberRappel());
