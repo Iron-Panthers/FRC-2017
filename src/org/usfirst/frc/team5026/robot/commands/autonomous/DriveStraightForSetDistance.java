@@ -19,7 +19,7 @@ public class DriveStraightForSetDistance extends Command {
 	@Override
 	protected void initialize() {
 		Robot.drive.stopMotors();
-		Robot.drive.startDriveDistance(distance);
+		Robot.drive.startDriveDistance(distance, distance);
 	}
 
 	

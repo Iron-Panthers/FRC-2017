@@ -23,14 +23,19 @@ public class Drive extends Subsystem {
 	public Gyro gyro;
 	Hardware hardware;
 	
-	public MotorGroup encMotor;
+	public MotorGroup encMotorLeft;
+	public MotorGroup encMotorRight;
 	
 	public double targetAngle;
 	private boolean turningRight = true;
 	
-	public double startingEncoderPos;
-	public double targetEncoderPos;
-	private boolean backwards;
+	public double startingEncoderPosLeft;
+	public double startingEncoderPosRight;
+	public double targetEncoderPosLeft;
+	public double targetEncoderPosRight;
+	
+	private boolean backwardsLeft;
+	private boolean backwardsRight;
 	
 	public Drive() {
 		joystick = Robot.oi.driveJoystick;
@@ -38,7 +43,7 @@ public class Drive extends Subsystem {
 		drive = new RobotDrive(hardware.leftMotor, hardware.rightMotor);
 		gyro = hardware.gyro;
 		shifter = Robot.hardware.shifter;
-		encMotor = hardware.leftMotor;
+		encMotorLeft = hardware.leftMotor;
 	}
 	
 	public void setLeftRightMotors(double left, double right) {
@@ -77,12 +82,7 @@ public class Drive extends Subsystem {
 		targetAngle = angle;
 		stopMotors();
 		gyro.reset();
-		if(targetAngle > 0) {
-			turningRight = true;
-		} else {
-			turningRight = false;
-		}
-//		gyro.calibrate();
+		turningRight = angle > 0 ? true: false;
 	}
 	public boolean isTurnFinished() {
 		if(turningRight) {
@@ -92,26 +92,28 @@ public class Drive extends Subsystem {
 		}
 	}
 	
-	public void startDriveDistance(double inches) {
+	public void startDriveDistance(double inchesLeft, double inchesRight) {
 		try {
 			gyro.reset();
 		} catch (NullPointerException e) {/*No gyro*/}
 		
-		backwards = false;
-		if(inches < 0) {
-			backwards = true; 
-		}
-		startingEncoderPos = encMotor.getEncPosition(); //"leftMotor" cringe
-		targetEncoderPos = (startingEncoderPos + (Constants.GEAR_RATIO * (inches / Constants.WHEEL_CIRCUMFERENCE) * Constants.ENCODER_TICKS_PER_ROTATION));
+		backwardsLeft = inchesLeft < 0 ? true : false;
+		backwardsRight = inchesRight < 0 ? true: false;
+		startingEncoderPosLeft = encMotorLeft.getEncPosition();
+		startingEncoderPosRight = encMotorRight.getEncPosition();
+		
+		targetEncoderPosLeft = (startingEncoderPosLeft + (Constants.GEAR_RATIO * (inchesLeft / Constants.WHEEL_CIRCUMFERENCE) * Constants.ENCODER_TICKS_PER_ROTATION));
+		targetEncoderPosRight = (startingEncoderPosRight + (Constants.GEAR_RATIO * (inchesLeft / Constants.WHEEL_CIRCUMFERENCE) * Constants.ENCODER_TICKS_PER_ROTATION));
 	}
-	public int getEnc() {
-		return encMotor.getEncPosition();
+	public double[] getEnc() {
+		double[] encs = {encMotorLeft.getEncPosition(), encMotorRight.getEncPosition()};
+		return encs;
 	}
 	
 	public double getDistanceError() {
 		// In inches
 		// Make sure to use the correct ratio
-		return ((encMotor.getEncPosition() - targetEncoderPos) * Constants.WHEEL_CIRCUMFERENCE) / (Constants.GEAR_RATIO * Constants.ENCODER_TICKS_PER_ROTATION);
+		return ((encMotorLeft.getEncPosition() - targetEncoderPosLeft) * Constants.WHEEL_CIRCUMFERENCE) / (Constants.GEAR_RATIO * Constants.ENCODER_TICKS_PER_ROTATION);
 	}
 	public double getGyroError() {
 		// In degrees
@@ -122,21 +124,56 @@ public class Drive extends Subsystem {
 			
 		}*/
 	}
-	
-	public void driveStraight(double speed) {
-		//try using different motors, or just add a getEncPosition method in motorgroup
-		if(backwards) {
-			Robot.drive.setLeftRightMotors(-speed, -speed);
-		} else {
-			Robot.drive.setLeftRightMotors(speed, speed);
+	private boolean isDoneSide(double current, double target) {
+		if (current > target - target * Constants.PERCENTAGE) {
+			// If we have reached our target on one side
+			return true;
 		}
+		return false;
+	}
+	private double speedCalculations(double speed, boolean backwards, double target, double current) {
+		speed = backwards ? -speed : speed;
+		double spd = speed;
+		if (backwards) {
+			// Speed is negative here
+			// Ex: 100 current; 40 target
+			if (isDoneSide(current, target)) return 0;
+			if (current < target * (2 - Constants.STRAIGHT_DRIVE_SLOWDOWN_TARGET_PERCENTAGE)) { // Changes 95% into 105%. Should be 1-percentage + 1, simplifies to 2-percentage
+				spd = speed * (current - target) / (target * (1-Constants.STRAIGHT_DRIVE_SLOWDOWN_TARGET_PERCENTAGE));
+				// Because spd is negative:
+				if (spd - Constants.MOTOR_DEADZONE > speed) {
+					spd -= Constants.MOTOR_DEADZONE;
+				}
+			}
+		}
+		else {
+			// Speed is always positive here
+			// Ex: 40 current; 100 target
+			if (isDoneSide(current, target)) return 0;
+			if (current > target * Constants.STRAIGHT_DRIVE_SLOWDOWN_TARGET_PERCENTAGE) {
+				spd = speed * (target - current) / (target * (1-Constants.STRAIGHT_DRIVE_SLOWDOWN_TARGET_PERCENTAGE));
+				// Because spd is positive
+				if (spd + Constants.MOTOR_DEADZONE < speed) {
+					spd += Constants.MOTOR_DEADZONE;
+				}
+			}
+		}
+		return spd;
+	}
+	public void driveStraight(double speed) {
+		double[] encs = getEnc();
+		double speedLeft = speedCalculations(speed, backwardsLeft, targetEncoderPosLeft, encs[0]);
+		double speedRight = speedCalculations(speed, backwardsRight, targetEncoderPosRight, encs[1]);
+		
+		setLeftRightMotors(speedLeft, speedRight);
 	}
 	
 	public boolean isFinishedDrivingDistance() {
-		if(backwards) {
-			return encMotor.getEncPosition() < targetEncoderPos; 
+		double[] encs = getEnc();
+		if (isDoneSide(encs[0], targetEncoderPosLeft) && isDoneSide(encs[1], targetEncoderPosRight)) {
+			return true;
 		}
-		return encMotor.getEncPosition() > targetEncoderPos; 
+		return false;
 	}
 
 	@Override

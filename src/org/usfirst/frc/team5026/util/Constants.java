@@ -2,30 +2,32 @@ package org.usfirst.frc.team5026.util;
 
 public class Constants { 
 	// Joystick Constants 
-	//RED 
+	// RED 
 	public static final float X_SCALING_RED = 0.7f; 
 	public static final float Y_SCALING_RED = 0.85f;  
 	public static final float DEADZONE_X_RED = 0.0563f; 
 	public static final float DEADZONE_Y_RED = 0.0512f; 
 	public static final float DEADZONE_Y_MAX_RED = 0.829f; 
 
-	//BLUE 
+	// BLUE 
 	public static final float X_SCALING_BLUE = 0.7f; 
 	public static final float Y_SCALING_BLUE = 0.85f;  
 	public static final float DEADZONE_X_BLUE = 0.0563f; 
 	public static final float DEADZONE_Y_BLUE = 0.0512f; 
 	public static final float DEADZONE_Y_MAX_BLUE = 0.829f; 
 
-	//SPINNY 
+	// SPINNY 
 	public static final float X_SCALING_SPINNY = 0.7f; 
 	public static final float Y_SCALING_SPINNY = 0.85f;  
 	public static final float DEADZONE_X_SPINNY = 0.0563f; 
 	public static final float DEADZONE_Y_SPINNY = 0.0512f; 
 	public static final float DEADZONE_Y_MAX_SPINNY = 0.829f; 
 
-	//Gyro Constants 
+	// Gyro Constants 
 	public static final double PERCENTAGE = 0.05;  
 	public static final double SPEED = 0.5; 
+	
+	// Gear Constants
 	public static final double CLAMP_WAIT_TIME = 0.5; 
 	   
 	//Climber Constants
@@ -41,19 +43,18 @@ public class Constants {
 	//Intake Constants
 	public static final double INTAKE_INTAKE_SPEED = 0.5;
 	public static final double INTAKE_OUTTAKE_SPEED = -0.5;
-} 
-	// Gyro Constants
-	public static final double PERCENTAGE = 0.05; 
-	public static final double SPEED = 0.5;
-	public static final double CLAMP_WAIT_TIME = 0.5;
 	
 	//Encoder constants
 	public static final double WHEEL_DIAMETER = 4;	//in inches
 	public static final double WHEEL_CIRCUMFERENCE = Math.PI * WHEEL_DIAMETER;
 	public static final int ENCODER_TICKS_PER_ROTATION = 1024;
 	
-	//Auto COnstants
-	public static final String DRIVE_DISTANCE_RAMP_SMD_NAME = "DriveRampDistance(inches)"; 
+	//Auto Constants
+	public static final String DRIVE_DISTANCE_RAMP_SMD_NAME_LEFT = "DriveRampDistance(inches) Left"; 
+	public static final String DRIVE_DISTANCE_RAMP_SMD_NAME_RIGHT = "DriveRampDistance(inches) Right";
 	public static final double STRAIGHT_DRIVE_SPEED = 0.5;
 	public static final double GEAR_RATIO = 5.36;
-}
+	public static final double STRAIGHT_DRIVE_SLOWDOWN_TARGET_PERCENTAGE = 0.90; // 0 < x < 1, At what point in the journey do we begin to slowdown?
+	public static final double MOTOR_DEADZONE = 0.2; // Slowest possible motor speed that still moves the robot
+	
+} 
