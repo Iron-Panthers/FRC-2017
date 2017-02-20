@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 public class MotorGroup implements SpeedController {
 	
 	public SpeedController[] motors;
-	private CANTalon encoderMotor;
+	public CANTalon encoderMotor;
 	private double speed;
 	
 	public MotorGroup(boolean[] isInverted, CANTalon encoderMotor, SpeedController... otherMotors) {

@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Drive extends Subsystem {
 	private RobotDrive drive;
@@ -44,6 +45,7 @@ public class Drive extends Subsystem {
 		gyro = hardware.gyro;
 		shifter = Robot.hardware.shifter;
 		encMotorLeft = hardware.leftMotor;
+		encMotorRight = hardware.rightMotor;
 	}
 	
 	public void setLeftRightMotors(double left, double right) {
@@ -99,6 +101,8 @@ public class Drive extends Subsystem {
 		
 		backwardsLeft = inchesLeft < 0 ? true : false;
 		backwardsRight = inchesRight < 0 ? true: false;
+		encMotorLeft.encoderMotor.reset();
+		encMotorRight.encoderMotor.reset();
 		startingEncoderPosLeft = encMotorLeft.getEncPosition();
 		startingEncoderPosRight = encMotorRight.getEncPosition();
 		
@@ -137,24 +141,48 @@ public class Drive extends Subsystem {
 		if (backwards) {
 			// Speed is negative here
 			// Ex: 100 current; 40 target
+			// -40 current; -200 target
 			if (isDoneSide(current, target)) return 0;
-			if (current < target * (2 - Constants.STRAIGHT_DRIVE_SLOWDOWN_TARGET_PERCENTAGE)) { // Changes 95% into 105%. Should be 1-percentage + 1, simplifies to 2-percentage
-				spd = speed * (current - target) / (target * (1-Constants.STRAIGHT_DRIVE_SLOWDOWN_TARGET_PERCENTAGE));
-				// Because spd is negative:
-				if (spd - Constants.MOTOR_DEADZONE > speed) {
-					spd -= Constants.MOTOR_DEADZONE;
+			// If target is positive
+			if (target > 0) {
+				if (current < target * (2 - Constants.STRAIGHT_DRIVE_SLOWDOWN_TARGET_PERCENTAGE)) { // Changes 95% into 105%. Should be 1-percentage + 1, simplifies to 2-percentage
+					spd = speed * (current - target) / (target * (1-Constants.STRAIGHT_DRIVE_SLOWDOWN_TARGET_PERCENTAGE));
+					// Because spd is negative:
+					if (spd - Constants.MOTOR_DEADZONE > speed) {
+						spd -= Constants.MOTOR_DEADZONE;
+					}
 				}
 			}
-		}
+			else {
+				if (current < target * Constants.STRAIGHT_DRIVE_SLOWDOWN_TARGET_PERCENTAGE) {
+					spd = speed * (target - current) / (target * (1-Constants.STRAIGHT_DRIVE_SLOWDOWN_TARGET_PERCENTAGE));
+					// Because spd is negative:
+					if (spd - Constants.MOTOR_DEADZONE > speed) {
+						spd -= Constants.MOTOR_DEADZONE;
+					}
+				}
+			}
+		} 
 		else {
 			// Speed is always positive here
 			// Ex: 40 current; 100 target
+			// -200 current; -40 target
 			if (isDoneSide(current, target)) return 0;
-			if (current > target * Constants.STRAIGHT_DRIVE_SLOWDOWN_TARGET_PERCENTAGE) {
-				spd = speed * (target - current) / (target * (1-Constants.STRAIGHT_DRIVE_SLOWDOWN_TARGET_PERCENTAGE));
-				// Because spd is positive
-				if (spd + Constants.MOTOR_DEADZONE < speed) {
-					spd += Constants.MOTOR_DEADZONE;
+			if (target > 0) {
+				if (current > target * Constants.STRAIGHT_DRIVE_SLOWDOWN_TARGET_PERCENTAGE) {
+					spd = speed * (target - current) / (target * (1-Constants.STRAIGHT_DRIVE_SLOWDOWN_TARGET_PERCENTAGE));
+					// Because spd is positive
+					if (spd + Constants.MOTOR_DEADZONE < speed) {
+						spd += Constants.MOTOR_DEADZONE;
+					}
+				}
+			} else {
+				if (current > target * (2-Constants.STRAIGHT_DRIVE_SLOWDOWN_TARGET_PERCENTAGE)) {
+					spd = speed * (current - target) / (target * (1 - Constants.STRAIGHT_DRIVE_SLOWDOWN_TARGET_PERCENTAGE));
+					// Speed is still positive
+					if (spd + Constants.MOTOR_DEADZONE < speed) {
+						spd += Constants.MOTOR_DEADZONE;
+					}
 				}
 			}
 		}
@@ -164,6 +192,9 @@ public class Drive extends Subsystem {
 		double[] encs = getEnc();
 		double speedLeft = speedCalculations(speed, backwardsLeft, targetEncoderPosLeft, encs[0]);
 		double speedRight = speedCalculations(speed, backwardsRight, targetEncoderPosRight, encs[1]);
+		
+		SmartDashboard.putNumber("SpeedLeft", speedLeft);
+		SmartDashboard.putNumber("SpeedRight", speedRight);
 		
 		setLeftRightMotors(speedLeft, speedRight);
 	}
