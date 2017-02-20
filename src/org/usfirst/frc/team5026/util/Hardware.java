@@ -43,16 +43,19 @@ public class Hardware {
 
 	public Hardware() {
 		// Drive Motors
-		leftMotor_1 = new CANTalon(RobotMap.DRIVE_MOTOR_LEFT_1);
+		leftMotor_1 = new CANTalon(RobotMap.DRIVE_MOTOR_LEFT_ENCODER);
 		leftMotor_2 = new CANTalon(RobotMap.DRIVE_MOTOR_LEFT_2);
 		leftMotor_3 = new CANTalon(RobotMap.DRIVE_MOTOR_LEFT_3);
-		rightMotor_1 = new CANTalon(RobotMap.DRIVE_MOTOR_RIGHT_1);
+		rightMotor_1 = new CANTalon(RobotMap.DRIVE_MOTOR_RIGHT_ENCODER);
 		rightMotor_2 = new CANTalon(RobotMap.DRIVE_MOTOR_RIGHT_2);
 		rightMotor_3 = new CANTalon(RobotMap.DRIVE_MOTOR_RIGHT_3);
 		leftMotor = new MotorGroup(invertedLeft, leftMotor_1, leftMotor_2, leftMotor_3);
 		rightMotor = new MotorGroup(invertedRight, rightMotor_1, rightMotor_2, rightMotor_3);
 		// Drive Excess
-		gyro = new ADXRS450_Gyro(Port.kOnboardCS0);
+		try {gyro = new ADXRS450_Gyro(Port.kOnboardCS0);}
+		catch (Exception e) {
+			System.out.println("No gyro");
+		}
 		shifter = new DoubleSolenoid(1,RobotMap.SOLENOID_SHIFTER_FORWARD,RobotMap.SOLENOID_SHIFTER_REVERSE);
 		// Climber, Gyro, Gear, Intake
 		climberRightMotor = new Talon(RobotMap.CLIMBER_MOTOR_RIGHT);

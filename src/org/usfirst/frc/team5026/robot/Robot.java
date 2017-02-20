@@ -2,10 +2,16 @@
 package org.usfirst.frc.team5026.robot;
 
 import org.usfirst.frc.team5026.robot.commands.JoystickChoose;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDoNothing;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoSequenceDriveStraightTurn_A_lot;
+import org.usfirst.frc.team5026.robot.commands.autonomous.DriveSequenceCheckErrorInDistance;
+import org.usfirst.frc.team5026.robot.commands.drive.DriveDrivebaseForTime;
+import org.usfirst.frc.team5026.robot.commands.drive.DriveTurnXDegrees;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
 import org.usfirst.frc.team5026.robot.subsystems.Intake;
+import org.usfirst.frc.team5026.util.Constants;
 import org.usfirst.frc.team5026.util.Hardware;
 import org.usfirst.frc.team5026.util.JoystickType;
 
@@ -31,8 +37,9 @@ public class Robot extends IterativeRobot {
 	public static GearClamp gearclamp;
 	public static Climber climber;
 	public static Intake intake;
-	
-	Command autonomousCommand;
+
+	Command autoCommand;
+	SendableChooser <Command> autoChooser = new SendableChooser<>();
 	SendableChooser <Command> chooser = new SendableChooser<>();
 
 	/**
@@ -51,6 +58,17 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Spinny Joystick", new JoystickChoose(JoystickType.SPINNY));
 		SmartDashboard.putData("Joystick Type", chooser);
 		SmartDashboard.putData(climber);
+		
+		SmartDashboard.putNumber(Constants.DRIVE_DISTANCE_RAMP_SMD_NAME, 150);
+		
+		autoChooser.addDefault("Nothing", new AutoDoNothing());
+		// Everytime u write a new auto, do autoChooser.addObject("NAME OF AUTO", new AUTOCOMMAND);
+		// Do that here
+		autoChooser.addObject("Drive forward, than back", new AutoSequenceDriveStraightTurn_A_lot());
+		autoChooser.addObject("Drive Distance Encoder Error Test", new DriveSequenceCheckErrorInDistance());
+		autoChooser.addObject("Drive for 5 seconds", new DriveDrivebaseForTime(0.5, 0.5, 5));
+		autoChooser.addObject("Turn 45 degrees right", new DriveTurnXDegrees(45));
+		SmartDashboard.putData("Autonomous Chooser", autoChooser);
 	}
 	
 	private void initSubsystems() {
@@ -99,6 +117,8 @@ public class Robot extends IterativeRobot {
 		 */
 
 		// schedule the autonomous command (example)
+		autoCommand = autoChooser.getSelected();
+		autoCommand.start();
 	}
 
 	/**

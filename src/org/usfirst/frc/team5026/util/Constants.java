@@ -42,3 +42,18 @@ public class Constants {
 	public static final double INTAKE_INTAKE_SPEED = 0.5;
 	public static final double INTAKE_OUTTAKE_SPEED = -0.5;
 } 
+	// Gyro Constants
+	public static final double PERCENTAGE = 0.05; 
+	public static final double SPEED = 0.5;
+	public static final double CLAMP_WAIT_TIME = 0.5;
+	
+	//Encoder constants
+	public static final double WHEEL_DIAMETER = 4;	//in inches
+	public static final double WHEEL_CIRCUMFERENCE = Math.PI * WHEEL_DIAMETER;
+	public static final int ENCODER_TICKS_PER_ROTATION = 1024;
+	
+	//Auto COnstants
+	public static final String DRIVE_DISTANCE_RAMP_SMD_NAME = "DriveRampDistance(inches)"; 
+	public static final double STRAIGHT_DRIVE_SPEED = 0.5;
+	public static final double GEAR_RATIO = 5.36;
+}
