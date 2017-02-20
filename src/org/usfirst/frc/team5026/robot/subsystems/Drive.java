@@ -107,7 +107,7 @@ public class Drive extends Subsystem {
 		startingEncoderPosRight = encMotorRight.getEncPosition();
 		
 		targetEncoderPosLeft = (startingEncoderPosLeft + (Constants.GEAR_RATIO * (inchesLeft / Constants.WHEEL_CIRCUMFERENCE) * Constants.ENCODER_TICKS_PER_ROTATION));
-		targetEncoderPosRight = (startingEncoderPosRight + (Constants.GEAR_RATIO * (inchesLeft / Constants.WHEEL_CIRCUMFERENCE) * Constants.ENCODER_TICKS_PER_ROTATION));
+		targetEncoderPosRight = (startingEncoderPosRight + (Constants.GEAR_RATIO * (inchesRight / Constants.WHEEL_CIRCUMFERENCE) * Constants.ENCODER_TICKS_PER_ROTATION));
 	}
 	public double[] getEnc() {
 		double[] encs = {encMotorLeft.getEncPosition(), encMotorRight.getEncPosition()};
@@ -142,6 +142,7 @@ public class Drive extends Subsystem {
 			// Speed is negative here
 			// Ex: 100 current; 40 target
 			// -40 current; -200 target
+			// 0 current; -40 target
 			if (isDoneSide(current, target)) return 0;
 			// If target is positive
 			if (target > 0) {
@@ -159,6 +160,8 @@ public class Drive extends Subsystem {
 					// Because spd is negative:
 					if (spd - Constants.MOTOR_DEADZONE > speed) {
 						spd -= Constants.MOTOR_DEADZONE;
+					} else {
+						spd = speed;
 					}
 				}
 			}
