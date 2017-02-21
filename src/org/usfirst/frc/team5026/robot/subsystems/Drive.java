@@ -100,7 +100,7 @@ public class Drive extends Subsystem {
 		} catch (NullPointerException e) {/*No gyro*/}
 		
 		backwardsLeft = inchesLeft < 0 ? true : false;
-		backwardsRight = inchesRight < 0 ? true: false;
+		backwardsRight = inchesRight < 0 ? false: true;
 		encMotorLeft.encoderMotor.reset();
 		encMotorRight.encoderMotor.reset();
 		startingEncoderPosLeft = encMotorLeft.getEncPosition();
@@ -129,7 +129,7 @@ public class Drive extends Subsystem {
 		}*/
 	}
 	private boolean isDoneSide(double current, double target) {
-		if (current > target - target * Constants.PERCENTAGE) {
+		if (Math.abs(current) > Math.abs(target * (1 - Constants.PERCENTAGE)) && Math.abs(current) < Math.abs(target * (1 + Constants.PERCENTAGE))) {
 			// If we have reached our target on one side
 			return true;
 		}
@@ -193,6 +193,7 @@ public class Drive extends Subsystem {
 	}
 	public void driveStraight(double speed) {
 		double[] encs = getEnc();
+		// TODO RESOLVE -
 		double speedLeft = speedCalculations(speed, backwardsLeft, targetEncoderPosLeft, encs[0]);
 		double speedRight = speedCalculations(speed, backwardsRight, targetEncoderPosRight, encs[1]);
 		
@@ -205,8 +206,10 @@ public class Drive extends Subsystem {
 	public boolean isFinishedDrivingDistance() {
 		double[] encs = getEnc();
 		if (isDoneSide(encs[0], targetEncoderPosLeft) && isDoneSide(encs[1], targetEncoderPosRight)) {
+			SmartDashboard.putBoolean("Is Driving Complete?", true);
 			return true;
 		}
+		SmartDashboard.putBoolean("Is Driving Complete?", false);
 		return false;
 	}
 

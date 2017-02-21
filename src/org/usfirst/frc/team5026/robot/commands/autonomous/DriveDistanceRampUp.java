@@ -11,7 +11,7 @@ public class DriveDistanceRampUp extends Command {
 	
 	private double distanceLeft = 0;	//in inches
 	private double distanceRight = 0;
-	private double ramp = 0; // TODO THIS SHOULD BE FIXED IF RAMPING DOESN'T WORK, CHANGE TO 1!
+	private double ramp = 1; // TODO THIS SHOULD BE FIXED IF RAMPING DOESN'T WORK, CHANGE TO 1!
 	private double inc = 0.01;
 	private double speed;
 	
