@@ -5,6 +5,7 @@ import org.usfirst.frc.team5026.robot.commands.drive.DriveWithJoystick;
 import org.usfirst.frc.team5026.util.Constants;
 import org.usfirst.frc.team5026.util.GearPosition;
 import org.usfirst.frc.team5026.util.Hardware;
+import org.usfirst.frc.team5026.util.LEDDisplay;
 import org.usfirst.frc.team5026.util.PantherJoystick;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -18,6 +19,7 @@ public class Drive extends Subsystem {
 	
 	private PantherJoystick joystick;
 	private DoubleSolenoid shifter;
+	private LEDDisplay led;
 	private GearPosition pos = GearPosition.LOW;
 	Gyro gyro;
 	Hardware hardware;
@@ -29,20 +31,23 @@ public class Drive extends Subsystem {
 		hardware = Robot.hardware;
 		drive = new RobotDrive(hardware.leftMotor, hardware.rightMotor);
 		gyro = hardware.gyro;
-		shifter = Robot.hardware.shifter;
+		shifter = hardware.shifter;
+		led = hardware.led;
 	}
 	
 	public void setLeftRightMotors(double left, double right) {
 		drive.setLeftRightMotorOutputs(left, right);
-	} 
+	}
 	
 	public void setGear() {
 		if (pos== GearPosition.LOW) {
 			pos = GearPosition.HIGH;
 			shifter.set(Value.kReverse);
+			led.writeRegister(Constants.LED_SHIFT_INDEX, Constants.LED_SHIFT_HIGH);
 		} else {
 			pos = GearPosition.LOW;
 			shifter.set(Value.kForward);
+			led.writeRegister(Constants.LED_SHIFT_INDEX, Constants.LED_SHIFT_LOW);
 		}
 		// Flip flops gear position
 	}

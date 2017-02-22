@@ -9,6 +9,7 @@ import org.usfirst.frc.team5026.robot.commands.gear.GearClampCommand;
 import org.usfirst.frc.team5026.robot.commands.gear.GearUnClampCommand;
 import org.usfirst.frc.team5026.robot.commands.intake.IntakeIn;
 import org.usfirst.frc.team5026.robot.commands.intake.IntakeOut;
+import org.usfirst.frc.team5026.robot.commands.misc.LEDSignalGear;
 import org.usfirst.frc.team5026.util.PantherJoystick;
 
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -65,6 +66,7 @@ public class OI {
 	public void mapButtonBoard() {
 		driveButton1.whileHeld(new DriveSwapForwards());
 		driveButton3.whenPressed(new DriveShiftGear());
+		driveButton2.whileHeld(new LEDSignalGear());
 		
 		boardButton1.whileHeld(new ClimberSequence());
 		boardButton2.whenPressed(new ClimberCycleSpeed());

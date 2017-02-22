@@ -51,6 +51,8 @@ public class RobotMap {
 	public static final int gearPistonForward = 0;
 	public static final int gearPistonReverse = 1;
 	public static final int gearClampSensor = 0;
+	
+	public static final int CAN_LED_PORT = 3;
 }
 	
 

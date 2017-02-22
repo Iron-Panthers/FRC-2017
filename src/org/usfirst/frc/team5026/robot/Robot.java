@@ -6,6 +6,8 @@ import org.usfirst.frc.team5026.robot.subsystems.Climber;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
 import org.usfirst.frc.team5026.robot.subsystems.Intake;
+import org.usfirst.frc.team5026.util.Color;
+import org.usfirst.frc.team5026.util.Constants;
 import org.usfirst.frc.team5026.util.Hardware;
 import org.usfirst.frc.team5026.util.JoystickType;
 
@@ -111,12 +113,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
-		// This makes sure that the autonomous stops running when
-		// teleop starts running. If you want the autonomous to
-		// continue until interrupted by another command, remove
-		// this line or comment it out. 
-		//hardware.gyro.reset();
-		//chooser.getSelected().start();
+
 	}
 
 	/**
@@ -124,7 +121,6 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		//System.out.println(hardware.gyro.getAngle());
 		Scheduler.getInstance().run();
 	}
 

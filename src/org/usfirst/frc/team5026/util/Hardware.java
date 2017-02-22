@@ -40,6 +40,8 @@ public class Hardware {
 	
 	public DoubleSolenoid gearClampPiston;
 	public DigitalInput gearClampSensor;
+	
+	public LEDDisplay led;
 
 	public Hardware() {
 		// Drive Motors
@@ -61,5 +63,7 @@ public class Hardware {
 		gearClampPiston = new DoubleSolenoid(1, RobotMap.gearPistonForward, RobotMap.gearPistonReverse);
 		gearClampSensor = new DigitalInput(RobotMap.gearClampSensor);
 		intake = new Talon(RobotMap.INTAKE_MOTOR);
+		
+		led = new LEDDisplay(RobotMap.CAN_LED_PORT);
 	}
 }

@@ -15,6 +15,7 @@ public class DriveShiftGear extends Command {
 
     protected void initialize() {
     	Robot.drive.setGear();
+    	Robot.hardware.led.cycleStates();
     }
 
     protected boolean isFinished() {
