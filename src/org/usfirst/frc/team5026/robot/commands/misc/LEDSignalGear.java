@@ -14,8 +14,7 @@ public class LEDSignalGear extends Command {
     }
 
     protected void initialize() {
-    	Robot.hardware.led.writeRegister(Constants.LED_GEAR_INDEX, Constants.LED_GEAR_TIME, Constants.LED_GEAR_RELEASE);
-    	Robot.hardware.led.showRegister(Constants.LED_GEAR_INDEX);
+    	Robot.hardware.led.setColor(Constants.LED_GEAR_RELEASE);
     }
 
     protected void execute() {
@@ -27,11 +26,11 @@ public class LEDSignalGear extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.hardware.led.cycleStates();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	Robot.hardware.led.cycleStates();
     }
 }

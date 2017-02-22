@@ -4,14 +4,21 @@ import com.mindsensors.CANLight;
 
 public class LEDDisplay extends CANLight {
 	
+	public Color[] register = new Color[2];
+	
 	public LEDDisplay(int port)
 	{
 		super(port);
+		
+		writeRegister(Constants.LED_DRIVE_INDEX, Constants.LED_TIME_DEFAULT, Constants.LED_DRIVE_FORWARD);
+		writeRegister(Constants.LED_SHIFT_INDEX, Constants.LED_TIME_DEFAULT, Constants.LED_SHIFT_LOW);
 	}
 	
 	public void cycleStates()
 	{
-		cycle(1, 2);
+		reset();
+		writeRegister(Constants.LED_TIME_DEFAULT, register);
+		cycle(Constants.LED_SHIFT_INDEX, Constants.LED_DRIVE_INDEX);
 	}
 	public void cycle(ColorTime... ct)
 	{
@@ -70,11 +77,13 @@ public class LEDDisplay extends CANLight {
 		reset();
 		for(int i = 0; i < colors.length; i++)
 		{
+			register[i] = colors[i];
 			writeRegister(i, time, colors[i].red, colors[i].green, colors[i].blue);
 		}
 	}
 	public void writeRegister(int index, double time, Color color)
 	{
+		register[index] = color;
 		writeRegister(index, time, color.red, color.green, color.blue);
 	}
 }
