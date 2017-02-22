@@ -9,6 +9,10 @@ public class LEDDisplay extends CANLight {
 		super(port);
 	}
 	
+	public void cycleStates()
+	{
+		cycle(1, 2);
+	}
 	public void cycle(ColorTime... ct)
 	{
 		writeRegister(ct);
@@ -52,6 +56,7 @@ public class LEDDisplay extends CANLight {
 	{
 		showRGB(color.red, color.green, color.blue);
 	}
+	
 	public void writeRegister(ColorTime... ct)
 	{
 		reset();
@@ -67,5 +72,9 @@ public class LEDDisplay extends CANLight {
 		{
 			writeRegister(i, time, colors[i].red, colors[i].green, colors[i].blue);
 		}
+	}
+	public void writeRegister(int index, double time, Color color)
+	{
+		writeRegister(index, time, color.red, color.green, color.blue);
 	}
 }
