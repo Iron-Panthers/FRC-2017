@@ -7,6 +7,7 @@ import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SPI.Port;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
@@ -25,6 +26,14 @@ public class Hardware {
 	
 	public Talon climberRightMotor;
 	public Talon climberLeftMotor;
+	
+	public boolean climberLeftInverted = false;
+	public boolean climberRightInverted = true;
+	
+	public Talon intake;
+	
+	public PowerDistributionPanel pdp = new PowerDistributionPanel();
+	
 	public DoubleSolenoid shifter;
 	
 	public Gyro gyro;
@@ -47,12 +56,13 @@ public class Hardware {
 		// Drive Excess
 		gyro = new ADXRS450_Gyro(Port.kOnboardCS0);
 		shifter = new DoubleSolenoid(1,RobotMap.SOLENOID_SHIFTER_FORWARD,RobotMap.SOLENOID_SHIFTER_REVERSE);
-		
+		// Climber, Gyro, Gear, Intake
 		climberRightMotor = new Talon(RobotMap.CLIMBER_MOTOR_RIGHT);
 		climberLeftMotor = new Talon(RobotMap.CLIMBER_MOTOR_LEFT);
 		gyro = new ADXRS450_Gyro(Port.kOnboardCS0);
 		gearClampPiston = new DoubleSolenoid(1, RobotMap.gearPistonForward, RobotMap.gearPistonReverse);
 		gearClampSensor = new DigitalInput(RobotMap.gearClampSensor);
+		intake = new Talon(RobotMap.INTAKE_MOTOR);
 		
 		led = new LEDDisplay(RobotMap.CAN_LED_PORT);
 	}

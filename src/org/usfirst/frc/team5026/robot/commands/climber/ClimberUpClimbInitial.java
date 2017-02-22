@@ -1,39 +1,35 @@
 package org.usfirst.frc.team5026.robot.commands.climber;
 
+import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team5026.robot.Robot;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
 
-import edu.wpi.first.wpilibj.command.Command;
-
-public class ClimberUpWrap extends Command {
+public class ClimberUpClimbInitial extends Command {
 
     private Climber climber;
 
-    public ClimberUpWrap() {
+    public ClimberUpClimbInitial() {
         requires(Robot.climber);
         climber = Robot.climber;
     }
 
     protected void initialize() {
         climber.stopClimb();
+        System.out.println("Climber Initial");
     }
 
     protected void execute() {
-        climber.wrapClimb();
+        climber.climbScaling();
     }
 
     protected boolean isFinished() {
-        return climber.hasResistance();
+        return !Robot.oi.boardButton1.get();
     }
 
     protected void end() {
         climber.stopClimb();
-        System.out.println("CLIMBER WRAP END");
-
     }
 
     protected void interrupted() {
-        end();
-        System.out.println("CLIMBER WRAP INTERRUPTED");
     }
 }

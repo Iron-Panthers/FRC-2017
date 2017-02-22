@@ -1,10 +1,9 @@
 package org.usfirst.frc.team5026.robot.commands.climber;
 
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import org.usfirst.frc.team5026.robot.Robot;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 public class ClimberStop extends Command {
 
@@ -16,8 +15,6 @@ public class ClimberStop extends Command {
     }
 
     protected void initialize() {
-    	climber.stopClimb();
-    	System.out.println("Stop");
     }
 
     protected void execute() {
@@ -25,7 +22,7 @@ public class ClimberStop extends Command {
     }
 
     protected boolean isFinished() {
-    	return false;
+    	return !Robot.oi.boardButton1.get();
     }
 
     protected void end() {
@@ -33,7 +30,6 @@ public class ClimberStop extends Command {
     }
 
     protected void interrupted() {
-    		end();
     }
 }
 

@@ -7,6 +7,7 @@ import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
 import org.usfirst.frc.team5026.util.Color;
 import org.usfirst.frc.team5026.util.ColorTime;
+import org.usfirst.frc.team5026.robot.subsystems.Intake;
 import org.usfirst.frc.team5026.util.Hardware;
 import org.usfirst.frc.team5026.util.JoystickType;
 
@@ -31,6 +32,8 @@ public class Robot extends IterativeRobot {
 	public static Drive drive;
 	public static GearClamp gearclamp;
 	public static Climber climber;
+	public static Intake intake;
+	
 	Command autonomousCommand;
 	SendableChooser <Command> chooser = new SendableChooser<>();
 
@@ -43,19 +46,21 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		hardware = new Hardware();
 		initSubsystems();
-	}
-	
-	private void initSubsystems() {
-		drive = new Drive();
-		climber = new Climber();
-		gearclamp = new GearClamp();
-		oi.mapButtonBoard();
 		SmartDashboard.putData(Scheduler.getInstance());
 		chooser.addDefault("Red Joystick", new JoystickChoose(JoystickType.RED));
 		// The name should be joystick type, the object is: new JoystickChoose(proper joystick type);
 		chooser.addObject("Blue Joystick", new JoystickChoose(JoystickType.BLUE));
 		chooser.addObject("Spinny Joystick", new JoystickChoose(JoystickType.SPINNY));
 		SmartDashboard.putData("Joystick Type", chooser);
+		SmartDashboard.putData(climber);
+	}
+	
+	private void initSubsystems() {
+		drive = new Drive();
+		climber = new Climber();
+		gearclamp = new GearClamp();
+		intake = new Intake();
+		oi.mapButtonBoard();
 	}
 
 	/**
@@ -119,6 +124,8 @@ public class Robot extends IterativeRobot {
 //		hardware.led.blinkLED(4);
 		hardware.led.flash(Color.PAKISTAN_GREEN);
 //		hardware.led.cycle(Color.PERSIAN_GREEN, Color.DEEP_MAGENTA, Color.MEDIUM_SPRING_GREEN, Color.ELECTRIC_INDIGO, Color.YELLOW, Color.BLACK);
+		//hardware.gyro.reset();
+		//chooser.getSelected().start();
 	}
 
 	/**
@@ -126,6 +133,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		//System.out.println(hardware.gyro.getAngle());
 		Scheduler.getInstance().run();
 	}
 

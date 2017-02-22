@@ -37,19 +37,14 @@ public class Drive extends Subsystem {
 	} 
 	
 	public void setGear() {
-		switch (pos) {
-		case HIGH:
-			pos = GearPosition.LOW;
-		case LOW:
+		if (pos== GearPosition.LOW) {
 			pos = GearPosition.HIGH;
+			shifter.set(Value.kReverse);
+		} else {
+			pos = GearPosition.LOW;
+			shifter.set(Value.kForward);
 		}
 		// Flip flops gear position
-		switch (pos) {
-		case HIGH:
-			shifter.set(Value.kForward);
-		case LOW:
-			shifter.set(Value.kReverse);
-		}
 	}
 	
 	public void useArcadeDrive(double yAxis, double xAxis) {
