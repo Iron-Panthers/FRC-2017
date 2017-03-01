@@ -44,7 +44,10 @@ public class Hardware {
 		leftMotor = new MotorGroup(invertedLeft, leftMotor_1, leftMotor_2, leftMotor_3);
 		rightMotor = new MotorGroup(invertedRight, rightMotor_1, rightMotor_2, rightMotor_3);
 		// Drive Excess
-		gyro = new ADXRS450_Gyro(Port.kOnboardCS0);
+		try {gyro = new ADXRS450_Gyro(Port.kOnboardCS0);}
+		catch (Exception e) {
+			System.out.println("No gyro");
+		}
 		shifter = new DoubleSolenoid(1,RobotMap.SOLENOID_SHIFTER_FORWARD,RobotMap.SOLENOID_SHIFTER_REVERSE);
 		
 		climbRightMotor = new Talon(RobotMap.CLIMB_MOTOR_RIGHT);

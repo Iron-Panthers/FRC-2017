@@ -9,16 +9,17 @@ public class Constants {
 	
 	// Gyro Constants
 	public static final double PERCENTAGE_FOR_ERROR = 0.05; 
-	public static final double SPEED = 0.5;
+	public static final double TURN_SPEED = 0.5;
 	public static final double CLAMP_WAIT_TIME = 0.5;
 	
 	//Encoder constants
 	public static final double WHEEL_DIAMETER = 4;	//in inches
 	public static final double WHEEL_CIRCUMFERENCE = Math.PI * WHEEL_DIAMETER;
-	public static final int ENCODER_TICKS_PER_ROTATION = 256;	//we don't actually know the value yet
+	public static final int ENCODER_TICKS_PER_ROTATION = 1024;
 	
-	//AUto COnstants
+	//Auto COnstants
+	public static final String DRIVE_DISTANCE_RAMP_SMD_NAME = "DriveRampDistance(inches)"; 
+	public static final String DRIVE_TURNXDEGREES_NAME = "DriveTurnXDegrees(degrees)"; 
 	public static final double STRAIGHT_DRIVE_SPEED = 0.5;
-	public static final double LOW_GEAR_RATIO = 13.5;
-	public static final double HIGH_GEAR_RATIO = 5.1; 
+	public static final double GEAR_RATIO = 5.36;
 }

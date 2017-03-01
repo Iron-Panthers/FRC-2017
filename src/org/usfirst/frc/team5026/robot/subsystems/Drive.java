@@ -1,10 +1,11 @@
 package org.usfirst.frc.team5026.robot.subsystems;
 
 import org.usfirst.frc.team5026.robot.Robot;
-import org.usfirst.frc.team5026.robot.commands.DriveWithJoystick;
+import org.usfirst.frc.team5026.robot.commands.drive.DriveWithJoystick;
 import org.usfirst.frc.team5026.util.Constants;
 import org.usfirst.frc.team5026.util.GearPosition;
 import org.usfirst.frc.team5026.util.Hardware;
+import org.usfirst.frc.team5026.util.MotorGroup;
 import org.usfirst.frc.team5026.util.PantherJoystick;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -18,13 +19,19 @@ public class Drive extends Subsystem {
 	
 	private PantherJoystick joystick;
 	private DoubleSolenoid shifter;
-	Gyro gyro;
+	public Gyro gyro;
 	Hardware hardware;
 	
-	private double targetAngle;
+	public MotorGroup encLeftMotor;
+	public MotorGroup encRightMotor;
 	
-	private double startingEncoderPos;
-	private double targetEncoderPos;
+	public double targetAngle;
+	private boolean turningRight = true;
+	
+	public double startingLeftEncoderPos;
+	public double startingRightEncoderPos;
+	public double targetLeftEncoderPos;
+	public double targetRightEncoderPos;
 	private boolean backwards;
 	
 	public Drive() {
@@ -33,6 +40,9 @@ public class Drive extends Subsystem {
 		drive = new RobotDrive(hardware.leftMotor, hardware.rightMotor);
 		gyro = hardware.gyro;
 		shifter = Robot.hardware.shifter;
+		
+		encLeftMotor = hardware.leftMotor;
+		encRightMotor = hardware.rightMotor;
 	}
 	
 	public void setLeftRightMotors(double left, double right) {
@@ -58,21 +68,30 @@ public class Drive extends Subsystem {
 	
 	//one spark controller is backwards, testing if values need to be opposite
 	public void rotateRobot(double speed) {
-		if (targetAngle - gyro.getAngle() <= targetAngle * Constants.PERCENTAGE_FOR_ERROR) {
-    		Robot.drive.setLeftRightMotors(speed, speed);
-    	} 
-		else if(targetAngle - gyro.getAngle() >= targetAngle * Constants.PERCENTAGE_FOR_ERROR){
-    		Robot.drive.setLeftRightMotors(-speed, -speed);
+		if (turningRight) {
+    		Robot.drive.setLeftRightMotors(speed, -speed); 
+    	} else {
+    		Robot.drive.setLeftRightMotors(-speed, speed);
     	}
 	}
 	
 	public void setRotate(double angle) {
 		targetAngle = angle;
 		stopMotors();
-		gyro.calibrate();
+		gyro.reset();
+		if(targetAngle > 0) {
+			turningRight = true;
+		} else {
+			turningRight = false;
+		}
+//		gyro.calibrate();
 	}
 	public boolean isTurnFinished() {
-		return Math.abs(targetAngle - gyro.getAngle()) <= targetAngle * Constants.PERCENTAGE_FOR_ERROR;	
+		if(turningRight) {
+			return Math.abs(gyro.getAngle() - targetAngle) <= targetAngle * Constants.PERCENTAGE_FOR_ERROR;
+		} else {
+			return Math.abs(gyro.getAngle() - targetAngle) > targetAngle * Constants.PERCENTAGE_FOR_ERROR;
+		}
 	}
 	
 	public void startDriveDistance(double inches) {
@@ -80,25 +99,61 @@ public class Drive extends Subsystem {
 		if(inches < 0) {
 			backwards = true; 
 		}
-		startingEncoderPos = hardware.leftMotor.getEncPosition(); //"leftMotor" cringe
-		//which gear ratio ????????????????????????????
-		targetEncoderPos = (startingEncoderPos + (Constants.LOW_GEAR_RATIO * (inches / Constants.WHEEL_CIRCUMFERENCE) * Constants.ENCODER_TICKS_PER_ROTATION));
-	}
+		startingLeftEncoderPos = encLeftMotor.getEncPosition(); //"leftMotor" cringe
+		targetLeftEncoderPos = (startingLeftEncoderPos + (Constants.GEAR_RATIO * (inches / Constants.WHEEL_CIRCUMFERENCE) * Constants.ENCODER_TICKS_PER_ROTATION));
 		
-	public void driveStraight(double speed) {
-		//try using different motors, or just add a getEncPosition method in motorgroup
-		if(backwards) {
-			Robot.drive.setLeftRightMotors(-speed, -speed);
-		} else {
-			Robot.drive.setLeftRightMotors(speed, speed);
-		}
+		startingRightEncoderPos = encRightMotor.getEncPosition();
+		targetRightEncoderPos = (startingRightEncoderPos + (Constants.GEAR_RATIO * (inches / Constants.WHEEL_CIRCUMFERENCE) * Constants.ENCODER_TICKS_PER_ROTATION));
+	}
+	public double getLeftEnc() {
+		return encLeftMotor.getEncPosition();
+	}
+	public double getRightEnc() {
+		return encRightMotor.getEncPosition();
 	}
 	
-	public boolean isFinishedDrivingDistance() {
+	public double getDistanceError() {
+		// In inches
+		// Make sure to use the correct ratio
+		return ((encLeftMotor.getEncPosition() - targetLeftEncoderPos) * Constants.WHEEL_CIRCUMFERENCE) / (Constants.GEAR_RATIO * Constants.ENCODER_TICKS_PER_ROTATION);
+	}
+	public double getGyroError() {
+		// In degrees
+		return gyro.getAngle() - targetAngle;
+	}
+	public double getGyro()
+	{
+		return gyro.getAngle();
+	}
+	public void driveStraightWithTicks(double speed) {
+		/*while(encMotor.get() <= 57344){
+			
+		}*/
+	}
+	
+	public void driveStraight(double speed) {
+		//try using different motors, or just add a getEncPosition method in motorgroup
+		this.encLeftMotor.set(backwards ? -1: 1 * speed);
+	}
+	
+	public boolean isFinishedDrivingDistance(MotorGroup encMotor) {	//i'm sure there's a better way to do this
 		if(backwards) {
-			return hardware.leftMotor.getEncPosition() < targetEncoderPos; 
+			return Math.abs(encMotor.getEncPosition() - startingLeftEncoderPos) < targetLeftEncoderPos; 
 		}
-		return hardware.leftMotor.getEncPosition() > targetEncoderPos; 
+		return Math.abs(encMotor.getEncPosition() - startingRightEncoderPos) > targetLeftEncoderPos;
+	} 
+	
+	public void autoDriveDistance() {
+		if(!isFinishedDrivingDistance(encLeftMotor)) {
+			this.encLeftMotor.set((backwards ? -1 : 1) * Constants.STRAIGHT_DRIVE_SPEED);
+		} else {
+			this.encLeftMotor.stopMotor();
+		}
+		if(!isFinishedDrivingDistance(encRightMotor)) {
+			this.encRightMotor.set((backwards ? -1 : 1) * Constants.STRAIGHT_DRIVE_SPEED);
+		} else {
+			this.encRightMotor.stopMotor();
+		}
 	}
 
 	@Override

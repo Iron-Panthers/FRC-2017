@@ -5,6 +5,7 @@ import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.util.Constants;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveStraightForSetDistance extends Command {
 	
@@ -25,12 +26,12 @@ public class DriveStraightForSetDistance extends Command {
 	
 	@Override
 	protected void execute() {
-		Robot.drive.driveStraight(Constants.STRAIGHT_DRIVE_SPEED);
+		Robot.drive.autoDriveDistance();
 	}
 
 	@Override
 	protected boolean isFinished() {
-		return Robot.drive.isFinishedDrivingDistance();
+		return Robot.drive.isFinishedDrivingDistance(Robot.drive.encLeftMotor) && Robot.drive.isFinishedDrivingDistance(Robot.drive.encRightMotor);
 	}
 	
 	@Override

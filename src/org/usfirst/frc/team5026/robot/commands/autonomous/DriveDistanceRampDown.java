@@ -1,34 +1,39 @@
 package org.usfirst.frc.team5026.robot.commands.autonomous;
 
 import org.usfirst.frc.team5026.robot.Robot;
-import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.util.Constants;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class Turn45DegreesRight extends Command {
-
-	private Drive drive;
+public class DriveDistanceRampDown extends Command {
 	
-	public Turn45DegreesRight() {
+	private double ramp = 0;
+	private double speed;
+	private double inc = 0.01;
+	
+	public DriveDistanceRampDown() {
 		requires(Robot.drive);
+		speed = Constants.STRAIGHT_DRIVE_SPEED;
+	}
+	public DriveDistanceRampDown(double speed) {
+		requires(Robot.drive);
+		this.speed = speed;
 	}
 	
 	@Override
 	protected void initialize() {
-		Robot.drive.setRotate(45);
 	}
 
 	
 	@Override
 	protected void execute() {
-		Robot.drive.rotateRobot(Constants.SPEED);
+		Robot.drive.driveStraight(speed * ramp);
+		ramp -= inc;
 	}
 
 	@Override
 	protected boolean isFinished() {
-		// TODO Auto-generated method stub
-		return Robot.drive.isTurnFinished();
+		return ramp <= 0;
 	}
 	
 	@Override
