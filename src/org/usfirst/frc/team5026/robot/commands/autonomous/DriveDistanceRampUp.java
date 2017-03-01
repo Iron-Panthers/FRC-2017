@@ -39,7 +39,7 @@ public class DriveDistanceRampUp extends Command {
 	@Override
 	protected void execute() {
 		SmartDashboard.putNumber("RAW FINISH ENCODER", Robot.drive.targetLeftEncoderPos);
-    	SmartDashboard.putNumber("RAW CURRENT ENCODER", Robot.drive.getEnc());
+    	SmartDashboard.putNumber("RAW CURRENT ENCODER", Robot.drive.getLeftEnc());
     	SmartDashboard.putNumber("RAW START ENCODER", Robot.drive.startingLeftEncoderPos);
 		Robot.drive.driveStraight(speed * ramp);
 		if (ramp < 1) {

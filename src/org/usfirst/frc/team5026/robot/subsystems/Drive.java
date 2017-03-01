@@ -105,8 +105,11 @@ public class Drive extends Subsystem {
 		startingRightEncoderPos = encRightMotor.getEncPosition();
 		targetRightEncoderPos = (startingRightEncoderPos + (Constants.GEAR_RATIO * (inches / Constants.WHEEL_CIRCUMFERENCE) * Constants.ENCODER_TICKS_PER_ROTATION));
 	}
-	public int getEnc() {
+	public double getLeftEnc() {
 		return encLeftMotor.getEncPosition();
+	}
+	public double getRightEnc() {
+		return encRightMotor.getEncPosition();
 	}
 	
 	public double getDistanceError() {
@@ -117,6 +120,10 @@ public class Drive extends Subsystem {
 	public double getGyroError() {
 		// In degrees
 		return gyro.getAngle() - targetAngle;
+	}
+	public double getGyro()
+	{
+		return gyro.getAngle();
 	}
 	public void driveStraightWithTicks(double speed) {
 		/*while(encMotor.get() <= 57344){
@@ -131,19 +138,19 @@ public class Drive extends Subsystem {
 	
 	public boolean isFinishedDrivingDistance(MotorGroup encMotor) {	//i'm sure there's a better way to do this
 		if(backwards) {
-			return encMotor.getEncPosition() < targetLeftEncoderPos; 
+			return Math.abs(encMotor.getEncPosition() - startingLeftEncoderPos) < targetLeftEncoderPos; 
 		}
-		return encMotor.getEncPosition() > targetLeftEncoderPos;
+		return Math.abs(encMotor.getEncPosition() - startingRightEncoderPos) > targetLeftEncoderPos;
 	} 
 	
 	public void autoDriveDistance() {
 		if(!isFinishedDrivingDistance(encLeftMotor)) {
-			this.encLeftMotor.set(backwards ? -1: 1 * Constants.STRAIGHT_DRIVE_SPEED);
+			this.encLeftMotor.set((backwards ? -1 : 1) * Constants.STRAIGHT_DRIVE_SPEED);
 		} else {
 			this.encLeftMotor.stopMotor();
 		}
 		if(!isFinishedDrivingDistance(encRightMotor)) {
-			this.encRightMotor.set(backwards ? -1: 1 * Constants.STRAIGHT_DRIVE_SPEED);
+			this.encRightMotor.set((backwards ? -1 : 1) * Constants.STRAIGHT_DRIVE_SPEED);
 		} else {
 			this.encRightMotor.stopMotor();
 		}

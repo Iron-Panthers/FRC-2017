@@ -5,6 +5,7 @@ import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.util.Constants;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveStraightForSetDistance extends Command {
 	
