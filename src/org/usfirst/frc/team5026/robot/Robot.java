@@ -3,6 +3,7 @@ package org.usfirst.frc.team5026.robot;
 
 import org.usfirst.frc.team5026.robot.commands.AutoDriveStraightWithGyro;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDoNothing;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoGearSequence_TopPos;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoSequenceDriveStraightTurn_A_lot;
 import org.usfirst.frc.team5026.robot.commands.autonomous.DriveSequenceCheckErrorInDistance;
 import org.usfirst.frc.team5026.robot.commands.autonomous.DriveStraightForSetDistance;
@@ -77,6 +78,7 @@ public class Robot extends IterativeRobot {
 		autoChooser.addObject("Drive straight for set distance", new DriveStraightForSetDistance(12));
 		autoChooser.addObject("Turn x degrees", new DriveTurnXDegrees());
 		autoChooser.addObject("Drive w gyro and ec", new AutoDriveStraightWithGyro(120, 3));
+		autoChooser.addObject("Auto sequence: top position start", new AutoGearSequence_TopPos());
 		SmartDashboard.putData("Autonomous Chooser", autoChooser);
 	}
 

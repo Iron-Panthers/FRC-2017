@@ -22,4 +22,7 @@ public class Constants {
 	public static final String DRIVE_TURNXDEGREES_NAME = "DriveTurnXDegrees(degrees)"; 
 	public static final double STRAIGHT_DRIVE_SPEED = 0.5;
 	public static final double GEAR_RATIO = 5.36;
+	
+	//ALL THE DISTANCES FROM STUFFFSA FOR AUTTOO
+	
 }
