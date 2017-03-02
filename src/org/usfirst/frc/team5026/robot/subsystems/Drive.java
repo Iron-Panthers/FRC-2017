@@ -69,9 +69,9 @@ public class Drive extends Subsystem {
 	//one spark controller is backwards, testing if values need to be opposite
 	public void rotateRobot(double speed) {
 		if (turningRight) {
-    		Robot.drive.setLeftRightMotors(speed, -speed); 
+    		Robot.drive.setLeftRightMotors(-speed, speed); 
     	} else {
-    		Robot.drive.setLeftRightMotors(-speed, speed);
+    		Robot.drive.setLeftRightMotors(speed, -speed);
     	}
 	}
 	

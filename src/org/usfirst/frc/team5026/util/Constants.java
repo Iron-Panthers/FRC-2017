@@ -9,7 +9,7 @@ public class Constants {
 	
 	// Gyro Constants
 	public static final double PERCENTAGE_FOR_ERROR = 0.05; 
-	public static final double TURN_SPEED = 0.5;
+	public static final double TURN_SPEED = 0.3;
 	public static final double CLAMP_WAIT_TIME = 0.5;
 	
 	//Encoder constants

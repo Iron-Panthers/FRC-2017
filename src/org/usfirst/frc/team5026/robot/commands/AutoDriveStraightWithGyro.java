@@ -28,11 +28,11 @@ public class AutoDriveStraightWithGyro extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.drive.getGyroError() < 3 && Robot.drive.getGyroError() > -3)
+    	if(Robot.drive.getGyroError() < errorAngle && Robot.drive.getGyroError() > -errorAngle)
     	{
         	Robot.drive.setLeftRightMotors(0.5, 0.5);
     	}
-    	else if(Robot.drive.getGyro() < 3)
+    	else if(Robot.drive.getGyro() < errorAngle)
     	{
         	Robot.drive.setLeftRightMotors(0.4, 0.5);
     	}
@@ -46,6 +46,7 @@ public class AutoDriveStraightWithGyro extends Command {
     protected boolean isFinished() {
     	SmartDashboard.putNumber("Left enc", Robot.drive.getLeftEnc());
         SmartDashboard.putNumber("Target enc", distanceTicks + initLeftTicks);
+        SmartDashboard.putNumber("Encoder Delta", Robot.drive.getLeftEnc() - initLeftTicks);
         return Robot.drive.getLeftEnc() > (distanceTicks + initLeftTicks);
     }
 
