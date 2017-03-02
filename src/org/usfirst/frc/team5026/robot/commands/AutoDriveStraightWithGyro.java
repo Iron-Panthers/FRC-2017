@@ -13,6 +13,8 @@ public class AutoDriveStraightWithGyro extends Command {
 	private int errorAngle;
 	private double distanceTicks;
 	private double initLeftTicks;
+	private double lastPos;
+	private double lastVel;
 	
     public AutoDriveStraightWithGyro(double distance, int errorAngle) {
         requires(Robot.drive);
@@ -24,6 +26,8 @@ public class AutoDriveStraightWithGyro extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.drive.setRotate(errorAngle);
+    	lastPos = 0;
+    	lastVel = 0;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -40,6 +44,13 @@ public class AutoDriveStraightWithGyro extends Command {
     	{
     		Robot.drive.setLeftRightMotors(0.5, 0.4);
     	}
+    	double vel = (Robot.drive.getLeftEnc() - lastPos) / 2;
+    	double accel = (vel - lastVel) / 2;
+    	SmartDashboard.putNumber("Velocity", vel);
+    	SmartDashboard.putNumber("Acceleration", accel);
+    	
+    	lastPos = Robot.drive.getLeftEnc();
+    	lastVel = vel;
     }
 
     // Make this return true when this Command no longer needs to run execute()
