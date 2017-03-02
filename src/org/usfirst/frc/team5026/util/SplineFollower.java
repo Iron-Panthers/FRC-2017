@@ -23,4 +23,44 @@ public class SplineFollower {
 	 * Library for creation of spline curves: https://github.com/Team254/TrajectoryLib
 	 * NOTICE THAT THE OUTPUT FORMULAS FOR THIS IS NOT WHAT WE DESIRE, THIS IS MORE DEPENDENT ON OTHER THINGS!
 	 */
+	public static final double MAX_ACCELERATION = 10; // m/s/s
+	public static final double MAX_VELOCITY = 5; // m/s
+	public static final double Kv = 1 / MAX_VELOCITY; // s/m
+	public static double target = 12; // meters
+	
+	public double getAccelTime() {
+		return MAX_VELOCITY / MAX_ACCELERATION;
+	}
+	public double getAccelDistance() {
+		return 0.5 * MAX_ACCELERATION * getAccelTime();
+	}
+	public double getDeccelDistance() {
+		return MAX_VELOCITY * getAccelTime() - 0.5 * MAX_ACCELERATION * getAccelTime();
+	}
+	public double getMaxVelocityTime() {
+		return (target - getAccelDistance() - getDeccelDistance()) / MAX_VELOCITY;
+	}
+	public double getAccelVelocity(double time) {
+		return MAX_ACCELERATION * time;
+	}
+	public double getDeccelVelocity(double time) {
+		return MAX_VELOCITY - MAX_ACCELERATION * time;
+	}
+	public double getVelocity(double time) {
+		if (time <= getAccelTime()) {
+			return getAccelVelocity(time);
+		}
+		else if (time <= getAccelTime() + getMaxVelocityTime()) {
+			return MAX_VELOCITY;
+		}
+		else if (time <= 2 * getAccelTime() + getMaxVelocityTime()) {
+			return getDeccelVelocity(time - (getAccelTime() + getMaxVelocityTime()));
+		}
+		else {
+			return 0;
+		}
+	}
+	public double getVoltageToApply(double time) {
+		return getVelocity(time) * Kv;
+	}
 }
