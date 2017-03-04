@@ -78,7 +78,7 @@ public class Robot extends IterativeRobot {
 		autoChooser.addObject("Turn x degrees", new DriveTurnXDegrees(90));
 		autoChooser.addObject("Drive w gyro and ec", new AutoDriveStraightWithGyro(60, 2));
 		autoChooser.addObject("Auto sequence: top position start", new AutoGearSequence_TopPos());
-		autoChooser.addObject("Motion Profile", new AutoMotionProfileDriveStraight(10000));
+		autoChooser.addObject("Motion Profile", new AutoMotionProfileDriveStraight(500000));
 		SmartDashboard.putData("Autonomous Chooser", autoChooser);
 	}
 

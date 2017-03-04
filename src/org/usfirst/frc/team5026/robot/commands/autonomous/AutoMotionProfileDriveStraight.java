@@ -43,8 +43,10 @@ public class AutoMotionProfileDriveStraight extends Command {
     	double power = MotionProfiler.getVoltageToApply(time);
     	Robot.drive.setLeftRightMotors(power, power);
     	SmartDashboard.putNumber("Motion Profile Voltage To Apply", power);
-    	SmartDashboard.putNumber("Enc Delta Left", Robot.drive.getLeftEnc() - startEncLeft);
-    	SmartDashboard.putNumber("Enc Delta Right", Robot.drive.getRightEnc() - startEncRight);
+    	SmartDashboard.putNumber("Enc Left", Robot.drive.getLeftEnc());
+    	SmartDashboard.putNumber("Enc Right", Robot.drive.getRightEnc());
+    	SmartDashboard.putNumber("Init Left", startEncLeft);
+    	SmartDashboard.putNumber("Init Right", startEncRight);
     	if (gyro)
     	SmartDashboard.putNumber("Gyro Delta", Robot.drive.getGyro());
     	time += dt;

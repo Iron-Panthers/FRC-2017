@@ -23,8 +23,8 @@ public class MotionProfiler {
 	 * Library for creation of spline curves: https://github.com/Team254/TrajectoryLib
 	 * NOTICE THAT THE OUTPUT FORMULAS FOR THIS IS NOT WHAT WE DESIRE, THIS IS MORE DEPENDENT ON OTHER THINGS!
 	 */
-	public static final double MAX_ACCELERATION = 1000; // tick/s/s
-	public static final double MAX_VELOCITY = 1000; // tick/s
+	public static final double MAX_ACCELERATION = 100; // tick/s/s
+	public static final double MAX_VELOCITY = 3000; // tick/s
 	public static final double Kv = 1 / MAX_VELOCITY; // s/tick
 	public static double target; // ticks
 	
