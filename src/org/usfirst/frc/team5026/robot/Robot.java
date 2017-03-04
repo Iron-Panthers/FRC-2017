@@ -149,7 +149,7 @@ public class Robot extends IterativeRobot {
 		_sb.append(motor.getSpeed());
 		if (Robot.oi.buttonBoard.getRawButton(1)) {
 			/* Motion Magic */
-			double targetPos = leftYstick * 10.0; /* 10 Rotations in either direction */
+			double targetPos = leftYstick * 50.0; /* 10 Rotations in either direction */
 			motor.changeControlMode(TalonControlMode.MotionMagic);
 			motor.set(targetPos);
 			/* append more signals to print when in speed mode. */
@@ -162,12 +162,13 @@ public class Robot extends IterativeRobot {
 			motor.changeControlMode(TalonControlMode.PercentVbus);
 			motor.set(leftYstick);
 		}
+		System.out.println(motor.getDeviceID()+": "+_sb);
 	}
 	@Override
 	public void teleopPeriodic() {
-		
-		/* instrumentation */
-		System.out.println(_sb);
+		// Scheduler.getInstance().run();
+		moveASide(drive.encLeftMotor.getEncMotor());
+		moveASide(drive.encRightMotor.getEncMotor());
 	}
 
 	/**
