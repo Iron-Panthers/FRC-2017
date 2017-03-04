@@ -76,8 +76,8 @@ public class Robot extends IterativeRobot {
 		autoChooser.addObject("Drive Distance Encoder Error Test", new DriveSequenceCheckErrorInDistance());
 		autoChooser.addObject("Drive for 5 seconds", new DriveDrivebaseForTime(0.5, 0.5, 5));
 		autoChooser.addObject("Drive straight for set distance", new DriveStraightForSetDistance(12));
-		autoChooser.addObject("Turn x degrees", new DriveTurnXDegrees());
-		autoChooser.addObject("Drive w gyro and ec", new AutoDriveStraightWithGyro(120, 3));
+		autoChooser.addObject("Turn x degrees", new DriveTurnXDegrees(90));
+		autoChooser.addObject("Drive w gyro and ec", new AutoDriveStraightWithGyro(60, 2));
 		autoChooser.addObject("Auto sequence: top position start", new AutoGearSequence_TopPos());
 		SmartDashboard.putData("Autonomous Chooser", autoChooser);
 	}

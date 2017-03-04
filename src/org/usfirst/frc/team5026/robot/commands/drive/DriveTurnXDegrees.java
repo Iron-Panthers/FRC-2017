@@ -18,7 +18,6 @@ public class DriveTurnXDegrees extends Command {
 	}
 	
     public DriveTurnXDegrees(double degrees) {
-        requires(Robot.drive);
         this.degrees = degrees;
     }
 
@@ -33,7 +32,7 @@ public class DriveTurnXDegrees extends Command {
 
     
     protected void execute() {
-    	Robot.drive.rotateRobot(Constants.TURN_SPEED);
+    	Robot.drive.rotateRobot(Constants.AUTO_TURN_SPEED * (Robot.drive.getGyroError()));
     }
 
     

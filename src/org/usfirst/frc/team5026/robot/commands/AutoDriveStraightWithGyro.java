@@ -15,16 +15,18 @@ public class AutoDriveStraightWithGyro extends Command {
 	private double initLeftTicks;
 	private double lastPos;
 	private double lastVel;
+	private double distance;
 	
     public AutoDriveStraightWithGyro(double distance, int errorAngle) {
         requires(Robot.drive);
         this.errorAngle = errorAngle;
-        distanceTicks = distance / Constants.WHEEL_CIRCUMFERENCE * Constants.GEAR_RATIO * Constants.ENCODER_TICKS_PER_ROTATION;
-        initLeftTicks = Robot.drive.getLeftEnc();
+        this.distance = distance;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        distanceTicks = distance / Constants.WHEEL_CIRCUMFERENCE * Constants.GEAR_RATIO * Constants.ENCODER_TICKS_PER_ROTATION;
+        initLeftTicks = Robot.drive.getLeftEnc();
     	Robot.drive.setRotate(errorAngle);
     	lastPos = 0;
     	lastVel = 0;
