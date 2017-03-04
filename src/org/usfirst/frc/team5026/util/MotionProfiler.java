@@ -23,47 +23,47 @@ public class MotionProfiler {
 	 * Library for creation of spline curves: https://github.com/Team254/TrajectoryLib
 	 * NOTICE THAT THE OUTPUT FORMULAS FOR THIS IS NOT WHAT WE DESIRE, THIS IS MORE DEPENDENT ON OTHER THINGS!
 	 */
-	public static final double MAX_ACCELERATION = 10; // tick/s/s
-	public static final double MAX_VELOCITY = 5; // tick/s
+	public static final double MAX_ACCELERATION = 1000; // tick/s/s
+	public static final double MAX_VELOCITY = 1000; // tick/s
 	public static final double Kv = 1 / MAX_VELOCITY; // s/tick
-	public double target = 12; // ticks
+	public static double target; // ticks
 	
-	public double getAccelTime() {
+	public static double getAccelTime() {
 		return MAX_VELOCITY / MAX_ACCELERATION;
 	}
-	public void setTarget(double target) {
-		this.target = target;
+	public static double getAccelDistance() {
+		return 0.5 * MAX_ACCELERATION * getAccelTime() * getAccelTime();
 	}
-	public double getAccelDistance() {
-		return 0.5 * MAX_ACCELERATION * getAccelTime();
+	public static double getDeccelDistance() {
+		return MAX_VELOCITY * getAccelTime() - 0.5 * MAX_ACCELERATION * getAccelTime() * getAccelTime();
 	}
-	public double getDeccelDistance() {
-		return MAX_VELOCITY * getAccelTime() - 0.5 * MAX_ACCELERATION * getAccelTime();
-	}
-	public double getMaxVelocityTime() {
+	public static double getMaxVelocityTime() {
 		return (target - getAccelDistance() - getDeccelDistance()) / MAX_VELOCITY;
 	}
-	public double getAccelVelocity(double time) {
+	public static double getAccelVelocity(double time) {
 		return MAX_ACCELERATION * time;
 	}
-	public double getDeccelVelocity(double time) {
+	public static double getDeccelVelocity(double time) {
 		return MAX_VELOCITY - MAX_ACCELERATION * time;
 	}
-	public double getVelocity(double time) {
+	public static double getVelocity(double time) {
 		if (time <= getAccelTime()) {
 			return getAccelVelocity(time);
 		}
 		else if (time <= getAccelTime() + getMaxVelocityTime()) {
 			return MAX_VELOCITY;
 		}
-		else if (time <= 2 * getAccelTime() + getMaxVelocityTime()) {
+		else if (time <= getTotalTimeToDistance()) {
 			return getDeccelVelocity(time - (getAccelTime() + getMaxVelocityTime()));
 		}
 		else {
 			return 0;
 		}
 	}
-	public double getVoltageToApply(double time) {
+	public static double getTotalTimeToDistance() {
+		return 2 * getAccelTime() + getMaxVelocityTime();
+	}
+	public static double getVoltageToApply(double time) {
 		return getVelocity(time) * Kv; // Kp and Kd
 	}
 }
