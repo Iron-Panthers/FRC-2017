@@ -1,6 +1,6 @@
 package org.usfirst.frc.team5026.util;
 
-public class SplineFollower {
+public class MotionProfiler {
 	/*
 	setpoint = lookupSetpoint(time);
 	error = setpoint.position - actualPosition;
@@ -23,13 +23,16 @@ public class SplineFollower {
 	 * Library for creation of spline curves: https://github.com/Team254/TrajectoryLib
 	 * NOTICE THAT THE OUTPUT FORMULAS FOR THIS IS NOT WHAT WE DESIRE, THIS IS MORE DEPENDENT ON OTHER THINGS!
 	 */
-	public static final double MAX_ACCELERATION = 10; // m/s/s
-	public static final double MAX_VELOCITY = 5; // m/s
-	public static final double Kv = 1 / MAX_VELOCITY; // s/m
-	public static double target = 12; // meters
+	public static final double MAX_ACCELERATION = 10; // tick/s/s
+	public static final double MAX_VELOCITY = 5; // tick/s
+	public static final double Kv = 1 / MAX_VELOCITY; // s/tick
+	public double target = 12; // ticks
 	
 	public double getAccelTime() {
 		return MAX_VELOCITY / MAX_ACCELERATION;
+	}
+	public void setTarget(double target) {
+		this.target = target;
 	}
 	public double getAccelDistance() {
 		return 0.5 * MAX_ACCELERATION * getAccelTime();
@@ -61,6 +64,6 @@ public class SplineFollower {
 		}
 	}
 	public double getVoltageToApply(double time) {
-		return getVelocity(time) * Kv;
+		return getVelocity(time) * Kv; // Kp and Kd
 	}
 }
