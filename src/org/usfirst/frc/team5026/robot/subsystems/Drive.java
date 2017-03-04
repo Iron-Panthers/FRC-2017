@@ -8,6 +8,9 @@ import org.usfirst.frc.team5026.util.Hardware;
 import org.usfirst.frc.team5026.util.MotorGroup;
 import org.usfirst.frc.team5026.util.PantherJoystick;
 
+import com.ctre.CANTalon;
+import com.ctre.CANTalon.TalonControlMode;
+
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -155,6 +158,37 @@ public class Drive extends Subsystem {
 			this.encRightMotor.stopMotor();
 		}
 	}
+	public void driveSide(int target, CANTalon motor) {
+		// target: unit is ticks/100ms
+				StringBuilder _sb = new StringBuilder();
+//				Scheduler.getInstance().run();
+				double motorOutput = motor.getOutputVoltage() / motor.getBusVoltage();
+				/* prepare line to print */
+				_sb.append("\tout:");
+				_sb.append(motorOutput);
+				_sb.append("\tspd:");
+				_sb.append(motor.getSpeed());
+				if (Robot.oi.buttonBoard.getRawButton(1)) {
+					/* Motion Magic */
+					motor.changeControlMode(TalonControlMode.MotionMagic);
+					motor.set(target);
+					/* append more signals to print when in speed mode. */
+					_sb.append("\terr:");
+					_sb.append(motor.getClosedLoopError());
+					_sb.append("\ttrg:");
+					_sb.append(target);
+				} else {
+					/* Percent voltage mode */
+					motor.changeControlMode(TalonControlMode.PercentVbus);
+					motor.set(Robot.oi.buttonBoard.getY());
+				}
+				System.out.println(motor.getDeviceID()+": "+_sb);
+	}
+	public void motionProfileDrive(int target) {
+		driveSide(target, encLeftMotor.getEncMotor());
+		driveSide(target, encRightMotor.getEncMotor());
+	}
+	
 
 	@Override
 	protected void initDefaultCommand() {

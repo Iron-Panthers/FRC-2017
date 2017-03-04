@@ -137,38 +137,9 @@ public class Robot extends IterativeRobot {
 	/**
 	 * This function is called periodically during operator control
 	 */
-	public void moveASide(CANTalon motor) {
-		StringBuilder _sb = new StringBuilder();
-//		Scheduler.getInstance().run();
-		double leftYstick = -1.0 * Robot.oi.buttonBoard.getAxis(AxisType.kY);
-		double motorOutput = motor.getOutputVoltage() / motor.getBusVoltage();
-		/* prepare line to print */
-		_sb.append("\tout:");
-		_sb.append(motorOutput);
-		_sb.append("\tspd:");
-		_sb.append(motor.getSpeed());
-		if (Robot.oi.buttonBoard.getRawButton(1)) {
-			/* Motion Magic */
-			double targetPos = leftYstick * 50.0; /* 10 Rotations in either direction */
-			motor.changeControlMode(TalonControlMode.MotionMagic);
-			motor.set(targetPos);
-			/* append more signals to print when in speed mode. */
-			_sb.append("\terr:");
-			_sb.append(motor.getClosedLoopError());
-			_sb.append("\ttrg:");
-			_sb.append(targetPos);
-		} else {
-			/* Percent voltage mode */
-			motor.changeControlMode(TalonControlMode.PercentVbus);
-			motor.set(leftYstick);
-		}
-		System.out.println(motor.getDeviceID()+": "+_sb);
-	}
 	@Override
 	public void teleopPeriodic() {
-		// Scheduler.getInstance().run();
-		moveASide(drive.encLeftMotor.getEncMotor());
-		moveASide(drive.encRightMotor.getEncMotor());
+		Scheduler.getInstance().run();		
 	}
 
 	/**

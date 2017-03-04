@@ -23,12 +23,25 @@ public class Constants {
 	public static final double STRAIGHT_DRIVE_SPEED = 0.5;
 	public static final double GEAR_RATIO = 5.36;
 	
-	public static final double MAX_ACCELERATION = 0;
-	public static final double MAX_VELOCITY = 0;
-	
+	// Drive motion profile
 	public static final int PID_PROFILE = 0;
-	public static final double[] PIDF = {0,0,0,0};
+	public static final double P = 0;
+	public static final double I = 0;
+	public static final double D = 0;
+	public static final double F = 0.5578; // 1023 (max output) / MAX Velocity Encoder ticks (1834)
+	public static final double[] PIDF = {P,I,D,F};
 	
-	//ALL THE DISTANCES FROM STUFFFSA FOR AUTTOO
+	public static final double MAX_ACCELERATION = 500;
+	/*
+	 * Unit is encoder rotations/sec/sec.
+	 * measured (unloaded): 
+	 * measured (loaded, on field): 
+	 */
+	public static final double MAX_VELOCITY = 1080; 
+	/*
+	 * Unit is encoder rotations/sec.
+	 * measured (unloaded): 1834
+	 * measured (loaded, on field): 
+	 */
 	
 }

@@ -22,9 +22,6 @@ public class MotorGroup implements SpeedController {
 		
 		this.encoderMotor = encoderMotor;
 		this.speed = 0;
-		for (int i = 0; i < motors.length; i++) {
-			motors[i].setInverted(isInverted[i]);
-		}
 		setupTalons(isInverted, Constants.PIDF, Constants.PID_PROFILE);
 	}
 	public void setupTalons(boolean[] inverted, double[] pidf, int pidProfile) {
@@ -40,12 +37,10 @@ public class MotorGroup implements SpeedController {
     	encoderMotor.setMotionMagicCruiseVelocity(Constants.MAX_VELOCITY);
     	encoderMotor.setMotionMagicAcceleration(Constants.MAX_ACCELERATION);
 
-    	// Sec. 17.2.3 (Software Reference Manual)
-    	encoderMotor.reverseSensor(inverted[0]); // First talon is encTalon
-    	if (encTicks == 4096) {
+    	if (encTicks == 1024) {
     		// For a quadature encoder (Versaplanetary encoders)
     		encoderMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
-    		encoderMotor.configEncoderCodesPerRev((int) (0.25*encTicks)); // 1/4 * 4096 (CAUSE 4096 IS THE NUMBER OF TICKS PER REV. MEASURED. F U MANUAL (check position changes (big number in selftest))
+    		encoderMotor.configEncoderCodesPerRev((int) (encTicks)); 
     	} else {
     		// TODO: Add Grayhill Encoder mappings
     		encoderMotor.setFeedbackDevice(FeedbackDevice.AnalogEncoder);
@@ -53,6 +48,7 @@ public class MotorGroup implements SpeedController {
     	}
     	encoderMotor.setPosition(0);
 		encoderMotor.disable();
+		
 		
 		for (int i = 0; i < motors.length; i++) {
 			// Get Encoder port, make sure everything else is follower
@@ -69,6 +65,9 @@ public class MotorGroup implements SpeedController {
 		    	motors[i].set(encoderMotor.getDeviceID()); // Follows the encoder CANTalon
 	    	}
 		}
+		// Sec. 17.2.3 (Software Reference Manual)
+//    	encoderMotor.reverseSensor(inverted[0]); // First talon is encTalon
+    	System.out.println(inverted[0]);
 	}
 	
 	@Override
@@ -102,16 +101,12 @@ public class MotorGroup implements SpeedController {
 
 	@Override
 	public void disable() {
-		for (SpeedController m: motors) {
-			m.disable();
-		}
+		encoderMotor.disable();
 	}
 
 	@Override
 	public void stopMotor() {
-		for (SpeedController m: motors) {
-			m.stopMotor();
-		}
+		encoderMotor.set(0);
 	}
 	
 	public int getEncPosition() {

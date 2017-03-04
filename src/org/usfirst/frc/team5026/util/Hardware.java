@@ -21,7 +21,7 @@ public class Hardware {
 	public MotorGroup leftMotor;
 	public MotorGroup rightMotor;
 	private boolean[] invertedLeft = {false, false, false};
-	private boolean[] invertedRight = {false, false, false};
+	private boolean[] invertedRight = {true, false, false}; //Right side is backward
 	//TODO: Need to fix inverted with new gearbox!
 	
 	public Talon climbRightMotor;
