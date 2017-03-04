@@ -23,6 +23,12 @@ public class Constants {
 	public static final double STRAIGHT_DRIVE_SPEED = 0.5;
 	public static final double GEAR_RATIO = 5.36;
 	
+	public static final double MAX_ACCELERATION = 0;
+	public static final double MAX_VELOCITY = 0;
+	
+	public static final int PID_PROFILE = 0;
+	public static final double[] PIDF = {0,0,0,0};
+	
 	//ALL THE DISTANCES FROM STUFFFSA FOR AUTTOO
 	
 }
