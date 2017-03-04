@@ -36,20 +36,22 @@ public class Constants {
 	public static final double CLIMBER_SLOPE_WRAP = 0.0152;	//caps motors at 83.33% V (10/12 V), previously set at 0.0841 (capped at 100% V)
 	public static final double CLIMBER_SLOPE_LATCH = 0.04;	//allows for slower climbing speeds
 	
-	public static final double CLIMBER_STALL_LIMIT = 5.0;	//=[NEED TESTING]= The current(A) at which the climber motors stall.
+	// Gyro Constants
+	public static final double PERCENTAGE_FOR_ERROR = 0.05; 
+	public static final double AUTO_TURN_SPEED = 0.1;
+	public static final double CLAMP_WAIT_TIME = 0.5;
 	
-	//Intake Constants
-	public static final double INTAKE_INTAKE_SPEED = 0.5;
-	public static final double INTAKE_OUTTAKE_SPEED = -0.5;
+	//Encoder constants
+	public static final double WHEEL_DIAMETER = 4;	//in inches
+	public static final double WHEEL_CIRCUMFERENCE = Math.PI * WHEEL_DIAMETER;
+	public static final int ENCODER_TICKS_PER_ROTATION = 1024;
 	
-	//LED Constants
-	public static final double LED_TIME_DEFAULT = 0.25;
-	public static final int LED_SHIFT_INDEX = 0;
-	public static final int LED_DRIVE_INDEX = 1;
-	public static final Color LED_SHIFT_HIGH = Color.RED;
-	public static final Color LED_SHIFT_LOW = Color.BLUE;
-	public static final Color LED_DRIVE_FORWARD = Color.DEEP_MAGENTA;
-	public static final Color LED_DRIVE_REVERSE = Color.GOLD;
-	public static final Color LED_GEAR_RELEASE = Color.GREEN;
+	//Auto COnstants
+	public static final String DRIVE_DISTANCE_RAMP_SMD_NAME = "DriveRampDistance(inches)"; 
+	public static final String DRIVE_TURNXDEGREES_NAME = "DriveTurnXDegrees(degrees)"; 
+	public static final double STRAIGHT_DRIVE_SPEED = 0.5;
+	public static final double GEAR_RATIO = 5.36;
+	
+	//ALL THE DISTANCES FROM STUFFFSA FOR AUTTOO
 	
 }
