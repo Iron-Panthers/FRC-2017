@@ -3,9 +3,6 @@ package org.usfirst.frc.team5026.robot;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveTurnXDegrees;
 import org.usfirst.frc.team5026.robot.commands.gear.GearClampCommand;
 import org.usfirst.frc.team5026.robot.commands.gear.GearUnClampCommand;
-import org.usfirst.frc.team5026.robot.commands.intake.IntakeIn;
-import org.usfirst.frc.team5026.robot.commands.intake.IntakeOut;
-import org.usfirst.frc.team5026.robot.commands.misc.LEDSignalGear;
 import org.usfirst.frc.team5026.util.PantherJoystick;
 
 import edu.wpi.first.wpilibj.buttons.Button;

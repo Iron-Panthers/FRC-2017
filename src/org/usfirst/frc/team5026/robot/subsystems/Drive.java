@@ -19,7 +19,6 @@ public class Drive extends Subsystem {
 	
 	private PantherJoystick joystick;
 	private DoubleSolenoid shifter;
-	private LEDDisplay led;
 	private GearPosition pos = GearPosition.LOW;
 	public Gyro gyro;
 	Hardware hardware;
@@ -45,7 +44,6 @@ public class Drive extends Subsystem {
 		
 		encLeftMotor = hardware.leftMotor;
 		encRightMotor = hardware.rightMotor;
-		led = hardware.led;
 	}
 	
 	public void setLeftRightMotors(double left, double right) {
@@ -56,11 +54,9 @@ public class Drive extends Subsystem {
 		if (pos== GearPosition.LOW) {
 			pos = GearPosition.HIGH;
 			shifter.set(Value.kReverse);
-			led.writeRegister(Constants.LED_SHIFT_INDEX, Constants.LED_SHIFT_HIGH);
 		} else {
 			pos = GearPosition.LOW;
 			shifter.set(Value.kForward);
-			led.writeRegister(Constants.LED_SHIFT_INDEX, Constants.LED_SHIFT_LOW);
 		}
 		// Flip flops gear position
 	}

@@ -22,11 +22,6 @@ public class Constants {
 	public static final float DEADZONE_X_SPINNY = 0.0563f; 
 	public static final float DEADZONE_Y_SPINNY = 0.0512f; 
 	public static final float DEADZONE_Y_MAX_SPINNY = 0.829f; 
-
-	//Gyro Constants 
-	public static final double PERCENTAGE = 0.05;  
-	public static final double SPEED = 0.5; 
-	public static final double CLAMP_WAIT_TIME = 0.5; 
 	   
 	//Climber Constants
 	public static final double CLIMBER_SPEED_RAPPEL = -0.2;	//quality of unloader's life

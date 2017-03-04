@@ -9,7 +9,6 @@ import org.usfirst.frc.team5026.robot.commands.autonomous.DriveSequenceCheckErro
 import org.usfirst.frc.team5026.robot.commands.autonomous.DriveStraightForSetDistance;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveDrivebaseForTime;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveTurnXDegrees;
-import org.usfirst.frc.team5026.robot.subsystems.Climber;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
 import org.usfirst.frc.team5026.util.Constants;
@@ -36,7 +35,6 @@ public class Robot extends IterativeRobot {
 	public static Hardware hardware;
 	public static Drive drive;
 	public static GearClamp gearclamp;
-	public static Climber climber;
 
 	Command autoCommand;
 	SendableChooser <Command> autoChooser = new SendableChooser<>();
@@ -57,9 +55,7 @@ public class Robot extends IterativeRobot {
 	
 	private void initSubsystems() {
 		drive = new Drive();
-		climber = new Climber();
 		gearclamp = new GearClamp();
-		intake = new Intake();
 		oi.mapButtonBoard();
 	}
 
@@ -87,7 +83,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-		chooser.getSelected().start();
+		autoChooser.getSelected().start();
 	}
 
 	/**
