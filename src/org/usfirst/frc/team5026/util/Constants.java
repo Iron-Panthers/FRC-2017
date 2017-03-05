@@ -24,12 +24,23 @@ public class Constants {
 	public static final double GEAR_RATIO = 5.36;
 	
 	// Drive motion profile
-	public static final int PID_PROFILE = 0;
-	public static final double P = (1023*0.5)/1024;
-	public static final double I = 0;
-	public static final double D = 0;
-	public static final double F = 0.5578; // 1023 (max output) / MAX Velocity Encoder ticks (1834)
-	public static final double[] PIDF = {P,I,D,F};
+	public static final double DRIVE_STABILIZATION_TOLERANCE = 0.02;
+	
+	public static final int PID_PROFILE_LEFT = 0;
+	public static final double P_LEFT = 0.4;
+	public static final double I_LEFT = 0;
+	public static final double D_LEFT = 0;
+	public static final double F_LEFT = 0;
+	public static final double RAMP_LEFT = 0;
+	public static final double[] PIDFR_LEFT = {P_LEFT,I_LEFT,D_LEFT,F_LEFT, RAMP_LEFT};
+	
+	public static final int PID_PROFILE_RIGHT = 0;
+	public static final double P_RIGHT = 0.4;
+	public static final double I_RIGHT = 0;
+	public static final double D_RIGHT = 0;
+	public static final double F_RIGHT = 0;
+	public static final double RAMP_RIGHT = 0;
+	public static final double[] PIDFR_RIGHT = {P_RIGHT,I_RIGHT,D_RIGHT,F_RIGHT, RAMP_RIGHT};
 	
 	public static final double MAX_ACCELERATION = 500;
 	/*

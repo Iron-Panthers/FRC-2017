@@ -1,6 +1,6 @@
 package org.usfirst.frc.team5026.robot;
 
-import org.usfirst.frc.team5026.robot.commands.drive.DriveTurnXDegrees;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistancePosition;
 import org.usfirst.frc.team5026.robot.commands.gear.GearClampCommand;
 import org.usfirst.frc.team5026.robot.commands.gear.GearUnClampCommand;
 import org.usfirst.frc.team5026.util.PantherJoystick;
@@ -24,6 +24,8 @@ public class OI {
 	public Button boardButton5; 
 	public Button boardButton6;
 	
+	public Button driveButton1;
+	
 	public OI() {
 		driveJoystick = new PantherJoystick(RobotMap.DRIVE_JOYSTICK);
 		buttonBoard = new PantherJoystick(RobotMap.BUTTON_JOYSTICK);
@@ -37,11 +39,11 @@ public class OI {
 	    boardButton4 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_4); 
 	    boardButton5 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_5); 
 	    boardButton6 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_6);
-		
+	    driveButton1 = new JoystickButton(driveJoystick, 1);
 	}
 	public void mapButtonBoard() {
 		boardButton2.whenPressed(new GearClampCommand());
 		boardButton3.whenPressed(new GearUnClampCommand());
-		boardButton4.whenPressed(new DriveTurnXDegrees());
+		driveButton1.whenPressed(new AutoDriveDistancePosition(25, 25));
 	}
 }

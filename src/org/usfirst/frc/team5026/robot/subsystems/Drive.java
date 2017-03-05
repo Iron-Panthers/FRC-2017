@@ -3,20 +3,16 @@ package org.usfirst.frc.team5026.robot.subsystems;
 import org.usfirst.frc.team5026.robot.Robot;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveWithJoystick;
 import org.usfirst.frc.team5026.util.Constants;
+import org.usfirst.frc.team5026.util.DriveMotorGroup;
 import org.usfirst.frc.team5026.util.GearPosition;
 import org.usfirst.frc.team5026.util.Hardware;
-import org.usfirst.frc.team5026.util.MotorGroup;
 import org.usfirst.frc.team5026.util.PantherJoystick;
-
-import com.ctre.CANTalon;
-import com.ctre.CANTalon.TalonControlMode;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Drive extends Subsystem {
 	private RobotDrive drive;
@@ -26,8 +22,8 @@ public class Drive extends Subsystem {
 	public Gyro gyro;
 	Hardware hardware;
 	
-	public MotorGroup encLeftMotor;
-	public MotorGroup encRightMotor;
+	public DriveMotorGroup encLeftMotor;
+	public DriveMotorGroup encRightMotor;
 	
 	public double targetAngle;
 	private boolean turningRight = true;
@@ -140,7 +136,7 @@ public class Drive extends Subsystem {
 		this.encLeftMotor.set(backwards ? -1: 1 * speed);
 	}
 	
-	public boolean isFinishedDrivingDistance(MotorGroup encMotor) {	//i'm sure there's a better way to do this
+	public boolean isFinishedDrivingDistance(DriveMotorGroup encMotor) {	//i'm sure there's a better way to do this
 		if(backwards) {
 			return Math.abs(encMotor.getEncPosition() - startingLeftEncoderPos) < targetLeftEncoderPos; 
 		}
@@ -159,43 +155,21 @@ public class Drive extends Subsystem {
 			this.encRightMotor.stopMotor();
 		}
 	}
-	public void driveSide(int target, CANTalon motor) {
-		// target: unit is ticks/100ms
-		StringBuilder _sb = new StringBuilder();
-//				Scheduler.getInstance().run();
-		double motorOutput = motor.getOutputVoltage() / motor.getBusVoltage();
-		/* prepare line to print */
-		_sb.append("\tout:");
-		_sb.append(motorOutput);
-		_sb.append("\tspd:");
-		_sb.append(motor.getSpeed());
-		if (Robot.oi.buttonBoard.getRawButton(1)) {
-			/* Motion Magic */
-			motor.changeControlMode(TalonControlMode.Position);
-			motor.set(target);
-			/* append more signals to print when in speed mode. */
-			_sb.append("\terr:");
-			_sb.append(motor.getClosedLoopError());
-			_sb.append("\ttrg:");
-			_sb.append(target);
-			SmartDashboard.putNumber("Error", motor.getClosedLoopError());
-			SmartDashboard.putNumber("Speed", motor.getSpeed());
-			System.out.println(motor.getDeviceID()+": "+_sb);
-		} else {
-			/* Percent voltage mode */
-			motor.changeControlMode(TalonControlMode.PercentVbus);
-			motor.set(0);
-		}
-	}
-	public void motionProfileDrive(int target) {
-		driveSide(target, encLeftMotor.getEncMotor());
-		driveSide(target, encRightMotor.getEncMotor());
-	}
-	
 
 	@Override
 	protected void initDefaultCommand() {
 		setDefaultCommand(new DriveWithJoystick(joystick));
 	}
 	
+	public void positionDrive(double targetLeft, double targetRight)
+	{
+		encLeftMotor.positionControl(targetLeft);
+		encRightMotor.positionControl(targetRight);
+	}
+	
+	public void endPositionDrive()
+	{
+		encLeftMotor.stopPositionControl();
+		encRightMotor.stopPositionControl();
+	}
 }
