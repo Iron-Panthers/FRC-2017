@@ -25,7 +25,7 @@ public class Constants {
 	
 	// Drive motion profile
 	public static final int PID_PROFILE = 0;
-	public static final double P = 0;
+	public static final double P = (1023*0.5)/1024;
 	public static final double I = 0;
 	public static final double D = 0;
 	public static final double F = 0.5578; // 1023 (max output) / MAX Velocity Encoder ticks (1834)

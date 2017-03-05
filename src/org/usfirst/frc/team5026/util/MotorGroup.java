@@ -66,7 +66,7 @@ public class MotorGroup implements SpeedController {
 	    	}
 		}
 		// Sec. 17.2.3 (Software Reference Manual)
-//    	encoderMotor.reverseSensor(inverted[0]); // First talon is encTalon
+    	encoderMotor.reverseOutput(inverted[0]); // First talon is encTalon
     	System.out.println(inverted[0]);
 	}
 	

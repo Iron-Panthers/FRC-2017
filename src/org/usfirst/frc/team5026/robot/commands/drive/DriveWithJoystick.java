@@ -35,6 +35,7 @@ public class DriveWithJoystick extends Command {
 //		SmartDashboard.putNumber("JoyY", joystick.getScaledDeadzoneY());
 //		SmartDashboard.putNumber("JoyX", -joystick.getScaledDeadzoneX());
 		Robot.drive.motionProfileDrive(20); // 20 encoder revolutions
+//		Robot.drive.setLeftRightMotors(joystick.getScaledDeadzoneY(), joystick.getScaledDeadzoneY());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

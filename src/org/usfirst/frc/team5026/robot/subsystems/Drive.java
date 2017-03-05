@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Drive extends Subsystem {
 	private RobotDrive drive;
@@ -160,29 +161,31 @@ public class Drive extends Subsystem {
 	}
 	public void driveSide(int target, CANTalon motor) {
 		// target: unit is ticks/100ms
-				StringBuilder _sb = new StringBuilder();
+		StringBuilder _sb = new StringBuilder();
 //				Scheduler.getInstance().run();
-				double motorOutput = motor.getOutputVoltage() / motor.getBusVoltage();
-				/* prepare line to print */
-				_sb.append("\tout:");
-				_sb.append(motorOutput);
-				_sb.append("\tspd:");
-				_sb.append(motor.getSpeed());
-				if (Robot.oi.buttonBoard.getRawButton(1)) {
-					/* Motion Magic */
-					motor.changeControlMode(TalonControlMode.MotionMagic);
-					motor.set(target);
-					/* append more signals to print when in speed mode. */
-					_sb.append("\terr:");
-					_sb.append(motor.getClosedLoopError());
-					_sb.append("\ttrg:");
-					_sb.append(target);
-				} else {
-					/* Percent voltage mode */
-					motor.changeControlMode(TalonControlMode.PercentVbus);
-					motor.set(Robot.oi.buttonBoard.getY());
-				}
-				System.out.println(motor.getDeviceID()+": "+_sb);
+		double motorOutput = motor.getOutputVoltage() / motor.getBusVoltage();
+		/* prepare line to print */
+		_sb.append("\tout:");
+		_sb.append(motorOutput);
+		_sb.append("\tspd:");
+		_sb.append(motor.getSpeed());
+		if (Robot.oi.buttonBoard.getRawButton(1)) {
+			/* Motion Magic */
+			motor.changeControlMode(TalonControlMode.Position);
+			motor.set(target);
+			/* append more signals to print when in speed mode. */
+			_sb.append("\terr:");
+			_sb.append(motor.getClosedLoopError());
+			_sb.append("\ttrg:");
+			_sb.append(target);
+			SmartDashboard.putNumber("Error", motor.getClosedLoopError());
+			SmartDashboard.putNumber("Speed", motor.getSpeed());
+			System.out.println(motor.getDeviceID()+": "+_sb);
+		} else {
+			/* Percent voltage mode */
+			motor.changeControlMode(TalonControlMode.PercentVbus);
+			motor.set(0);
+		}
 	}
 	public void motionProfileDrive(int target) {
 		driveSide(target, encLeftMotor.getEncMotor());
