@@ -26,12 +26,12 @@ public class AutoDriveDistancePosition extends Command {
     protected void initialize() {
     	finished = false;
     	count = 0;
+    	SmartDashboard.putBoolean("IsFinished", false);
+    	Robot.drive.positionDrive(targetLeft, targetRight);
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	Robot.drive.positionDrive(targetLeft, targetRight);
-    	
+    protected void execute() {    	
     	double leftOut = Robot.drive.encLeftMotor.getEncMotor().getOutputVoltage() / Robot.drive.encLeftMotor.getEncMotor().getBusVoltage();
     	double rightOut = Robot.drive.encRightMotor.getEncMotor().getOutputVoltage() / Robot.drive.encRightMotor.getEncMotor().getBusVoltage();
     	
@@ -43,7 +43,10 @@ public class AutoDriveDistancePosition extends Command {
         SmartDashboard.putNumber("RightOutput", rightOut);
         SmartDashboard.putNumber("RightPosition", Robot.drive.encRightMotor.getEncMotor().getPosition());
 //        System.out.println("expErrorL:"+currentLeftExponentialError+"\tRangeL:"+leftRange+"\texpErrorR:"+currentRightExponentialError+"\tRangeR:"+rightRange);
-        if (Math.abs(leftOut) <= Constants.DRIVE_STABILIZATION_TOLERANCE && Math.abs(rightOut) <= Constants.DRIVE_STABILIZATION_TOLERANCE) {
+        /*if (Math.abs(leftOut) <= Constants.DRIVE_STABILIZATION_TOLERANCE && Math.abs(rightOut) <= Constants.DRIVE_STABILIZATION_TOLERANCE) {
+        	count++;
+        }*/
+        if(Math.abs(Robot.drive.encLeftMotor.getEncMotor().getClosedLoopError()) < 1 && Math.abs(Robot.drive.encRightMotor.getEncMotor().getClosedLoopError()) < 1){
         	count++;
         }
         if (count >= 500) // SIMPLE STUPID CHECKS! TODO FIX
@@ -57,6 +60,7 @@ public class AutoDriveDistancePosition extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	SmartDashboard.putBoolean("IsFinished", true);
     	Robot.drive.endPositionDrive();
     }
 
