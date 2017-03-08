@@ -40,6 +40,8 @@ public class Drive extends Subsystem {
 		drive = new RobotDrive(hardware.leftMotor, hardware.rightMotor);
 		gyro = hardware.gyro;
 		shifter = Robot.hardware.shifter;
+		drive.setSafetyEnabled(false);
+//		drive.setExpiration(timeout);
 		
 		encLeftMotor = hardware.leftMotor;
 		encRightMotor = hardware.rightMotor;
