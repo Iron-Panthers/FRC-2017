@@ -23,7 +23,7 @@ public class ClimberUpClimb extends Command {
     }
 
     protected boolean isFinished() {
-        return climber.hasResistance() || !Robot.oi.boardButton1.get();
+        return !Robot.oi.boardButton1.get();
     }
 
     protected void end() {
