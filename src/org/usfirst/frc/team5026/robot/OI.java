@@ -44,6 +44,6 @@ public class OI {
 	public void mapButtonBoard() {
 		boardButton2.whenPressed(new GearClampCommand());
 		boardButton3.whenPressed(new GearUnClampCommand());
-		driveButton1.whenPressed(new AutoDriveDistancePosition(-15, -15));
+		driveButton1.whenPressed(new AutoDriveDistancePosition(-6, -6));
 	}
 }

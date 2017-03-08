@@ -5,8 +5,6 @@ import com.ctre.CANTalon.FeedbackDevice;
 import com.ctre.CANTalon.TalonControlMode;
 
 import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.Joystick.AxisType;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveMotorGroup implements SpeedController {
 
@@ -101,5 +99,8 @@ public class DriveMotorGroup implements SpeedController {
 	
 	public CANTalon getEncMotor() {
 		return encoderMotor;
+	}
+	public void resetPosition() {
+		encoderMotor.setPosition(0);
 	}
 }
