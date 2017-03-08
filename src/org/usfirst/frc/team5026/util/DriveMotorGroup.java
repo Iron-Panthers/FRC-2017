@@ -52,6 +52,10 @@ public class DriveMotorGroup implements SpeedController {
     	encoderMotor.changeControlMode(TalonControlMode.Position);
     	encoderMotor.set(target); /* 50 rotations in either direction */
 	}
+	public void motionMagicControl(double target) {
+		encoderMotor.changeControlMode(TalonControlMode.MotionMagic);
+		encoderMotor.set(target);
+	}
 	
 	@Override
 	public void pidWrite(double output) {		

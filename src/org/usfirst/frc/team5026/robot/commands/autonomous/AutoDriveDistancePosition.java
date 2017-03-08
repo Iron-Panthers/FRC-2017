@@ -21,7 +21,7 @@ public class AutoDriveDistancePosition extends Command {
 	private int count;
 	
     public AutoDriveDistancePosition(double targetLeft, double targetRight) {
-        //requires(Robot.drive); // I believe this is the issue, it allows this to be interrupted, which it is.
+        requires(Robot.drive); // I believe this is the issue, it allows this to be interrupted
         this.targetLeft = targetLeft;
         this.targetRight = targetRight;
         left = Robot.drive.encLeftMotor.getEncMotor();

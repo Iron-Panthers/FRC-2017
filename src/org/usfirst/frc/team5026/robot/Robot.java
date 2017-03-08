@@ -3,9 +3,9 @@ package org.usfirst.frc.team5026.robot;
 
 import org.usfirst.frc.team5026.robot.commands.AutoDriveStraightWithGyro;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDoNothing;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistancePosition;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoGearSequence_TopPos;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoSequenceDriveStraightTurn_A_lot;
-import org.usfirst.frc.team5026.robot.commands.autonomous.DriveSequenceCheckErrorInDistance;
 import org.usfirst.frc.team5026.robot.commands.autonomous.DriveStraightForSetDistance;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveDrivebaseForTime;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveTurnXDegrees;
@@ -15,11 +15,7 @@ import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
 import org.usfirst.frc.team5026.util.Constants;
 import org.usfirst.frc.team5026.util.Hardware;
 
-import com.ctre.CANTalon;
-import com.ctre.CANTalon.TalonControlMode;
-
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Joystick.AxisType;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -73,17 +69,18 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void disabledInit() {
-		
+		Scheduler.getInstance().removeAll();
+
 		autoChooser.addDefault("Nothing", new AutoDoNothing());
 		// Everytime u write a new auto, do autoChooser.addObject("NAME OF AUTO", new AUTOCOMMAND);
 		// Do that here
 		autoChooser.addObject("Drive forward, than back", new AutoSequenceDriveStraightTurn_A_lot());
-		autoChooser.addObject("Drive Distance Encoder Error Test", new DriveSequenceCheckErrorInDistance());
 		autoChooser.addObject("Drive for 5 seconds", new DriveDrivebaseForTime(0.5, 0.5, 5));
 		autoChooser.addObject("Drive straight for set distance", new DriveStraightForSetDistance(12));
 		autoChooser.addObject("Turn x degrees", new DriveTurnXDegrees(90));
 		autoChooser.addObject("Drive w gyro and ec", new AutoDriveStraightWithGyro(60, 2));
 		autoChooser.addObject("Auto sequence: top position start", new AutoGearSequence_TopPos());
+		autoChooser.addObject("Auto sequence: mid position start (Uses PID)", new AutoDriveDistancePosition(-6,-6));
 		SmartDashboard.putData("Autonomous Chooser", autoChooser);
 	}
 
