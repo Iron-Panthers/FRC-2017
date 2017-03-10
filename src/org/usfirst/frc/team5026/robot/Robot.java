@@ -1,14 +1,9 @@
 
 package org.usfirst.frc.team5026.robot;
 
-import org.usfirst.frc.team5026.robot.commands.AutoDriveStraightWithGyro;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDoNothing;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveCarveToPeg;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistancePosition;
-import org.usfirst.frc.team5026.robot.commands.autonomous.AutoGearSequence_TopPos;
-import org.usfirst.frc.team5026.robot.commands.autonomous.AutoSequenceDriveStraightTurn_A_lot;
-import org.usfirst.frc.team5026.robot.commands.autonomous.DriveStraightForSetDistance;
-import org.usfirst.frc.team5026.robot.commands.drive.DriveDrivebaseForTime;
-import org.usfirst.frc.team5026.robot.commands.drive.DriveTurnXDegrees;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
@@ -71,7 +66,7 @@ public class Robot extends IterativeRobot {
 		// Everytime u write a new auto, do autoChooser.addObject("NAME OF AUTO", new AUTOCOMMAND);
 		// Do that here
 		autoChooser.addObject("Auto sequence: mid position start (Uses PID)", new AutoDriveDistancePosition(Constants.AUTO_MIDDLE_TARGET_LEFT, Constants.AUTO_MIDDLE_TARGET_RIGHT));
-		autoChooser.addObject("Auto carve to peg", new AutoDriveDistancePosition(-11.5, -8));
+		autoChooser.addObject("Auto carve to peg", new AutoDriveCarveToPeg());
 		SmartDashboard.putData("Autonomous Chooser", autoChooser);
 	}
 

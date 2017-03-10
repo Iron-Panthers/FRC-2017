@@ -21,8 +21,8 @@ public class Constants {
 	public static final double STRAIGHT_DRIVE_SPEED = 0.5;
 	public static final double GEAR_RATIO = 5.36;
 	// Auto Distances
-	public static final double AUTO_MIDDLE_TARGET_LEFT = -6;
-	public static final double AUTO_MIDDLE_TARGET_RIGHT = -6;
+	public static final double AUTO_MIDDLE_TARGET_LEFT = -8.5;
+	public static final double AUTO_MIDDLE_TARGET_RIGHT = -8.5;
 	
 	// Drive motion profile
 	public static final double DRIVE_STABILIZATION_TOLERANCE = 2000;
@@ -31,7 +31,7 @@ public class Constants {
 	public static final int PID_PROFILE_LEFT = 0;
 	public static final double P_LEFT = 0.1;
 	public static final double I_LEFT = 0;
-	public static final double D_LEFT = 50;
+	public static final double D_LEFT = 65;
 	public static final double F_LEFT = 0;
 	public static final double RAMP_LEFT = 15;
 	public static final double[] PIDFR_LEFT = {P_LEFT,I_LEFT,D_LEFT,F_LEFT, RAMP_LEFT};
@@ -39,7 +39,7 @@ public class Constants {
 	public static final int PID_PROFILE_RIGHT = 0;
 	public static final double P_RIGHT = 0.1;
 	public static final double I_RIGHT = 0;
-	public static final double D_RIGHT = 50;
+	public static final double D_RIGHT = 65;
 	public static final double F_RIGHT = 0;
 	public static final double RAMP_RIGHT = 15;
 	public static final double[] PIDFR_RIGHT = {P_RIGHT,I_RIGHT,D_RIGHT,F_RIGHT, RAMP_RIGHT};
