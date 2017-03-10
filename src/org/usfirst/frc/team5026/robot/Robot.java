@@ -49,10 +49,6 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		hardware = new Hardware();
 		initSubsystems();
-		
-		SmartDashboard.putNumber(Constants.DRIVE_DISTANCE_RAMP_SMD_NAME, 150);
-		SmartDashboard.putNumber(Constants.DRIVE_TURNXDEGREES_NAME, 0);
-		
 	}
 	
 	private void initSubsystems() {
@@ -74,13 +70,8 @@ public class Robot extends IterativeRobot {
 		autoChooser.addDefault("Nothing", new AutoDoNothing());
 		// Everytime u write a new auto, do autoChooser.addObject("NAME OF AUTO", new AUTOCOMMAND);
 		// Do that here
-		autoChooser.addObject("Drive forward, than back", new AutoSequenceDriveStraightTurn_A_lot());
-		autoChooser.addObject("Drive for 5 seconds", new DriveDrivebaseForTime(0.5, 0.5, 5));
-		autoChooser.addObject("Drive straight for set distance", new DriveStraightForSetDistance(12));
-		autoChooser.addObject("Turn x degrees", new DriveTurnXDegrees(90));
-		autoChooser.addObject("Drive w gyro and ec", new AutoDriveStraightWithGyro(60, 2));
-		autoChooser.addObject("Auto sequence: top position start", new AutoGearSequence_TopPos());
-		autoChooser.addObject("Auto sequence: mid position start (Uses PID)", new AutoDriveDistancePosition(-6,-6));
+		autoChooser.addObject("Auto sequence: mid position start (Uses PID)", new AutoDriveDistancePosition(Constants.AUTO_MIDDLE_TARGET_LEFT, Constants.AUTO_MIDDLE_TARGET_RIGHT));
+		autoChooser.addObject("Auto carve to peg", new AutoDriveDistancePosition(-11.5, -8));
 		SmartDashboard.putData("Autonomous Chooser", autoChooser);
 	}
 
@@ -102,15 +93,6 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
-
-		// schedule the autonomous command (example)
 		autoCommand = autoChooser.getSelected();
 		autoCommand.start();
 	}
@@ -125,10 +107,6 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
-		// This makes sure that the autonomous stops running when
-		// teleop starts running. If you want the autonomous to
-		// continue until interrupted by another command, remove
-		// this line or comment it out.
 		Robot.drive.endPositionDrive();
 	}
 

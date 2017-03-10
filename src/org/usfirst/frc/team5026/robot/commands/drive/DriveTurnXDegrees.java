@@ -24,9 +24,6 @@ public class DriveTurnXDegrees extends Command {
 
     protected void initialize() {
     	Robot.drive.stopMotors();
-    	if(degrees == 0) {
-    		degrees = SmartDashboard.getNumber(Constants.DRIVE_TURNXDEGREES_NAME, 0);
-    	}
     	Robot.drive.setRotate(degrees);
     }
 

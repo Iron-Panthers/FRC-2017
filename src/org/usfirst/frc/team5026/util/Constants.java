@@ -12,19 +12,21 @@ public class Constants {
 	public static final double AUTO_TURN_SPEED = 0.1;
 	public static final double CLAMP_WAIT_TIME = 0.5;
 	
-	//Encoder constants
+	// Encoder constants
 	public static final double WHEEL_DIAMETER = 4;	//in inches
 	public static final double WHEEL_CIRCUMFERENCE = Math.PI * WHEEL_DIAMETER;
 	public static final int ENCODER_TICKS_PER_ROTATION = 1024;
 	
-	//Auto COnstants
-	public static final String DRIVE_DISTANCE_RAMP_SMD_NAME = "DriveRampDistance(inches)"; 
-	public static final String DRIVE_TURNXDEGREES_NAME = "DriveTurnXDegrees(degrees)"; 
+	// Auto Constants
 	public static final double STRAIGHT_DRIVE_SPEED = 0.5;
 	public static final double GEAR_RATIO = 5.36;
+	// Auto Distances
+	public static final double AUTO_MIDDLE_TARGET_LEFT = -6;
+	public static final double AUTO_MIDDLE_TARGET_RIGHT = -6;
 	
 	// Drive motion profile
-	public static final double DRIVE_STABILIZATION_TOLERANCE = 0.02;
+	public static final double DRIVE_STABILIZATION_TOLERANCE = 2000;
+	public static final double DRIVE_STABILIZATION_COUNT_TOLERANCE = 50;
 	
 	public static final int PID_PROFILE_LEFT = 0;
 	public static final double P_LEFT = 0.1;
