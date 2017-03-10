@@ -24,7 +24,6 @@ public class Hardware {
 	private boolean invertSensorLeft = true;
 	private boolean invertMotorRight = false;
 	private boolean invertSensorRight = false;
-	//TODO: Need to fix inverted with new gearbox!
 	
 	public Talon climbRightMotor;
 	public Talon climbLeftMotor;

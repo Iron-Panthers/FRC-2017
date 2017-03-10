@@ -65,6 +65,7 @@ public class Drive extends Subsystem {
 	}
 	
 	public void stopMotors() {
+		this.endPositionDrive();
 		this.setLeftRightMotors(0, 0);
 	}
 	
@@ -80,7 +81,11 @@ public class Drive extends Subsystem {
 	public void setRotate(double angle) {
 		targetAngle = angle;
 		stopMotors();
-		gyro.reset();
+		try {
+			gyro.reset();
+		} catch (NullPointerException e) {
+			System.out.println("No Gyro!");
+		}
 		if(targetAngle > 0) {
 			turningRight = true;
 		} else {

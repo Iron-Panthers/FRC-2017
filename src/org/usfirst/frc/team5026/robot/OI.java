@@ -25,6 +25,7 @@ public class OI {
 	public Button boardButton6;
 	
 	public Button driveButton1;
+	public Button driveButton3;
 	
 	public OI() {
 		driveJoystick = new PantherJoystick(RobotMap.DRIVE_JOYSTICK);
@@ -40,10 +41,12 @@ public class OI {
 	    boardButton5 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_5); 
 	    boardButton6 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_6);
 	    driveButton1 = new JoystickButton(driveJoystick, 1);
+	    driveButton3 = new JoystickButton(driveJoystick, 3);
 	}
 	public void mapButtonBoard() {
 		boardButton2.whenPressed(new GearClampCommand());
 		boardButton3.whenPressed(new GearUnClampCommand());
 		driveButton1.whileHeld(new AutoDriveDistancePosition(-6, -6));
+		driveButton3.whileHeld(new AutoDriveDistancePosition(-8, -6));
 	}
 }

@@ -50,7 +50,7 @@ public class AutoDriveDistancePosition extends Command {
         
         Robot.drive.positionDrive(targetLeft, targetRight);
         
-        if(Math.abs(left.getClosedLoopError()) < 100 && Math.abs(right.getClosedLoopError()) < 100){
+        if(Math.abs(left.getClosedLoopError()) < 300 && Math.abs(right.getClosedLoopError()) < 300){
         	count++;
         }
     }
