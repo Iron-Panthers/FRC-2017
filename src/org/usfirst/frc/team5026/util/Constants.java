@@ -26,7 +26,6 @@ public class Constants {
 	//Gyro Constants 
 	public static final double PERCENTAGE = 0.05;  
 	public static final double SPEED = 0.5; 
-	public static final double CLAMP_WAIT_TIME = 0.5; 
 	   
 	//Climber Constants
 	public static final double CLIMBER_SPEED_RAPPEL = -0.2;	//quality of unloader's life
@@ -55,7 +54,6 @@ public class Constants {
 	// Gyro Constants
 	public static final double PERCENTAGE_FOR_ERROR = 0.05; 
 	public static final double AUTO_TURN_SPEED = 0.1;
-	public static final double CLAMP_WAIT_TIME = 0.5;
 	
 	// Encoder constants
 	public static final double WHEEL_DIAMETER = 4;	//in inches

@@ -40,6 +40,7 @@ public class Robot extends IterativeRobot {
 	
 	Command autoCommand;
 	SendableChooser <Command> autoChooser = new SendableChooser<>();
+	SendableChooser <Command> joyChooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -51,11 +52,11 @@ public class Robot extends IterativeRobot {
 		hardware = new Hardware();
 		initSubsystems();
 		SmartDashboard.putData(Scheduler.getInstance());
-		chooser.addDefault("Red Joystick", new JoystickChoose(JoystickType.RED));
+		joyChooser.addDefault("Red Joystick", new JoystickChoose(JoystickType.RED));
 		// The name should be joystick type, the object is: new JoystickChoose(proper joystick type);
-		chooser.addObject("Blue Joystick", new JoystickChoose(JoystickType.BLUE));
-		chooser.addObject("Spinny Joystick", new JoystickChoose(JoystickType.SPINNY));
-		SmartDashboard.putData("Joystick Type", chooser);
+		joyChooser.addObject("Blue Joystick", new JoystickChoose(JoystickType.BLUE));
+		joyChooser.addObject("Spinny Joystick", new JoystickChoose(JoystickType.SPINNY));
+		SmartDashboard.putData("Joystick Type", joyChooser);
 		SmartDashboard.putData(climber);
 	}
 	
@@ -88,7 +89,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-		chooser.getSelected().start();
+		joyChooser.getSelected().start();
 	}
 
 	/**

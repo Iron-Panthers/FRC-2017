@@ -41,9 +41,6 @@ public class OI {
 	public Button boardButton7;
 	public Button boardButton8;
 	
-	public Button driveButton1;
-	public Button driveButton3;
-	
 	public OI() {
 		driveJoystick = new PantherJoystick(RobotMap.DRIVE_JOYSTICK);
 		buttonBoard = new PantherJoystick(RobotMap.BUTTON_JOYSTICK);
