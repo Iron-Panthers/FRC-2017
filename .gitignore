@@ -1,15 +1,22 @@
 *.class
 
+# Eclipse files
+.classpath
+sysProps.xml
+*/bin/.classpath
+
 
 # Mobile Tools for Java (J2ME)
 
 .mtj.tmp/
 
-
-# Package Files 
+# Package Files #
 *.jar
+
 *.war
+
 *.ear
+
 
 
 
@@ -31,3 +38,13 @@ sysProps.xml
 
 
 hs_err_pid
+
+# Eclipse files
+
+.classpath
+
+sysProps.xml
+
+*/bin/.classpath
+# Package Files #
+

@@ -2,6 +2,10 @@
 package org.usfirst.frc.team5026.robot;
 
 import org.usfirst.frc.team5026.robot.commands.JoystickChoose;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoBlueDriveCarveRightToPegFromBoiler;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDoNothing;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistancePosition;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoRedDriveCarveLeftToPegFromBoiler;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
@@ -34,8 +38,8 @@ public class Robot extends IterativeRobot {
 	public static Climber climber;
 	public static Intake intake;
 	
-	Command autonomousCommand;
-	SendableChooser <Command> chooser = new SendableChooser<>();
+	Command autoCommand;
+	SendableChooser <Command> autoChooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -70,7 +74,15 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void disabledInit() {
+		Scheduler.getInstance().removeAll();
 
+		autoChooser.addDefault("Nothing", new AutoDoNothing());
+		// Everytime u write a new auto, do autoChooser.addObject("NAME OF AUTO", new AUTOCOMMAND);
+		// Do that here
+		autoChooser.addObject("Auto sequence: mid position start (Uses PID)", new AutoDriveDistancePosition(Constants.AUTO_MIDDLE_TARGET_LEFT, Constants.AUTO_MIDDLE_TARGET_RIGHT));
+		autoChooser.addObject("Red: Right peg", new AutoRedDriveCarveLeftToPegFromBoiler());
+		autoChooser.addObject("Blue: Left peg", new AutoBlueDriveCarveRightToPegFromBoiler());
+		SmartDashboard.putData("Autonomous Chooser", autoChooser);
 	}
 
 	@Override
@@ -92,15 +104,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
-
-		// schedule the autonomous command (example)
+		autoCommand = autoChooser.getSelected();
+		autoCommand.start();
 	}
 
 	/**
@@ -113,7 +118,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
-
+		Robot.drive.endPositionDrive();
 	}
 
 	/**
@@ -121,7 +126,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		Scheduler.getInstance().run();
+		Scheduler.getInstance().run();		
 	}
 
 	/**
