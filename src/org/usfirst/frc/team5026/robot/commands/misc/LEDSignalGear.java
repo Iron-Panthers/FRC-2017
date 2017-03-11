@@ -1,30 +1,27 @@
-package org.usfirst.frc.team5026.robot.commands.gear;
+package org.usfirst.frc.team5026.robot.commands.misc;
 
 import org.usfirst.frc.team5026.robot.Robot;
+import org.usfirst.frc.team5026.util.Constants;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class WaitForGear extends Command {
+public class LEDSignalGear extends Command {
 
-    public WaitForGear() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+    public LEDSignalGear() {
     }
 
-    // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.hardware.led.setColor(Constants.LED_GEAR_RELEASE);
     }
 
-    // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     }
 
-    // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.gearclamp.hasGear();
+        return false;
     }
 
     // Called once after isFinished returns true
@@ -34,5 +31,6 @@ public class WaitForGear extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	Robot.hardware.led.cycleStates();
     }
 }

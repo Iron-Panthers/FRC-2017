@@ -1,12 +1,8 @@
 *.class
 
-
 # Eclipse files
-
 .classpath
-
 sysProps.xml
-
 */bin/.classpath
 
 
@@ -14,11 +10,13 @@ sysProps.xml
 
 .mtj.tmp/
 
-
-# Package Files 
+# Package Files #
 *.jar
+
 *.war
+
 *.ear
+
 
 
 
@@ -29,3 +27,24 @@ hs_err_pid
 /bin/
 hs_err_pid
 /bin/
+
+# Eclipse files
+
+.classpath
+
+sysProps.xml
+
+*/bin/.classpath
+
+
+hs_err_pid
+
+# Eclipse files
+
+.classpath
+
+sysProps.xml
+
+*/bin/.classpath
+# Package Files #
+

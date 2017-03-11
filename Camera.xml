@@ -1,5 +1,35 @@
 <xml version="1.0">
 <dashboard>
+	<widget field="Climber Right Speed" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="706" y="0"/>
+	</widget>
+	<widget field="CLimber Left Speed" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="238" y="953"/>
+	</widget>
+	<widget field="Climber Right Voltage" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="465" y="0"/>
+	</widget>
+	<widget field="Climber Left Voltage" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="238" y="69"/>
+	</widget>
+	<widget field="Climber" type="Subsystem" class="edu.wpi.first.smartdashboard.gui.elements.Subsystem">
+		<location x="21" y="953"/>
+	</widget>
+	<widget field="right" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="234" y="46"/>
+	</widget>
+	<widget field="Left" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="234" y="23"/>
+	</widget>
+	<widget field="Joystick is Forward?" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="234" y="0"/>
+	</widget>
+	<widget field="Joystick Type" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
+		<location x="0" y="84"/>
+	</widget>
+	<widget field="Scheduler" type="Scheduler" class="edu.wpi.first.smartdashboard.gui.elements.Scheduler">
+		<location x="37" y="0"/>
+	</widget>
 	<widget field="JoyX" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="0" y="61"/>
 	</widget>

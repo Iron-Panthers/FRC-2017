@@ -2,9 +2,16 @@
 package org.usfirst.frc.team5026.robot;
 
 import org.usfirst.frc.team5026.robot.commands.JoystickChoose;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoBlueDriveCarveRightToPegFromBoiler;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDoNothing;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistancePosition;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoRedDriveCarveLeftToPegFromBoiler;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
+import org.usfirst.frc.team5026.robot.subsystems.Intake;
+import org.usfirst.frc.team5026.util.Color;
+import org.usfirst.frc.team5026.util.Constants;
 import org.usfirst.frc.team5026.util.Hardware;
 import org.usfirst.frc.team5026.util.JoystickType;
 
@@ -29,8 +36,11 @@ public class Robot extends IterativeRobot {
 	public static Drive drive;
 	public static GearClamp gearclamp;
 	public static Climber climber;
-	Command autonomousCommand;
-	SendableChooser <Command> chooser = new SendableChooser<>();
+	public static Intake intake;
+	
+	Command autoCommand;
+	SendableChooser <Command> autoChooser = new SendableChooser<>();
+	SendableChooser <Command> joyChooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -41,19 +51,21 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		hardware = new Hardware();
 		initSubsystems();
+		SmartDashboard.putData(Scheduler.getInstance());
+		joyChooser.addDefault("Red Joystick", new JoystickChoose(JoystickType.RED));
+		// The name should be joystick type, the object is: new JoystickChoose(proper joystick type);
+		joyChooser.addObject("Blue Joystick", new JoystickChoose(JoystickType.BLUE));
+		joyChooser.addObject("Spinny Joystick", new JoystickChoose(JoystickType.SPINNY));
+		SmartDashboard.putData("Joystick Type", joyChooser);
+		SmartDashboard.putData(climber);
 	}
 	
 	private void initSubsystems() {
 		drive = new Drive();
 		climber = new Climber();
 		gearclamp = new GearClamp();
+		intake = new Intake();
 		oi.mapButtonBoard();
-		SmartDashboard.putData(Scheduler.getInstance());
-		chooser.addDefault("Red Joystick", new JoystickChoose(JoystickType.RED));
-		// The name should be joystick type, the object is: new JoystickChoose(proper joystick type);
-		chooser.addObject("Blue Joystick", new JoystickChoose(JoystickType.BLUE));
-		chooser.addObject("Spinny Joystick", new JoystickChoose(JoystickType.SPINNY));
-		SmartDashboard.putData("Joystick Type", chooser);
 	}
 
 	/**
@@ -63,13 +75,21 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void disabledInit() {
+		Scheduler.getInstance().removeAll();
 
+		autoChooser.addDefault("Nothing", new AutoDoNothing());
+		// Everytime u write a new auto, do autoChooser.addObject("NAME OF AUTO", new AUTOCOMMAND);
+		// Do that here
+		autoChooser.addObject("Auto sequence: mid position start (Uses PID)", new AutoDriveDistancePosition(Constants.AUTO_MIDDLE_TARGET_LEFT, Constants.AUTO_MIDDLE_TARGET_RIGHT));
+		autoChooser.addObject("Red: Right peg", new AutoRedDriveCarveLeftToPegFromBoiler());
+		autoChooser.addObject("Blue: Left peg", new AutoBlueDriveCarveRightToPegFromBoiler());
+		SmartDashboard.putData("Autonomous Chooser", autoChooser);
 	}
 
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-		chooser.getSelected().start();
+		joyChooser.getSelected().start();
 	}
 
 	/**
@@ -85,15 +105,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
-
-		// schedule the autonomous command (example)
+		autoCommand = autoChooser.getSelected();
+		autoCommand.start();
 	}
 
 	/**
@@ -106,11 +119,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
-		// This makes sure that the autonomous stops running when
-		// teleop starts running. If you want the autonomous to
-		// continue until interrupted by another command, remove
-		// this line or comment it out. 
-		chooser.getSelected().start();
+		Robot.drive.endPositionDrive();
 	}
 
 	/**
@@ -118,7 +127,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		Scheduler.getInstance().run();
+		Scheduler.getInstance().run();		
 	}
 
 	/**

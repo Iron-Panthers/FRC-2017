@@ -15,8 +15,6 @@ public class ClimberStop extends Command {
     }
 
     protected void initialize() {
-    	climber.stopClimb();
-    	System.out.println("Stop");
     }
 
     protected void execute() {
@@ -24,7 +22,7 @@ public class ClimberStop extends Command {
     }
 
     protected boolean isFinished() {
-    	return false;
+    	return !Robot.oi.boardButton1.get();
     }
 
     protected void end() {
@@ -32,7 +30,6 @@ public class ClimberStop extends Command {
     }
 
     protected void interrupted() {
-    		end();
     }
 }
 

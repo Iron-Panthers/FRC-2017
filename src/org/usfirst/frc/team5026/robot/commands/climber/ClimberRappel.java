@@ -2,6 +2,7 @@ package org.usfirst.frc.team5026.robot.commands.climber;
 
 import org.usfirst.frc.team5026.robot.Robot;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
+import org.usfirst.frc.team5026.util.Constants;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -9,8 +10,8 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class ClimberRappel extends Command {
-	
-	public Climber climber;
+
+	private Climber climber;
 	
     public ClimberRappel() {
     	requires(Robot.climber);
@@ -18,16 +19,14 @@ public class ClimberRappel extends Command {
     }
 
     protected void initialize() {
-        System.out.println("Rappel");
-    	climber.stopClimb();
     }
 
     protected void execute() {
-    	climber.rappel();
+    	climber.setClimbMotors(Constants.CLIMBER_SPEED_RAPPEL);
     }
 
     protected boolean isFinished() {
-        return climber.hasResistance();
+        return false;
     }
 
     protected void end() {
