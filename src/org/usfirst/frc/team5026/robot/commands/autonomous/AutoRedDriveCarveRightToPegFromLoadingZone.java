@@ -1,25 +1,22 @@
 package org.usfirst.frc.team5026.robot.commands.autonomous;
 
-import org.usfirst.frc.team5026.robot.commands.drive.DriveTurnXDegrees;
+import org.usfirst.frc.team5026.util.Constants;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class AutoSequenceDriveStraightTurn_A_lot extends CommandGroup {
+public class AutoRedDriveCarveRightToPegFromLoadingZone extends CommandGroup {
 
-    public AutoSequenceDriveStraightTurn_A_lot() {
+    public AutoRedDriveCarveRightToPegFromLoadingZone() {
+    	addSequential(new AutoDriveDistancePosition(Constants.AUTO_LOADING_TARGET_FAR, Constants.AUTO_LOADING_TARGET_CLOSE));
+    	addSequential(new AutoDriveDistancePosition(Constants.AUTO_LOADING_AFTER_TURN_TO_PEG, Constants.AUTO_LOADING_AFTER_TURN_TO_PEG));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-    	
-    	addSequential(new DriveStraightForSetDistance(20));
-    	//addSequential(new DriveTurnXDegrees(45));
-    	addSequential(new DriveStraightForSetDistance(-20));
-    	//addSequential(new DriveTurnXDegrees(-45));
-    	
+
         // To run multiple commands at the same time,
         // use addParallel()
         // e.g. addParallel(new Command1());
