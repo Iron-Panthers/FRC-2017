@@ -5,11 +5,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class AutoDriveCarveToPeg extends CommandGroup {
+public class AutoRedDriveCarveLeftToPegFromBoiler extends CommandGroup {
 
-    public AutoDriveCarveToPeg() {
-    	addSequential(new AutoDriveDistancePosition(-12.8, -8.8));
-    	addSequential(new AutoDriveDistancePosition(-3, -3));
+    public AutoRedDriveCarveLeftToPegFromBoiler() {
+    	addSequential(new AutoDriveDistancePosition(-12.9, -9.1));
+    	addSequential(new AutoDriveDistancePosition(-3.5, -3.5));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

@@ -1,7 +1,7 @@
 package org.usfirst.frc.team5026.robot;
 
-import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveCarveToPeg;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistancePosition;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoRedDriveCarveLeftToPegFromBoiler;
 import org.usfirst.frc.team5026.robot.commands.gear.GearClampCommand;
 import org.usfirst.frc.team5026.robot.commands.gear.GearUnClampCommand;
 import org.usfirst.frc.team5026.util.PantherJoystick;
@@ -48,6 +48,6 @@ public class OI {
 		boardButton2.whenPressed(new GearClampCommand());
 		boardButton3.whenPressed(new GearUnClampCommand());
 		driveButton1.whenPressed(new AutoDriveDistancePosition(-6, -6));
-		driveButton3.whenPressed(new AutoDriveCarveToPeg());
+		driveButton3.whenPressed(new AutoRedDriveCarveLeftToPegFromBoiler());
 	}
 }

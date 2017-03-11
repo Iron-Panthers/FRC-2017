@@ -2,8 +2,8 @@
 package org.usfirst.frc.team5026.robot;
 
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDoNothing;
-import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveCarveToPeg;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistancePosition;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoRedDriveCarveLeftToPegFromBoiler;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
@@ -66,7 +66,7 @@ public class Robot extends IterativeRobot {
 		// Everytime u write a new auto, do autoChooser.addObject("NAME OF AUTO", new AUTOCOMMAND);
 		// Do that here
 		autoChooser.addObject("Auto sequence: mid position start (Uses PID)", new AutoDriveDistancePosition(Constants.AUTO_MIDDLE_TARGET_LEFT, Constants.AUTO_MIDDLE_TARGET_RIGHT));
-		autoChooser.addObject("Auto carve to peg", new AutoDriveCarveToPeg());
+		autoChooser.addObject("Auto carve to peg", new AutoRedDriveCarveLeftToPegFromBoiler());
 		SmartDashboard.putData("Autonomous Chooser", autoChooser);
 	}
 
