@@ -25,17 +25,17 @@ public class AutoDriveDistancePosition extends Command {
         requires(Robot.drive); // I believe this is the issue, it allows this to be interrupted
         this.targetLeft = targetLeft;
         this.targetRight = targetRight;
-        left = Robot.drive.encLeftMotor.getEncMotor();
-        right = Robot.drive.encRightMotor.getEncMotor();
+        left = Robot.drive.left.getEncMotor();
+        right = Robot.drive.right.getEncMotor();
     }
 
     protected void initialize() {
     	count = 0;
     	SmartDashboard.putNumber("IsFinished", 0); //0: not done, 1: ended normally, 2: interrupted
-    	Robot.drive.encLeftMotor.resetPosition();
-    	Robot.drive.encRightMotor.resetPosition();
-    	Robot.drive.encLeftMotor.setupPositionMode();
-    	Robot.drive.encRightMotor.setupPositionMode();
+    	Robot.drive.left.resetPosition();
+    	Robot.drive.right.resetPosition();
+    	Robot.drive.left.setupPositionMode();
+    	Robot.drive.right.setupPositionMode();
     }
 
     // Called repeatedly when this Command is scheduled to run

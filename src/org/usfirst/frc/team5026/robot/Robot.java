@@ -87,6 +87,8 @@ public class Robot extends IterativeRobot {
 		autoChooser.addObject("Blue: Right peg", new AutoBlueDriveCarveLeftToPegFromLoadingZone());
 		autoChooser.addObject("Blue: Left peg", new AutoBlueDriveCarveRightToPegFromBoiler());
 		SmartDashboard.putData("Autonomous Chooser", autoChooser);
+		
+		drive.setBrakeMode(false);
 	}
 
 	@Override
@@ -110,6 +112,7 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		autoCommand = autoChooser.getSelected();
 		autoCommand.start();
+		drive.setBrakeMode(true);
 	}
 
 	/**
@@ -123,6 +126,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopInit() {
 		Robot.drive.endPositionDrive();
+		drive.setBrakeMode(true);
 	}
 
 	/**

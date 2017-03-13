@@ -126,4 +126,11 @@ public class DriveMotorGroup implements SpeedController {
 	public void resetPosition() {
 		encoderMotor.setPosition(0);
 	}
+	public void setBrakeMode(boolean brake)
+	{
+		for(CANTalon ct : motors)
+		{
+			ct.enableBrakeMode(brake);
+		}
+	}
 }
