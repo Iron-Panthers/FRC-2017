@@ -64,8 +64,8 @@ public class Constants {
 	public static final double STRAIGHT_DRIVE_SPEED = 0.5;
 	public static final double GEAR_RATIO = 5.36;
 	// Auto Distances
-	public static final double AUTO_MIDDLE_TARGET_LEFT = -8.5;
-	public static final double AUTO_MIDDLE_TARGET_RIGHT = -8.5;
+	public static final double AUTO_MIDDLE_TARGET_LEFT = -9.1;
+	public static final double AUTO_MIDDLE_TARGET_RIGHT = -9.1;
 	
 	//DriveCarveToPegFromBoiler
 	public static final double AUTO_BOILER_TARGET_FAR = -12.9;
