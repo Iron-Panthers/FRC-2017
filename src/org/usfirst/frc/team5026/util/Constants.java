@@ -73,16 +73,6 @@ public class Constants {
 	public static final double AUTO_BOILER_AFTER_TURN_TO_PEG = -3.5;
 	
 	//DriveCarveToPegFromLoadingZone
-	public static final double AUTO_LOADING_TARGET_FAR = -12.9;
-	public static final double AUTO_LOADING_TARGET_CLOSE = -9.1;
-	public static final double AUTO_LOADING_AFTER_TURN_TO_PEG = -3.5;
-	
-	//DriveCarveToPegFromBoiler
-	public static final double AUTO_BOILER_TARGET_FAR = -12.9;
-	public static final double AUTO_BOILER_TARGET_CLOSE = -9.1;
-	public static final double AUTO_BOILER_AFTER_TURN_TO_PEG = -3.5;
-	
-	//DriveCarveToPegFromLoadingZone
 	public static final double AUTO_LOADING_TARGET_FAR = -12.8;
 	public static final double AUTO_LOADING_TARGET_CLOSE = -9.1;
 	public static final double AUTO_LOADING_AFTER_TURN_TO_PEG = -3.5;

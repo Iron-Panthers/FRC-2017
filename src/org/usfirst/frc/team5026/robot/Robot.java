@@ -77,7 +77,9 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void disabledInit() {
 		Scheduler.getInstance().removeAll();
-
+		
+		SmartDashboard.putBoolean("Running", false);
+		
 		autoChooser.addDefault("Nothing", new AutoDoNothing());
 		// Everytime u write a new auto, do autoChooser.addObject("NAME OF AUTO", new AUTOCOMMAND);
 		// Do that here
@@ -113,6 +115,7 @@ public class Robot extends IterativeRobot {
 		autoCommand = autoChooser.getSelected();
 		autoCommand.start();
 		drive.setBrakeMode(true);
+		SmartDashboard.putBoolean("Running", true);
 	}
 
 	/**
@@ -127,6 +130,7 @@ public class Robot extends IterativeRobot {
 	public void teleopInit() {
 		Robot.drive.endPositionDrive();
 		drive.setBrakeMode(true);
+		SmartDashboard.putBoolean("Running", true);
 	}
 
 	/**
