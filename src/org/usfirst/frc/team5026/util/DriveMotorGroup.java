@@ -11,14 +11,16 @@ public class DriveMotorGroup implements SpeedController {
 	private CANTalon[] motors;
 	private CANTalon encoderMotor;
 	
+	private double teleopRampRate;
 	double[] pidfr;
 	
-	public DriveMotorGroup(boolean talonInverted, boolean encoderInverted, double[] pidfr, CANTalon... side) {
+	public DriveMotorGroup(boolean talonInverted, boolean encoderInverted, double[] pidfr, double teleopRampRate, CANTalon... side) {
 		/* First motor is encoder motor
 		 * pidfr:
 		 * P, I, D, F is PIDF for the CANTalon
 		 * R is the ramp rate for the CANTalon
 		 */
+		this.teleopRampRate = teleopRampRate;
 		motors = side;
 		encoderMotor = motors[0];
 		encoderMotor.setEncPosition(0);
@@ -52,7 +54,7 @@ public class DriveMotorGroup implements SpeedController {
         encoderMotor.setP(pidfr[0]);
         encoderMotor.setI(pidfr[1]); 
         encoderMotor.setD(pidfr[2]);   
-        encoderMotor.setVoltageRampRate(0); // VOLTAGE RAMP RATE SET TO 0, WILL SET TO DRIVE RAMP.
+        encoderMotor.setVoltageRampRate(teleopRampRate); // VOLTAGE RAMP RATE SET TO 0, WILL SET TO DRIVE RAMP.
         // AUTO RAMP IS VERY CONSERVATIVE
 	}
 	public void setupPositionMode () {
