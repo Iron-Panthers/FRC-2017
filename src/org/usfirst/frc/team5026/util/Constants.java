@@ -38,8 +38,8 @@ public class Constants {
 	public static final double CLIMBER_STALL_LIMIT = 5.0;	//=[NEED TESTING]= The current(A) at which the climber motors stall.
 	
 	//Intake Constants
-	public static final double INTAKE_INTAKE_SPEED = 0.5;
-	public static final double INTAKE_OUTTAKE_SPEED = -0.5;
+	public static final double INTAKE_INTAKE_SPEED = 1;
+	public static final double INTAKE_OUTTAKE_SPEED = -1;
 	
 	//LED Constants
 	public static final double LED_TIME_DEFAULT = 0.25;
