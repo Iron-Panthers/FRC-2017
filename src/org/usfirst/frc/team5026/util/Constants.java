@@ -73,7 +73,7 @@ public class Constants {
 	public static final double AUTO_BOILER_AFTER_TURN_TO_PEG = -3.5;
 	
 	//DriveCarveToPegFromLoadingZone
-	public static final double AUTO_LOADING_TARGET_FAR = -12.9;
+	public static final double AUTO_LOADING_TARGET_FAR = -12.8;
 	public static final double AUTO_LOADING_TARGET_CLOSE = -9.1;
 	public static final double AUTO_LOADING_AFTER_TURN_TO_PEG = -3.5;
 	
@@ -96,6 +96,9 @@ public class Constants {
 	public static final double F_RIGHT = 0;
 	public static final double RAMP_RIGHT = 15;
 	public static final double[] PIDFR_RIGHT = {P_RIGHT,I_RIGHT,D_RIGHT,F_RIGHT, RAMP_RIGHT};
+	
+	public static final double TELEOP_RAMP_RIGHT = 0;
+	public static final double TELEOP_RAMP_LEFT = 0;
 	
 	public static final double MAX_ACCELERATION = 500;
 	/*

@@ -25,8 +25,8 @@ public class Drive extends Subsystem {
 	public Gyro gyro;
 	Hardware hardware;
 	
-	public DriveMotorGroup encLeftMotor;
-	public DriveMotorGroup encRightMotor;
+	public DriveMotorGroup left;
+	public DriveMotorGroup right;
 	
 	public double targetAngle;
 	private boolean turningRight = true;
@@ -44,13 +44,19 @@ public class Drive extends Subsystem {
 		gyro = hardware.gyro;
 		shifter = Robot.hardware.shifter;
 		drive.setSafetyEnabled(false);
-		encLeftMotor = hardware.leftMotor;
-		encRightMotor = hardware.rightMotor;
+		left = hardware.leftMotor;
+		right = hardware.rightMotor;
 		led = hardware.led;
 	}
 	
 	public void setLeftRightMotors(double left, double right) {
 		drive.setLeftRightMotorOutputs(left, right);
+	}
+	
+	public void setBrakeMode(boolean brake)
+	{
+		left.setBrakeMode(brake);
+		right.setBrakeMode(brake);
 	}
 	
 	public void setGear() {
@@ -112,23 +118,23 @@ public class Drive extends Subsystem {
 		if(inches < 0) {
 			backwards = true; 
 		}
-		startingLeftEncoderPos = encLeftMotor.getEncPosition(); //"leftMotor" cringe
+		startingLeftEncoderPos = left.getEncPosition(); //"leftMotor" cringe
 		targetLeftEncoderPos = (startingLeftEncoderPos + (Constants.GEAR_RATIO * (inches / Constants.WHEEL_CIRCUMFERENCE) * Constants.ENCODER_TICKS_PER_ROTATION));
 		
-		startingRightEncoderPos = encRightMotor.getEncPosition();
+		startingRightEncoderPos = right.getEncPosition();
 		targetRightEncoderPos = (startingRightEncoderPos + (Constants.GEAR_RATIO * (inches / Constants.WHEEL_CIRCUMFERENCE) * Constants.ENCODER_TICKS_PER_ROTATION));
 	}
 	public double getLeftEnc() {
-		return encLeftMotor.getEncPosition();
+		return left.getEncPosition();
 	}
 	public double getRightEnc() {
-		return encRightMotor.getEncPosition();
+		return right.getEncPosition();
 	}
 	
 	public double getDistanceError() {
 		// In inches
 		// Make sure to use the correct ratio
-		return ((encLeftMotor.getEncPosition() - targetLeftEncoderPos) * Constants.WHEEL_CIRCUMFERENCE) / (Constants.GEAR_RATIO * Constants.ENCODER_TICKS_PER_ROTATION);
+		return ((left.getEncPosition() - targetLeftEncoderPos) * Constants.WHEEL_CIRCUMFERENCE) / (Constants.GEAR_RATIO * Constants.ENCODER_TICKS_PER_ROTATION);
 	}
 	public double getGyroError() {
 		// In degrees
@@ -146,7 +152,7 @@ public class Drive extends Subsystem {
 	
 	public void driveStraight(double speed) {
 		//try using different motors, or just add a getEncPosition method in motorgroup
-		this.encLeftMotor.set(backwards ? -1: 1 * speed);
+		this.left.set(backwards ? -1: 1 * speed);
 	}
 	
 	public boolean isFinishedDrivingDistance(DriveMotorGroup encMotor) {	//i'm sure there's a better way to do this
@@ -157,15 +163,15 @@ public class Drive extends Subsystem {
 	} 
 	
 	public void autoDriveDistance() {
-		if(!isFinishedDrivingDistance(encLeftMotor)) {
-			this.encLeftMotor.set((backwards ? -1 : 1) * Constants.STRAIGHT_DRIVE_SPEED);
+		if(!isFinishedDrivingDistance(left)) {
+			this.left.set((backwards ? -1 : 1) * Constants.STRAIGHT_DRIVE_SPEED);
 		} else {
-			this.encLeftMotor.stopMotor();
+			this.left.stopMotor();
 		}
-		if(!isFinishedDrivingDistance(encRightMotor)) {
-			this.encRightMotor.set((backwards ? -1 : 1) * Constants.STRAIGHT_DRIVE_SPEED);
+		if(!isFinishedDrivingDistance(right)) {
+			this.right.set((backwards ? -1 : 1) * Constants.STRAIGHT_DRIVE_SPEED);
 		} else {
-			this.encRightMotor.stopMotor();
+			this.right.stopMotor();
 		}
 	}
 
@@ -176,13 +182,13 @@ public class Drive extends Subsystem {
 	
 	public void positionDrive(double targetLeft, double targetRight)
 	{
-		encLeftMotor.positionControl(targetLeft);
-		encRightMotor.positionControl(targetRight);
+		left.positionControl(targetLeft);
+		right.positionControl(targetRight);
 	}
 	
 	public void endPositionDrive()
 	{
-		encLeftMotor.stopPositionControl();
-		encRightMotor.stopPositionControl();
+		left.stopPositionControl();
+		right.stopPositionControl();
 	}
 }

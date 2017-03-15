@@ -25,8 +25,8 @@ public class DriveWithJoystick extends Command {
 	@Override
 	protected void initialize() {
 		Robot.drive.stopMotors();
-		Robot.drive.encLeftMotor.setupVoltageMode();
-		Robot.drive.encRightMotor.setupVoltageMode();
+		Robot.drive.left.setupVoltageMode();
+		Robot.drive.right.setupVoltageMode();
 	}
 
 	

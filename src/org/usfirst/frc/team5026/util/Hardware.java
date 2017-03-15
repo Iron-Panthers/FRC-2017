@@ -53,8 +53,8 @@ public class Hardware {
 		rightMotor_1 = new CANTalon(RobotMap.DRIVE_MOTOR_RIGHT_ENCODER);
 		rightMotor_2 = new CANTalon(RobotMap.DRIVE_MOTOR_RIGHT_2);
 		rightMotor_3 = new CANTalon(RobotMap.DRIVE_MOTOR_RIGHT_3);
-		leftMotor = new DriveMotorGroup(invertMotorLeft, invertSensorLeft, Constants.PIDFR_LEFT, leftMotor_1, leftMotor_2, leftMotor_3);
-		rightMotor = new DriveMotorGroup(invertMotorRight, invertSensorRight, Constants.PIDFR_RIGHT, rightMotor_1, rightMotor_2, rightMotor_3);
+		leftMotor = new DriveMotorGroup(invertMotorLeft, invertSensorLeft, Constants.PIDFR_LEFT, Constants.TELEOP_RAMP_LEFT, leftMotor_1, leftMotor_2, leftMotor_3);
+		rightMotor = new DriveMotorGroup(invertMotorRight, invertSensorRight, Constants.PIDFR_RIGHT, Constants.TELEOP_RAMP_RIGHT, rightMotor_1, rightMotor_2, rightMotor_3);
 		// Drive Excess
 		try {gyro = new ADXRS450_Gyro(Port.kOnboardCS0);}
 		catch (Exception e) {
