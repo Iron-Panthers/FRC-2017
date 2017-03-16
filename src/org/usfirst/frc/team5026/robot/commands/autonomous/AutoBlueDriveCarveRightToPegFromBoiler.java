@@ -1,16 +1,17 @@
-package org.usfirst.frc.team5026.robot.commands.gear;
+package org.usfirst.frc.team5026.robot.commands.autonomous;
 
 import org.usfirst.frc.team5026.util.Constants;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import edu.wpi.first.wpilibj.command.WaitCommand;
 
 /**
  *
  */
-public class GearClampCommandGroup extends CommandGroup {
+public class AutoBlueDriveCarveRightToPegFromBoiler extends CommandGroup {
 
-    public GearClampCommandGroup() {
+    public AutoBlueDriveCarveRightToPegFromBoiler() {
+    	addSequential(new AutoDriveDistancePosition(Constants.AUTO_BOILER_TARGET_CLOSE, Constants.AUTO_BOILER_TARGET_FAR));
+    	addSequential(new AutoDriveDistancePosition(Constants.AUTO_BOILER_AFTER_TURN_TO_PEG, Constants.AUTO_BOILER_AFTER_TURN_TO_PEG));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -27,8 +28,5 @@ public class GearClampCommandGroup extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new WaitForGear());//Waits until gear is in the clamp
-    	addSequential(new WaitCommand(Constants.CLAMP_WAIT_TIME));//delay
-    	addSequential(new GearClampCommand());//clamps gear
     }
 }

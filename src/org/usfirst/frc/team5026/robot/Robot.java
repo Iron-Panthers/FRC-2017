@@ -1,17 +1,17 @@
 
 package org.usfirst.frc.team5026.robot;
 
-import org.usfirst.frc.team5026.robot.commands.AutoDriveStraightWithGyro;
+import org.usfirst.frc.team5026.robot.commands.JoystickChoose;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoBlueDriveCarveLeftToPegFromLoadingZone;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoBlueDriveCarveRightToPegFromBoiler;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDoNothing;
-import org.usfirst.frc.team5026.robot.commands.autonomous.AutoGearSequence_TopPos;
-import org.usfirst.frc.team5026.robot.commands.autonomous.AutoMotionProfileDriveStraight;
-import org.usfirst.frc.team5026.robot.commands.autonomous.AutoSequenceDriveStraightTurn_A_lot;
-import org.usfirst.frc.team5026.robot.commands.autonomous.DriveSequenceCheckErrorInDistance;
-import org.usfirst.frc.team5026.robot.commands.autonomous.DriveStraightForSetDistance;
-import org.usfirst.frc.team5026.robot.commands.drive.DriveDrivebaseForTime;
-import org.usfirst.frc.team5026.robot.commands.drive.DriveTurnXDegrees;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistancePosition;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoRedDriveCarveLeftToPegFromBoiler;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoRedDriveCarveRightToPegFromLoadingZone;
+import org.usfirst.frc.team5026.robot.subsystems.Climber;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
+import org.usfirst.frc.team5026.robot.subsystems.Intake;
 import org.usfirst.frc.team5026.util.Constants;
 import org.usfirst.frc.team5026.util.Hardware;
 import org.usfirst.frc.team5026.util.JoystickType;
@@ -36,9 +36,12 @@ public class Robot extends IterativeRobot {
 	public static Hardware hardware;
 	public static Drive drive;
 	public static GearClamp gearclamp;
-
+	public static Climber climber;
+	public static Intake intake;
+	
 	Command autoCommand;
 	SendableChooser <Command> autoChooser = new SendableChooser<>();
+	SendableChooser <Command> joyChooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -49,9 +52,13 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		hardware = new Hardware();
 		initSubsystems();
-		
-		SmartDashboard.putNumber(Constants.DRIVE_DISTANCE_RAMP_SMD_NAME, 150);
-		SmartDashboard.putNumber(Constants.DRIVE_TURNXDEGREES_NAME, 0);
+		SmartDashboard.putData(Scheduler.getInstance());
+		joyChooser.addDefault("Red Joystick", new JoystickChoose(JoystickType.RED));
+		// The name should be joystick type, the object is: new JoystickChoose(proper joystick type);
+		joyChooser.addObject("Blue Joystick", new JoystickChoose(JoystickType.BLUE));
+		joyChooser.addObject("Spinny Joystick", new JoystickChoose(JoystickType.SPINNY));
+		SmartDashboard.putData("Joystick Type", joyChooser);
+		SmartDashboard.putData(climber);
 	}
 	
 	private void initSubsystems() {
@@ -67,26 +74,27 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void disabledInit() {
+		Scheduler.getInstance().removeAll();
+		
+		SmartDashboard.putBoolean("Running", false);
 		
 		autoChooser.addDefault("Nothing", new AutoDoNothing());
 		// Everytime u write a new auto, do autoChooser.addObject("NAME OF AUTO", new AUTOCOMMAND);
 		// Do that here
-		autoChooser.addObject("Drive forward, than back", new AutoSequenceDriveStraightTurn_A_lot());
-		autoChooser.addObject("Drive Distance Encoder Error Test", new DriveSequenceCheckErrorInDistance());
-		autoChooser.addObject("Drive for 5 seconds", new DriveDrivebaseForTime(0.5, 0.5, 5));
-		autoChooser.addObject("Drive straight for set distance", new DriveStraightForSetDistance(12));
-		autoChooser.addObject("Turn x degrees", new DriveTurnXDegrees(90));
-		autoChooser.addObject("Drive w gyro and ec", new AutoDriveStraightWithGyro(60, 2));
-		autoChooser.addObject("Auto sequence: top position start", new AutoGearSequence_TopPos());
-		autoChooser.addObject("Motion Profile", new AutoMotionProfileDriveStraight(500000));
+		autoChooser.addObject("Both: Middle peg", new AutoDriveDistancePosition(Constants.AUTO_MIDDLE_TARGET_LEFT, Constants.AUTO_MIDDLE_TARGET_RIGHT));
+		autoChooser.addObject("Red: Right peg", new AutoRedDriveCarveLeftToPegFromBoiler());
+		autoChooser.addObject("Red: Left peg", new AutoRedDriveCarveRightToPegFromLoadingZone());
+		autoChooser.addObject("Blue: Right peg", new AutoBlueDriveCarveLeftToPegFromLoadingZone());
+		autoChooser.addObject("Blue: Left peg", new AutoBlueDriveCarveRightToPegFromBoiler());
 		SmartDashboard.putData("Autonomous Chooser", autoChooser);
+		
+		drive.setBrakeMode(false);
 	}
 
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-		Robot.oi.driveJoystick.setJoystickType(JoystickType.RED); // HOLY MOLY
-		autoChooser.getSelected().start();
+		joyChooser.getSelected().start();
 	}
 
 	/**
@@ -102,17 +110,10 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
-
-		// schedule the autonomous command (example)
 		autoCommand = autoChooser.getSelected();
 		autoCommand.start();
+		drive.setBrakeMode(true);
+		SmartDashboard.putBoolean("Running", true);
 	}
 
 	/**
@@ -125,7 +126,9 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
-
+		Robot.drive.endPositionDrive();
+		drive.setBrakeMode(true);
+		SmartDashboard.putBoolean("Running", true);
 	}
 
 	/**
@@ -133,7 +136,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		Scheduler.getInstance().run();
+		Scheduler.getInstance().run();		
 	}
 
 	/**
