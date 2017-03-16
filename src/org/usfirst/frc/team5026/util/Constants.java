@@ -76,41 +76,41 @@ public class Constants {
 	 */
 	
 	// Auto Distances
-	public static final double AUTO_MIDDLE_TARGET_LEFT = -9.1;
-	public static final double AUTO_MIDDLE_TARGET_RIGHT = -9.1;
+	public static double AUTO_MIDDLE_TARGET_LEFT = -9.1;
+	public static double AUTO_MIDDLE_TARGET_RIGHT = -9.1;
 	
 	//DriveCarveToPegFromBoiler
-	public static final double AUTO_BOILER_TARGET_FAR = -12.9;
-	public static final double AUTO_BOILER_TARGET_CLOSE = -9.1;
-	public static final double AUTO_BOILER_AFTER_TURN_TO_PEG = -3.5;
+	public static double AUTO_BOILER_TARGET_FAR = -12.9;
+	public static double AUTO_BOILER_TARGET_CLOSE = -9.1;
+	public static double AUTO_BOILER_AFTER_TURN_TO_PEG = -3.5;
 	
 	//DriveCarveToPegFromLoadingZone
-	public static final double AUTO_LOADING_TARGET_FAR = -12.8;
-	public static final double AUTO_LOADING_TARGET_CLOSE = -9.1;
-	public static final double AUTO_LOADING_AFTER_TURN_TO_PEG = -3.5;
+	public static double AUTO_LOADING_TARGET_FAR = -12.8;
+	public static double AUTO_LOADING_TARGET_CLOSE = -9.1;
+	public static double AUTO_LOADING_AFTER_TURN_TO_PEG = -3.5;
 	
 	// Drive motion profile
-	public static final double DRIVE_STABILIZATION_TOLERANCE = 2000;
-	public static final double DRIVE_STABILIZATION_COUNT_TOLERANCE = 50;
+	public static double DRIVE_STABILIZATION_TOLERANCE = 2000;
+	public static double DRIVE_STABILIZATION_COUNT_TOLERANCE = 50;
 	
-	public static final int PID_PROFILE_LEFT = 0;
-	public static final double P_LEFT = 0.1;
-	public static final double I_LEFT = 0;
-	public static final double D_LEFT = 65;
-	public static final double F_LEFT = 0;
-	public static final double RAMP_LEFT = 15;
-	public static final double[] PIDFR_LEFT = {P_LEFT,I_LEFT,D_LEFT,F_LEFT, RAMP_LEFT};
+	public static int PID_PROFILE_LEFT = 0;
+	public static double P_LEFT = 0.1;
+	public static double I_LEFT = 0;
+	public static double D_LEFT = 65;
+	public static double F_LEFT = 0;
+	public static double RAMP_LEFT = 15;
+	public static double[] PIDFR_LEFT = {P_LEFT,I_LEFT,D_LEFT,F_LEFT, RAMP_LEFT};
 	
-	public static final int PID_PROFILE_RIGHT = 0;
-	public static final double P_RIGHT = 0.1;
-	public static final double I_RIGHT = 0;
-	public static final double D_RIGHT = 65;
-	public static final double F_RIGHT = 0;
-	public static final double RAMP_RIGHT = 15;
-	public static final double[] PIDFR_RIGHT = {P_RIGHT,I_RIGHT,D_RIGHT,F_RIGHT, RAMP_RIGHT};
+	public static int PID_PROFILE_RIGHT = 0;
+	public static double P_RIGHT = 0.1;
+	public static double I_RIGHT = 0;
+	public static double D_RIGHT = 65;
+	public static double F_RIGHT = 0;
+	public static double RAMP_RIGHT = 15;
+	public static double[] PIDFR_RIGHT = {P_RIGHT,I_RIGHT,D_RIGHT,F_RIGHT, RAMP_RIGHT};
 	
-	public static final double TELEOP_RAMP_RIGHT = 0;
-	public static final double TELEOP_RAMP_LEFT = 0;
+	public static double TELEOP_RAMP_RIGHT = 0;
+	public static double TELEOP_RAMP_LEFT = 0;
 	
 	public static final double MAX_ACCELERATION = 500;
 	/*

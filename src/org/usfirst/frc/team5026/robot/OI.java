@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5026.robot;
 
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoCallCurrent;
 import org.usfirst.frc.team5026.robot.commands.climber.ClimberCycleSpeed;
 import org.usfirst.frc.team5026.robot.commands.climber.ClimberRappel;
 import org.usfirst.frc.team5026.robot.commands.climber.ClimberSequence;
@@ -40,6 +41,7 @@ public class OI {
 	public Button boardButton6;
 	public Button boardButton7;
 	public Button boardButton8;
+	public Button boardButton9;
 	
 	public OI() {
 		driveJoystick = new PantherJoystick(RobotMap.DRIVE_JOYSTICK);
@@ -56,7 +58,8 @@ public class OI {
 	    boardButton6 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_6);
 	    boardButton7 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_7);
 	    boardButton8 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_8);
-		
+	    boardButton9 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_9);
+	    
 	    driveButton1 = new JoystickButton(driveJoystick, RobotMap.DRIVE_BUTTON_1); //TODO: Add RobotMappings
 	    driveButton2 = new JoystickButton(driveJoystick, RobotMap.DRIVE_BUTTON_2);
 	    driveButton3 = new JoystickButton(driveJoystick, RobotMap.DRIVE_BUTTON_3);
@@ -75,5 +78,6 @@ public class OI {
 		boardButton6.whenPressed(new GearClampCommand());
 		boardButton7.whenPressed(new GearUnClampCommand());
 		boardButton8.whileHeld(new ClimberRappel());
+		boardButton9.whenPressed(new AutoCallCurrent());
 	}
 }

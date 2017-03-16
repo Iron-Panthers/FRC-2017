@@ -16,6 +16,9 @@ public class AutoDriveDistancePosition extends Command {
 	private double targetLeft;
 	private double targetRight;
 	
+	String left1;
+	String right1;
+	
 	CANTalon left;
 	CANTalon right;
 
@@ -28,6 +31,13 @@ public class AutoDriveDistancePosition extends Command {
         left = Robot.drive.left.getEncMotor();
         right = Robot.drive.right.getEncMotor();
     }
+    public AutoDriveDistancePosition(String s1, String s2) {
+    	requires(Robot.drive);
+    	left1 = s1;
+    	right1 = s2;
+    	left = Robot.drive.left.getEncMotor();
+        right = Robot.drive.right.getEncMotor();
+    }
 
     protected void initialize() {
     	count = 0;
@@ -36,6 +46,10 @@ public class AutoDriveDistancePosition extends Command {
     	Robot.drive.right.resetPosition();
     	Robot.drive.left.setupPositionMode();
     	Robot.drive.right.setupPositionMode();
+    	if (left1 != null && right1 != null) {
+    		targetLeft = SmartDashboard.getNumber(left1, 0);
+    		targetRight = SmartDashboard.getNumber(right1, 0);
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -53,7 +67,7 @@ public class AutoDriveDistancePosition extends Command {
         
         Robot.drive.positionDrive(targetLeft, targetRight);
         
-        if(Math.abs(left.getClosedLoopError()) < Constants.DRIVE_STABILIZATION_TOLERANCE && Math.abs(right.getClosedLoopError()) < Constants.DRIVE_STABILIZATION_TOLERANCE){
+        if(Math.abs(left.getClosedLoopError()) < SmartDashboard.getNumber("Auto Drive Stabilization Tolerance (Ticks)", 0) && Math.abs(right.getClosedLoopError()) < SmartDashboard.getNumber("Auto Drive Stabilization Tolerance (Ticks)", 0)) {
         	count++;
         }
         SmartDashboard.putNumber("Count", count);
@@ -61,7 +75,7 @@ public class AutoDriveDistancePosition extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return count >= Constants.DRIVE_STABILIZATION_COUNT_TOLERANCE;
+        return count >= SmartDashboard.getNumber("Auto Drive Stabilization Tolerance (Count)", 0);
     }
 
     // Called once after isFinished returns true
