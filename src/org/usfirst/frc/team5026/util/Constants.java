@@ -63,6 +63,15 @@ public class Constants {
 	// Auto Constants
 	public static final double STRAIGHT_DRIVE_SPEED = 0.5;
 	public static final double GEAR_RATIO = 5.36;
+	/*
+	 * For auto distances:
+	 * Line left laser (gear is front) with the far edge of the tape for both the loading zone and the boiler
+	 * The angle for the banner sensor is the same.
+	 * Line right laser with bottom right of airship
+	 * 
+	 * After doing this, and being sure the angles are correct, optimize auto modes to work from those positions.
+	 */
+	
 	// Auto Distances
 	public static final double AUTO_MIDDLE_TARGET_LEFT = -9.1;
 	public static final double AUTO_MIDDLE_TARGET_RIGHT = -9.1;
