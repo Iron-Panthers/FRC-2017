@@ -136,12 +136,21 @@ public class Robot extends IterativeRobot {
 	private void displayMods() {
 		sDisplay("Auto Mid Left", Constants.AUTO_MIDDLE_TARGET_LEFT);
 		sDisplay("Auto Mid Right", Constants.AUTO_MIDDLE_TARGET_RIGHT);
-		sDisplay("Auto Boiler Close", Constants.AUTO_BOILER_TARGET_CLOSE);
-		sDisplay("Auto Boiler Far", Constants.AUTO_BOILER_TARGET_FAR);
-		sDisplay("Auto Boiler Extra Distance", Constants.AUTO_BOILER_AFTER_TURN_TO_PEG);
-		sDisplay("Auto Loading Close", Constants.AUTO_LOADING_TARGET_CLOSE);
-		sDisplay("Auto Loading Far", Constants.AUTO_LOADING_TARGET_FAR);
-		sDisplay("Auto Loading Extra Distance", Constants.AUTO_LOADING_AFTER_TURN_TO_PEG);
+		
+		sDisplay("Auto Boiler Close Red", Constants.AUTO_BOILER_TARGET_CLOSE_RED);
+		sDisplay("Auto Boiler Far Red", Constants.AUTO_BOILER_TARGET_FAR_RED);
+		sDisplay("Auto Boiler Extra Distance Red", Constants.AUTO_BOILER_AFTER_TURN_TO_PEG_RED);
+		sDisplay("Auto Loading Close Red", Constants.AUTO_LOADING_TARGET_CLOSE_RED);
+		sDisplay("Auto Loading Far Red", Constants.AUTO_LOADING_TARGET_FAR_RED);
+		sDisplay("Auto Loading Extra Distance Red", Constants.AUTO_LOADING_AFTER_TURN_TO_PEG_RED);
+		
+		sDisplay("Auto Boiler Close Blue", Constants.AUTO_BOILER_TARGET_CLOSE_BLUE);
+		sDisplay("Auto Boiler Far Blue", Constants.AUTO_BOILER_TARGET_FAR_BLUE);
+		sDisplay("Auto Boiler Extra Distance Blue", Constants.AUTO_BOILER_AFTER_TURN_TO_PEG_BLUE);
+		sDisplay("Auto Loading Close Blue", Constants.AUTO_LOADING_TARGET_CLOSE_BLUE);
+		sDisplay("Auto Loading Far Blue", Constants.AUTO_LOADING_TARGET_FAR_BLUE);
+		sDisplay("Auto Loading Extra Distance Blue", Constants.AUTO_LOADING_AFTER_TURN_TO_PEG_BLUE);
+		
 		sDisplay("LEFT P", Constants.P_LEFT);
 		sDisplay("LEFT D", Constants.D_LEFT);
 		sDisplay("LEFT RAMP", Constants.RAMP_LEFT);

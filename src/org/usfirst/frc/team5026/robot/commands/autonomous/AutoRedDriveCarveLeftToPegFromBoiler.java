@@ -11,8 +11,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class AutoRedDriveCarveLeftToPegFromBoiler extends CommandGroup {
 
     public AutoRedDriveCarveLeftToPegFromBoiler() {
-    	addSequential(new AutoDriveDistancePosition("Auto Boiler Far", "Auto Boiler Close"));
-    	addSequential(new AutoDriveDistancePosition("Auto Boiler Extra Distance", "Auto Boiler Extra Distance"));
+    	addSequential(new AutoDriveDistancePosition("Auto Boiler Far Red", "Auto Boiler Close Red"));
+    	addSequential(new AutoDriveDistancePosition("Auto Boiler Extra Distance Red", "Auto Boiler Extra Distance Red"));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

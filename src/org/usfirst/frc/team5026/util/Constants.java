@@ -79,15 +79,25 @@ public class Constants {
 	public static double AUTO_MIDDLE_TARGET_LEFT = -9.1;
 	public static double AUTO_MIDDLE_TARGET_RIGHT = -9.1;
 	
-	//DriveCarveToPegFromBoiler
-	public static double AUTO_BOILER_TARGET_FAR = -12.9;
-	public static double AUTO_BOILER_TARGET_CLOSE = -9.1;
-	public static double AUTO_BOILER_AFTER_TURN_TO_PEG = -3.5;
+	//DriveCarveToPegFromBoilerRed
+	public static double AUTO_BOILER_TARGET_FAR_RED = -12.9;
+	public static double AUTO_BOILER_TARGET_CLOSE_RED = -9.1;
+	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_RED = -3.5;
 	
-	//DriveCarveToPegFromLoadingZone
-	public static double AUTO_LOADING_TARGET_FAR = -12.8;
-	public static double AUTO_LOADING_TARGET_CLOSE = -9.1;
-	public static double AUTO_LOADING_AFTER_TURN_TO_PEG = -3.5;
+	//DriveCarveToPegFromLoadingZoneRed
+	public static double AUTO_LOADING_TARGET_FAR_RED = -12.8;
+	public static double AUTO_LOADING_TARGET_CLOSE_RED = -9.1;
+	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_RED = -3.5;
+	
+	//DriveCarveToPegFromBoilerBlue
+	public static double AUTO_BOILER_TARGET_FAR_BLUE = -12.9;
+	public static double AUTO_BOILER_TARGET_CLOSE_BLUE = -9.1;
+	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_BLUE = -4.5;
+	
+	//DriveCarveToPegFromLoadingZoneBlue
+	public static double AUTO_LOADING_TARGET_FAR_BLUE = -12.8;
+	public static double AUTO_LOADING_TARGET_CLOSE_BLUE = -9.1;
+	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_BLUE = -3.5;
 	
 	// Drive motion profile
 	public static double DRIVE_STABILIZATION_TOLERANCE = 2000;
