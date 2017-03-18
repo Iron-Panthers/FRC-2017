@@ -58,6 +58,8 @@ public class AutoDriveDistancePosition extends Command {
     	double leftOut = left.getOutputVoltage() / left.getBusVoltage();
     	double rightOut = right.getOutputVoltage() / right.getBusVoltage();
     	
+    	Robot.drive.setGear(GearPosition.LOW);
+    	
     	SmartDashboard.putNumber("LeftError", left.getClosedLoopError());
         SmartDashboard.putNumber("LeftOutput", leftOut);
         SmartDashboard.putNumber("LeftPosition", left.getPosition());
