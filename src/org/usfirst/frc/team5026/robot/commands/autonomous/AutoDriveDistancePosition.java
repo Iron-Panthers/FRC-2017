@@ -70,6 +70,7 @@ public class AutoDriveDistancePosition extends Command {
         SmartDashboard.putNumber("RightOutput", rightOut);
         SmartDashboard.putNumber("RightPosition", right.getPosition());
         
+        // TODO Adjust speed driving based off of delta between encoders! Ex: Left-Right, move left faster if negative, right faster if positive; maybe change peak voltages...
         Robot.drive.positionDrive(targetLeft, targetRight);
         
         if(Math.abs(left.getClosedLoopError()) < SmartDashboard.getNumber("Auto Drive Stabilization Tolerance (Ticks)", 0) && Math.abs(right.getClosedLoopError()) < SmartDashboard.getNumber("Auto Drive Stabilization Tolerance (Ticks)", 0)) {
