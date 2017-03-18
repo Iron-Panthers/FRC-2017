@@ -61,15 +61,10 @@ public class Drive extends Subsystem {
 	
 	public void setGear() {
 		if (pos== GearPosition.LOW) {
-			pos = GearPosition.HIGH;
-			shifter.set(Value.kReverse);
-			led.writeRegister(Constants.LED_SHIFT_INDEX, Constants.LED_SHIFT_HIGH);
+			setGear(GearPosition.HIGH);
 		} else {
-			pos = GearPosition.LOW;
-			shifter.set(Value.kForward);
-			led.writeRegister(Constants.LED_SHIFT_INDEX, Constants.LED_SHIFT_LOW);
+			setGear(GearPosition.LOW);
 		}
-		// Flip flops gear position
 	}
 	
 	public void setGear(GearPosition p) {
