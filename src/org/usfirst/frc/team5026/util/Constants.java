@@ -76,8 +76,8 @@ public class Constants {
 	 */
 	
 	// Auto Distances
-	public static double AUTO_MIDDLE_TARGET_LEFT = -9.1;
-	public static double AUTO_MIDDLE_TARGET_RIGHT = -9.1;
+	public static double AUTO_MIDDLE_TARGET_LEFT = -9.1; // Move 5 1/8 to the left when setting up
+	public static double AUTO_MIDDLE_TARGET_RIGHT = -9.1; // Move 5 /8 to the left when setting up
 	public static int AUTO_MIDDLE_TARGET_COUNT = 50;
 	
 	//DriveCarveToPegFromBoilerRed
