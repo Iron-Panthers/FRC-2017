@@ -72,6 +72,13 @@ public class Drive extends Subsystem {
 		// Flip flops gear position
 	}
 	
+	public void setGear(GearPosition p) {
+		pos = p;
+		setGear();
+		setGear();
+		// Flip flops gear position
+	}
+	
 	public void useArcadeDrive(double yAxis, double xAxis) {
 		drive.arcadeDrive(yAxis, xAxis);
 	}

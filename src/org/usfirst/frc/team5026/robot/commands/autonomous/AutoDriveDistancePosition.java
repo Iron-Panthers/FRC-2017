@@ -1,7 +1,7 @@
 package org.usfirst.frc.team5026.robot.commands.autonomous;
 
 import org.usfirst.frc.team5026.robot.Robot;
-import org.usfirst.frc.team5026.util.Constants;
+import org.usfirst.frc.team5026.util.GearPosition;
 
 import com.ctre.CANTalon;
 
@@ -41,6 +41,7 @@ public class AutoDriveDistancePosition extends Command {
 
     protected void initialize() {
     	count = 0;
+//    	Robot.drive.setGear(GearPosition.LOW);
     	SmartDashboard.putNumber("IsFinished", 0); //0: not done, 1: ended normally, 2: interrupted
     	Robot.drive.left.resetPosition();
     	Robot.drive.right.resetPosition();
