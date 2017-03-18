@@ -98,7 +98,7 @@ public class Constants {
 	public static double AUTO_BOILER_TARGET_FAR_BLUE = -12.9;
 	public static double AUTO_BOILER_TARGET_CLOSE_BLUE = -9.1;
 	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_BLUE = -4.5;
-	public static int AUTO_BOILER_CARVE_COUNT_BLUE = 50;
+	public static int AUTO_BOILER_CARVE_COUNT_BLUE = 40;
 	public static int AUTO_BOILER_STRAIGHT_COUNT_BLUE = 50;
 	
 	//DriveCarveToPegFromLoadingZoneBlue
