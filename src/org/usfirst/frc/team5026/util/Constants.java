@@ -31,7 +31,7 @@ public class Constants {
 	public static final double SPEED = 0.5; 
 	   
 	//Climber Constants
-	public static final double CLIMBER_SPEED_RAPPEL = -0.2;	//quality of unloader's life
+	public static final double CLIMBER_SPEED_RAPPEL = -1;	//quality of unloader's life
 	public static final double CLIMBER_SPEED_LATCH = 0.3;
 	public static final double CLIMBER_SPEED_WRAP = 0.71;
 	public static final double CLIMBER_SLOPE_SWAP = 0.0;	//The value in which the joystick switches from linear to quadratic
