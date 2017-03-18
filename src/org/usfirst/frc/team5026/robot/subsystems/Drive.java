@@ -74,11 +74,11 @@ public class Drive extends Subsystem {
 	
 	public void setGear(GearPosition p) {
 		switch (p) {
-		case HIGH:
+		case LOW:
 			shifter.set(Value.kReverse);
 			led.writeRegister(Constants.LED_SHIFT_INDEX, Constants.LED_SHIFT_HIGH);
 			break;
-		case LOW:
+		case HIGH:
 			shifter.set(Value.kForward);
 			led.writeRegister(Constants.LED_SHIFT_INDEX, Constants.LED_SHIFT_LOW);
 			break;

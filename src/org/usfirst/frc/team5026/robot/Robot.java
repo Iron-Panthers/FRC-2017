@@ -84,7 +84,7 @@ public class Robot extends IterativeRobot {
 		autoChooser.addDefault("Nothing", new AutoDoNothing());
 		// Everytime u write a new auto, do autoChooser.addObject("NAME OF AUTO", new AUTOCOMMAND);
 		// Do that here
-		autoChooser.addObject("Both: Middle peg", new AutoDriveDistancePosition("Auto Mid Left", "Auto Mid Right"));
+		autoChooser.addObject("Both: Middle peg", new AutoDriveDistancePosition("Auto Mid Left", "Auto Mid Right", Constants.AUTO_MIDDLE_TARGET_COUNT));
 		autoChooser.addObject("Red: Right peg", new AutoRedDriveCarveLeftToPegFromBoiler());
 		autoChooser.addObject("Red: Left peg", new AutoRedDriveCarveRightToPegFromLoadingZone());
 		autoChooser.addObject("Blue: Right peg", new AutoBlueDriveCarveLeftToPegFromLoadingZone());
@@ -159,7 +159,6 @@ public class Robot extends IterativeRobot {
 		sDisplay("RIGHT D", Constants.D_RIGHT);
 		sDisplay("TELEOP RIGHT RAMP", Constants.TELEOP_RAMP_RIGHT);
 		sDisplay("Auto Drive Stabilization Tolerance (Ticks)", Constants.DRIVE_STABILIZATION_TOLERANCE);
-		sDisplay("Auto Drive Stabilization Tolerance (Count)", Constants.DRIVE_STABILIZATION_COUNT_TOLERANCE);
 	}
 	private void sDisplay(String n, double v) {
 		SmartDashboard.putNumber(n, v);

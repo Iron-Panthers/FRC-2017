@@ -23,6 +23,7 @@ public class AutoDriveDistancePosition extends Command {
 	CANTalon right;
 
 	private int count;
+	private int countMax;
 	
     public AutoDriveDistancePosition(double targetLeft, double targetRight) {
         requires(Robot.drive); // I believe this is the issue, it allows this to be interrupted
@@ -31,12 +32,13 @@ public class AutoDriveDistancePosition extends Command {
         left = Robot.drive.left.getEncMotor();
         right = Robot.drive.right.getEncMotor();
     }
-    public AutoDriveDistancePosition(String s1, String s2) {
+    public AutoDriveDistancePosition(String s1, String s2, int count) {
     	requires(Robot.drive);
     	left1 = s1;
     	right1 = s2;
     	left = Robot.drive.left.getEncMotor();
         right = Robot.drive.right.getEncMotor();
+        this.countMax = count;
     }
 
     protected void initialize() {
@@ -78,7 +80,7 @@ public class AutoDriveDistancePosition extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return count >= SmartDashboard.getNumber("Auto Drive Stabilization Tolerance (Count)", 0);
+        return count >= countMax;
     }
 
     // Called once after isFinished returns true

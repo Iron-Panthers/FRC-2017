@@ -11,8 +11,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class AutoRedDriveCarveRightToPegFromLoadingZone extends CommandGroup {
 
     public AutoRedDriveCarveRightToPegFromLoadingZone() {
-    	addSequential(new AutoDriveDistancePosition("Auto Loading Close Red", "Auto Loading Far Red"));
-    	addSequential(new AutoDriveDistancePosition("Auto Loading Extra Distance Red", "Auto Loading Extra Distance Red"));
+    	addSequential(new AutoDriveDistancePosition("Auto Loading Close Red", "Auto Loading Far Red", Constants.AUTO_LOADING_CARVE_COUNT_RED));
+    	addSequential(new AutoDriveDistancePosition("Auto Loading Extra Distance Red", "Auto Loading Extra Distance Red", Constants.AUTO_LOADING_STRAIGHT_COUNT_RED));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
