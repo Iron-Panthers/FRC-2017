@@ -83,7 +83,7 @@ public class Constants {
 	//DriveCarveToPegFromBoilerRed
 	public static double AUTO_BOILER_TARGET_FAR_RED = -12.9;
 	public static double AUTO_BOILER_TARGET_CLOSE_RED = -9.1;
-	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_RED = -3.5;
+	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_RED = -4.5;
 	public static int AUTO_BOILER_CARVE_COUNT_RED = 50;
 	public static int AUTO_BOILER_STRAIGHT_COUNT_RED = 50;
 	

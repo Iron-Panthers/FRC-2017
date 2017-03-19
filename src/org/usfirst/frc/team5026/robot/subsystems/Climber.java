@@ -56,9 +56,7 @@ public class Climber extends Subsystem {
 	    } else {	//square root joystick curve
 	       setClimbMotors(Math.sqrt(ClimberSpeedType.values()[currentSpeedIndex].curve * joystickY) + ClimberSpeedType.values()[currentSpeedIndex].speed);
 	    }
-	    if (joystickY == 1) {
-	    	setClimbMotors(1);
-	    }
+	    
 	}
 	
 	public boolean hasResistance() {
