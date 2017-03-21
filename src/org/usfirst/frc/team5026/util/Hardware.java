@@ -29,8 +29,8 @@ public class Hardware {
 	public Talon climberRightMotor;
 	public Talon climberLeftMotor;
 	
-	public boolean climberLeftInverted = true;
-	public boolean climberRightInverted = true; //comp bot: true, practice bot: false
+	public boolean climberLeftInverted = false;
+	public boolean climberRightInverted = false; //comp bot: true, practice bot: false
 	
 	public Talon intake;
 	
