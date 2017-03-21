@@ -3,6 +3,7 @@ package org.usfirst.frc.team5026.robot.commands.autonomous;
 import org.usfirst.frc.team5026.util.Constants;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -10,8 +11,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoBlueDriveCarveLeftToPegFromLoadingZone extends CommandGroup {
 
     public AutoBlueDriveCarveLeftToPegFromLoadingZone() {
-    	addSequential(new AutoDriveDistancePosition(Constants.AUTO_LOADING_TARGET_FAR, Constants.AUTO_LOADING_TARGET_CLOSE));
-    	addSequential(new AutoDriveDistancePosition(Constants.AUTO_LOADING_AFTER_TURN_TO_PEG, Constants.AUTO_LOADING_AFTER_TURN_TO_PEG));
+    	addSequential(new AutoDriveDistancePosition("Auto Loading Far Blue", "Auto Loading Close Blue", Constants.AUTO_LOADING_CARVE_COUNT_BLUE));
+    	addSequential(new AutoDriveDistancePosition("Auto Loading Extra Distance Blue", "Auto Loading Extra Distance Blue", Constants.AUTO_LOADING_STRAIGHT_COUNT_BLUE));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

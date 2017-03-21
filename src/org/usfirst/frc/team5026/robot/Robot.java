@@ -40,8 +40,8 @@ public class Robot extends IterativeRobot {
 	public static Intake intake;
 	
 	Command autoCommand;
-	SendableChooser <Command> autoChooser = new SendableChooser<>();
-	SendableChooser <Command> joyChooser = new SendableChooser<>();
+	public static SendableChooser <Command> autoChooser = new SendableChooser<>();
+	public static SendableChooser <Command> joyChooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -59,6 +59,7 @@ public class Robot extends IterativeRobot {
 		joyChooser.addObject("Spinny Joystick", new JoystickChoose(JoystickType.SPINNY));
 		SmartDashboard.putData("Joystick Type", joyChooser);
 		SmartDashboard.putData(climber);
+		displayMods();
 	}
 	
 	private void initSubsystems() {
@@ -83,7 +84,7 @@ public class Robot extends IterativeRobot {
 		autoChooser.addDefault("Nothing", new AutoDoNothing());
 		// Everytime u write a new auto, do autoChooser.addObject("NAME OF AUTO", new AUTOCOMMAND);
 		// Do that here
-		autoChooser.addObject("Both: Middle peg", new AutoDriveDistancePosition(Constants.AUTO_MIDDLE_TARGET_LEFT, Constants.AUTO_MIDDLE_TARGET_RIGHT));
+		autoChooser.addObject("Both: Middle peg", new AutoDriveDistancePosition("Auto Mid Left", "Auto Mid Right", Constants.AUTO_MIDDLE_TARGET_COUNT));
 		autoChooser.addObject("Red: Right peg", new AutoRedDriveCarveLeftToPegFromBoiler());
 		autoChooser.addObject("Red: Left peg", new AutoRedDriveCarveRightToPegFromLoadingZone());
 		autoChooser.addObject("Blue: Right peg", new AutoBlueDriveCarveLeftToPegFromLoadingZone());
@@ -132,7 +133,37 @@ public class Robot extends IterativeRobot {
 		drive.setBrakeMode(true);
 		SmartDashboard.putBoolean("Running", true);
 	}
-
+	private void displayMods() {
+		sDisplay("Auto Mid Left", Constants.AUTO_MIDDLE_TARGET_LEFT);
+		sDisplay("Auto Mid Right", Constants.AUTO_MIDDLE_TARGET_RIGHT);
+		
+		sDisplay("Auto Boiler Close Red", Constants.AUTO_BOILER_TARGET_CLOSE_RED);
+		sDisplay("Auto Boiler Far Red", Constants.AUTO_BOILER_TARGET_FAR_RED);
+		sDisplay("Auto Boiler Extra Distance Red", Constants.AUTO_BOILER_AFTER_TURN_TO_PEG_RED);
+		sDisplay("Auto Loading Close Red", Constants.AUTO_LOADING_TARGET_CLOSE_RED);
+		sDisplay("Auto Loading Far Red", Constants.AUTO_LOADING_TARGET_FAR_RED);
+		sDisplay("Auto Loading Extra Distance Red", Constants.AUTO_LOADING_AFTER_TURN_TO_PEG_RED);
+		
+		sDisplay("Auto Boiler Close Blue", Constants.AUTO_BOILER_TARGET_CLOSE_BLUE);
+		sDisplay("Auto Boiler Far Blue", Constants.AUTO_BOILER_TARGET_FAR_BLUE);
+		sDisplay("Auto Boiler Extra Distance Blue", Constants.AUTO_BOILER_AFTER_TURN_TO_PEG_BLUE);
+		sDisplay("Auto Loading Close Blue", Constants.AUTO_LOADING_TARGET_CLOSE_BLUE);
+		sDisplay("Auto Loading Far Blue", Constants.AUTO_LOADING_TARGET_FAR_BLUE);
+		sDisplay("Auto Loading Extra Distance Blue", Constants.AUTO_LOADING_AFTER_TURN_TO_PEG_BLUE);
+		
+		sDisplay("LEFT P", Constants.P_LEFT);
+		sDisplay("LEFT D", Constants.D_LEFT);
+		sDisplay("LEFT RAMP", Constants.RAMP_LEFT);
+		sDisplay("TELEOP LEFT RAMP", Constants.TELEOP_RAMP_LEFT);
+		sDisplay("RIGHT P", Constants.P_RIGHT);
+		sDisplay("RIGHT D", Constants.D_RIGHT);
+		sDisplay("TELEOP RIGHT RAMP", Constants.TELEOP_RAMP_RIGHT);
+		sDisplay("Auto Drive Stabilization Tolerance (Ticks)", Constants.DRIVE_STABILIZATION_TOLERANCE);
+	}
+	private void sDisplay(String n, double v) {
+		SmartDashboard.putNumber(n, v);
+	}
+	
 	/**
 	 * This function is called periodically during operator control
 	 */

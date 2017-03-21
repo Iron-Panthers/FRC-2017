@@ -3,6 +3,7 @@ package org.usfirst.frc.team5026.robot.commands.autonomous;
 import org.usfirst.frc.team5026.util.Constants;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -10,8 +11,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoRedDriveCarveLeftToPegFromBoiler extends CommandGroup {
 
     public AutoRedDriveCarveLeftToPegFromBoiler() {
-    	addSequential(new AutoDriveDistancePosition(Constants.AUTO_BOILER_TARGET_FAR, Constants.AUTO_BOILER_TARGET_CLOSE));
-    	addSequential(new AutoDriveDistancePosition(Constants.AUTO_BOILER_AFTER_TURN_TO_PEG, Constants.AUTO_BOILER_AFTER_TURN_TO_PEG));
+    	addSequential(new AutoDriveDistancePosition("Auto Boiler Far Red", "Auto Boiler Close Red", Constants.AUTO_BOILER_CARVE_COUNT_RED));
+    	addSequential(new AutoDriveDistancePosition("Auto Boiler Extra Distance Red", "Auto Boiler Extra Distance Red", Constants.AUTO_BOILER_STRAIGHT_COUNT_RED));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
