@@ -85,9 +85,9 @@ public class AutoDriveDistancePosition extends Command {
 
     protected boolean isFinished() {
     	if(targetLeft > targetRight)
-    		return Robot.hardware.driveLeftBanner.get();
+    		return Robot.hardware.driveLeftBanner.get(); //turning right, check left banner
     	else if(targetRight > targetLeft)
-    		return Robot.hardware.driveRightBanner.get();
+    		return Robot.hardware.driveRightBanner.get(); //turning left, check right banner
     	else
     		return count >= countMax;
     }
