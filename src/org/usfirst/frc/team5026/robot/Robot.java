@@ -11,6 +11,7 @@ import org.usfirst.frc.team5026.robot.commands.autonomous.AutoRedDriveCarveRight
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
+import org.usfirst.frc.team5026.robot.subsystems.GroundGear;
 import org.usfirst.frc.team5026.robot.subsystems.Intake;
 import org.usfirst.frc.team5026.util.Constants;
 import org.usfirst.frc.team5026.util.Hardware;
@@ -38,6 +39,7 @@ public class Robot extends IterativeRobot {
 	public static GearClamp gearclamp;
 	public static Climber climber;
 	public static Intake intake;
+	public static GroundGear groundgear;
 	
 	Command autoCommand;
 	public static SendableChooser <Command> autoChooser = new SendableChooser<>();
@@ -66,6 +68,7 @@ public class Robot extends IterativeRobot {
 		drive = new Drive();
 		climber = new Climber();
 		gearclamp = new GearClamp();
+		groundgear = new GroundGear();
 		intake = new Intake();
 		oi.mapButtonBoard();
 	}

@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SPI.Port;
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 
@@ -43,6 +44,9 @@ public class Hardware {
 	public DoubleSolenoid gearClampPiston;
 	public DigitalInput gearClampSensor;
 	
+	public Spark groundGearIntake;
+	public Spark groundGearLift;
+	
 	public LEDDisplay led;
 
 	public Hardware() {
@@ -70,5 +74,9 @@ public class Hardware {
 		intake = new Talon(RobotMap.INTAKE_MOTOR);
 		
 		led = new LEDDisplay(RobotMap.CAN_LED_PORT);
+		
+		groundGearIntake = new Spark(RobotMap.GROUND_GEAR_MOTOR_INTAKE);
+		groundGearLift = new Spark(RobotMap.GROUND_GEAR_MOTOR_LIFT);
+		
 	}
 }

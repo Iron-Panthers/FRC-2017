@@ -24,6 +24,10 @@ public class RobotMap {
 	public static final int DRIVE_MOTOR_RIGHT_2 = 2;
 	public static final int DRIVE_MOTOR_RIGHT_3 = 3;
 	
+	//GROUND GEAR MOTORS
+	public static final int GROUND_GEAR_MOTOR_INTAKE = 0; 
+	public static final int GROUND_GEAR_MOTOR_LIFT = 0;
+	
 	// SOLENOIDS
 	public static final int SOLENOID_SHIFTER_FORWARD = 2;
 	public static final int SOLENOID_SHIFTER_REVERSE = 3;
