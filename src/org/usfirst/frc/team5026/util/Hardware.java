@@ -43,6 +43,9 @@ public class Hardware {
 	public DoubleSolenoid gearClampPiston;
 	public DigitalInput gearClampSensor;
 	
+	public DigitalInput driveLeftBanner;
+	public DigitalInput driveRightBanner;
+	
 	public LEDDisplay led;
 
 	public Hardware() {
@@ -55,20 +58,30 @@ public class Hardware {
 		rightMotor_3 = new CANTalon(RobotMap.DRIVE_MOTOR_RIGHT_3);
 		leftMotor = new DriveMotorGroup(invertMotorLeft, invertSensorLeft, Constants.PIDFR_LEFT, Constants.TELEOP_RAMP_LEFT, leftMotor_1, leftMotor_2, leftMotor_3);
 		rightMotor = new DriveMotorGroup(invertMotorRight, invertSensorRight, Constants.PIDFR_RIGHT, Constants.TELEOP_RAMP_RIGHT, rightMotor_1, rightMotor_2, rightMotor_3);
-		// Drive Excess
+		
+		// Drive Sensors
 		try {gyro = new ADXRS450_Gyro(Port.kOnboardCS0);}
 		catch (Exception e) {
 			System.out.println("No gyro");
 		}
+		driveLeftBanner = new DigitalInput(RobotMap.DRIVE_LEFT_BANNER);
+		driveRightBanner = new DigitalInput(RobotMap.DRIVE_RIGHT_BANNER);
+		
+		// Shifter
 		shifter = new DoubleSolenoid(1,RobotMap.SOLENOID_SHIFTER_FORWARD,RobotMap.SOLENOID_SHIFTER_REVERSE);
-		// Climber, Gyro, Gear, Intake
+		
+		// Climber
 		climberRightMotor = new Talon(RobotMap.CLIMBER_MOTOR_RIGHT);
 		climberLeftMotor = new Talon(RobotMap.CLIMBER_MOTOR_LEFT);
-		gyro = new ADXRS450_Gyro(Port.kOnboardCS0);
-		gearClampPiston = new DoubleSolenoid(1, RobotMap.gearPistonForward, RobotMap.gearPistonReverse);
-		gearClampSensor = new DigitalInput(RobotMap.gearClampSensor);
+		
+		// Gear
+		gearClampPiston = new DoubleSolenoid(1, RobotMap.GEAR_PISTON_FORWARD, RobotMap.GEAR_PISTON_REVERSE);
+		gearClampSensor = new DigitalInput(RobotMap.GEAR_CLAMP_SENSOR);
+		
+		// Intake
 		intake = new Talon(RobotMap.INTAKE_MOTOR);
 		
+		// LEDs
 		led = new LEDDisplay(RobotMap.CAN_LED_PORT);
 	}
 }

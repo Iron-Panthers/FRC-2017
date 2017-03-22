@@ -26,12 +26,13 @@ public class AutoDriveDistancePosition extends Command {
 	private int countMax;
 	
     public AutoDriveDistancePosition(double targetLeft, double targetRight) {
-        requires(Robot.drive); // I believe this is the issue, it allows this to be interrupted
+        requires(Robot.drive);
         this.targetLeft = targetLeft;
         this.targetRight = targetRight;
         left = Robot.drive.left.getEncMotor();
         right = Robot.drive.right.getEncMotor();
     }
+    
     public AutoDriveDistancePosition(String s1, String s2, int count) {
     	requires(Robot.drive);
     	left1 = s1;
@@ -43,7 +44,7 @@ public class AutoDriveDistancePosition extends Command {
 
     protected void initialize() {
     	count = 0;
-//    	Robot.drive.setGear(GearPosition.LOW);
+    	//Robot.drive.setGear(GearPosition.LOW);
     	SmartDashboard.putNumber("IsFinished", 0); //0: not done, 1: ended normally, 2: interrupted
     	Robot.drive.left.resetPosition();
     	Robot.drive.right.resetPosition();
@@ -56,7 +57,10 @@ public class AutoDriveDistancePosition extends Command {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {    	
+    protected void execute() {
+    	SmartDashboard.putBoolean("Left banner", Robot.hardware.driveLeftBanner.get());
+    	SmartDashboard.putBoolean("Right banner", Robot.hardware.driveRightBanner.get());
+    	
     	double leftOut = left.getOutputVoltage() / left.getBusVoltage();
     	double rightOut = right.getOutputVoltage() / right.getBusVoltage();
     	
@@ -79,9 +83,13 @@ public class AutoDriveDistancePosition extends Command {
         SmartDashboard.putNumber("Count", count);
     }
 
-    // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return count >= countMax;
+    	if(targetLeft > targetRight)
+    		return Robot.hardware.driveLeftBanner.get();
+    	else if(targetRight > targetLeft)
+    		return Robot.hardware.driveRightBanner.get();
+    	else
+    		return count >= countMax;
     }
 
     // Called once after isFinished returns true
@@ -90,8 +98,6 @@ public class AutoDriveDistancePosition extends Command {
     	Robot.drive.endPositionDrive();
     }
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
     protected void interrupted() {
     	SmartDashboard.putNumber("IsFinished", 2);
     }
