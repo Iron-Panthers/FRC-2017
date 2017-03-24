@@ -62,7 +62,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData(climber);
 		displayMods();
 		CameraServer camera = CameraServer.getInstance();
-		camera.startAutomaticCapture("cam0", 0);
+		camera.startAutomaticCapture("cam1", 0);
 	}
 	
 	private void initSubsystems() {
