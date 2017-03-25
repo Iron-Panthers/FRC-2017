@@ -9,6 +9,7 @@ import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDoNothing;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistancePosition;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoRedDriveCarveLeftToPegFromBoiler;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoRedDriveCarveRightToPegFromLoadingZone;
+import org.usfirst.frc.team5026.robot.commands.drive.DriveTurnXDegrees;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
@@ -91,6 +92,7 @@ public class Robot extends IterativeRobot {
 		autoChooser.addObject("Blue: Right peg", new AutoBlueDriveCarveLeftToPegFromLoadingZone());
 		autoChooser.addObject("Blue: Left peg", new AutoBlueDriveCarveRightToPegFromBoiler());
 		autoChooser.addObject("Banner Spinny", new AutoBannerTurn());
+		autoChooser.addObject("Drive Turn Degrees", new DriveTurnXDegrees(-45));
 		SmartDashboard.putData("Autonomous Chooser", autoChooser);
 		
 		drive.setBrakeMode(false);

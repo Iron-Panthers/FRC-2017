@@ -60,10 +60,8 @@ public class Hardware {
 		rightMotor = new DriveMotorGroup(invertMotorRight, invertSensorRight, Constants.PIDFR_RIGHT, Constants.TELEOP_RAMP_RIGHT, rightMotor_1, rightMotor_2, rightMotor_3);
 		
 		// Drive Sensors
-		try {gyro = new ADXRS450_Gyro(Port.kOnboardCS0);}
-		catch (Exception e) {
-			System.out.println("No gyro");
-		}
+		buildGyro(0);
+		
 		driveLeftBanner = new DigitalInput(RobotMap.DRIVE_LEFT_BANNER);
 		driveRightBanner = new DigitalInput(RobotMap.DRIVE_RIGHT_BANNER);
 		
@@ -83,5 +81,17 @@ public class Hardware {
 		
 		// LEDs
 		led = new LEDDisplay(RobotMap.CAN_LED_PORT);
+	}
+	public void buildGyro(int tries) {
+		System.out.println("RECONSTRUCTING TRY: "+tries);
+		if (tries == 10) return;
+		try {
+			gyro = new ADXRS450_Gyro(Port.kOnboardCS0);
+			gyro.calibrate();
+			return;
+		} catch (Exception e) {
+			// Didn't work!
+			buildGyro(tries+1);
+		}
 	}
 }

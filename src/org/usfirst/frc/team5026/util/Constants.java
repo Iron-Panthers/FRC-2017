@@ -55,8 +55,9 @@ public class Constants {
 	public static final Color LED_GEAR_RELEASE = Color.GREEN;
 	
 	// Gyro Constants
-	public static final double PERCENTAGE_FOR_ERROR = 0.05; 
-	public static final double AUTO_TURN_SPEED = 0.1;
+	public static final double AUTO_TURN_ANGLE_TOLERANCE = 0.5; 
+	public static final double AUTO_TURN_SPEED = 0.5;
+	public static final double AUTO_TURN_P = 0.1;
 	
 	// Encoder constants
 	public static final double WHEEL_DIAMETER = 4;	//in inches
