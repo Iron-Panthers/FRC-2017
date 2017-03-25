@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  * Code used from WaitForStabilize for the Shooter for 2016
  */
-public class AutoDriveDistancePosition extends Command {
+public class AutoDriveDistancePositionBanner extends Command {
 	
 	private double targetLeft;
 	private double targetRight;
@@ -25,7 +25,7 @@ public class AutoDriveDistancePosition extends Command {
 	private int count;
 	private int countMax;
 	
-    public AutoDriveDistancePosition(double targetLeft, double targetRight) {
+    public AutoDriveDistancePositionBanner(double targetLeft, double targetRight) {
         requires(Robot.drive);
         this.targetLeft = targetLeft;
         this.targetRight = targetRight;
@@ -33,7 +33,7 @@ public class AutoDriveDistancePosition extends Command {
         right = Robot.drive.right.getEncMotor();
     }
     
-    public AutoDriveDistancePosition(String s1, String s2, int count) {
+    public AutoDriveDistancePositionBanner(String s1, String s2, int count) {
     	requires(Robot.drive);
     	left1 = s1;
     	right1 = s2;
@@ -84,7 +84,12 @@ public class AutoDriveDistancePosition extends Command {
     }
 
     protected boolean isFinished() {
-    	return count >= countMax;
+    	if(targetLeft > targetRight)
+    		return Robot.hardware.driveLeftBanner.get(); //turning right, check left banner
+    	else if(targetRight > targetLeft)
+    		return Robot.hardware.driveRightBanner.get(); //turning left, check right banner
+    	else
+    		return count >= countMax;
     }
 
     // Called once after isFinished returns true
