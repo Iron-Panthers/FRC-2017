@@ -25,12 +25,22 @@ public class AutoDriveDistancePositionBanner extends Command {
 	private int count;
 	private int countMax;
 	
+	boolean turnLeft;
+	
     public AutoDriveDistancePositionBanner(double targetLeft, double targetRight) {
         requires(Robot.drive);
         this.targetLeft = targetLeft;
         this.targetRight = targetRight;
         left = Robot.drive.left.getEncMotor();
         right = Robot.drive.right.getEncMotor();
+        if(targetLeft > targetRight)
+        {
+        	turnLeft = false;
+        }
+        else
+        {
+        	turnLeft = true;
+        }
     }
     
     public AutoDriveDistancePositionBanner(String s1, String s2, int count) {
@@ -81,21 +91,35 @@ public class AutoDriveDistancePositionBanner extends Command {
         	count++;
         }
         SmartDashboard.putNumber("Count", count);
+        
+        if(turnLeft)
+        {
+        	if(Robot.hardware.driveLeftBanner.get())
+        	{
+        		Robot.drive.left.configPeakOutputVoltage(+6f, -6f);
+        		Robot.drive.right.configPeakOutputVoltage(+6f, -6f);
+        	}
+        }
+        else
+        {
+        	if(Robot.hardware.driveRightBanner.get())
+        	{
+        		Robot.drive.left.configPeakOutputVoltage(+6f, -6f);
+        		Robot.drive.right.configPeakOutputVoltage(+6f, -6f);
+        	}
+        }
     }
 
     protected boolean isFinished() {
-    	if(targetLeft > targetRight)
-    		return Robot.hardware.driveLeftBanner.get(); //turning right, check left banner
-    	else if(targetRight > targetLeft)
-    		return Robot.hardware.driveRightBanner.get(); //turning left, check right banner
-    	else
-    		return count >= countMax;
+    	return count >= countMax;
     }
 
     // Called once after isFinished returns true
     protected void end() {
     	SmartDashboard.putNumber("IsFinished", 1);
     	Robot.drive.endPositionDrive();
+    	Robot.drive.left.configPeakOutputVoltage(+12f, -12f);
+		Robot.drive.right.configPeakOutputVoltage(+12f, -12f);
     }
 
     protected void interrupted() {
