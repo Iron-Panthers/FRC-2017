@@ -2,6 +2,7 @@
 package org.usfirst.frc.team5026.robot;
 
 import org.usfirst.frc.team5026.robot.commands.JoystickChoose;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoBannerTurn;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoBlueDriveCarveLeftToPegFromLoadingZone;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoBlueDriveCarveRightToPegFromBoiler;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDoNothing;
@@ -89,6 +90,7 @@ public class Robot extends IterativeRobot {
 		autoChooser.addObject("Red: Left peg", new AutoRedDriveCarveRightToPegFromLoadingZone());
 		autoChooser.addObject("Blue: Right peg", new AutoBlueDriveCarveLeftToPegFromLoadingZone());
 		autoChooser.addObject("Blue: Left peg", new AutoBlueDriveCarveRightToPegFromBoiler());
+		autoChooser.addObject("Banner Spinny", new AutoBannerTurn());
 		SmartDashboard.putData("Autonomous Chooser", autoChooser);
 		
 		drive.setBrakeMode(false);
@@ -169,6 +171,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		SmartDashboard.putBoolean("Left Banner", hardware.driveLeftBanner.get());
+		SmartDashboard.putBoolean("Right banner", hardware.driveRightBanner.get());
 		Scheduler.getInstance().run();		
 	}
 
