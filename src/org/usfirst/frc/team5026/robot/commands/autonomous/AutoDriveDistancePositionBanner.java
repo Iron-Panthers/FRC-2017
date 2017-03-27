@@ -5,6 +5,7 @@ import org.usfirst.frc.team5026.util.GearPosition;
 
 import com.ctre.CANTalon;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -23,9 +24,11 @@ public class AutoDriveDistancePositionBanner extends Command {
 	CANTalon right;
 
 	private int count;
-	private int countMax;
+	private int leftCount;
+	private int rightCount;
 	
 	boolean turnLeft;
+	boolean finished;
 	
     public AutoDriveDistancePositionBanner(double targetLeft, double targetRight) {
         requires(Robot.drive);
@@ -49,21 +52,19 @@ public class AutoDriveDistancePositionBanner extends Command {
     	right1 = s2;
     	left = Robot.drive.left.getEncMotor();
         right = Robot.drive.right.getEncMotor();
-        this.countMax = count;
     }
 
     protected void initialize() {
     	count = 0;
+    	leftCount = 0;
+    	rightCount = 0;
     	//Robot.drive.setGear(GearPosition.LOW);
     	SmartDashboard.putNumber("IsFinished", 0); //0: not done, 1: ended normally, 2: interrupted
     	Robot.drive.left.resetPosition();
     	Robot.drive.right.resetPosition();
     	Robot.drive.left.setupPositionMode();
     	Robot.drive.right.setupPositionMode();
-    	if (left1 != null && right1 != null) {
-    		targetLeft = SmartDashboard.getNumber(left1, 0);
-    		targetRight = SmartDashboard.getNumber(right1, 0);
-    	}
+    	finished = false;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -94,24 +95,29 @@ public class AutoDriveDistancePositionBanner extends Command {
         
         if(turnLeft)
         {
-        	if(Robot.hardware.driveLeftBanner.get())
-        	{
-        		Robot.drive.left.configPeakOutputVoltage(+6f, -6f);
-        		Robot.drive.right.configPeakOutputVoltage(+6f, -6f);
-        	}
+        	leftCount = changeVoltage(Robot.hardware.driveLeftBanner, leftCount);
         }
         else
         {
-        	if(Robot.hardware.driveRightBanner.get())
-        	{
-        		Robot.drive.left.configPeakOutputVoltage(+6f, -6f);
-        		Robot.drive.right.configPeakOutputVoltage(+6f, -6f);
-        	}
+        	rightCount = changeVoltage(Robot.hardware.driveRightBanner, rightCount);
         }
+    }
+    private int changeVoltage(DigitalInput banner, int counter) {
+    	if (counter > 50 && banner.get()) {
+    		finished = true;
+    	}
+    	if(banner.get())
+    	{
+    		counter = 0;
+    		Robot.drive.left.configPeakOutputVoltage(+6f, -6f);
+    		Robot.drive.right.configPeakOutputVoltage(+6f, -6f);
+    	}
+    	counter++;
+    	return counter;
     }
 
     protected boolean isFinished() {
-    	return count >= countMax || (Robot.hardware.driveLeftBanner.get() && Robot.hardware.driveRightBanner.get());
+    	return finished || count > 500;
     }
 
     // Called once after isFinished returns true
