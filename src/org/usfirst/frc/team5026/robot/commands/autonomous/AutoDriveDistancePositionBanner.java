@@ -111,7 +111,7 @@ public class AutoDriveDistancePositionBanner extends Command {
     }
 
     protected boolean isFinished() {
-    	return count >= countMax;
+    	return count >= countMax || (Robot.hardware.driveLeftBanner.get() && Robot.hardware.driveRightBanner.get());
     }
 
     // Called once after isFinished returns true
