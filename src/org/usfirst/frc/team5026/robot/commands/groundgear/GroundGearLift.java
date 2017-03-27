@@ -4,15 +4,18 @@ import org.usfirst.frc.team5026.robot.Robot;
 import org.usfirst.frc.team5026.util.CanGearClampsMove;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class GroundGearIntake extends Command{
+public class GroundGearLift extends Command{
 
-	public GroundGearIntake() {
+	public GroundGearLift() {
 		requires(Robot.groundgear);
+		requires(Robot.gearclamp);
 	}
 	@Override
 	protected void initialize(){
-		Robot.groundgear.intakeGear();
+		Robot.groundgear.lift();
+		SmartDashboard.putString("Ground Gear State: ", "Lifted");
 	}
 	protected void execute(){
 	}
@@ -23,6 +26,9 @@ public class GroundGearIntake extends Command{
 	protected void end(){
 	}
 	protected void interrupt(){
+		if(CanGearClampsMove.checkMovement(Robot.groundgear, Robot.gearclamp)){
+			Robot.groundgear.drop();
+		}
 	}
 
 }

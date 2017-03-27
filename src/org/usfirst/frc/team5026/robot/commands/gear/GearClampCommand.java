@@ -4,6 +4,7 @@ import org.usfirst.frc.team5026.robot.Robot;
 import org.usfirst.frc.team5026.util.CanGearClampsMove;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class GearClampCommand extends Command{
 
@@ -23,11 +24,9 @@ public class GearClampCommand extends Command{
 	}
 	protected void end() {
 		Robot.gearclamp.clampOnGear();
+		SmartDashboard.putString("Upper Gear Clamp State: ", "Clamped");
 		//Clamps the gear
 	}
 	protected void interrupted() {
-		if(CanGearClampsMove.checkMovement(Robot.groundgear, Robot.gearclamp)){
-			Robot.gearclamp.lowerClamp();
-		}
 	}
 }
