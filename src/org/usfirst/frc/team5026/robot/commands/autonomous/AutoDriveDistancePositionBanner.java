@@ -29,6 +29,7 @@ public class AutoDriveDistancePositionBanner extends Command {
 	
 	boolean turnLeft;
 	boolean finished;
+	boolean hit;
 	
     public AutoDriveDistancePositionBanner(double targetLeft, double targetRight) {
         requires(Robot.drive);
@@ -58,6 +59,7 @@ public class AutoDriveDistancePositionBanner extends Command {
     	count = 0;
     	leftCount = 0;
     	rightCount = 0;
+    	hit = false;
     	//Robot.drive.setGear(GearPosition.LOW);
     	SmartDashboard.putNumber("IsFinished", 0); //0: not done, 1: ended normally, 2: interrupted
     	Robot.drive.left.resetPosition();
@@ -103,21 +105,26 @@ public class AutoDriveDistancePositionBanner extends Command {
         }
     }
     private int changeVoltage(DigitalInput banner, int counter) {
-    	if (counter > 50 && banner.get()) {
+    	// Sensor counts when not triggered, must have already been triggered
+    	if (counter > 50 && banner.get() && hit) {
     		finished = true;
     	}
-    	if(banner.get())
+    	if(banner.get() && !hit)
     	{
+    		hit = true;
+    		// Resets counter, counts for nonbanner sensor triggers
     		counter = 0;
+    		// Slows down position control after hitting a banner once
     		Robot.drive.left.configPeakOutputVoltage(+6f, -6f);
     		Robot.drive.right.configPeakOutputVoltage(+6f, -6f);
     	}
+    	if (hit)
     	counter++;
     	return counter;
     }
 
     protected boolean isFinished() {
-    	return finished || count > 500;
+    	return finished || count > 50;
     }
 
     // Called once after isFinished returns true
