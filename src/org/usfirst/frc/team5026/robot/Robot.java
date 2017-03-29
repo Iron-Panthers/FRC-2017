@@ -22,6 +22,7 @@ import org.usfirst.frc.team5026.util.Constants;
 import org.usfirst.frc.team5026.util.Hardware;
 import org.usfirst.frc.team5026.util.JoystickType;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -66,6 +67,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Joystick Type", joyChooser);
 		SmartDashboard.putData(climber);
 		displayMods();
+		CameraServer camera = CameraServer.getInstance();
+		camera.startAutomaticCapture("cam1", 0);
 	}
 	
 	private void initSubsystems() {
