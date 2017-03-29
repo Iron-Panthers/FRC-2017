@@ -2,15 +2,16 @@
 package org.usfirst.frc.team5026.robot;
 
 import org.usfirst.frc.team5026.robot.commands.JoystickChoose;
-import org.usfirst.frc.team5026.robot.commands.autonomous.AutoBannerTurn;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoBlueDriveCarveLeftToPegFromLoadingZone;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoBlueDriveCarveLeftToPegFromLoadingZoneBanner;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoBlueDriveCarveRightToPegFromBoiler;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoBlueDriveCarveRightToPegFromBoilerBanner;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDoNothing;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistancePosition;
-import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistancePositionBanner;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoRedDriveCarveLeftToPegFromBoiler;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoRedDriveCarveLeftToPegFromBoilerBanner;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoRedDriveCarveRightToPegFromLoadingZone;
-import org.usfirst.frc.team5026.robot.commands.drive.DriveTurnXDegrees;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoRedDriveCarveRightToPegFromLoadingZoneBanner;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
@@ -92,10 +93,11 @@ public class Robot extends IterativeRobot {
 		autoChooser.addObject("Red: Left peg", new AutoRedDriveCarveRightToPegFromLoadingZone());
 		autoChooser.addObject("Blue: Right peg", new AutoBlueDriveCarveLeftToPegFromLoadingZone());
 		autoChooser.addObject("Blue: Left peg", new AutoBlueDriveCarveRightToPegFromBoiler());
-		autoChooser.addObject("Banner Spinny", new AutoBannerTurn());
-		autoChooser.addObject("Drive Turn Degrees", new DriveTurnXDegrees(-45));
+		autoChooser.addObject("Red: Right peg with Banner", new AutoRedDriveCarveLeftToPegFromBoilerBanner());
+		autoChooser.addObject("Red: Left peg with Banner", new AutoRedDriveCarveRightToPegFromLoadingZoneBanner());
+		autoChooser.addObject("Blue: Right peg with Banner", new AutoBlueDriveCarveLeftToPegFromLoadingZoneBanner());
+		autoChooser.addObject("Blue: Left peg with Banner", new AutoBlueDriveCarveRightToPegFromBoilerBanner());
 		
-		autoChooser.addObject("Turn stop with banner", new AutoDriveDistancePositionBanner(Constants.AUTO_BOILER_TARGET_CLOSE_RED, Constants.AUTO_BOILER_TARGET_FAR_RED));
 		SmartDashboard.putData("Autonomous Chooser", autoChooser);
 		
 		drive.setBrakeMode(false);

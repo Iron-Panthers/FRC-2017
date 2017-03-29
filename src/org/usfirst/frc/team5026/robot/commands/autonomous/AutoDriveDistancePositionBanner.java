@@ -24,6 +24,7 @@ public class AutoDriveDistancePositionBanner extends Command {
 	CANTalon right;
 
 	private int count;
+	private int countMax;
 	private int leftCount;
 	private int rightCount;
 	
@@ -37,7 +38,7 @@ public class AutoDriveDistancePositionBanner extends Command {
         this.targetRight = targetRight;
         left = Robot.drive.left.getEncMotor();
         right = Robot.drive.right.getEncMotor();
-        if(targetLeft > targetRight)
+        if(Math.abs(targetLeft) > Math.abs(targetRight))
         {
         	turnLeft = false;
         }
@@ -53,6 +54,15 @@ public class AutoDriveDistancePositionBanner extends Command {
     	right1 = s2;
     	left = Robot.drive.left.getEncMotor();
         right = Robot.drive.right.getEncMotor();
+        countMax = count;
+        if(Math.abs(targetLeft) > Math.abs(targetRight))
+        {
+        	turnLeft = false;
+        }
+        else
+        {
+        	turnLeft = true;
+        }
     }
 
     protected void initialize() {
@@ -67,12 +77,18 @@ public class AutoDriveDistancePositionBanner extends Command {
     	Robot.drive.left.setupPositionMode();
     	Robot.drive.right.setupPositionMode();
     	finished = false;
+    	if (left1 != null && right1 != null) {
+    		targetLeft = SmartDashboard.getNumber(left1, 0);
+    		targetRight = SmartDashboard.getNumber(right1, 0);
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	SmartDashboard.putBoolean("Left banner", Robot.hardware.driveLeftBanner.get());
-    	SmartDashboard.putBoolean("Right banner", Robot.hardware.driveRightBanner.get());
+    	boolean leftBanner = Robot.hardware.driveLeftBanner.get();
+    	boolean rightBanner = !Robot.hardware.driveRightBanner.get(); // Right inverted
+    	SmartDashboard.putBoolean("Left banner", leftBanner);
+    	SmartDashboard.putBoolean("Right banner", rightBanner);
     	
     	double leftOut = left.getOutputVoltage() / left.getBusVoltage();
     	double rightOut = right.getOutputVoltage() / right.getBusVoltage();
@@ -94,22 +110,25 @@ public class AutoDriveDistancePositionBanner extends Command {
         	count++;
         }
         SmartDashboard.putNumber("Count", count);
+        SmartDashboard.putBoolean("Turning Left", turnLeft);
         
         if(turnLeft)
         {
-        	leftCount = changeVoltage(Robot.hardware.driveLeftBanner, leftCount);
+        	leftCount = changeVoltage(leftBanner, leftCount);
+        	SmartDashboard.putNumber("Left count", leftCount);
         }
         else
         {
-        	rightCount = changeVoltage(Robot.hardware.driveRightBanner, rightCount);
+        	rightCount = changeVoltage(rightBanner, rightCount);
+        	SmartDashboard.putNumber("Right count", rightCount);
         }
     }
-    private int changeVoltage(DigitalInput banner, int counter) {
+    private int changeVoltage(boolean banner, int counter) {
     	// Sensor counts when not triggered, must have already been triggered
-    	if (counter > 50 && banner.get() && hit) {
+    	if (counter > SmartDashboard.getNumber("Banner Buffer", 0) && banner && hit) {
     		finished = true;
     	}
-    	if(banner.get() && !hit)
+    	if(banner && !hit)
     	{
     		hit = true;
     		// Resets counter, counts for nonbanner sensor triggers
@@ -119,12 +138,12 @@ public class AutoDriveDistancePositionBanner extends Command {
     		Robot.drive.right.configPeakOutputVoltage(+6f, -6f);
     	}
     	if (hit)
-    	counter++;
+    		counter++;
     	return counter;
     }
 
     protected boolean isFinished() {
-    	return finished || count > 50;
+    	return finished || count > countMax;
     }
 
     // Called once after isFinished returns true
