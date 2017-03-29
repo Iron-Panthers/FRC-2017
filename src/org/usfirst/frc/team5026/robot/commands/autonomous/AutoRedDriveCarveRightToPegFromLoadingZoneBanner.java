@@ -12,7 +12,7 @@ public class AutoRedDriveCarveRightToPegFromLoadingZoneBanner extends CommandGro
 
     public AutoRedDriveCarveRightToPegFromLoadingZoneBanner() {
     	addSequential(new AutoDriveDistancePositionBanner("Auto Loading Close Red", "Auto Loading Far Red", Constants.AUTO_LOADING_CARVE_COUNT_RED));
-    	addSequential(new AutoDriveDistancePositionBanner("Auto Loading Extra Distance Red", "Auto Loading Extra Distance Red", Constants.AUTO_LOADING_STRAIGHT_COUNT_RED));
+    	addSequential(new AutoDriveDistancePosition("Auto Loading Extra Distance Red", "Auto Loading Extra Distance Red", Constants.AUTO_LOADING_STRAIGHT_COUNT_RED));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

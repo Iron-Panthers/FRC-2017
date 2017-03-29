@@ -87,8 +87,8 @@ public class AutoDriveDistancePositionBanner extends Command {
     protected void execute() {
     	boolean leftBanner = Robot.hardware.driveLeftBanner.get();
     	boolean rightBanner = !Robot.hardware.driveRightBanner.get(); // Right inverted
-    	SmartDashboard.putBoolean("Left banner", leftBanner);
-    	SmartDashboard.putBoolean("Right banner", rightBanner);
+    	SmartDashboard.putNumber("Left banner num", leftBanner ? 1 : Math.random()/10.0);
+    	SmartDashboard.putNumber("Right banner num", rightBanner ? 1 : Math.random()/10.0);
     	
     	double leftOut = left.getOutputVoltage() / left.getBusVoltage();
     	double rightOut = right.getOutputVoltage() / right.getBusVoltage();

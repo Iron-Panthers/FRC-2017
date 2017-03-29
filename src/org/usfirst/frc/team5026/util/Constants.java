@@ -75,6 +75,8 @@ public class Constants {
 	 * 
 	 * After doing this, and being sure the angles are correct, optimize auto modes to work from those positions.
 	 */
+	// Auto Constants
+	public static int AUTO_BANNER_BUFFER = 20;
 	
 	// Auto Distances
 	public static double AUTO_MIDDLE_TARGET_LEFT = -9.1; // Move 5 1/8 to the left when setting up, laser moves by 9 inches.

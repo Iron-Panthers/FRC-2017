@@ -2,10 +2,12 @@
 package org.usfirst.frc.team5026.robot;
 
 import org.usfirst.frc.team5026.robot.commands.JoystickChoose;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoBannerTurn;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoBlueDriveCarveLeftToPegFromLoadingZone;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoBlueDriveCarveLeftToPegFromLoadingZoneBanner;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoBlueDriveCarveRightToPegFromBoiler;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoBlueDriveCarveRightToPegFromBoilerBanner;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDisplayBannerInfo;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDoNothing;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistancePosition;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoRedDriveCarveLeftToPegFromBoiler;
@@ -97,6 +99,7 @@ public class Robot extends IterativeRobot {
 		autoChooser.addObject("Red: Left peg with Banner", new AutoRedDriveCarveRightToPegFromLoadingZoneBanner());
 		autoChooser.addObject("Blue: Right peg with Banner", new AutoBlueDriveCarveLeftToPegFromLoadingZoneBanner());
 		autoChooser.addObject("Blue: Left peg with Banner", new AutoBlueDriveCarveRightToPegFromBoilerBanner());
+		autoChooser.addObject("Display Banner Outs", new AutoBannerTurn());
 		
 		SmartDashboard.putData("Autonomous Chooser", autoChooser);
 		
@@ -143,6 +146,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putBoolean("Running", true);
 	}
 	private void displayMods() {
+		sDisplay("Banner Buffer", Constants.AUTO_BANNER_BUFFER);
+		
 		sDisplay("Auto Mid Left", Constants.AUTO_MIDDLE_TARGET_LEFT);
 		sDisplay("Auto Mid Right", Constants.AUTO_MIDDLE_TARGET_RIGHT);
 		

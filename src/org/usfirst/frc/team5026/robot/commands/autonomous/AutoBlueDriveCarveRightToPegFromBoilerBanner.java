@@ -12,7 +12,7 @@ public class AutoBlueDriveCarveRightToPegFromBoilerBanner extends CommandGroup {
 
     public AutoBlueDriveCarveRightToPegFromBoilerBanner() {
     	addSequential(new AutoDriveDistancePositionBanner("Auto Boiler Close Blue", "Auto Boiler Far Blue", Constants.AUTO_BOILER_CARVE_COUNT_BLUE));
-    	addSequential(new AutoDriveDistancePositionBanner("Auto Boiler Extra Distance Blue", "Auto Boiler Extra Distance Blue", Constants.AUTO_BOILER_STRAIGHT_COUNT_BLUE));
+    	addSequential(new AutoDriveDistancePosition("Auto Boiler Extra Distance Blue", "Auto Boiler Extra Distance Blue", Constants.AUTO_BOILER_STRAIGHT_COUNT_BLUE));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
