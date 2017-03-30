@@ -30,13 +30,13 @@ public class DriveTurnXDegrees extends Command {
     protected void execute() {
     	double angle = Robot.hardware.gyro.getAngle();
     	Robot.drive.setLeftRightMotors(Constants.AUTO_TURN_SPEED * -(degrees - angle) * Constants.AUTO_TURN_P, Constants.AUTO_TURN_SPEED * (degrees -  angle) * Constants.AUTO_TURN_P);
-    	System.out.println(angle);
+//    	System.out.println(angle);
     }
 
     
     protected boolean isFinished() {
-    	return false;
-        //return Math.abs(Robot.hardware.gyro.getAngle() - degrees) <= Constants.AUTO_TURN_ANGLE_TOLERANCE;
+//    	return false;
+        return Math.abs(Robot.hardware.gyro.getAngle() - degrees) <= Constants.AUTO_TURN_ANGLE_TOLERANCE;
     }
 
 
