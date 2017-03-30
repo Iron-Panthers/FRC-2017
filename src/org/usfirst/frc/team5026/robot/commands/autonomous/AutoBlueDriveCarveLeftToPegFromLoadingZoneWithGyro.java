@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class AutoBlueDriveCarveLeftToPegFromLoadingZoneWithGyro extends CommandGroup {
 
     public AutoBlueDriveCarveLeftToPegFromLoadingZoneWithGyro() {
-    	addSequential(new AutoDriveDistancePosition("Auto Loading Close Blue", "Auto Loading Close Blue", Constants.AUTO_LOADING_CARVE_COUNT_BLUE));
+    	addSequential(new AutoDriveDistancePositionGyro("Auto Loading Far Blue", "Auto Loading Close Blue", Constants.AUTO_LOADING_CARVE_COUNT_BLUE, Constants.AUTO_LOADING_ANGLE_BLUE));
     	addSequential(new DriveTurnXDegrees(Constants.AUTO_LOADING_ANGLE_BLUE)); // CONSTANT
     	addSequential(new AutoDriveDistancePosition("Auto Loading Extra Distance Blue", "Auto Loading Extra Distance Blue", Constants.AUTO_LOADING_STRAIGHT_COUNT_BLUE));
         // Add Commands here:

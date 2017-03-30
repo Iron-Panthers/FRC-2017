@@ -89,15 +89,15 @@ public class Constants {
 	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_RED = -4.5;
 	public static int AUTO_BOILER_CARVE_COUNT_RED = 50;
 	public static int AUTO_BOILER_STRAIGHT_COUNT_RED = 50;
-	public static double AUTO_BOILER_ANGLE_RED = -45; // TODO
+	public static double AUTO_BOILER_ANGLE_RED = -60; // TODO
 	
 	//DriveCarveToPegFromLoadingZoneRed
 	public static double AUTO_LOADING_TARGET_FAR_RED = -12.8;
 	public static double AUTO_LOADING_TARGET_CLOSE_RED = -9.1;
-	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_RED = -3.5;
+	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_RED = -4.5;
 	public static int AUTO_LOADING_CARVE_COUNT_RED = 50;
 	public static int AUTO_LOADING_STRAIGHT_COUNT_RED = 50;
-	public static double AUTO_LOADING_ANGLE_RED = 45; // TODO
+	public static double AUTO_LOADING_ANGLE_RED = 60; // TODO
 	
 	//DriveCarveToPegFromBoilerBlue
 	public static double AUTO_BOILER_TARGET_FAR_BLUE = -12.9;
@@ -105,15 +105,15 @@ public class Constants {
 	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_BLUE = -4.5;
 	public static int AUTO_BOILER_CARVE_COUNT_BLUE = 40;
 	public static int AUTO_BOILER_STRAIGHT_COUNT_BLUE = 50;
-	public static double AUTO_BOILER_ANGLE_BLUE = 45; // TODO
+	public static double AUTO_BOILER_ANGLE_BLUE = 60; // TODO
 	
 	//DriveCarveToPegFromLoadingZoneBlue
 	public static double AUTO_LOADING_TARGET_FAR_BLUE = -12.8;
 	public static double AUTO_LOADING_TARGET_CLOSE_BLUE = -9.1;
-	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_BLUE = -3.5;
+	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_BLUE = -4.5;
 	public static int AUTO_LOADING_CARVE_COUNT_BLUE = 50;
 	public static int AUTO_LOADING_STRAIGHT_COUNT_BLUE = 50;
-	public static double AUTO_LOADING_ANGLE_BLUE = -45; // TODO
+	public static double AUTO_LOADING_ANGLE_BLUE = -60; // TODO
 	
 	// Drive motion profile
 	public static double DRIVE_STABILIZATION_TOLERANCE = 2000;
@@ -140,7 +140,7 @@ public class Constants {
 	public static final double MAX_ACCELERATION = 500;
 	/*
 	 * Unit is encoder rotations/sec/sec.
-	 * measured (unloaded): 
+	 * measured (unloaded): 4
 	 * measured (loaded, on field): 
 	 */
 	public static final double MAX_VELOCITY = 1080; 

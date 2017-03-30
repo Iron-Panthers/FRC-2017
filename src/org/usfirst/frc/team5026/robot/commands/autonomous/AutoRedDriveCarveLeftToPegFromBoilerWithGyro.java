@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class AutoRedDriveCarveLeftToPegFromBoilerWithGyro extends CommandGroup {
 
     public AutoRedDriveCarveLeftToPegFromBoilerWithGyro() {
-    	addSequential(new AutoDriveDistancePosition("Auto Boiler Close Red", "Auto Boiler Close Red", Constants.AUTO_BOILER_CARVE_COUNT_RED));
+    	addSequential(new AutoDriveDistancePositionGyro("Auto Boiler Far Red", "Auto Boiler Close Red", Constants.AUTO_BOILER_CARVE_COUNT_RED, Constants.AUTO_BOILER_ANGLE_RED));
     	addSequential(new DriveTurnXDegrees(Constants.AUTO_BOILER_ANGLE_RED)); // CONSTANT
     	addSequential(new AutoDriveDistancePosition("Auto Boiler Extra Distance Red", "Auto Boiler Extra Distance Red", Constants.AUTO_BOILER_STRAIGHT_COUNT_RED));
         // Add Commands here:

@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoRedDriveCarveRightToPegFromLoadingZoneWithGyro extends CommandGroup {
 
     public AutoRedDriveCarveRightToPegFromLoadingZoneWithGyro() {
-    	addSequential(new AutoDriveDistancePosition("Auto Loading Close Red", "Auto Loading Close Red", Constants.AUTO_LOADING_CARVE_COUNT_RED));
+    	addSequential(new AutoDriveDistancePositionGyro("Auto Loading Close Red", "Auto Loading Far Red", Constants.AUTO_LOADING_CARVE_COUNT_RED, Constants.AUTO_LOADING_ANGLE_RED));
     	addSequential(new DriveTurnXDegrees(Constants.AUTO_LOADING_ANGLE_RED)); // CONSTANT
     	addSequential(new AutoDriveDistancePosition("Auto Loading Extra Distance Red", "Auto Loading Extra Distance Red", Constants.AUTO_LOADING_STRAIGHT_COUNT_RED));
         // Add Commands here:
