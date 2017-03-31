@@ -98,6 +98,18 @@ public class Constants {
 	public static int AUTO_LOADING_CARVE_COUNT_RED = 50;
 	public static int AUTO_LOADING_STRAIGHT_COUNT_RED = 50;
 	public static double AUTO_LOADING_ANGLE_RED = 60; // TODO
+	/*
+	 * Red loading zone actual straight drive distance (relative to turning point): 80.25"
+	 * Red loading zone actual angle (relative to turning point): 60
+	 * Red loading zone actual second straight drive distance (relative to turning point): 56.75"
+	 * 
+	 * Middle actual: 113.8"
+	 * 
+	 * Dumb start: Gear side forward, left bumper corner on inside of tape
+	 * Red loading zone dumb start straight drive distance (relative to turning point): 94.75"
+	 * Red loading zone dumb start angle (relative to turning point): 60
+	 * Red loading zone dumb start second straight drive distance (relative to turning point): 28.25"
+	 */
 	
 	//DriveCarveToPegFromBoilerBlue
 	public static double AUTO_BOILER_TARGET_FAR_BLUE = -12.9;
