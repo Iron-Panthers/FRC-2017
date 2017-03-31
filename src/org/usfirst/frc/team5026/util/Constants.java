@@ -68,6 +68,7 @@ public class Constants {
 	// Auto Constants
 	public static final double STRAIGHT_DRIVE_SPEED = 0.5;
 	public static final double GEAR_RATIO = 5.36;
+	public static final double INCHES_PER_ENCODER = 9; //+- 2.5%
 	/*
 	 * For auto distances:
 	 * Line left laser (gear is front) with the far edge of the tape for both the loading zone and the boiler
@@ -114,8 +115,8 @@ public class Constants {
 	 */
 	
 	//DriveCarveToPegFromBoilerBlue
-	public static double AUTO_BOILER_TARGET_FAR_BLUE = -12.9;
-	public static double AUTO_BOILER_TARGET_CLOSE_BLUE = -9.1;
+	public static double AUTO_BOILER_TARGET_FAR_BLUE = -12.9; //7.8
+	public static double AUTO_BOILER_TARGET_CLOSE_BLUE = -9.1; //7.8
 	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_BLUE = -4.5;
 	public static int AUTO_BOILER_CARVE_COUNT_BLUE = 40;
 	public static int AUTO_BOILER_STRAIGHT_COUNT_BLUE = 50;
