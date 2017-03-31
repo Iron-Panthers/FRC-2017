@@ -55,7 +55,7 @@ public class Constants {
 	public static final Color LED_GEAR_RELEASE = Color.GREEN;
 	
 	// Gyro Constants
-	public static final double AUTO_TURN_ANGLE_TOLERANCE = 0.5; 
+	public static final double AUTO_TURN_ANGLE_TOLERANCE = 0.8; 
 	public static final double AUTO_TURN_SPEED = 0.5;
 	public static final int AUTO_TURN_COUNT = 5;
 	public static final double AUTO_TURN_P = 0.08;
@@ -86,17 +86,17 @@ public class Constants {
 	public static int AUTO_MIDDLE_TARGET_COUNT = 50;
 	
 	//DriveCarveToPegFromBoilerRed
-	public static double AUTO_BOILER_TARGET_FAR_RED = -12.9;
-	public static double AUTO_BOILER_TARGET_CLOSE_RED = -9.1;
-	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_RED = -4.5;
+	public static double AUTO_BOILER_TARGET_FAR_RED = -9.2; //12.9
+	public static double AUTO_BOILER_TARGET_CLOSE_RED = -9.2; //9.1
+	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_RED = -6.5; //4.5
 	public static int AUTO_BOILER_CARVE_COUNT_RED = 50;
 	public static int AUTO_BOILER_STRAIGHT_COUNT_RED = 50;
 	public static double AUTO_BOILER_ANGLE_RED = -60; // TODO
 	
 	//DriveCarveToPegFromLoadingZoneRed
-	public static double AUTO_LOADING_TARGET_FAR_RED = -12.8;
-	public static double AUTO_LOADING_TARGET_CLOSE_RED = -9.1;
-	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_RED = -4.5;
+	public static double AUTO_LOADING_TARGET_FAR_RED = -9.2; //12.8
+	public static double AUTO_LOADING_TARGET_CLOSE_RED = -9.2; //9.1
+	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_RED = -6.5; //4.5
 	public static int AUTO_LOADING_CARVE_COUNT_RED = 50;
 	public static int AUTO_LOADING_STRAIGHT_COUNT_RED = 50;
 	public static double AUTO_LOADING_ANGLE_RED = 60; // TODO
@@ -115,17 +115,17 @@ public class Constants {
 	 */
 	
 	//DriveCarveToPegFromBoilerBlue
-	public static double AUTO_BOILER_TARGET_FAR_BLUE = -12.9; //7.8
-	public static double AUTO_BOILER_TARGET_CLOSE_BLUE = -9.1; //7.8
-	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_BLUE = -4.5;
+	public static double AUTO_BOILER_TARGET_FAR_BLUE = -9.2; //12.9
+	public static double AUTO_BOILER_TARGET_CLOSE_BLUE = -9.2; //9.1
+	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_BLUE = -6.5; //4.5
 	public static int AUTO_BOILER_CARVE_COUNT_BLUE = 40;
 	public static int AUTO_BOILER_STRAIGHT_COUNT_BLUE = 50;
 	public static double AUTO_BOILER_ANGLE_BLUE = 60; // TODO
 	
 	//DriveCarveToPegFromLoadingZoneBlue
-	public static double AUTO_LOADING_TARGET_FAR_BLUE = -12.8;
-	public static double AUTO_LOADING_TARGET_CLOSE_BLUE = -9.1;
-	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_BLUE = -4.5;
+	public static double AUTO_LOADING_TARGET_FAR_BLUE = -9.2; //12.8
+	public static double AUTO_LOADING_TARGET_CLOSE_BLUE = -9.2; //9.1
+	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_BLUE = -6.5; //4.5
 	public static int AUTO_LOADING_CARVE_COUNT_BLUE = 50;
 	public static int AUTO_LOADING_STRAIGHT_COUNT_BLUE = 50;
 	public static double AUTO_LOADING_ANGLE_BLUE = -60; // TODO
