@@ -13,7 +13,7 @@ public class AutoBlueDriveCarveRightToPegFromBoilerWithGyro extends CommandGroup
 
     public AutoBlueDriveCarveRightToPegFromBoilerWithGyro() {
     	addSequential(new AutoDriveDistancePositionGyro("Auto Boiler Close Blue", "Auto Boiler Far Blue", Constants.AUTO_BOILER_CARVE_COUNT_BLUE, Constants.AUTO_BOILER_ANGLE_BLUE));
-    	addSequential(new DriveTurnXDegrees(Constants.AUTO_BOILER_ANGLE_BLUE)); // CONSTANT
+    	addSequential(new DriveTurnXDegrees(Constants.AUTO_BOILER_ANGLE_BLUE, false)); // CONSTANT
     	addSequential(new AutoDriveDistancePosition("Auto Boiler Extra Distance Blue", "Auto Boiler Extra Distance Blue", Constants.AUTO_BOILER_STRAIGHT_COUNT_BLUE));
         // Add Commands here:
         // e.g. addSequential(new Command1());

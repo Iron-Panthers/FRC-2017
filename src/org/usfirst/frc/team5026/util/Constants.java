@@ -57,7 +57,8 @@ public class Constants {
 	// Gyro Constants
 	public static final double AUTO_TURN_ANGLE_TOLERANCE = 0.5; 
 	public static final double AUTO_TURN_SPEED = 0.5;
-	public static final double AUTO_TURN_P = 0.1;
+	public static final int AUTO_TURN_COUNT = 5;
+	public static final double AUTO_TURN_P = 0.08;
 	
 	// Encoder constants
 	public static final double WHEEL_DIAMETER = 4;	//in inches
@@ -99,6 +100,7 @@ public class Constants {
 	public static int AUTO_LOADING_STRAIGHT_COUNT_RED = 50;
 	public static double AUTO_LOADING_ANGLE_RED = 60; // TODO
 	/*
+	 * Actual start: 
 	 * Red loading zone actual straight drive distance (relative to turning point): 80.25"
 	 * Red loading zone actual angle (relative to turning point): 60
 	 * Red loading zone actual second straight drive distance (relative to turning point): 56.75"
