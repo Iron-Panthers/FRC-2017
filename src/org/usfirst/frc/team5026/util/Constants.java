@@ -33,7 +33,7 @@ public class Constants {
 	//Climber Constants
 	public static final double CLIMBER_SPEED_RAPPEL = -0.8;	//quality of unloader's life
 	public static final double CLIMBER_SPEED_LATCH = 0.3;
-	public static final double CLIMBER_SPEED_WRAP = 0.71;
+	public static final double CLIMBER_SPEED_WRAP = 0.81; //0.71
 	public static final double CLIMBER_SLOPE_SWAP = 0.0;	//The value in which the joystick switches from linear to quadratic
 	public static final double CLIMBER_SLOPE_WRAP = 0.0152;	//caps motors at 83.33% V (10/12 V), previously set at 0.0841 (capped at 100% V)
 	public static final double CLIMBER_SLOPE_LATCH = 0.04;	//allows for slower climbing speeds
@@ -55,7 +55,7 @@ public class Constants {
 	public static final Color LED_GEAR_RELEASE = Color.GREEN;
 	
 	// Gyro Constants
-	public static final double AUTO_TURN_ANGLE_TOLERANCE = 0.8; 
+	public static final double AUTO_TURN_ANGLE_TOLERANCE = 1; 
 	public static final double AUTO_TURN_SPEED = 0.5;
 	public static final int AUTO_TURN_COUNT = 5;
 	public static final double AUTO_TURN_P = 0.08;
@@ -81,22 +81,22 @@ public class Constants {
 	public static int AUTO_BANNER_BUFFER = 20;
 	
 	// Auto Distances
-	public static double AUTO_MIDDLE_TARGET_LEFT = -9.1; // Move 5 1/8 to the left when setting up, laser moves by 9 inches.
-	public static double AUTO_MIDDLE_TARGET_RIGHT = -9.1; // Move 5 /8 to the left when setting up, laser moves by 9 inches.
+	public static double AUTO_MIDDLE_TARGET_LEFT = -30; // Move 5 1/8 to the left when setting up, laser moves by 9 inches. 9.1
+	public static double AUTO_MIDDLE_TARGET_RIGHT = -30; // Move 5 /8 to the left when setting up, laser moves by 9 inches. 9.1
 	public static int AUTO_MIDDLE_TARGET_COUNT = 50;
 	
 	//DriveCarveToPegFromBoilerRed
-	public static double AUTO_BOILER_TARGET_FAR_RED = -9.2; //12.9
-	public static double AUTO_BOILER_TARGET_CLOSE_RED = -9.2; //9.1
-	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_RED = -6.5; //4.5
+	public static double AUTO_BOILER_TARGET_FAR_RED = -9; //12.9
+	public static double AUTO_BOILER_TARGET_CLOSE_RED = -9; //9.1
+	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_RED = -7.5; //4.5
 	public static int AUTO_BOILER_CARVE_COUNT_RED = 50;
 	public static int AUTO_BOILER_STRAIGHT_COUNT_RED = 50;
 	public static double AUTO_BOILER_ANGLE_RED = -60; // TODO
 	
 	//DriveCarveToPegFromLoadingZoneRed
-	public static double AUTO_LOADING_TARGET_FAR_RED = -9.2; //12.8
-	public static double AUTO_LOADING_TARGET_CLOSE_RED = -9.2; //9.1
-	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_RED = -6.5; //4.5
+	public static double AUTO_LOADING_TARGET_FAR_RED = -9; //12.8
+	public static double AUTO_LOADING_TARGET_CLOSE_RED = -9; //9.1
+	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_RED = -7.5; //4.5
 	public static int AUTO_LOADING_CARVE_COUNT_RED = 50;
 	public static int AUTO_LOADING_STRAIGHT_COUNT_RED = 50;
 	public static double AUTO_LOADING_ANGLE_RED = 60; // TODO
@@ -115,17 +115,17 @@ public class Constants {
 	 */
 	
 	//DriveCarveToPegFromBoilerBlue
-	public static double AUTO_BOILER_TARGET_FAR_BLUE = -9.2; //12.9
-	public static double AUTO_BOILER_TARGET_CLOSE_BLUE = -9.2; //9.1
-	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_BLUE = -6.5; //4.5
+	public static double AUTO_BOILER_TARGET_FAR_BLUE = -9; //12.9
+	public static double AUTO_BOILER_TARGET_CLOSE_BLUE = -9; //9.1
+	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_BLUE = -7.5; //4.5
 	public static int AUTO_BOILER_CARVE_COUNT_BLUE = 40;
 	public static int AUTO_BOILER_STRAIGHT_COUNT_BLUE = 50;
 	public static double AUTO_BOILER_ANGLE_BLUE = 60; // TODO
 	
 	//DriveCarveToPegFromLoadingZoneBlue
-	public static double AUTO_LOADING_TARGET_FAR_BLUE = -9.2; //12.8
-	public static double AUTO_LOADING_TARGET_CLOSE_BLUE = -9.2; //9.1
-	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_BLUE = -6.5; //4.5
+	public static double AUTO_LOADING_TARGET_FAR_BLUE = -9; //12.8
+	public static double AUTO_LOADING_TARGET_CLOSE_BLUE = -9; //9.1
+	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_BLUE = -7.5; //4.5
 	public static int AUTO_LOADING_CARVE_COUNT_BLUE = 50;
 	public static int AUTO_LOADING_STRAIGHT_COUNT_BLUE = 50;
 	public static double AUTO_LOADING_ANGLE_BLUE = -60; // TODO
