@@ -1,5 +1,7 @@
-package org.usfirst.frc.team5026.robot.commands.autonomous;
+package org.usfirst.frc.team5026.robot.commands.autonomous.sequences;
 
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistancePosition;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistancePositionGyro;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveTurnXDegrees;
 import org.usfirst.frc.team5026.util.Constants;
 

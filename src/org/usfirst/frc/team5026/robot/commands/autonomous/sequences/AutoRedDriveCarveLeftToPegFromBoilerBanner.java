@@ -1,5 +1,7 @@
-package org.usfirst.frc.team5026.robot.commands.autonomous;
+package org.usfirst.frc.team5026.robot.commands.autonomous.sequences;
 
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoBannerTurn;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistancePosition;
 import org.usfirst.frc.team5026.util.Constants;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;

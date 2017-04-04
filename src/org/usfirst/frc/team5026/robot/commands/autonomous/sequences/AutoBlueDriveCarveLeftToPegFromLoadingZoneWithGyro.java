@@ -1,5 +1,8 @@
-package org.usfirst.frc.team5026.robot.commands.autonomous;
+package org.usfirst.frc.team5026.robot.commands.autonomous.sequences;
 
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistancePosition;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistancePositionGyro;
+import org.usfirst.frc.team5026.robot.commands.drive.DriveTurnXDegrees;
 import org.usfirst.frc.team5026.util.Constants;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -8,10 +11,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class AutoBlueDriveCarveLeftToPegFromLoadingZone extends CommandGroup {
+public class AutoBlueDriveCarveLeftToPegFromLoadingZoneWithGyro extends CommandGroup {
 
-    public AutoBlueDriveCarveLeftToPegFromLoadingZone() {
-    	addSequential(new AutoDriveDistancePosition("Auto Loading Far Blue", "Auto Loading Close Blue", Constants.AUTO_LOADING_CARVE_COUNT_BLUE));
+    public AutoBlueDriveCarveLeftToPegFromLoadingZoneWithGyro() {
+    	addSequential(new AutoDriveDistancePositionGyro("Auto Loading Far Blue", "Auto Loading Close Blue", Constants.AUTO_LOADING_CARVE_COUNT_BLUE, Constants.AUTO_LOADING_ANGLE_BLUE));
+    	addSequential(new DriveTurnXDegrees(Constants.AUTO_LOADING_ANGLE_BLUE, false)); // CONSTANT
     	addSequential(new AutoDriveDistancePosition("Auto Loading Extra Distance Blue", "Auto Loading Extra Distance Blue", Constants.AUTO_LOADING_STRAIGHT_COUNT_BLUE));
         // Add Commands here:
         // e.g. addSequential(new Command1());
