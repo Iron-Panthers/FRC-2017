@@ -39,7 +39,6 @@ public class DriveTurnXDegrees extends Command {
 
     
     protected void execute() {
-    	SmartDashboard.putBoolean("Reset Gyro?", reset);
     	double angle = Robot.hardware.gyro.getAngle();
     	Robot.drive.setLeftRightMotors(Constants.AUTO_TURN_SPEED * -(degrees - angle) * p, Constants.AUTO_TURN_SPEED * (degrees -  angle) * p);
     	if (Math.abs(Robot.hardware.gyro.getAngle() - degrees) <= tol) {

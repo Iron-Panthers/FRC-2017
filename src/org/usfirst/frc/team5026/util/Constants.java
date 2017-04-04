@@ -86,9 +86,9 @@ public class Constants {
 	public static int AUTO_MIDDLE_TARGET_COUNT = 50;
 	
 	//DriveCarveToPegFromBoilerRed
-	public static double AUTO_BOILER_TARGET_FAR_RED = -8.6; //12.9
-	public static double AUTO_BOILER_TARGET_CLOSE_RED = -8.6; //9.1
-	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_RED = -7.5; //4.5
+	public static double AUTO_BOILER_TARGET_FAR_RED = -8.4; //12.9
+	public static double AUTO_BOILER_TARGET_CLOSE_RED = -8.4; //9.1
+	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_RED = -7.6; //4.5
 	public static int AUTO_BOILER_CARVE_COUNT_RED = 50;
 	public static int AUTO_BOILER_STRAIGHT_COUNT_RED = 50;
 	public static double AUTO_BOILER_ANGLE_RED = -60; // TODO
@@ -115,10 +115,10 @@ public class Constants {
 	 */
 	
 	//DriveCarveToPegFromBoilerBlue
-	public static double AUTO_BOILER_TARGET_FAR_BLUE = -8.6; //12.9
-	public static double AUTO_BOILER_TARGET_CLOSE_BLUE = -8.6; //9.1
+	public static double AUTO_BOILER_TARGET_FAR_BLUE = -8.4; //12.9
+	public static double AUTO_BOILER_TARGET_CLOSE_BLUE = -8.4; //9.1
 	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_BLUE = -7.5; //4.5
-	public static int AUTO_BOILER_CARVE_COUNT_BLUE = 40;
+	public static int AUTO_BOILER_CARVE_COUNT_BLUE = 50;
 	public static int AUTO_BOILER_STRAIGHT_COUNT_BLUE = 50;
 	public static double AUTO_BOILER_ANGLE_BLUE = 60; // TODO
 	
@@ -134,17 +134,17 @@ public class Constants {
 	public static double DRIVE_STABILIZATION_TOLERANCE = 2000;
 	
 	public static int PID_PROFILE_LEFT = 0;
-	public static double P_LEFT = 0.1;
+	public static double P_LEFT = 0.2;
 	public static double I_LEFT = 0;
-	public static double D_LEFT = 65;
+	public static double D_LEFT = 100;
 	public static double F_LEFT = 0;
 	public static double RAMP_LEFT = 15;
 	public static double[] PIDFR_LEFT = {P_LEFT,I_LEFT,D_LEFT,F_LEFT, RAMP_LEFT};
 	
 	public static int PID_PROFILE_RIGHT = 0;
-	public static double P_RIGHT = 0.1;
+	public static double P_RIGHT = 0.2;
 	public static double I_RIGHT = 0;
-	public static double D_RIGHT = 65;
+	public static double D_RIGHT = 100;
 	public static double F_RIGHT = 0;
 	public static double RAMP_RIGHT = 15;
 	public static double[] PIDFR_RIGHT = {P_RIGHT,I_RIGHT,D_RIGHT,F_RIGHT, RAMP_RIGHT};
