@@ -135,4 +135,8 @@ public class DriveMotorGroup implements SpeedController {
 			ct.enableBrakeMode(brake);
 		}
 	}
+	public void configPeakOutputVoltage(double max, double min)
+	{
+		encoderMotor.configPeakOutputVoltage(max, min);
+	}
 }

@@ -48,7 +48,9 @@ public class Drive extends Subsystem {
 		right = hardware.rightMotor;
 		led = hardware.led;
 	}
-	
+	public void drive(double left, double right) {
+		drive.drive(left, right);
+	}
 	public void setLeftRightMotors(double left, double right) {
 		drive.setLeftRightMotorOutputs(left, right);
 	}
@@ -113,13 +115,6 @@ public class Drive extends Subsystem {
 			turningRight = false;
 		}
 //		gyro.calibrate();
-	}
-	public boolean isTurnFinished() {
-		if(turningRight) {
-			return Math.abs(gyro.getAngle() - targetAngle) <= targetAngle * Constants.PERCENTAGE_FOR_ERROR;
-		} else {
-			return Math.abs(gyro.getAngle() - targetAngle) > targetAngle * Constants.PERCENTAGE_FOR_ERROR;
-		}
 	}
 	
 	public void startDriveDistance(double inches) {

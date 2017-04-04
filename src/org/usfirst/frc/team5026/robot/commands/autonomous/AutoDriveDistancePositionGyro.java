@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  * Code used from WaitForStabilize for the Shooter for 2016
  */
-public class AutoDriveDistancePosition extends Command {
+public class AutoDriveDistancePositionGyro extends Command {
 	
 	private double targetLeft;
 	private double targetRight;
@@ -25,7 +25,9 @@ public class AutoDriveDistancePosition extends Command {
 	private int count;
 	private int countMax;
 	
-    public AutoDriveDistancePosition(double targetLeft, double targetRight) {
+	private double angle;
+	
+    public AutoDriveDistancePositionGyro(double targetLeft, double targetRight) {
         requires(Robot.drive);
         this.targetLeft = targetLeft;
         this.targetRight = targetRight;
@@ -33,13 +35,14 @@ public class AutoDriveDistancePosition extends Command {
         right = Robot.drive.right.getEncMotor();
     }
     
-    public AutoDriveDistancePosition(String s1, String s2, int count) {
+    public AutoDriveDistancePositionGyro(String s1, String s2, int count, double angle) {
     	requires(Robot.drive);
     	left1 = s1;
     	right1 = s2;
     	left = Robot.drive.left.getEncMotor();
         right = Robot.drive.right.getEncMotor();
         this.countMax = count;
+        this.angle = angle;
     }
 
     protected void initialize() {
@@ -85,7 +88,7 @@ public class AutoDriveDistancePosition extends Command {
     }
 
     protected boolean isFinished() {
-    	return count >= countMax;
+    	return count >= countMax || Math.abs(Robot.hardware.gyro.getAngle()) >= Math.abs(angle);
     }
 
     // Called once after isFinished returns true

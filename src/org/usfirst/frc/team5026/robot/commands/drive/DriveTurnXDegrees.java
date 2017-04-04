@@ -12,29 +12,45 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class DriveTurnXDegrees extends Command {
 
 	private double degrees;
+	private int count;
+	double p;
+	double tol;
+	boolean reset;
 
 	public DriveTurnXDegrees() {
 		requires(Robot.drive);
 	}
 	
-    public DriveTurnXDegrees(double degrees) {
-        this.degrees = degrees;
+    public DriveTurnXDegrees(double degrees, boolean reset) {
+    	this.degrees = degrees;
+    	this.reset = reset;
     }
 
 
     protected void initialize() {
-    	Robot.drive.stopMotors();
-    	Robot.drive.setRotate(degrees);
+    	p = SmartDashboard.getNumber("Auto Rotation P", 0);
+    	tol = SmartDashboard.getNumber("Auto Angle Rotation Tolerance", 0);
+    	count = 0;
+    	Robot.drive.left.setupVoltageMode();
+    	Robot.drive.right.setupVoltageMode();
+    	if (reset)
+    	Robot.hardware.gyro.reset();
     }
 
     
     protected void execute() {
-    	Robot.drive.rotateRobot(Constants.AUTO_TURN_SPEED * (Robot.drive.getGyroError()));
+    	double angle = Robot.hardware.gyro.getAngle();
+    	Robot.drive.setLeftRightMotors(Constants.AUTO_TURN_SPEED * -(degrees - angle) * p, Constants.AUTO_TURN_SPEED * (degrees -  angle) * p);
+    	if (Math.abs(Robot.hardware.gyro.getAngle() - degrees) <= tol) {
+    		count++;
+    	}
+    	SmartDashboard.putNumber("Gyro angle", Robot.hardware.gyro.getAngle());
     }
 
     
     protected boolean isFinished() {
-        return Robot.drive.isTurnFinished();
+//    	return false;
+        return count >= Constants.AUTO_TURN_COUNT;
     }
 
 
