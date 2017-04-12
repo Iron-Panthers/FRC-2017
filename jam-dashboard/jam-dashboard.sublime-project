@@ -1,8 +1,17 @@
 {
-	"folders":
-	[
+	"folders": [
 		{
 			"path": "."
+		}
+	],
+	"build_systems": [
+		{
+			"name": "Run server (pynetworktables2js)",
+			"cmd": "pynetworktables2js"
+		},
+		{
+			"name": "Run Electron",
+			"cmd": "electron"
 		}
 	]
 }
