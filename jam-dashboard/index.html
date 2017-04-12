@@ -43,13 +43,7 @@
                 <!-- Clock that shows up in top left -->
                 <div id="timer">2:15</div>
                 <div id="gyro-container">
-                    <!-- Gyroscope -->
-                    <svg id="gyro" width="100" height="100">
-                        <circle cx="50" cy="50" r="50"></circle>
-                        <circle cx="50" cy="50" r="40"></circle>
-                        <rect id="gyro-arm" x="50" y="0" width="2" height="50"></rect>
-                        <text id="gyro-number" x="50" y="50">0º</text>
-                    </svg>
+                    <div id="gyro">
                 </div>
             </div>
 
@@ -63,6 +57,7 @@
     <script type="text/javascript">
         // svg.js testing
         SVG('side-diagram').size(200, 200).use('side-diagram', 'res/side-diagram.svg');
+        SVG('gyro').size(100, 100).use('gyro', 'res/gyro-compass.svg');
     </script>
     <!--script src="ui.js"></script-->
 

@@ -6,12 +6,13 @@
 	],
 	"build_systems": [
 		{
-			"name": "Run server (pynetworktables2js)",
+			"name": "pynetworktables2js",
+			"working_dir": "${project_path}",
 			"cmd": "pynetworktables2js"
 		},
 		{
-			"name": "Run Electron",
-			"cmd": "electron"
+			"name": "Electron",
+			"shell_cmd": "electron ${project_path}"
 		}
 	]
 }
