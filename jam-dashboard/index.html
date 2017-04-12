@@ -22,7 +22,7 @@
             <div id="left-column" class="col-4">
 
                 <div class="row">
-                    <div></div>
+                    <button type="button" class="btn btn-primary" onclick="switchView()">Switch View</button>
                 </div>
 
                 <div id="diagrams-screen">
@@ -46,7 +46,7 @@
 
                 </div>
 
-                <div id="data-screen">
+                <div id="data-screen" class="hidden">
                     <div id="data-table">
                         
                     </div>
@@ -87,7 +87,7 @@
         SVG('side-diagram').size(200, 200).use('side-diagram', 'res/side-diagram.svg');
         SVG('gyro').size(100, 100).use('gyro', 'res/gyro-compass.svg');
     </script>
-    <!--script src="ui.js"></script-->
+    <script src="ui.js"></script>
 
 </body>
 
