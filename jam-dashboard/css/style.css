@@ -1,13 +1,5 @@
 /* Major interface panes, aside, article, header, etc. */
 
-svg * {
-    stroke: white;
-    fill: #222;
-    stroke-width: 2;
-    -webkit-transform-origin: center;
-    -ms-transform-origin: center;
-    transform-origin: center;
-}
 text {
     font-size: 16px;
     letter-spacing: 2px;
@@ -15,40 +7,37 @@ text {
     fill: white;
 }
 
-#dashboard-container {
-    width: 100%;
-    height: 100%;
+.hidden {
+    visibility: hidden;
 }
 
-#left-column, #center-column, #right-column {
-    display: inline-block; 
-    *display: inline; 
-    zoom: 1; 
-    vertical-align: top; 
+.svg-diagram {
+    padding: 10px;
+}
+
+.svg-diagram svg {
+    margin: 0 auto;
 }
 
 #left-column {
-    float: left;
-    width: 400px;
-    height: 100%;
-    margin-left: 30px;
-    margin-top: 15px;
+    padding: 20px;
 }
 
-#center-column {
+#dashboard-container {
+    width: 100%;
     height: 100%;
+    background-color: #111111;
 }
 
-#right-column {
-    float: right;
-    width: 400px;
-    height: 100%;
+#dashboard-container .row > .col-4 {
+    background-color: #222222;
+    margin: 10px;
 }
 
 #camera {
     position: static;
-    width: 640px;
-    height: 480px;
+    width: 480px;
+    height: 360px;
     overflow: hidden;
     background-color: #333;
     /* You'll need to mess with this a bit to get your camera to work. Replace the url with a live-updating image feed from your camera. Using other camera streaming systems will require some tweaking. */
