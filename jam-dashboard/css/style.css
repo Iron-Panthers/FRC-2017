@@ -96,7 +96,7 @@ text {
     font-size: 25px;
     text-anchor: middle;
 }
-#robot-diagram {
+#top-down-diagram {
     position: relative;
     bottom: 1px;
     right: 1vw;
