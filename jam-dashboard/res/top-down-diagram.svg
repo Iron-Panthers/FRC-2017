@@ -14,7 +14,7 @@
    viewBox="0 0 52.92 52.916668"
    version="1.1"
    id="svg4594"
-   inkscape:version="0.92.1 r15371"
+   inkscape:version="0.48.4 r9939"
    sodipodi:docname="top-down-diagram.svg">
   <defs
      id="defs4588" />
@@ -25,22 +25,53 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8"
-     inkscape:cx="187.57808"
-     inkscape:cy="119.85356"
+     inkscape:zoom="4"
+     inkscape:cx="104.89244"
+     inkscape:cy="136.53986"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer3"
      showgrid="false"
      units="px"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="1920"
-     inkscape:window-height="1001"
-     inkscape:window-x="-9"
-     inkscape:window-y="-9"
-     inkscape:window-maximized="1" />
+     inkscape:window-width="1366"
+     inkscape:window-height="744"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     showguides="false"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       orientation="1,0"
+       position="60.104076,141.92643"
+       id="guide3885" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="126.26907,101.01525"
+       id="guide3887" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="117.1777,111.11678"
+       id="guide3961" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="44.194174,101.26779"
+       id="guide3963" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="28.789348,86.115504"
+       id="guide3969" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="38.133259,72.478445"
+       id="guide3971" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="17.172593,111.11678"
+       id="guide3998" />
+  </sodipodi:namedview>
   <metadata
      id="metadata4591">
     <rdf:RDF>
@@ -49,7 +80,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -57,5 +88,223 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-244.08332)" />
+     transform="translate(0,-244.08332)">
+    <rect
+       style="fill:#f10000;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:0.44313725999999998"
+       id="rect2982"
+       width="79.296974"
+       height="79.296974"
+       x="54.043159"
+       y="67.670013"
+       transform="matrix(0.2646,0,0,0.2646,0,244.08165)" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Bumpers"
+     style="display:inline">
+    <rect
+       style="fill:#f10000;fill-opacity:1;stroke:none"
+       id="rect3783"
+       width="1.6037183"
+       height="23.5212"
+       x="12.696102"
+       y="16.567389" />
+    <rect
+       style="fill:#f10000;fill-opacity:1;stroke:none"
+       id="rect3783-6"
+       width="1.6037183"
+       height="23.5212"
+       x="34.880871"
+       y="16.567389" />
+    <rect
+       style="fill:#f10000;fill-opacity:1;stroke:none"
+       id="rect3844"
+       width="82.832512"
+       height="5.0507627"
+       x="53.033009"
+       y="62.619255"
+       transform="matrix(0.2646,0,0,0.2646,0,-0.001666)" />
+    <rect
+       style="fill:#f10000;fill-opacity:1;stroke:none"
+       id="rect3846"
+       width="83.842659"
+       height="5.5558424"
+       x="50.507626"
+       y="145.95683"
+       transform="matrix(0.2646,0,0,0.2646,0,-0.001666)" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 17.172593,98.73221 c 42.931483,0 42.931483,0 42.931483,0"
+       id="path3996"
+       inkscape:connector-curvature="0"
+       transform="matrix(0.2646,0,0,0.2646,0,-0.001666)" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 60.104076,113.8845 c -42.931483,0 -42.931483,0 -42.931483,0"
+       id="path4000"
+       inkscape:connector-curvature="0"
+       transform="matrix(0.2646,0,0,0.2646,0,-0.001666)" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 17.172593,127.52156 c 42.931483,0 42.931483,0 42.931483,0"
+       id="path4002"
+       inkscape:connector-curvature="0"
+       transform="matrix(0.2646,0,0,0.2646,0,-0.001666)" />
+    <text
+       xml:space="preserve"
+       style="font-size:1.58759999px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="6.1743155"
+       y="25.7019"
+       id="text4004"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4006"
+         x="6.1743155"
+         y="25.7019">Motor 1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:1.58759999px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Sans"
+       x="6.2044897"
+       y="29.81757"
+       id="text4004-2"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4006-9"
+         x="6.2044897"
+         y="29.81757">Motor 2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:1.58759999px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Sans"
+       x="6.2044902"
+       y="33.559578"
+       id="text4004-1"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4006-2"
+         x="6.2044902"
+         y="33.559578">Motor 3</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Motors">
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:none;display:inline"
+       id="rect3856"
+       width="6.1475863"
+       height="2.5392203"
+       x="16.037182"
+       y="23.550245" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:none;display:inline"
+       id="rect3856-7"
+       width="6.1475863"
+       height="2.5392203"
+       x="16.037182"
+       y="27.62636" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:none;display:inline"
+       id="rect3856-5"
+       width="6.1475863"
+       height="2.5392203"
+       x="16.037182"
+       y="31.234728" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26460001px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
+       d="m 44.894926,26.088851 c -11.35967,0 -11.35967,0 -11.35967,0"
+       id="path3996-7"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26460001px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
+       d="m 33.535256,30.098147 c 11.35967,0 11.35967,0 11.35967,0"
+       id="path4000-0"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26460001px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
+       d="m 44.894926,33.706512 c -11.35967,0 -11.35967,0 -11.35967,0"
+       id="path4002-9"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:1.58759999px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Sans"
+       x="37.100956"
+       y="25.667875"
+       id="text4004-3"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4006-6"
+         x="37.100956"
+         y="25.667875">Motor 4</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:1.58759999px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Sans"
+       x="37.13113"
+       y="29.783545"
+       id="text4004-2-0"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4006-9-6"
+         x="37.13113"
+         y="29.783545">Motor 5</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:1.58759999px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Sans"
+       x="37.13113"
+       y="33.525547"
+       id="text4004-1-2"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4006-2-6"
+         x="37.13113"
+         y="33.525547">Motor 6</tspan></text>
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:none;display:inline"
+       id="rect3856-1"
+       width="6.1475863"
+       height="2.5392203"
+       x="-33.401611"
+       y="23.51622"
+       transform="scale(-1,1)" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:none;display:inline"
+       id="rect3856-7-8"
+       width="6.1475863"
+       height="2.5392203"
+       x="-33.401611"
+       y="27.592335"
+       transform="scale(-1,1)" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:none;display:inline"
+       id="rect3856-5-7"
+       width="6.1475863"
+       height="2.5392203"
+       x="-33.401611"
+       y="31.200705"
+       transform="scale(-1,1)" />
+    <rect
+       style="fill:#999999;fill-opacity:0.64705882;stroke:none"
+       id="rect4101"
+       width="17.507257"
+       height="1.9650333"
+       x="15.903539"
+       y="14.63695" />
+    <text
+       xml:space="preserve"
+       style="font-size:1.58759999px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="19.7127"
+       y="16.138935"
+       id="text4103"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4105"
+         x="19.7127"
+         y="16.138935">Gear Hopper</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 140.75,141.25 c 0,0 0,0.25 -8.75,0.25 0,0 -0.5,0 -78,0 -9.75,0 -9.75,0 -9.75,0"
+       id="path4107"
+       inkscape:connector-curvature="0"
+       transform="matrix(0.2646,0,0,0.2646,0,-0.001666)" />
+  </g>
 </svg>
