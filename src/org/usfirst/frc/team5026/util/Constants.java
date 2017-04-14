@@ -91,7 +91,7 @@ public class Constants {
 	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_RED = -7.6; //4.5
 	public static int AUTO_BOILER_CARVE_COUNT_RED = 50;
 	public static int AUTO_BOILER_STRAIGHT_COUNT_RED = 50;
-	public static double AUTO_BOILER_ANGLE_RED = -60; // TODO
+	public static double AUTO_BOILER_ANGLE_RED = -60; 
 	
 	//DriveCarveToPegFromLoadingZoneRed
 	public static double AUTO_LOADING_TARGET_FAR_RED = -8.6; //12.8
@@ -99,7 +99,7 @@ public class Constants {
 	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_RED = -7.5; //4.5
 	public static int AUTO_LOADING_CARVE_COUNT_RED = 50;
 	public static int AUTO_LOADING_STRAIGHT_COUNT_RED = 50;
-	public static double AUTO_LOADING_ANGLE_RED = 60; // TODO
+	public static double AUTO_LOADING_ANGLE_RED = 60; 
 	/*
 	 * Actual start: 
 	 * Red loading zone actual straight drive distance (relative to turning point): 80.25"
@@ -120,7 +120,7 @@ public class Constants {
 	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_BLUE = -7.5; //4.5
 	public static int AUTO_BOILER_CARVE_COUNT_BLUE = 50;
 	public static int AUTO_BOILER_STRAIGHT_COUNT_BLUE = 50;
-	public static double AUTO_BOILER_ANGLE_BLUE = 60; // TODO
+	public static double AUTO_BOILER_ANGLE_BLUE = 60;
 	
 	//DriveCarveToPegFromLoadingZoneBlue
 	public static double AUTO_LOADING_TARGET_FAR_BLUE = -8.6; //12.8
@@ -128,26 +128,34 @@ public class Constants {
 	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_BLUE = -7.5; //4.5
 	public static int AUTO_LOADING_CARVE_COUNT_BLUE = 50;
 	public static int AUTO_LOADING_STRAIGHT_COUNT_BLUE = 50;
-	public static double AUTO_LOADING_ANGLE_BLUE = -60; // TODO
+	public static double AUTO_LOADING_ANGLE_BLUE = -60;
 	
 	// Drive motion profile
-	public static double DRIVE_STABILIZATION_TOLERANCE = 2000;
+	public static double DRIVE_STABILIZATION_TOLERANCE = 60;
 	
 	public static int PID_PROFILE_LEFT = 0;
-	public static double P_LEFT = 0.2;
+	// TODO VALUES BELOW ARE FROM PRACTICE BOT, tested target of -10 (4/12)
+	// FOR TUNING THESE VALUES, USE THE MotionMagicTuning PROJECT
+	public static double P_LEFT = 1.35;
 	public static double I_LEFT = 0;
-	public static double D_LEFT = 100;
-	public static double F_LEFT = 0;
-	public static double RAMP_LEFT = 15;
-	public static double[] PIDFR_LEFT = {P_LEFT,I_LEFT,D_LEFT,F_LEFT, RAMP_LEFT};
+	public static double D_LEFT = 0;
+	public static double F_LEFT = 0.6;
+	public static double RAMP_LEFT = 0;
+	public static double ACCEL_LEFT = 250;
+	public static double VEL_LEFT = 500;
+	public static double[] PIDFR_LEFT = {P_LEFT,I_LEFT,D_LEFT,F_LEFT,RAMP_LEFT,ACCEL_LEFT,VEL_LEFT};
 	
 	public static int PID_PROFILE_RIGHT = 0;
-	public static double P_RIGHT = 0.2;
+	// TODO VALUES BELOW ARE FROM PRACTICE BOT, tested target of -10 (4/12)
+	// FOR TUNING THESE VALUES, USE THE MotionMagicTuning PROJECT
+	public static double P_RIGHT = 1.35;
 	public static double I_RIGHT = 0;
-	public static double D_RIGHT = 100;
-	public static double F_RIGHT = 0;
-	public static double RAMP_RIGHT = 15;
-	public static double[] PIDFR_RIGHT = {P_RIGHT,I_RIGHT,D_RIGHT,F_RIGHT, RAMP_RIGHT};
+	public static double D_RIGHT = 0;
+	public static double F_RIGHT = 0.6;
+	public static double RAMP_RIGHT = 0;
+	public static double ACCEL_RIGHT = 250;
+	public static double VEL_RIGHT = 500;
+	public static double[] PIDFR_RIGHT = {P_RIGHT,I_RIGHT,D_RIGHT,F_RIGHT,RAMP_RIGHT,ACCEL_RIGHT,VEL_RIGHT};
 	
 	public static double TELEOP_RAMP_RIGHT = 0;
 	public static double TELEOP_RAMP_LEFT = 0;

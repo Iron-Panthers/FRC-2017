@@ -195,4 +195,12 @@ public class Drive extends Subsystem {
 		left.stopPositionControl();
 		right.stopPositionControl();
 	}
+	public void profileDrive(double targetLeft, double targetRight) {
+		left.profileControl(targetLeft);
+		right.profileControl(targetRight);
+	}
+	public void setupProfileMode() {
+		left.setupProfileMode();
+		right.setupProfileMode();
+	}
 }
