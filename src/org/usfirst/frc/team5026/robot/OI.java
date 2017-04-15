@@ -1,15 +1,12 @@
 package org.usfirst.frc.team5026.robot;
 
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoCallCurrent;
-import org.usfirst.frc.team5026.robot.commands.climber.ClimberCycleSpeed;
+import org.usfirst.frc.team5026.robot.commands.climber.ClimberClimbSpeed;
 import org.usfirst.frc.team5026.robot.commands.climber.ClimberRappel;
-import org.usfirst.frc.team5026.robot.commands.climber.ClimberSequence;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveShiftGear;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveSwapForwards;
 import org.usfirst.frc.team5026.robot.commands.gear.GearClampCommand;
 import org.usfirst.frc.team5026.robot.commands.gear.GearUnClampCommand;
-import org.usfirst.frc.team5026.robot.commands.intake.IntakeIn;
-import org.usfirst.frc.team5026.robot.commands.intake.IntakeOut;
 import org.usfirst.frc.team5026.robot.commands.misc.LEDSignalGear;
 import org.usfirst.frc.team5026.util.PantherJoystick;
 
@@ -71,10 +68,11 @@ public class OI {
 		driveButton3.whenPressed(new DriveShiftGear());
 		driveButton2.whileHeld(new LEDSignalGear());
 		
-		boardButton1.whileHeld(new ClimberSequence());
-		boardButton2.whenPressed(new ClimberCycleSpeed());
-		boardButton4.whileHeld(new IntakeIn());
-		boardButton5.whileHeld(new IntakeOut());
+//		boardButton1.whileHeld(new ClimberSequence());
+//		boardButton2.whenPressed(new ClimberCycleSpeed());
+		boardButton2.whileHeld(new ClimberClimbSpeed());
+//		boardButton4.whileHeld(new IntakeIn());
+//		boardButton5.whileHeld(new IntakeOut());
 		boardButton6.whenPressed(new GearClampCommand());
 		boardButton7.whenPressed(new GearUnClampCommand());
 		boardButton8.whileHeld(new ClimberRappel());
