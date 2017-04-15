@@ -41,5 +41,8 @@ public class GroundGear extends Subsystem implements GearState{
 		//lowers the gear intake
 		isOpen = true;
 	}
+	public void stopLift() {
+		hardware.groundGearLift.set(0);
+	}
 
 }
