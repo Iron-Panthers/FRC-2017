@@ -1,5 +1,6 @@
-package org.usfirst.frc.team5026.robot.commands.autonomous;
+package org.usfirst.frc.team5026.robot.commands.autonomous.sequences;
 
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistancePosition;
 import org.usfirst.frc.team5026.util.Constants;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -8,11 +9,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class AutoBlueDriveCarveRightToPegFromBoiler extends CommandGroup {
+public class AutoRedDriveCarveRightToPegFromLoadingZone extends CommandGroup {
 
-    public AutoBlueDriveCarveRightToPegFromBoiler() {
-    	addSequential(new AutoDriveDistancePosition("Auto Boiler Close Blue", "Auto Boiler Far Blue", Constants.AUTO_BOILER_CARVE_COUNT_BLUE));
-    	addSequential(new AutoDriveDistancePosition("Auto Boiler Extra Distance Blue", "Auto Boiler Extra Distance Blue", Constants.AUTO_BOILER_STRAIGHT_COUNT_BLUE));
+    public AutoRedDriveCarveRightToPegFromLoadingZone() {
+    	addSequential(new AutoDriveDistancePosition("Auto Loading Close Red", "Auto Loading Far Red", Constants.AUTO_LOADING_CARVE_COUNT_RED));
+    	addSequential(new AutoDriveDistancePosition("Auto Loading Extra Distance Red", "Auto Loading Extra Distance Red", Constants.AUTO_LOADING_STRAIGHT_COUNT_RED));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
