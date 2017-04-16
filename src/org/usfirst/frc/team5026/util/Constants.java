@@ -69,6 +69,8 @@ public class Constants {
 	public static final double STRAIGHT_DRIVE_SPEED = 0.5;
 	public static final double GEAR_RATIO = 5.36;
 	public static final double INCHES_PER_ENCODER = 9; //+- 2.5%
+	public static final double ENCODER_TICKS_PER_INCH = 417.75; //+- 2.7%
+	
 	/*
 	 * For auto distances:
 	 * Line left laser (gear is front) with the far edge of the tape for both the loading zone and the boiler
