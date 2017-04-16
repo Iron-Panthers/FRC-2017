@@ -85,22 +85,22 @@ public class Constants {
 	// Auto Distances
 	public static double AUTO_MIDDLE_TARGET_LEFT = -30; // Move 5 1/8 to the left when setting up, laser moves by 9 inches. 9.1
 	public static double AUTO_MIDDLE_TARGET_RIGHT = -30; // Move 5 /8 to the left when setting up, laser moves by 9 inches. 9.1
-	public static int AUTO_MIDDLE_TARGET_COUNT = 50;
+	public static int AUTO_MIDDLE_TARGET_COUNT = 5;
 	
 	//DriveCarveToPegFromBoilerRed
 	public static double AUTO_BOILER_TARGET_FAR_RED = -8.4; //12.9
 	public static double AUTO_BOILER_TARGET_CLOSE_RED = -8.4; //9.1
 	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_RED = -7.6; //4.5
-	public static int AUTO_BOILER_CARVE_COUNT_RED = 50;
-	public static int AUTO_BOILER_STRAIGHT_COUNT_RED = 50;
+	public static int AUTO_BOILER_CARVE_COUNT_RED = 5;
+	public static int AUTO_BOILER_STRAIGHT_COUNT_RED = 5;
 	public static double AUTO_BOILER_ANGLE_RED = -60; 
 	
 	//DriveCarveToPegFromLoadingZoneRed
 	public static double AUTO_LOADING_TARGET_FAR_RED = -8.6; //12.8
 	public static double AUTO_LOADING_TARGET_CLOSE_RED = -8.6; //9.1
 	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_RED = -7.5; //4.5
-	public static int AUTO_LOADING_CARVE_COUNT_RED = 50;
-	public static int AUTO_LOADING_STRAIGHT_COUNT_RED = 50;
+	public static int AUTO_LOADING_CARVE_COUNT_RED = 5;
+	public static int AUTO_LOADING_STRAIGHT_COUNT_RED = 5;
 	public static double AUTO_LOADING_ANGLE_RED = 60; 
 	/*
 	 * Actual start: 
@@ -120,16 +120,16 @@ public class Constants {
 	public static double AUTO_BOILER_TARGET_FAR_BLUE = -8.4; //12.9
 	public static double AUTO_BOILER_TARGET_CLOSE_BLUE = -8.4; //9.1
 	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_BLUE = -7.5; //4.5
-	public static int AUTO_BOILER_CARVE_COUNT_BLUE = 50;
-	public static int AUTO_BOILER_STRAIGHT_COUNT_BLUE = 50;
+	public static int AUTO_BOILER_CARVE_COUNT_BLUE = 5;
+	public static int AUTO_BOILER_STRAIGHT_COUNT_BLUE = 5;
 	public static double AUTO_BOILER_ANGLE_BLUE = 60;
 	
 	//DriveCarveToPegFromLoadingZoneBlue
 	public static double AUTO_LOADING_TARGET_FAR_BLUE = -8.6; //12.8
 	public static double AUTO_LOADING_TARGET_CLOSE_BLUE = -8.6; //9.1
 	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_BLUE = -7.5; //4.5
-	public static int AUTO_LOADING_CARVE_COUNT_BLUE = 50;
-	public static int AUTO_LOADING_STRAIGHT_COUNT_BLUE = 50;
+	public static int AUTO_LOADING_CARVE_COUNT_BLUE = 5;
+	public static int AUTO_LOADING_STRAIGHT_COUNT_BLUE = 5;
 	public static double AUTO_LOADING_ANGLE_BLUE = -60;
 	
 	// Drive motion profile
@@ -162,17 +162,17 @@ public class Constants {
 	public static double TELEOP_RAMP_RIGHT = 0;
 	public static double TELEOP_RAMP_LEFT = 0;
 	
-	public static final double MAX_ACCELERATION = 500;
+	public static final double MAX_ACCELERATION = 250;
 	/*
 	 * Unit is encoder rotations/sec/sec.
 	 * measured (unloaded): 4
-	 * measured (loaded, on field): 
+	 * measured (loaded, on field): 300
 	 */
-	public static final double MAX_VELOCITY = 1080; 
+	public static final double MAX_VELOCITY = 1000; 
 	/*
 	 * Unit is encoder rotations/sec.
 	 * measured (unloaded): 1834
-	 * measured (loaded, on field): 
+	 * measured (loaded, on field): 1200
 	 */
 	
 }
