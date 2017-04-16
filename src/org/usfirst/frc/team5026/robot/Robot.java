@@ -1,7 +1,6 @@
 
 package org.usfirst.frc.team5026.robot;
 
-import org.usfirst.frc.team5026.robot.commands.JoystickChoose;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDoNothing;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistanceMotionProfiling;
 import org.usfirst.frc.team5026.robot.commands.autonomous.sequences.AutoBlueDriveCarveLeftToPegFromLoadingZone;
@@ -17,6 +16,7 @@ import org.usfirst.frc.team5026.robot.commands.autonomous.sequences.AutoRedDrive
 import org.usfirst.frc.team5026.robot.commands.autonomous.sequences.AutoRedDriveCarveRightToPegFromLoadingZoneBanner;
 import org.usfirst.frc.team5026.robot.commands.autonomous.sequences.AutoRedDriveCarveRightToPegFromLoadingZoneWithGyro;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveTurnXDegrees;
+import org.usfirst.frc.team5026.robot.commands.misc.JoystickChoose;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
