@@ -203,4 +203,8 @@ public class Drive extends Subsystem {
 		left.setupProfileMode();
 		right.setupProfileMode();
 	}
+	public void profileDriveInches(double targetLeft, double targetRight) {
+		left.profileControl((targetLeft * Constants.ENCODER_TICKS_PER_INCH) / (Constants.ENCODER_TICKS_PER_ROTATION * 1.0));
+		right.profileControl((targetRight * Constants.ENCODER_TICKS_PER_INCH) / (Constants.ENCODER_TICKS_PER_ROTATION * 1.0));
+	}
 }

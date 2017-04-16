@@ -24,6 +24,7 @@ public class AutoDriveDistanceMotionProfiling extends Command {
 
 	private int count;
 	private int countMax;
+	private boolean inches;
 	
     public AutoDriveDistanceMotionProfiling(double targetLeft, double targetRight) {
         requires(Robot.drive);
@@ -31,6 +32,7 @@ public class AutoDriveDistanceMotionProfiling extends Command {
         this.targetRight = targetRight;
         left = Robot.drive.left.getEncMotor();
         right = Robot.drive.right.getEncMotor();
+        inches = false;
     }
     
     public AutoDriveDistanceMotionProfiling(String s1, String s2, int count) {
@@ -40,6 +42,15 @@ public class AutoDriveDistanceMotionProfiling extends Command {
     	left = Robot.drive.left.getEncMotor();
         right = Robot.drive.right.getEncMotor();
         this.countMax = count;
+        inches = false;
+    }
+    public AutoDriveDistanceMotionProfiling(String l, String r, int count, boolean inches) {
+    	requires(Robot.drive);
+    	left1 = l;
+    	right1 = r;
+    	left = Robot.drive.left.getEncMotor();
+    	right = Robot.drive.right.getEncMotor();
+    	this.inches = inches;
     }
 
     protected void initialize() {
@@ -72,8 +83,11 @@ public class AutoDriveDistanceMotionProfiling extends Command {
         SmartDashboard.putNumber("RightPosition", right.getPosition());
         
         // TODO Adjust speed driving based off of delta between encoders! Ex: Left-Right, move left faster if negative, right faster if positive; maybe change peak voltages...
-        Robot.drive.profileDrive(targetLeft, targetRight);
-        
+        if (!inches) {
+        	Robot.drive.profileDrive(targetLeft, targetRight);
+        } else {
+        	Robot.drive.profileDriveInches(targetLeft, targetRight);
+        }
         if(Math.abs(left.getClosedLoopError()) < SmartDashboard.getNumber("Auto Drive Stabilization Tolerance (Ticks)", 0) && Math.abs(right.getClosedLoopError()) < SmartDashboard.getNumber("Auto Drive Stabilization Tolerance (Ticks)", 0)) {
         	count++;
         }
