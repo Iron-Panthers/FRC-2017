@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team5026.robot;
 
+import org.usfirst.frc.team5026.robot.OI;
 import org.usfirst.frc.team5026.robot.commands.JoystickChoose;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDoNothing;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistancePosition;
@@ -200,6 +201,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putBoolean("Left Banner", hardware.driveLeftBanner.get());
 		SmartDashboard.putBoolean("Right banner", hardware.driveRightBanner.get());
 		Scheduler.getInstance().run();		
+		// TEST SMARTDASHBOARD NETWORK TABLES THINGY REMOVE LATER
+		SmartDashboard.putNumber("gyro", 56);
 	}
 
 	/**

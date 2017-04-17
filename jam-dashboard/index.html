@@ -9,7 +9,7 @@
 
     <script src="tryIPC.js"></script>
     <script src="networktables/networktables.js"></script>
-    <script src="lib/svg.min.js"></script>
+    <!--script src="lib/svg.min.js"></script-->
     <script src="jquery/jquery-3.2.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
 </head>
@@ -19,7 +19,7 @@
     <div id="dashboard-container" class="container">
 
         <div class="row">
-            <div id="left-column" class="col-4">
+            <div id="left-column" class="column col-3">
 
                 <div class="row">
                     <button type="button" class="btn btn-primary" onclick="switchView()">Switch View</button>
@@ -27,21 +27,14 @@
 
                 <div id="diagrams-screen">
 
-                    <!-- Example robot diagram, arm moves when encoder value changes -->
-                    <div id="tdd-temp" class="svg-diagram">
-                        <svg id="top-down-diagram" width="332" height="200">
-                            <text x="40" y="140">Example SVG Robot Diagram</text>
-                            <rect x="75" y="160" width="230" height="40"></rect>
-                            <rect x="85" y="170" width="210" height="40"></rect>
-                            <rect id="robot-arm" x="5" y="175" width="80" height="10"></rect>
-                            <circle cx="100" cy="210" r="25"></circle>
-                            <circle cx="260" cy="210" r="25"></circle>
-                            <rect x="60" y="180" width="250" height="30"></rect>
-                            <text id="team" x="185" y="205" text-anchor="middle">5026</text>
+                    <div id="top-down-diagram">
+                        <svg use="res/top-down-diagram.svg">
                         </svg>
                     </div>
 
-                    <div id="side-diagram" class="row svg-diagram">
+                    <div id="side-diagram" class="row">
+                        <svg use="res/side-diagram.svg">
+                        </svg>
                     </div>
 
                 </div>
@@ -51,31 +44,52 @@
                         
                     </div>
                     <div id="graph-1">
-                        
+                        <canvas></canvas>
                     </div>
                 </div>
 
             </div>
 
-            <div id="center-column" class="col-4">
+            <div id="center-column" class="column col-5">
                 <div id="camera"></div>
 
                 <div id="lower-panel">
                     <!-- Clock that shows up in top left -->
-                    <div id="timer">2:15</div>
+                    <div id="timer">2:54</div>
                     <div id="gyro-container">
-                        <div id="gyro">
+                        <svg use="res/gyro-compass.svg">
+                        </svg>
                     </div>
                 </div>
             </div>
 
-            <div id="right-column" class="col-4">
-                <div id="auto-chooser" class="svg-diagram">
-                    
+            <div id="right-column" class="column col-3">
+                <div id="auto-chooser">
+                    <svg use="res/auto-chooser.svg">
+                    </svg>
+                    <form>
+                        <div class="sides-group">
+                            <div class="side-chooser">
+                                <input type="radio" name="auto-side" side="left">
+                            </div>
+                            <div class="side-chooser">
+                                <input type="radio" name="auto-side" side="center">
+                            </div>
+                            <div class="side-chooser">
+                                <input type="radio" name="auto-side" side="right">
+                            </div>
+                        </div>
+                        <button id="team-switch" type="button" class="btn btn-primary" onclick="switchTeam()">On Blue Team</button>
+                        <select id="auto-method">
+                            <option value="nothing">with Nothing</option>
+                            <option value="banner">with Banner</option>
+                            <option value="gyro">with Gyro</option>
+                        </select>
+                    </form>
                 </div>
 
-                <div id="voltage-indicator" class="svg-diagram">
-                    
+                <div id="graph-2">
+                    <canvas></canvas>
                 </div>
             </div>
 
@@ -83,9 +97,6 @@
     </div>
 
     <script type="text/javascript">
-        // svg.js testing
-        SVG('side-diagram').size(200, 200).use('side-diagram', 'res/side-diagram.svg');
-        SVG('gyro').size(100, 100).use('gyro', 'res/gyro-compass.svg');
     </script>
     <script src="ui.js"></script>
 
