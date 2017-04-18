@@ -12,7 +12,10 @@
 		},
 		{
 			"name": "Electron",
-			"shell_cmd": "electron ${project_path}"
+			"shell_cmd": "electron ${project_path}",
+			"env": {
+				"NODE_ENV": "development"
+			}
 		}
 	]
 }

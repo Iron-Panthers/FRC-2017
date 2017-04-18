@@ -73,6 +73,7 @@ function lin_map(x, a1, a2, b1, b2) {
 $(document).ready(function() {
 
 	setTeam(BLUE_TEAM);
+	ipc.send('connect', 'roborio-5026.local');
 
 	$('svg').each(function() {
 		var self = this;
@@ -98,5 +99,5 @@ $(document).ready(function() {
 });
 
 NetworkTables.addKeyListener('/SmartDashboard/gyro', (key, value) => {
-	$('text#degrees').html('data');
+	$('#asdf').html('data');
 });
