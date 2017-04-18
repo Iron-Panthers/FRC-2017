@@ -55,10 +55,10 @@ public class Constants {
 	public static final Color LED_GEAR_RELEASE = Color.GREEN;
 	
 	// Gyro Constants
-	public static final double AUTO_TURN_ANGLE_TOLERANCE = 1; 
+	public static final double AUTO_TURN_ANGLE_TOLERANCE = 1;
 	public static final double AUTO_TURN_SPEED = 0.5;
 	public static final int AUTO_TURN_COUNT = 5;
-	public static final double AUTO_TURN_P = 0.08;
+	public static final double AUTO_TURN_P = 0.1;
 	
 	// Encoder constants
 	public static final double WHEEL_DIAMETER = 4;	//in inches
@@ -68,7 +68,7 @@ public class Constants {
 	// Auto Constants
 	public static final double STRAIGHT_DRIVE_SPEED = 0.5;
 	public static final double GEAR_RATIO = 5.36;
-	public static final double INCHES_PER_ENCODER = 9; //+- 2.5%
+	public static final double INCHES_PER_ENCODER_REV = 9; //+- 2.5% WRONG
 	public static final double ENCODER_TICKS_PER_INCH = 417.75; //+- 2.7%
 	
 	/*
@@ -85,22 +85,22 @@ public class Constants {
 	// Auto Distances
 	public static double AUTO_MIDDLE_TARGET_LEFT = -30; // Move 5 1/8 to the left when setting up, laser moves by 9 inches. 9.1
 	public static double AUTO_MIDDLE_TARGET_RIGHT = -30; // Move 5 /8 to the left when setting up, laser moves by 9 inches. 9.1
-	public static int AUTO_MIDDLE_TARGET_COUNT = 5;
+	public static int AUTO_MIDDLE_TARGET_COUNT = 25;
 	
 	//DriveCarveToPegFromBoilerRed
-	public static double AUTO_BOILER_TARGET_FAR_RED = -8.4; //12.9
-	public static double AUTO_BOILER_TARGET_CLOSE_RED = -8.4; //9.1
-	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_RED = -7.6; //4.5
-	public static int AUTO_BOILER_CARVE_COUNT_RED = 5;
-	public static int AUTO_BOILER_STRAIGHT_COUNT_RED = 5;
+	public static double AUTO_BOILER_TARGET_FAR_RED = -89.5; //12.9, 112.7", 86.5"
+	public static double AUTO_BOILER_TARGET_CLOSE_RED = -89.5; //9.1, 112.7", 86.5"
+	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_RED = -52.6; //4.5, 45.6", 52.6"
+	public static int AUTO_BOILER_CARVE_COUNT_RED = 25;
+	public static int AUTO_BOILER_STRAIGHT_COUNT_RED = 25;
 	public static double AUTO_BOILER_ANGLE_RED = -60; 
 	
 	//DriveCarveToPegFromLoadingZoneRed
 	public static double AUTO_LOADING_TARGET_FAR_RED = -8.6; //12.8
 	public static double AUTO_LOADING_TARGET_CLOSE_RED = -8.6; //9.1
 	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_RED = -7.5; //4.5
-	public static int AUTO_LOADING_CARVE_COUNT_RED = 5;
-	public static int AUTO_LOADING_STRAIGHT_COUNT_RED = 5;
+	public static int AUTO_LOADING_CARVE_COUNT_RED = 25;
+	public static int AUTO_LOADING_STRAIGHT_COUNT_RED = 25;
 	public static double AUTO_LOADING_ANGLE_RED = 60; 
 	/*
 	 * Actual start: 
@@ -120,16 +120,16 @@ public class Constants {
 	public static double AUTO_BOILER_TARGET_FAR_BLUE = -8.4; //12.9
 	public static double AUTO_BOILER_TARGET_CLOSE_BLUE = -8.4; //9.1
 	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_BLUE = -7.5; //4.5
-	public static int AUTO_BOILER_CARVE_COUNT_BLUE = 5;
-	public static int AUTO_BOILER_STRAIGHT_COUNT_BLUE = 5;
+	public static int AUTO_BOILER_CARVE_COUNT_BLUE = 25;
+	public static int AUTO_BOILER_STRAIGHT_COUNT_BLUE = 25;
 	public static double AUTO_BOILER_ANGLE_BLUE = 60;
 	
 	//DriveCarveToPegFromLoadingZoneBlue
 	public static double AUTO_LOADING_TARGET_FAR_BLUE = -8.6; //12.8
 	public static double AUTO_LOADING_TARGET_CLOSE_BLUE = -8.6; //9.1
 	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_BLUE = -7.5; //4.5
-	public static int AUTO_LOADING_CARVE_COUNT_BLUE = 5;
-	public static int AUTO_LOADING_STRAIGHT_COUNT_BLUE = 5;
+	public static int AUTO_LOADING_CARVE_COUNT_BLUE = 25;
+	public static int AUTO_LOADING_STRAIGHT_COUNT_BLUE = 25;
 	public static double AUTO_LOADING_ANGLE_BLUE = -60;
 	
 	// Drive motion profile
@@ -143,9 +143,10 @@ public class Constants {
 	public static double D_LEFT = 0;
 	public static double F_LEFT = 0.6;
 	public static double RAMP_LEFT = 0;
+	public static double NOMINAL_LEFT = 0;
 	public static double ACCEL_LEFT = 250;
 	public static double VEL_LEFT = 500;
-	public static double[] PIDFR_LEFT = {P_LEFT,I_LEFT,D_LEFT,F_LEFT,RAMP_LEFT,ACCEL_LEFT,VEL_LEFT};
+	public static double[] PIDFR_LEFT = {P_LEFT,I_LEFT,D_LEFT,F_LEFT,RAMP_LEFT,NOMINAL_LEFT,ACCEL_LEFT,VEL_LEFT};
 	
 	public static int PID_PROFILE_RIGHT = 0;
 	// TODO VALUES BELOW ARE FROM PRACTICE BOT, tested target of -10 (4/12)
@@ -155,9 +156,10 @@ public class Constants {
 	public static double D_RIGHT = 0;
 	public static double F_RIGHT = 0.6;
 	public static double RAMP_RIGHT = 0;
+	public static double NOMINAL_RIGHT = 0;
 	public static double ACCEL_RIGHT = 250;
 	public static double VEL_RIGHT = 500;
-	public static double[] PIDFR_RIGHT = {P_RIGHT,I_RIGHT,D_RIGHT,F_RIGHT,RAMP_RIGHT,ACCEL_RIGHT,VEL_RIGHT};
+	public static double[] PIDFR_RIGHT = {P_RIGHT,I_RIGHT,D_RIGHT,F_RIGHT,RAMP_RIGHT,NOMINAL_RIGHT,ACCEL_RIGHT,VEL_RIGHT};
 	
 	public static double TELEOP_RAMP_RIGHT = 0;
 	public static double TELEOP_RAMP_LEFT = 0;

@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  * Code used from WaitForStabilize for the Shooter for 2016
  */
-public class AutoDriveDistanceMotionProfiling extends Command {
+public class AutoDriveDistanceMotionProfilingInches extends Command {
 	
 	private double targetLeft;
 	private double targetRight;
@@ -25,7 +25,7 @@ public class AutoDriveDistanceMotionProfiling extends Command {
 	private int count;
 	private int countMax;
 	
-    public AutoDriveDistanceMotionProfiling(double targetLeft, double targetRight) {
+    public AutoDriveDistanceMotionProfilingInches(double targetLeft, double targetRight) {
         requires(Robot.drive);
         this.targetLeft = targetLeft;
         this.targetRight = targetRight;
@@ -33,7 +33,7 @@ public class AutoDriveDistanceMotionProfiling extends Command {
         right = Robot.drive.right.getEncMotor();
     }
     
-    public AutoDriveDistanceMotionProfiling(String s1, String s2, int count) {
+    public AutoDriveDistanceMotionProfilingInches(String s1, String s2, int count) {
     	requires(Robot.drive);
     	left1 = s1;
     	right1 = s2;
@@ -72,7 +72,7 @@ public class AutoDriveDistanceMotionProfiling extends Command {
         SmartDashboard.putNumber("RightPosition", right.getPosition());
         
         // TODO Adjust speed driving based off of delta between encoders! Ex: Left-Right, move left faster if negative, right faster if positive; maybe change peak voltages...
-        Robot.drive.profileDrive(targetLeft, targetRight);
+        Robot.drive.profileDriveInches(targetLeft, targetRight);
         if(Math.abs(left.getClosedLoopError()) < SmartDashboard.getNumber("Auto Drive Stabilization Tolerance (Ticks)", 0) && Math.abs(right.getClosedLoopError()) < SmartDashboard.getNumber("Auto Drive Stabilization Tolerance (Ticks)", 0)) {
         	count++;
         }

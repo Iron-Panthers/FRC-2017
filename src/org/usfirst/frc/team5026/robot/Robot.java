@@ -2,7 +2,7 @@
 package org.usfirst.frc.team5026.robot;
 
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDoNothing;
-import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistanceMotionProfiling;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistanceMotionProfilingInches;
 import org.usfirst.frc.team5026.robot.commands.autonomous.sequences.AutoBlueDriveCarveLeftToPegFromLoadingZone;
 import org.usfirst.frc.team5026.robot.commands.autonomous.sequences.AutoBlueDriveCarveLeftToPegFromLoadingZoneBanner;
 import org.usfirst.frc.team5026.robot.commands.autonomous.sequences.AutoBlueDriveCarveLeftToPegFromLoadingZoneWithGyro;
@@ -96,7 +96,7 @@ public class Robot extends IterativeRobot {
 		autoChooser.addDefault("Nothing", new AutoDoNothing());
 		// Everytime u write a new auto, do autoChooser.addObject("NAME OF AUTO", new AUTOCOMMAND);
 		// Do that here
-		autoChooser.addObject("Both: Middle peg", new AutoDriveDistanceMotionProfiling("Auto Mid Left", "Auto Mid Right", Constants.AUTO_MIDDLE_TARGET_COUNT));
+		autoChooser.addObject("Both: Middle peg", new AutoDriveDistanceMotionProfilingInches("Auto Mid Left", "Auto Mid Right", Constants.AUTO_MIDDLE_TARGET_COUNT));
 		autoChooser.addObject("Red: Right peg", new AutoRedDriveCarveLeftToPegFromBoiler());
 		autoChooser.addObject("Red: Left peg", new AutoRedDriveCarveRightToPegFromLoadingZone());
 		autoChooser.addObject("Blue: Right peg", new AutoBlueDriveCarveLeftToPegFromLoadingZone());
