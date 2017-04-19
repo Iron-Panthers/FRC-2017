@@ -195,4 +195,16 @@ public class Drive extends Subsystem {
 		left.stopPositionControl();
 		right.stopPositionControl();
 	}
+	public void profileDrive(double targetLeft, double targetRight) {
+		left.profileControl(targetLeft);
+		right.profileControl(targetRight);
+	}
+	public void setupProfileMode() {
+		left.setupProfileMode();
+		right.setupProfileMode();
+	}
+	public void profileDriveInches(double targetLeft, double targetRight) {
+		left.profileControl((targetLeft * Constants.ENCODER_TICKS_PER_INCH) / (Constants.ENCODER_TICKS_PER_ROTATION * 4.0)); //4x because quadature enc
+		right.profileControl((targetRight * Constants.ENCODER_TICKS_PER_INCH) / (Constants.ENCODER_TICKS_PER_ROTATION * 4.0));
+	}
 }
