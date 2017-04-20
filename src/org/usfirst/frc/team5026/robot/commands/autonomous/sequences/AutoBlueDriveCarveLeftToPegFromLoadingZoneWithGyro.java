@@ -1,6 +1,6 @@
 package org.usfirst.frc.team5026.robot.commands.autonomous.sequences;
 
-import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistanceMotionProfiling;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistanceMotionProfilingInches;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveTurnXDegrees;
 import org.usfirst.frc.team5026.util.Constants;
 
@@ -12,9 +12,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoBlueDriveCarveLeftToPegFromLoadingZoneWithGyro extends CommandGroup {
 
     public AutoBlueDriveCarveLeftToPegFromLoadingZoneWithGyro() {
-    	addSequential(new AutoDriveDistanceMotionProfiling("Auto Loading Far Blue", "Auto Loading Close Blue", Constants.AUTO_LOADING_CARVE_COUNT_BLUE));
+    	addSequential(new AutoDriveDistanceMotionProfilingInches("Auto Loading Far Blue", "Auto Loading Close Blue", Constants.AUTO_LOADING_CARVE_COUNT_BLUE));
     	addSequential(new DriveTurnXDegrees(Constants.AUTO_LOADING_ANGLE_BLUE, false)); // CONSTANT
-    	addSequential(new AutoDriveDistanceMotionProfiling("Auto Loading Extra Distance Blue", "Auto Loading Extra Distance Blue", Constants.AUTO_LOADING_STRAIGHT_COUNT_BLUE));
+    	addSequential(new AutoDriveDistanceMotionProfilingInches("Auto Loading Extra Distance Blue", "Auto Loading Extra Distance Blue", Constants.AUTO_LOADING_STRAIGHT_COUNT_BLUE));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
