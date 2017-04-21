@@ -86,6 +86,8 @@ public class Constants {
 	public static double AUTO_MIDDLE_TARGET_LEFT = -85; // Move 5 1/8 to the left when setting up, laser moves by 9 inches. 9.1
 	public static double AUTO_MIDDLE_TARGET_RIGHT = -85; // Move 5 /8 to the left when setting up, laser moves by 9 inches. 9.1
 	public static int AUTO_MIDDLE_TARGET_COUNT = 25;
+	public static int AUTO_DROP_GEAR_LEFT = -400; // Approx travel distance between wall and the far side of neutral zonee
+	public static int AUTO_DROP_GEAR_RIGHT = -400;
 	
 	//DriveCarveToPegFromBoilerRed
 	public static double AUTO_BOILER_TARGET_FAR_RED = -70.5; //12.9, 112.7", 86.5"
