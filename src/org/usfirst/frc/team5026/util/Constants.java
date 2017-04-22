@@ -90,9 +90,9 @@ public class Constants {
 	public static int AUTO_DROP_GEAR_RIGHT = -400;
 	
 	//DriveCarveToPegFromBoilerRed
-	public static double AUTO_BOILER_TARGET_FAR_RED = -70.5; //12.9, 112.7", 86.5"
-	public static double AUTO_BOILER_TARGET_CLOSE_RED = -70.5; //9.1, 112.7", 86.5"
-	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_RED = -52.6; //4.5, 45.6", 52.6"
+	public static double AUTO_BOILER_TARGET_FAR_RED = -72.5; //12.9, 112.7", 86.5"
+	public static double AUTO_BOILER_TARGET_CLOSE_RED = -72.5; //9.1, 112.7", 86.5"
+	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_RED = -57.6; //4.5, 45.6", 52.6"
 	public static int AUTO_BOILER_CARVE_COUNT_RED = 25;
 	public static int AUTO_BOILER_STRAIGHT_COUNT_RED = 25;
 	public static double AUTO_BOILER_ANGLE_RED = -60; 
