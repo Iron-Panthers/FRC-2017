@@ -50,10 +50,14 @@ public class DriveMotorGroup implements SpeedController {
         }
 	}
 	public void setupVoltageMode () {
+		encoderMotor.changeControlMode(TalonControlMode.PercentVbus);
 		encoderMotor.setF(pidfrnav[3]);
         encoderMotor.setP(pidfrnav[0]);
         encoderMotor.setI(pidfrnav[1]); 
-        encoderMotor.setD(pidfrnav[2]);   
+        encoderMotor.setD(pidfrnav[2]);
+        configNominalOutputVoltage(0, 0);
+        encoderMotor.setMotionMagicAcceleration(0);
+        encoderMotor.setMotionMagicCruiseVelocity(0);
         encoderMotor.setVoltageRampRate(teleopRampRate); // VOLTAGE RAMP RATE SET TO 0, WILL SET TO DRIVE RAMP.
         // AUTO RAMP IS VERY CONSERVATIVE
 	}
@@ -69,8 +73,8 @@ public class DriveMotorGroup implements SpeedController {
 		encoderMotor.changeControlMode(TalonControlMode.MotionMagic);
 		encoderMotor.setF(pidfrnav[3]);
 	    encoderMotor.setP(pidfrnav[0]);
-	    encoderMotor.setI(pidfrnav[1]); 
-	    encoderMotor.setD(pidfrnav[2]);   
+	    encoderMotor.setI(pidfrnav[1]);
+	    encoderMotor.setD(pidfrnav[2]);
 	    encoderMotor.setVoltageRampRate(pidfrnav[4]);
 	    configNominalOutputVoltage(pidfrnav[5], -pidfrnav[5]);
 	    encoderMotor.setMotionMagicAcceleration(pidfrnav[6]);

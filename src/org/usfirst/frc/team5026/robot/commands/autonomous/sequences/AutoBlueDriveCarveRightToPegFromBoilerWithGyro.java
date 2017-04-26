@@ -1,6 +1,6 @@
 package org.usfirst.frc.team5026.robot.commands.autonomous.sequences;
 
-import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistanceMotionProfiling;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistanceMotionProfilingInches;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveTurnXDegrees;
 import org.usfirst.frc.team5026.util.Constants;
 
@@ -12,9 +12,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoBlueDriveCarveRightToPegFromBoilerWithGyro extends CommandGroup {
 
     public AutoBlueDriveCarveRightToPegFromBoilerWithGyro() {
-    	addSequential(new AutoDriveDistanceMotionProfiling("Auto Boiler Close Blue", "Auto Boiler Far Blue", Constants.AUTO_BOILER_CARVE_COUNT_BLUE));
+    	addSequential(new AutoDriveDistanceMotionProfilingInches("Auto Boiler Close Blue", "Auto Boiler Far Blue", Constants.AUTO_BOILER_CARVE_COUNT_BLUE));
     	addSequential(new DriveTurnXDegrees(Constants.AUTO_BOILER_ANGLE_BLUE, false)); // CONSTANT
-    	addSequential(new AutoDriveDistanceMotionProfiling("Auto Boiler Extra Distance Blue", "Auto Boiler Extra Distance Blue", Constants.AUTO_BOILER_STRAIGHT_COUNT_BLUE));
+    	addSequential(new AutoDriveDistanceMotionProfilingInches("Auto Boiler Extra Distance Blue", "Auto Boiler Extra Distance Blue", Constants.AUTO_BOILER_STRAIGHT_COUNT_BLUE));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

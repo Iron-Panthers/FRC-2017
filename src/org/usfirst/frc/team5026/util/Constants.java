@@ -83,22 +83,24 @@ public class Constants {
 	public static int AUTO_BANNER_BUFFER = 20;
 	
 	// Auto Distances
-	public static double AUTO_MIDDLE_TARGET_LEFT = -30; // Move 5 1/8 to the left when setting up, laser moves by 9 inches. 9.1
-	public static double AUTO_MIDDLE_TARGET_RIGHT = -30; // Move 5 /8 to the left when setting up, laser moves by 9 inches. 9.1
+	public static double AUTO_MIDDLE_TARGET_LEFT = -85; // Move 5 1/8 to the left when setting up, laser moves by 9 inches. 9.1
+	public static double AUTO_MIDDLE_TARGET_RIGHT = -85; // Move 5 /8 to the left when setting up, laser moves by 9 inches. 9.1
 	public static int AUTO_MIDDLE_TARGET_COUNT = 25;
+	public static int AUTO_DROP_GEAR_LEFT = -400; // Approx travel distance between wall and the far side of neutral zonee
+	public static int AUTO_DROP_GEAR_RIGHT = -400;
 	
 	//DriveCarveToPegFromBoilerRed
-	public static double AUTO_BOILER_TARGET_FAR_RED = -89.5; //12.9, 112.7", 86.5"
-	public static double AUTO_BOILER_TARGET_CLOSE_RED = -89.5; //9.1, 112.7", 86.5"
-	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_RED = -52.6; //4.5, 45.6", 52.6"
+	public static double AUTO_BOILER_TARGET_FAR_RED = -72.5; //12.9, 112.7", 86.5"
+	public static double AUTO_BOILER_TARGET_CLOSE_RED = -72.5; //9.1, 112.7", 86.5"
+	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_RED = -57.6; //4.5, 45.6", 52.6"
 	public static int AUTO_BOILER_CARVE_COUNT_RED = 25;
 	public static int AUTO_BOILER_STRAIGHT_COUNT_RED = 25;
 	public static double AUTO_BOILER_ANGLE_RED = -60; 
 	
 	//DriveCarveToPegFromLoadingZoneRed
-	public static double AUTO_LOADING_TARGET_FAR_RED = -8.6; //12.8
-	public static double AUTO_LOADING_TARGET_CLOSE_RED = -8.6; //9.1
-	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_RED = -7.5; //4.5
+	public static double AUTO_LOADING_TARGET_FAR_RED = -84; //12.8
+	public static double AUTO_LOADING_TARGET_CLOSE_RED = -84; //9.1
+	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_RED = -65; //4.5
 	public static int AUTO_LOADING_CARVE_COUNT_RED = 25;
 	public static int AUTO_LOADING_STRAIGHT_COUNT_RED = 25;
 	public static double AUTO_LOADING_ANGLE_RED = 60; 
@@ -117,17 +119,17 @@ public class Constants {
 	 */
 	
 	//DriveCarveToPegFromBoilerBlue
-	public static double AUTO_BOILER_TARGET_FAR_BLUE = -8.4; //12.9
-	public static double AUTO_BOILER_TARGET_CLOSE_BLUE = -8.4; //9.1
-	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_BLUE = -7.5; //4.5
+	public static double AUTO_BOILER_TARGET_FAR_BLUE = -76.5; //12.9
+	public static double AUTO_BOILER_TARGET_CLOSE_BLUE = -76.5; //9.1
+	public static double AUTO_BOILER_AFTER_TURN_TO_PEG_BLUE = -80.6; //4.5
 	public static int AUTO_BOILER_CARVE_COUNT_BLUE = 25;
 	public static int AUTO_BOILER_STRAIGHT_COUNT_BLUE = 25;
-	public static double AUTO_BOILER_ANGLE_BLUE = 60;
+	public static double AUTO_BOILER_ANGLE_BLUE = 60;	
 	
 	//DriveCarveToPegFromLoadingZoneBlue
-	public static double AUTO_LOADING_TARGET_FAR_BLUE = -8.6; //12.8
-	public static double AUTO_LOADING_TARGET_CLOSE_BLUE = -8.6; //9.1
-	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_BLUE = -7.5; //4.5
+	public static double AUTO_LOADING_TARGET_FAR_BLUE = -76; //12.8
+	public static double AUTO_LOADING_TARGET_CLOSE_BLUE = -76; //9.1
+	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_BLUE = -68; //4.5
 	public static int AUTO_LOADING_CARVE_COUNT_BLUE = 25;
 	public static int AUTO_LOADING_STRAIGHT_COUNT_BLUE = 25;
 	public static double AUTO_LOADING_ANGLE_BLUE = -60;

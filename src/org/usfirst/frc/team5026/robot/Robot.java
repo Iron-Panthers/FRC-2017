@@ -109,6 +109,7 @@ public class Robot extends IterativeRobot {
 		autoChooser.addObject("Red: Left peg with Gyro", new AutoRedDriveCarveRightToPegFromLoadingZoneWithGyro());
 		autoChooser.addObject("Blue: Right peg with Gyro", new AutoBlueDriveCarveLeftToPegFromLoadingZoneWithGyro());
 		autoChooser.addObject("Blue: Left peg with Gyro", new AutoBlueDriveCarveRightToPegFromBoilerWithGyro());
+		autoChooser.addObject("Auto Drop Gear", new AutoDriveDistanceMotionProfilingInches("Auto Drop Gear Left","Auto Drop Gear Right", Constants.AUTO_MIDDLE_TARGET_COUNT));
 		autoChooser.addObject("Auto Gyro Loop", new DriveTurnXDegrees(60, false));
 		autoChooser.addObject("Auto Gyro Loop -", new DriveTurnXDegrees(-60, false));
 		
@@ -178,6 +179,9 @@ public class Robot extends IterativeRobot {
 		sDisplay("Auto Loading Close Blue", Constants.AUTO_LOADING_TARGET_CLOSE_BLUE);
 		sDisplay("Auto Loading Far Blue", Constants.AUTO_LOADING_TARGET_FAR_BLUE);
 		sDisplay("Auto Loading Extra Distance Blue", Constants.AUTO_LOADING_AFTER_TURN_TO_PEG_BLUE);
+		
+		sDisplay("Auto Drop Gear Left", Constants.AUTO_DROP_GEAR_LEFT);
+		sDisplay("Auto Drop Gear Right", Constants.AUTO_DROP_GEAR_RIGHT);
 		
 		sDisplay("LEFT P", Constants.P_LEFT);
 		sDisplay("LEFT D", Constants.D_LEFT);
