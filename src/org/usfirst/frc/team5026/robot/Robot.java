@@ -191,6 +191,9 @@ public class Robot extends IterativeRobot {
 		sDisplay("RIGHT D", Constants.D_RIGHT);
 		sDisplay("TELEOP RIGHT RAMP", Constants.TELEOP_RAMP_RIGHT);
 		sDisplay("Auto Drive Stabilization Tolerance (Ticks)", Constants.DRIVE_STABILIZATION_TOLERANCE);
+		
+		sDisplay("Joystick X Scale", Constants.X_SCALING_BLUE);
+		sDisplay("Joystick Y Scale", Constants.Y_SCALING_BLUE);
 	}
 	private void sDisplay(String n, double v) {
 		SmartDashboard.putNumber(n, v);

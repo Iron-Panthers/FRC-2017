@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5026.util; 
  
-import edu.wpi.first.wpilibj.Joystick; 
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard; 
  
 /*  
  * @param magnitude is the magnitude of the vector of the joystick from the center.  
@@ -26,7 +27,8 @@ public class PantherJoystick extends Joystick{
   } 
    
   public double getScaledDeadzoneX() { 
-	double val = this.getDeadzoneJoystickValue(this.getMagnitude(), this.getX() * joystickType.scalingX, joystickType.deadzoneX); 
+	  double val = this.getDeadzoneJoystickValue(this.getMagnitude(), this.getX() * SmartDashboard.getNumber("Joystick X Scale",joystickType.scalingX), joystickType.deadzoneX); 
+//	double val = this.getDeadzoneJoystickValue(this.getMagnitude(), this.getX() * joystickType.scalingX, joystickType.deadzoneX); 
 	if (Math.abs(val) < joystickType.deadzoneX) {
 		return 0;
 	}
@@ -34,7 +36,8 @@ public class PantherJoystick extends Joystick{
   } 
    
   public double getScaledDeadzoneY() {     
-    double val = this.getDeadzoneJoystickValue(this.getMagnitude(), this.getY() * joystickType.scalingY, joystickType.deadzoneY); 
+	  double val = this.getDeadzoneJoystickValue(this.getMagnitude(), this.getY() * SmartDashboard.getNumber("Joystick Y Scale", joystickType.deadzoneY), joystickType.deadzoneY); 
+//    double val = this.getDeadzoneJoystickValue(this.getMagnitude(), this.getY() * joystickType.scalingY, joystickType.deadzoneY); 
     if (Math.abs(this.getY()) == 1.0) {
     	if (goingForward) return this.getY();
     	return -this.getY();
