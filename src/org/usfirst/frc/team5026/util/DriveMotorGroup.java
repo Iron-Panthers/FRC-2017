@@ -13,6 +13,7 @@ public class DriveMotorGroup implements SpeedController {
 	
 	private double teleopRampRate;
 	double[] pidfr;
+	// Need to incorporate into PidLib!
 	
 	public DriveMotorGroup(boolean talonInverted, boolean encoderInverted, double[] pidfr, double teleopRampRate, CANTalon... side) {
 		/* First motor is encoder motor

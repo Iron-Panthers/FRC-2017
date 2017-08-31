@@ -30,7 +30,7 @@ public class RobotMap {
 	
 	//GROUND GEAR MOTORS
 	public static final int GROUND_GEAR_MOTOR_INTAKE = 0; 
-	public static final int GROUND_GEAR_MOTOR_LIFT = 0;
+	public static final int GROUND_GEAR_MOTOR_LIFT = 7;
 	
 	// SOLENOIDS
 	public static final int SOLENOID_SHIFTER_FORWARD = 2;

@@ -40,6 +40,26 @@ public class Constants {
 	
 	public static final double CLIMBER_STALL_LIMIT = 5.0;	//=[NEED TESTING]= The current(A) at which the climber motors stall.
 	
+	// GROUND GEAR
+	public static final int GROUND_GEAR_LEGAL_TICKS = 0;
+	public static final int GROUND_GEAR_SCORING_TICKS = 100;
+	public static final int GROUND_GEAR_LOWERED_TICKS = 1000;
+	
+	public static final int GROUND_GEAR_STABILISATION_MAX_COUNT = 50;
+	public static final int GROUND_GEAR_TICK_TOLERANCE = 10;
+	
+	public static final double GROUND_GEAR_INTAKE_SPEED = 1;
+	public static final double GROUND_GEAR_OUTTAKE_SPEED = -0.5;
+	public static final boolean GROUND_GEAR_MOTOR_INVERTED = false;
+	public static final boolean GROUND_GEAR_SENSOR_INVERTED = false;
+	public static final int GROUND_GEAR_PID_PROFILE = 0;
+	public static final double GROUND_GEAR_P = 0;
+	public static final double GROUND_GEAR_I = 0;
+	public static final double GROUND_GEAR_D = 0;
+	public static final double GROUND_GEAR_F = 0;
+	public static final double GROUND_GEAR_R = 0;
+	public static final double[] GROUND_GEAR_PIDFR = {GROUND_GEAR_P, GROUND_GEAR_I, GROUND_GEAR_D, GROUND_GEAR_F, GROUND_GEAR_R};
+	
 	//Intake Constants
 	public static final double INTAKE_INTAKE_SPEED = 1;
 	public static final double INTAKE_OUTTAKE_SPEED = -1;
@@ -164,5 +184,6 @@ public class Constants {
 	 * measured (unloaded): 1834
 	 * measured (loaded, on field): 
 	 */
+	
 	
 }

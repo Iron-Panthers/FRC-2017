@@ -1,17 +1,24 @@
 package org.usfirst.frc.team5026.robot.subsystems;
 
 import org.usfirst.frc.team5026.robot.Robot;
+import org.usfirst.frc.team5026.util.Constants;
 import org.usfirst.frc.team5026.util.GearState;
+import org.usfirst.frc.team5026.util.GroundGearElevationState;
+import org.usfirst.frc.team5026.util.GroundGearIntakeState;
 import org.usfirst.frc.team5026.util.Hardware;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class GroundGear extends Subsystem implements GearState{
+public class GroundGear extends Subsystem implements GearState {
 
 	private Hardware hardware;
-	public boolean isOpen;
+	public GroundGearElevationState elevationState = GroundGearElevationState.Legal; // Starts in a legal position
+	public GroundGearIntakeState intakeState = GroundGearIntakeState.Neutral; // Not sucking in when starting
+	public boolean isOpen = false;
+	
 	
 	public GroundGear() {
+		hardware.groundGearLiftgroup.resetPosition();
 		hardware = Robot.hardware;
 	}
 	
@@ -22,15 +29,34 @@ public class GroundGear extends Subsystem implements GearState{
 	}
 	
 	public void intakeGear() {
-		hardware.groundGearIntake.set(1.0);
-		//intakes a gear
+		// Should this be allowed to happen when in other states?
+		if (elevationState == GroundGearElevationState.Lowered) {
+			hardware.groundGearIntake.set(Constants.GROUND_GEAR_INTAKE_SPEED);
+			//intakes a gear
+			intakeState = GroundGearIntakeState.Intake;
+		}
 	}
 	
 	public void outtakeGear() {
-		hardware.groundGearIntake.set(0.5);
-		//outtakes a gear
+		// Should this be allowed to happen when in other states?
+		if (elevationState == GroundGearElevationState.Lowered) {
+			hardware.groundGearIntake.set(Constants.GROUND_GEAR_OUTTAKE_SPEED);
+			//outtakes a gear
+			intakeState = GroundGearIntakeState.Outtake;
+		}
 	}
 	
+	public void travelToState(GroundGearElevationState targetState) {
+		if (targetState == elevationState) {
+			// We are already at that state
+			return;
+		}
+		hardware.groundGearLiftgroup.positionControl(targetState.ticks); // Target ticks
+	}
+	public void setElevationState(GroundGearElevationState setState) {
+		// BE CAREFUL WITH THIS METHOD, ONLY CALL AFTER MOVEMENT
+		elevationState = setState;
+	}
 	public void lift() {
 		hardware.groundGearLift.set(1.0);
 		//lifts the gear intake

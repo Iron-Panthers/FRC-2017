@@ -48,7 +48,8 @@ public class Hardware {
 	public DigitalInput driveRightBanner;
 	
 	public Spark groundGearIntake;
-	public Spark groundGearLift;
+	public CANTalon groundGearLift;
+	public DriveMotorGroup groundGearLiftgroup; // This is because there is no PIDMotorGroup, it is just DriveMotorGroup for now
 	
 	public LEDDisplay led;
 
@@ -87,7 +88,8 @@ public class Hardware {
 		led = new LEDDisplay(RobotMap.CAN_LED_PORT);
 		
 		groundGearIntake = new Spark(RobotMap.GROUND_GEAR_MOTOR_INTAKE);
-		groundGearLift = new Spark(RobotMap.GROUND_GEAR_MOTOR_LIFT);
+		groundGearLift = new CANTalon(RobotMap.GROUND_GEAR_MOTOR_LIFT);
+		groundGearLiftgroup = new DriveMotorGroup(Constants.GROUND_GEAR_MOTOR_INVERTED, Constants.GROUND_GEAR_SENSOR_INVERTED, Constants.GROUND_GEAR_PIDFR, 0, groundGearLift);
 		
 	}
 	public void buildGyro(int tries) {
