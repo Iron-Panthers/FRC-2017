@@ -39,7 +39,7 @@ public class GroundGear extends Subsystem implements GearState {
 	
 	public void outtakeGear() {
 		// Should this be allowed to happen when in other states?
-		if (elevationState == GroundGearElevationState.Lowered) {
+		if (elevationState == GroundGearElevationState.Lowered || elevationState == GroundGearElevationState.Scoring) {
 			hardware.groundGearIntake.set(Constants.GROUND_GEAR_OUTTAKE_SPEED);
 			//outtakes a gear
 			intakeState = GroundGearIntakeState.Outtake;
@@ -51,7 +51,8 @@ public class GroundGear extends Subsystem implements GearState {
 			// We are already at that state
 			return;
 		}
-		hardware.groundGearLiftgroup.positionControl(targetState.ticks); // Target ticks
+//		hardware.groundGearLiftgroup.positionControl(targetState.ticks); // Target ticks
+		hardware.groundGearLiftgroup.profileControl(targetState.ticks);
 	}
 	public void setElevationState(GroundGearElevationState setState) {
 		// BE CAREFUL WITH THIS METHOD, ONLY CALL AFTER MOVEMENT
@@ -73,6 +74,10 @@ public class GroundGear extends Subsystem implements GearState {
 	}
 	public void stopLift() {
 		hardware.groundGearLift.set(0);
+	}
+	public void stopIntake() {
+		hardware.groundGearIntake.set(0);
+		intakeState = GroundGearIntakeState.Neutral;
 	}
 
 }

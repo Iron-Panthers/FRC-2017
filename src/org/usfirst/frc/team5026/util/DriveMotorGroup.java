@@ -12,12 +12,11 @@ public class DriveMotorGroup implements SpeedController {
 	private CANTalon encoderMotor;
 	
 	private double teleopRampRate;
-	double[] pidfr;
-	// Need to incorporate into PidLib!
+	double[] pidfrnav;
 	
-	public DriveMotorGroup(boolean talonInverted, boolean encoderInverted, double[] pidfr, double teleopRampRate, CANTalon... side) {
+	public DriveMotorGroup(boolean talonInverted, boolean encoderInverted, double[] pidfrnav, double teleopRampRate, CANTalon... side) {
 		/* First motor is encoder motor
-		 * pidfr:
+		 * pidfrnav:
 		 * P, I, D, F is PIDF for the CANTalon
 		 * R is the ramp rate for the CANTalon
 		 */
@@ -38,7 +37,7 @@ public class DriveMotorGroup implements SpeedController {
          * See Table in Section 17.2.1 for native units per rotation. 
          */
         encoderMotor.setAllowableClosedLoopErr(0);
-        this.pidfr = pidfr;
+        this.pidfrnav = pidfrnav;
         encoderMotor.setProfile(0);
         setupPositionMode();
        
@@ -51,32 +50,51 @@ public class DriveMotorGroup implements SpeedController {
         }
 	}
 	public void setupVoltageMode () {
-		encoderMotor.setF(pidfr[3]);
-        encoderMotor.setP(pidfr[0]);
-        encoderMotor.setI(pidfr[1]); 
-        encoderMotor.setD(pidfr[2]);   
+		encoderMotor.changeControlMode(TalonControlMode.PercentVbus);
+		encoderMotor.setF(pidfrnav[3]);
+        encoderMotor.setP(pidfrnav[0]);
+        encoderMotor.setI(pidfrnav[1]); 
+        encoderMotor.setD(pidfrnav[2]);
+        configNominalOutputVoltage(0, 0);
+        encoderMotor.setMotionMagicAcceleration(0);
+        encoderMotor.setMotionMagicCruiseVelocity(0);
         encoderMotor.setVoltageRampRate(teleopRampRate); // VOLTAGE RAMP RATE SET TO 0, WILL SET TO DRIVE RAMP.
         // AUTO RAMP IS VERY CONSERVATIVE
 	}
 	public void setupPositionMode () {
 		encoderMotor.changeControlMode(TalonControlMode.Position);
-		encoderMotor.setF(pidfr[3]);
-	    encoderMotor.setP(pidfr[0]);
-	    encoderMotor.setI(pidfr[1]); 
-	    encoderMotor.setD(pidfr[2]);   
-	    encoderMotor.setVoltageRampRate(pidfr[4]);
+		encoderMotor.setF(pidfrnav[3]);
+	    encoderMotor.setP(pidfrnav[0]);
+	    encoderMotor.setI(pidfrnav[1]); 
+	    encoderMotor.setD(pidfrnav[2]);   
+	    encoderMotor.setVoltageRampRate(pidfrnav[4]);
+	}
+	public void setupProfileMode () {
+		encoderMotor.changeControlMode(TalonControlMode.MotionMagic);
+		encoderMotor.setF(pidfrnav[3]);
+	    encoderMotor.setP(pidfrnav[0]);
+	    encoderMotor.setI(pidfrnav[1]);
+	    encoderMotor.setD(pidfrnav[2]);
+	    encoderMotor.setVoltageRampRate(pidfrnav[4]);
+	    configNominalOutputVoltage(pidfrnav[5], -pidfrnav[5]);
+	    encoderMotor.setMotionMagicAcceleration(pidfrnav[6]);
+	    encoderMotor.setMotionMagicCruiseVelocity(pidfrnav[7]);
 	}
 	public void positionControl(double target) {
     	encoderMotor.changeControlMode(TalonControlMode.Position);
     	encoderMotor.set(target);
 	}
-	public void motionMagicControl(double target) {
+	public void profileControl(double target) {
 		encoderMotor.changeControlMode(TalonControlMode.MotionMagic);
 		encoderMotor.set(target);
 	}
 	public void voltageControl(double value) {
 		encoderMotor.changeControlMode(TalonControlMode.PercentVbus);
 		encoderMotor.set(value);
+	}
+	
+	public void setpidfrnav(double[] pidfrnav) {
+		this.pidfrnav = pidfrnav;
 	}
 	
 	@Override
@@ -139,5 +157,8 @@ public class DriveMotorGroup implements SpeedController {
 	public void configPeakOutputVoltage(double max, double min)
 	{
 		encoderMotor.configPeakOutputVoltage(max, min);
+	}
+	public void configNominalOutputVoltage(double max, double min) {
+		encoderMotor.configNominalOutputVoltage(max, min);
 	}
 }

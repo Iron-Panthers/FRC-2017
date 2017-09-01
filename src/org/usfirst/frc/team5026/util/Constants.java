@@ -58,7 +58,10 @@ public class Constants {
 	public static final double GROUND_GEAR_D = 0;
 	public static final double GROUND_GEAR_F = 0;
 	public static final double GROUND_GEAR_R = 0;
-	public static final double[] GROUND_GEAR_PIDFR = {GROUND_GEAR_P, GROUND_GEAR_I, GROUND_GEAR_D, GROUND_GEAR_F, GROUND_GEAR_R};
+	public static final double GROUND_GEAR_N = 0;
+	public static final double GROUND_GEAR_A = 100;
+	public static final double GROUND_GEAR_V = 1000;
+	public static final double[] GROUND_GEAR_PIDFR = {GROUND_GEAR_P, GROUND_GEAR_I, GROUND_GEAR_D, GROUND_GEAR_F, GROUND_GEAR_R, GROUND_GEAR_N, GROUND_GEAR_A, GROUND_GEAR_V};
 	
 	//Intake Constants
 	public static final double INTAKE_INTAKE_SPEED = 1;
@@ -151,38 +154,48 @@ public class Constants {
 	public static double AUTO_LOADING_ANGLE_BLUE = -60; // TODO
 	
 	// Drive motion profile
-	public static double DRIVE_STABILIZATION_TOLERANCE = 2000;
+	public static double DRIVE_STABILIZATION_TOLERANCE = 60;
 	
 	public static int PID_PROFILE_LEFT = 0;
-	public static double P_LEFT = 0.2;
+	// TODO VALUES BELOW ARE FROM PRACTICE BOT, tested target of -10 (4/12)
+	// FOR TUNING THESE VALUES, USE THE MotionMagicTuning PROJECT
+	public static double P_LEFT = 1.35;
 	public static double I_LEFT = 0;
-	public static double D_LEFT = 100;
-	public static double F_LEFT = 0;
-	public static double RAMP_LEFT = 15;
-	public static double[] PIDFR_LEFT = {P_LEFT,I_LEFT,D_LEFT,F_LEFT, RAMP_LEFT};
+	public static double D_LEFT = 0;
+	public static double F_LEFT = 0.6;
+	public static double RAMP_LEFT = 0;
+	public static double NOMINAL_LEFT = 0;
+	public static double ACCEL_LEFT = 250;
+	public static double VEL_LEFT = 500;
+	public static double[] PIDFR_LEFT = {P_LEFT,I_LEFT,D_LEFT,F_LEFT,RAMP_LEFT,NOMINAL_LEFT,ACCEL_LEFT,VEL_LEFT};
 	
 	public static int PID_PROFILE_RIGHT = 0;
-	public static double P_RIGHT = 0.2;
+	// TODO VALUES BELOW ARE FROM PRACTICE BOT, tested target of -10 (4/12)
+	// FOR TUNING THESE VALUES, USE THE MotionMagicTuning PROJECT
+	public static double P_RIGHT = 1.35;
 	public static double I_RIGHT = 0;
-	public static double D_RIGHT = 100;
-	public static double F_RIGHT = 0;
-	public static double RAMP_RIGHT = 15;
-	public static double[] PIDFR_RIGHT = {P_RIGHT,I_RIGHT,D_RIGHT,F_RIGHT, RAMP_RIGHT};
+	public static double D_RIGHT = 0;
+	public static double F_RIGHT = 0.6;
+	public static double RAMP_RIGHT = 0;
+	public static double NOMINAL_RIGHT = 0;
+	public static double ACCEL_RIGHT = 250;
+	public static double VEL_RIGHT = 500;
+	public static double[] PIDFR_RIGHT = {P_RIGHT,I_RIGHT,D_RIGHT,F_RIGHT,RAMP_RIGHT,NOMINAL_RIGHT,ACCEL_RIGHT,VEL_RIGHT};
 	
 	public static double TELEOP_RAMP_RIGHT = 0;
 	public static double TELEOP_RAMP_LEFT = 0;
 	
-	public static final double MAX_ACCELERATION = 500;
+	public static final double MAX_ACCELERATION = 250;
 	/*
 	 * Unit is encoder rotations/sec/sec.
 	 * measured (unloaded): 4
-	 * measured (loaded, on field): 
+	 * measured (loaded, on field): 300
 	 */
-	public static final double MAX_VELOCITY = 1080; 
+	public static final double MAX_VELOCITY = 1000; 
 	/*
 	 * Unit is encoder rotations/sec.
 	 * measured (unloaded): 1834
-	 * measured (loaded, on field): 
+	 * measured (loaded, on field): 1200
 	 */
 	
 	
