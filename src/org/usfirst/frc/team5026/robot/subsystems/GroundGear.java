@@ -2,19 +2,16 @@ package org.usfirst.frc.team5026.robot.subsystems;
 
 import org.usfirst.frc.team5026.robot.Robot;
 import org.usfirst.frc.team5026.util.Constants;
-import org.usfirst.frc.team5026.util.GearState;
+import org.usfirst.frc.team5026.util.GearOpenable;
 import org.usfirst.frc.team5026.util.GroundGearElevationState;
 import org.usfirst.frc.team5026.util.GroundGearIntakeState;
 import org.usfirst.frc.team5026.util.Hardware;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
-
-public class GroundGear extends Subsystem implements GearState {
+public class GroundGear extends GearOpenable {
 
 	private Hardware hardware;
 	public GroundGearElevationState elevationState = GroundGearElevationState.Legal; // Starts in a legal position
 	public GroundGearIntakeState intakeState = GroundGearIntakeState.Neutral; // Not sucking in when starting
-	public boolean isOpen = false;
 	
 	
 	public GroundGear() {
@@ -78,6 +75,11 @@ public class GroundGear extends Subsystem implements GearState {
 	public void stopIntake() {
 		hardware.groundGearIntake.set(0);
 		intakeState = GroundGearIntakeState.Neutral;
+	}
+	public void slowScore() {
+		if (elevationState == GroundGearElevationState.Scoring) {
+			
+		}
 	}
 
 }

@@ -1,16 +1,14 @@
-package org.usfirst.frc.team5026.robot.subsystems; 
+	package org.usfirst.frc.team5026.robot.subsystems; 
  
 import org.usfirst.frc.team5026.robot.Robot;
-import org.usfirst.frc.team5026.util.GearState;
+import org.usfirst.frc.team5026.util.GearOpenable;
 import org.usfirst.frc.team5026.util.Hardware;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
-import edu.wpi.first.wpilibj.command.Subsystem; 
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value; 
  
-public class GearClamp extends Subsystem implements GearState{ 
+public class GearClamp extends GearOpenable { 
  
 	  private Hardware hardware; 
-	  public boolean isOpen;
 	   
 	  public GearClamp(){ 
 		  hardware = Robot.hardware; 
