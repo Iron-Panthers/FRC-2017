@@ -49,26 +49,33 @@ public class GroundGear extends GearOpenable {
 			return;
 		}
 //		hardware.groundGearLiftgroup.positionControl(targetState.ticks); // Target ticks
+		hardware.groundGearLiftgroup.setpidfrnav(Constants.GROUND_GEAR_PIDFRNAV);
 		hardware.groundGearLiftgroup.profileControl(targetState.ticks);
 	}
 	public void setElevationState(GroundGearElevationState setState) {
 		// BE CAREFUL WITH THIS METHOD, ONLY CALL AFTER MOVEMENT
+		if (setState == GroundGearElevationState.Legal) {
+			isOpen = false;
+		}
+		else {
+			isOpen = true;
+		}
 		elevationState = setState;
 	}
-	public void lift() {
-		hardware.groundGearLift.set(1.0);
-		//lifts the gear intake
-		isOpen = false;
-	}
-	public void lift(double s) {
-		hardware.groundGearLift.set(s);
-		isOpen = false; // unknwon
-	}
-	public void drop() {
-		hardware.groundGearLift.set(1.0);
-		//lowers the gear intake
-		isOpen = true;
-	}
+//	public void lift() {
+//		hardware.groundGearLift.set(1.0);
+//		//lifts the gear intake
+//		isOpen = false;
+//	}
+//	public void lift(double s) {
+//		hardware.groundGearLift.set(s);
+//		isOpen = false; // unknwon
+//	}
+//	public void drop() {
+//		hardware.groundGearLift.set(1.0);
+//		//lowers the gear intake
+//		isOpen = true;
+//	}
 	public void stopLift() {
 		hardware.groundGearLift.set(0);
 	}
@@ -78,7 +85,10 @@ public class GroundGear extends GearOpenable {
 	}
 	public void slowScore() {
 		if (elevationState == GroundGearElevationState.Scoring) {
-			
+			hardware.groundGearLiftgroup.setpidfrnav(Constants.GROUND_GEAR_SCORING_PIDFRNAV);
+			hardware.groundGearLiftgroup.setupProfileMode();
+			outtakeGear(); // Might be too fast, is not controlled seperately from standard outtake speed
+			hardware.groundGearLiftgroup.profileControl(GroundGearElevationState.Lowered.ticks);
 		}
 	}
 

@@ -89,7 +89,7 @@ public class Hardware {
 		
 		groundGearIntake = new Spark(RobotMap.GROUND_GEAR_MOTOR_INTAKE);
 		groundGearLift = new CANTalon(RobotMap.GROUND_GEAR_MOTOR_LIFT);
-		groundGearLiftgroup = new DriveMotorGroup(Constants.GROUND_GEAR_MOTOR_INVERTED, Constants.GROUND_GEAR_SENSOR_INVERTED, Constants.GROUND_GEAR_PIDFR, 0, groundGearLift);
+		groundGearLiftgroup = new DriveMotorGroup(Constants.GROUND_GEAR_MOTOR_INVERTED, Constants.GROUND_GEAR_SENSOR_INVERTED, Constants.GROUND_GEAR_PIDFRNAV, 0, groundGearLift);
 		
 	}
 	public void buildGyro(int tries) {

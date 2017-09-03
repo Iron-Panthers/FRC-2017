@@ -59,9 +59,14 @@ public class Constants {
 	public static final double GROUND_GEAR_F = 0;
 	public static final double GROUND_GEAR_R = 0;
 	public static final double GROUND_GEAR_N = 0;
-	public static final double GROUND_GEAR_A = 100;
-	public static final double GROUND_GEAR_V = 1000;
-	public static final double[] GROUND_GEAR_PIDFR = {GROUND_GEAR_P, GROUND_GEAR_I, GROUND_GEAR_D, GROUND_GEAR_F, GROUND_GEAR_R, GROUND_GEAR_N, GROUND_GEAR_A, GROUND_GEAR_V};
+	public static final double GROUND_GEAR_A = 100; // acceleration
+	public static final double GROUND_GEAR_V = 1000; // velocity
+	public static final double[] GROUND_GEAR_PIDFRNAV = {GROUND_GEAR_P, GROUND_GEAR_I, GROUND_GEAR_D, GROUND_GEAR_F, GROUND_GEAR_R, GROUND_GEAR_N, GROUND_GEAR_A, GROUND_GEAR_V};
+	
+	public static final double GROUND_GEAR_N_SCORING = 0;
+	public static final double GROUND_GEAR_A_SCORING = 100; // ticks / sec * sec; acceleration
+	public static final double GROUND_GEAR_V_SCORING = 200; // ticks / sec; velocity
+	public static final double[] GROUND_GEAR_SCORING_PIDFRNAV = {GROUND_GEAR_P, GROUND_GEAR_I, GROUND_GEAR_D, GROUND_GEAR_F, GROUND_GEAR_R, GROUND_GEAR_N_SCORING, GROUND_GEAR_A_SCORING, GROUND_GEAR_V_SCORING};
 	
 	//Intake Constants
 	public static final double INTAKE_INTAKE_SPEED = 1;
