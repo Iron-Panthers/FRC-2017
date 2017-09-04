@@ -17,12 +17,14 @@ public class GroundGearIntake extends Command{
 	protected void execute(){
 	}
 	protected boolean isFinished() {
-		// TODO Auto-generated method stub
-		return true;
+		return Robot.groundgear.hasGear(); // This will end either if the button is released, or the ground gear gets the gear.
+		// If the button is released, interrupt is called. Otherwise, end is called
 	}
 	protected void end(){
+		Robot.groundgear.stopIntake();
 	}
 	protected void interrupt(){
+		Robot.groundgear.stopIntake();
 	}
 
 }

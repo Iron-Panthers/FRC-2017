@@ -18,7 +18,7 @@ public class GearUnClampCommand extends Command {
     protected void initialize() {
 		if(CanGearClampsMove.checkMovement(Robot.groundgear, Robot.gearclamp)){
 			Robot.gearclamp.lowerClamp();
-			SmartDashboard.putString("Upper Gear Clamp State: ", "Dropped");
+			SmartDashboard.putString("Upper Gear Clamp State: ", "Open");
 		}
     	//Unclamps
     }

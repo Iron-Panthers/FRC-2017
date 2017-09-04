@@ -6,10 +6,10 @@ import org.usfirst.frc.team5026.util.Hardware;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value; 
  
-public class GearClamp extends GearOpenable { 
+public class GearClamp extends GearOpenable {
  
 	  private Hardware hardware; 
-	   
+	  // TODO: Add states here
 	  public GearClamp(){ 
 		  hardware = Robot.hardware; 
 	  } 

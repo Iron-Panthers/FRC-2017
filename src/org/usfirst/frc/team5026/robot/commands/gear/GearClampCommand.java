@@ -10,8 +10,10 @@ public class GearClampCommand extends Command{
 
 	
 	public GearClampCommand(){
+		// Would there ever be a situation where requiring groundgear here is a good idea?
+		// It just stops the elevation, so it would still be out of state, better to let it finish, than to require it
 		requires(Robot.gearclamp);
-		requires(Robot.groundgear);
+//		requires(Robot.groundgear);
 	}
 	protected void initialize(){
 		

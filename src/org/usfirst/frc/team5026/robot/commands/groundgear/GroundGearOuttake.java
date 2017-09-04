@@ -11,17 +11,18 @@ public class GroundGearOuttake extends Command{
 	}
 	@Override
 	protected void initialize(){
-		Robot.groundgear.intakeGear();
+		Robot.groundgear.outtakeGear();
 	}
 	protected void execute(){
 	}
 	protected boolean isFinished() {
-		// TODO Auto-generated method stub
-		return true;
+		return false;
 	}
 	protected void end(){
+		Robot.groundgear.stopIntake();
 	}
 	protected void interrupt(){
+		Robot.groundgear.stopIntake();
 	}
 
 }

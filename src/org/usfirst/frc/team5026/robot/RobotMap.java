@@ -28,9 +28,10 @@ public class RobotMap {
 	public static final int DRIVE_LEFT_BANNER = 1;
 	public static final int DRIVE_RIGHT_BANNER = 0;
 	
-	//GROUND GEAR MOTORS
+	//GROUND GEAR
 	public static final int GROUND_GEAR_MOTOR_INTAKE = 0; 
 	public static final int GROUND_GEAR_MOTOR_LIFT = 7;
+	public static final int GROUND_GEAR_SENSOR = 3;
 	
 	// SOLENOIDS
 	public static final int SOLENOID_SHIFTER_FORWARD = 2;
