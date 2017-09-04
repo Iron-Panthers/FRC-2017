@@ -1,12 +1,10 @@
 package org.usfirst.frc.team5026.robot.commands.autonomous.sequences;
 
-import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistancePosition;
-import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistancePositionGyro;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistanceMotionProfilingInches;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveTurnXDegrees;
 import org.usfirst.frc.team5026.util.Constants;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -14,9 +12,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class AutoBlueDriveCarveRightToPegFromBoilerWithGyro extends CommandGroup {
 
     public AutoBlueDriveCarveRightToPegFromBoilerWithGyro() {
-    	addSequential(new AutoDriveDistancePositionGyro("Auto Boiler Close Blue", "Auto Boiler Far Blue", Constants.AUTO_BOILER_CARVE_COUNT_BLUE, Constants.AUTO_BOILER_ANGLE_BLUE));
+    	addSequential(new AutoDriveDistanceMotionProfilingInches("Auto Boiler Close Blue", "Auto Boiler Far Blue", Constants.AUTO_BOILER_CARVE_COUNT_BLUE));
     	addSequential(new DriveTurnXDegrees(Constants.AUTO_BOILER_ANGLE_BLUE, false)); // CONSTANT
-    	addSequential(new AutoDriveDistancePosition("Auto Boiler Extra Distance Blue", "Auto Boiler Extra Distance Blue", Constants.AUTO_BOILER_STRAIGHT_COUNT_BLUE));
+    	addSequential(new AutoDriveDistanceMotionProfilingInches("Auto Boiler Extra Distance Blue", "Auto Boiler Extra Distance Blue", Constants.AUTO_BOILER_STRAIGHT_COUNT_BLUE));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

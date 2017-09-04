@@ -1,9 +1,8 @@
 
 package org.usfirst.frc.team5026.robot;
 
-import org.usfirst.frc.team5026.robot.commands.JoystickChoose;
 import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDoNothing;
-import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistancePosition;
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistanceMotionProfilingInches;
 import org.usfirst.frc.team5026.robot.commands.autonomous.sequences.AutoBlueDriveCarveLeftToPegFromLoadingZone;
 import org.usfirst.frc.team5026.robot.commands.autonomous.sequences.AutoBlueDriveCarveLeftToPegFromLoadingZoneBanner;
 import org.usfirst.frc.team5026.robot.commands.autonomous.sequences.AutoBlueDriveCarveLeftToPegFromLoadingZoneWithGyro;
@@ -17,6 +16,7 @@ import org.usfirst.frc.team5026.robot.commands.autonomous.sequences.AutoRedDrive
 import org.usfirst.frc.team5026.robot.commands.autonomous.sequences.AutoRedDriveCarveRightToPegFromLoadingZoneBanner;
 import org.usfirst.frc.team5026.robot.commands.autonomous.sequences.AutoRedDriveCarveRightToPegFromLoadingZoneWithGyro;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveTurnXDegrees;
+import org.usfirst.frc.team5026.robot.commands.misc.JoystickChoose;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
@@ -99,7 +99,7 @@ public class Robot extends IterativeRobot {
 		autoChooser.addDefault("Nothing", new AutoDoNothing());
 		// Everytime u write a new auto, do autoChooser.addObject("NAME OF AUTO", new AUTOCOMMAND);
 		// Do that here
-		autoChooser.addObject("Both: Middle peg", new AutoDriveDistancePosition("Auto Mid Left", "Auto Mid Right", Constants.AUTO_MIDDLE_TARGET_COUNT));
+		autoChooser.addObject("Both: Middle peg", new AutoDriveDistanceMotionProfilingInches("Auto Mid Left", "Auto Mid Right", Constants.AUTO_MIDDLE_TARGET_COUNT));
 		autoChooser.addObject("Red: Right peg", new AutoRedDriveCarveLeftToPegFromBoiler());
 		autoChooser.addObject("Red: Left peg", new AutoRedDriveCarveRightToPegFromLoadingZone());
 		autoChooser.addObject("Blue: Right peg", new AutoBlueDriveCarveLeftToPegFromLoadingZone());
@@ -112,6 +112,7 @@ public class Robot extends IterativeRobot {
 		autoChooser.addObject("Red: Left peg with Gyro", new AutoRedDriveCarveRightToPegFromLoadingZoneWithGyro());
 		autoChooser.addObject("Blue: Right peg with Gyro", new AutoBlueDriveCarveLeftToPegFromLoadingZoneWithGyro());
 		autoChooser.addObject("Blue: Left peg with Gyro", new AutoBlueDriveCarveRightToPegFromBoilerWithGyro());
+		autoChooser.addObject("Auto Drop Gear", new AutoDriveDistanceMotionProfilingInches("Auto Drop Gear Left","Auto Drop Gear Right", Constants.AUTO_MIDDLE_TARGET_COUNT));
 		autoChooser.addObject("Auto Gyro Loop", new DriveTurnXDegrees(60, false));
 		autoChooser.addObject("Auto Gyro Loop -", new DriveTurnXDegrees(-60, false));
 		
@@ -181,6 +182,9 @@ public class Robot extends IterativeRobot {
 		sDisplay("Auto Loading Close Blue", Constants.AUTO_LOADING_TARGET_CLOSE_BLUE);
 		sDisplay("Auto Loading Far Blue", Constants.AUTO_LOADING_TARGET_FAR_BLUE);
 		sDisplay("Auto Loading Extra Distance Blue", Constants.AUTO_LOADING_AFTER_TURN_TO_PEG_BLUE);
+		
+		sDisplay("Auto Drop Gear Left", Constants.AUTO_DROP_GEAR_LEFT);
+		sDisplay("Auto Drop Gear Right", Constants.AUTO_DROP_GEAR_RIGHT);
 		
 		sDisplay("LEFT P", Constants.P_LEFT);
 		sDisplay("LEFT D", Constants.D_LEFT);
