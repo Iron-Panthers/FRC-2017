@@ -1,13 +1,13 @@
 package org.usfirst.frc.team5026.robot;
 
-import org.usfirst.frc.team5026.robot.commands.autonomous.AutoCallCurrent;
-import org.usfirst.frc.team5026.robot.commands.climber.ClimberClimbSpeed;
-import org.usfirst.frc.team5026.robot.commands.climber.ClimberRappel;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveShiftGear;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveSwapForwards;
-import org.usfirst.frc.team5026.robot.commands.gear.GearClampCommand;
-import org.usfirst.frc.team5026.robot.commands.gear.GearUnClampCommand;
+import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearElevationControl;
+import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearIntake;
+import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearOuttake;
+import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearStop;
 import org.usfirst.frc.team5026.robot.commands.misc.LEDSignalGear;
+import org.usfirst.frc.team5026.util.GroundGearElevationState;
 import org.usfirst.frc.team5026.util.PantherJoystick;
 
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -68,7 +68,16 @@ public class OI {
 		driveButton3.whenPressed(new DriveShiftGear());
 		driveButton2.whileHeld(new LEDSignalGear());
 		
-//		boardButton1.whileHeld(new ClimberSequence());
+		boardButton2.whileHeld(new GroundGearOuttake());
+		boardButton3.whileHeld(new GroundGearIntake());
+		boardButton4.whenPressed(new GroundGearStop());
+		boardButton5.whenPressed(new GroundGearElevationControl(GroundGearElevationState.Legal));
+		boardButton6.whenPressed(new GroundGearElevationControl(GroundGearElevationState.Lowered));
+		boardButton7.whenPressed(new GroundGearElevationControl(GroundGearElevationState.Scoring));
+
+		
+		
+/*//		boardButton1.whileHeld(new ClimberSequence());
 //		boardButton2.whenPressed(new ClimberCycleSpeed());
 		boardButton2.whileHeld(new ClimberClimbSpeed());
 //		boardButton4.whileHeld(new IntakeIn());
@@ -76,6 +85,6 @@ public class OI {
 		boardButton6.whenPressed(new GearClampCommand());
 		boardButton7.whenPressed(new GearUnClampCommand());
 		boardButton8.whileHeld(new ClimberRappel());
-		boardButton9.whenPressed(new AutoCallCurrent());
+		boardButton9.whenPressed(new AutoCallCurrent());*/
 	}
 }
