@@ -5,6 +5,7 @@ import org.usfirst.frc.team5026.robot.commands.drive.DriveSwapForwards;
 import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearElevationControl;
 import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearIntake;
 import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearOuttake;
+import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearScoreGear;
 import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearStop;
 import org.usfirst.frc.team5026.robot.commands.misc.LEDSignalGear;
 import org.usfirst.frc.team5026.util.GroundGearElevationState;
@@ -70,11 +71,11 @@ public class OI {
 		
 		boardButton2.whileHeld(new GroundGearOuttake());
 		boardButton3.whileHeld(new GroundGearIntake());
-		boardButton4.whenPressed(new GroundGearStop());
+		boardButton4.whenPressed(new GroundGearStop()); //donut use
 		boardButton5.whenPressed(new GroundGearElevationControl(GroundGearElevationState.Legal));
 		boardButton6.whenPressed(new GroundGearElevationControl(GroundGearElevationState.Lowered));
 		boardButton7.whenPressed(new GroundGearElevationControl(GroundGearElevationState.Scoring));
-
+		boardButton8.whenPressed(new GroundGearScoreGear());
 		
 		
 /*//		boardButton1.whileHeld(new ClimberSequence());
