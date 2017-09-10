@@ -38,9 +38,9 @@ public class GroundGearElevationControl extends Command {
     	if (allowed) {
     		// Safe error checking, checks gear movement before continuing
     		Robot.groundgear.travelToState(target);
-	    	if(Math.abs(Robot.hardware.groundGearLift.getClosedLoopError()) < Constants.GROUND_GEAR_TICK_TOLERANCE) {
-	        	count++;
-	        }
+//	    	if(Math.abs(Robot.hardware.groundGearLift.getClosedLoopError()) < Constants.GROUND_GEAR_TICK_TOLERANCE) {
+//	        	count++;
+//	        }
     	}
     	else {
     		// If there is illegal movement, should not be done! Cancels the command (calls interrupted)

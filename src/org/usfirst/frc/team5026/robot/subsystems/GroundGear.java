@@ -18,8 +18,8 @@ public class GroundGear extends GearOpenable {
 	
 	
 	public GroundGear() {
-		hardware.groundGearLiftgroup.resetPosition();
 		hardware = Robot.hardware;
+		hardware.groundGearLiftgroup.resetPosition();
 		
 		setElevationState(GroundGearElevationState.Legal); // Starts in a legal position
 		setIntakeState(GroundGearIntakeState.Neutral); // Not sucking in when starting
@@ -56,6 +56,7 @@ public class GroundGear extends GearOpenable {
 
 	public void setup() {
 		hardware.groundGearLiftgroup.setupProfileMode();
+		hardware.groundGearLiftgroup.setpidfrnav(Constants.GROUND_GEAR_PIDFRNAV);
 		
 	}
 	public void travelToState(GroundGearElevationState targetState) {
@@ -64,8 +65,9 @@ public class GroundGear extends GearOpenable {
 			return;
 		}
 //		hardware.groundGearLiftgroup.positionControl(targetState.ticks); // Target ticks
-		hardware.groundGearLiftgroup.setpidfrnav(Constants.GROUND_GEAR_PIDFRNAV);
-		hardware.groundGearLiftgroup.profileControl(targetState.ticks);
+		hardware.groundGearLiftgroup.setupVoltageMode();
+		hardware.groundGearLiftgroup.set(0.85);
+//		hardware.groundGearLiftgroup.profileControl(targetState.ticks);
 	}
 	public void setElevationState(GroundGearElevationState setState) {
 		// BE CAREFUL WITH THIS METHOD, ONLY CALL AFTER MOVEMENT

@@ -63,13 +63,13 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		hardware = new Hardware();
-		initSubsystems();
 		SmartDashboard.putData(Scheduler.getInstance());
 		joyChooser.addDefault("Red Joystick", new JoystickChoose(JoystickType.RED));
 		// The name should be joystick type, the object is: new JoystickChoose(proper joystick type);
 		joyChooser.addObject("Blue Joystick", new JoystickChoose(JoystickType.BLUE));
 		joyChooser.addObject("Spinny Joystick", new JoystickChoose(JoystickType.SPINNY));
 		SmartDashboard.putData("Joystick Type", joyChooser);
+		initSubsystems();
 		SmartDashboard.putData(climber);
 		displayMods();
 		CameraServer camera = CameraServer.getInstance();
