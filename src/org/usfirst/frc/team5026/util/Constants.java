@@ -42,30 +42,30 @@ public class Constants {
 	
 	// GROUND GEAR
 	public static final int GROUND_GEAR_LEGAL_TICKS = 0;
-	public static final int GROUND_GEAR_SCORING_TICKS = 100;
-	public static final int GROUND_GEAR_LOWERED_TICKS = 1000;
+	public static final int GROUND_GEAR_SCORING_TICKS = 500;
+	public static final int GROUND_GEAR_LOWERED_TICKS = 20000;
 	
 	public static final int GROUND_GEAR_STABILISATION_MAX_COUNT = 50;
-	public static final int GROUND_GEAR_TICK_TOLERANCE = 10;
+	public static final int GROUND_GEAR_TICK_TOLERANCE = 50;
 	
 	public static final double GROUND_GEAR_INTAKE_SPEED = 1;
 	public static final double GROUND_GEAR_OUTTAKE_SPEED = -0.5;
 	public static final boolean GROUND_GEAR_MOTOR_INVERTED = false;
 	public static final boolean GROUND_GEAR_SENSOR_INVERTED = false;
 	public static final int GROUND_GEAR_PID_PROFILE = 0;
-	public static final double GROUND_GEAR_P = 0;
+	public static final double GROUND_GEAR_P = 0.96;
 	public static final double GROUND_GEAR_I = 0;
 	public static final double GROUND_GEAR_D = 0;
-	public static final double GROUND_GEAR_F = 0;
+	public static final double GROUND_GEAR_F = 0.025836;
 	public static final double GROUND_GEAR_R = 0;
 	public static final double GROUND_GEAR_N = 0;
 	public static final double GROUND_GEAR_A = 100; // acceleration
-	public static final double GROUND_GEAR_V = 1000; // velocity
+	public static final double GROUND_GEAR_V = 100; // velocity
 	public static final double[] GROUND_GEAR_PIDFRNAV = {GROUND_GEAR_P, GROUND_GEAR_I, GROUND_GEAR_D, GROUND_GEAR_F, GROUND_GEAR_R, GROUND_GEAR_N, GROUND_GEAR_A, GROUND_GEAR_V};
 	
 	public static final double GROUND_GEAR_N_SCORING = 0;
-	public static final double GROUND_GEAR_A_SCORING = 100; // ticks / sec * sec; acceleration
-	public static final double GROUND_GEAR_V_SCORING = 200; // ticks / sec; velocity
+	public static final double GROUND_GEAR_A_SCORING = 10; // Rotations / min * sec; acceleration
+	public static final double GROUND_GEAR_V_SCORING = 2; // Rotations / min; velocity
 	public static final double[] GROUND_GEAR_SCORING_PIDFRNAV = {GROUND_GEAR_P, GROUND_GEAR_I, GROUND_GEAR_D, GROUND_GEAR_F, GROUND_GEAR_R, GROUND_GEAR_N_SCORING, GROUND_GEAR_A_SCORING, GROUND_GEAR_V_SCORING};
 	
 	//Intake Constants
