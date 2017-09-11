@@ -8,6 +8,8 @@ import org.usfirst.frc.team5026.util.GroundGearElevationState;
 import org.usfirst.frc.team5026.util.GroundGearIntakeState;
 import org.usfirst.frc.team5026.util.Hardware;
 
+import com.ctre.CANTalon;
+
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class GroundGear extends GearOpenable {
@@ -23,12 +25,13 @@ public class GroundGear extends GearOpenable {
 		
 		setElevationState(GroundGearElevationState.Legal); // Starts in a legal position
 		setIntakeState(GroundGearIntakeState.Neutral); // Not sucking in when starting
+		setup();
 	}
 	
 	@Override
 	protected void initDefaultCommand() {
 		// This might be too redundant
-		setDefaultCommand(new GroundGearStop());
+//		setDefaultCommand(new GroundGearStop());
 	}
 	
 	public void intakeGear() {
@@ -55,6 +58,7 @@ public class GroundGear extends GearOpenable {
 	}
 
 	public void setup() {
+		hardware.groundGearLift.enable();
 		hardware.groundGearLiftgroup.setupProfileMode();
 		hardware.groundGearLiftgroup.setpidfrnav(Constants.GROUND_GEAR_PIDFRNAV);
 		
@@ -65,9 +69,9 @@ public class GroundGear extends GearOpenable {
 			return;
 		}
 //		hardware.groundGearLiftgroup.positionControl(targetState.ticks); // Target ticks
-		hardware.groundGearLiftgroup.setupVoltageMode();
-		hardware.groundGearLiftgroup.set(0.85);
-//		hardware.groundGearLiftgroup.profileControl(targetState.ticks);
+		hardware.groundGearLiftgroup.profileControl(targetState.rotations);
+//		hardware.groundGearLiftgroup.setupVoltageMode();
+//		hardware.groundGearLiftgroup.set(0.1);
 	}
 	public void setElevationState(GroundGearElevationState setState) {
 		// BE CAREFUL WITH THIS METHOD, ONLY CALL AFTER MOVEMENT
@@ -81,7 +85,7 @@ public class GroundGear extends GearOpenable {
 		SmartDashboard.putString("Ground Gear Elevation State", elevationState.toString());
 	}
 	public void stopLift() {
-		hardware.groundGearLift.set(0);
+		hardware.groundGearLift.disable();
 	}
 	public void stopIntake() {
 		hardware.groundGearIntake.set(0);
@@ -97,6 +101,10 @@ public class GroundGear extends GearOpenable {
 	}
 	public boolean hasGear() {
 		return hardware.groundGearBanner.get();
+	}
+
+	public CANTalon getElevationMotor() {
+		return hardware.groundGearLift;
 	}
 
 }
