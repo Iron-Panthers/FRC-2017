@@ -13,4 +13,8 @@ public class GroundGearElevationControlSequence extends CommandGroup {
         addSequential(new GroundGearElevationControl(target));
         addSequential(new GroundGearWaitForStabilize(target));
     }
+    public GroundGearElevationControlSequence() {
+    	addSequential(new GroundGearElevationControl());
+    	addSequential(new GroundGearWaitForStabilize());
+    }
 }

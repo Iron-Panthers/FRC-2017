@@ -6,22 +6,39 @@ import org.usfirst.frc.team5026.util.Constants;
 import org.usfirst.frc.team5026.util.GroundGearElevationState;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
 public class GroundGearElevationControl extends Command {
 	GroundGearElevationState target;
+	boolean init = false;
 
     public GroundGearElevationControl(GroundGearElevationState target) {
         requires(Robot.groundgear);
         this.target = target;
+        init = true;
     }
 
-    // Called just before this Command runs the first time
+    public GroundGearElevationControl() {
+    	requires(Robot.groundgear);
+    	init = false;
+    	target = GroundGearElevationState.Legal;
+	}
+
+	// Called just before this Command runs the first time
     protected void initialize() {
 //    	Robot.groundgear.setup();
     	Robot.groundgear.getElevationMotor().enable();
+    	if (!init) {
+    		if (target == GroundGearElevationState.Lowered) {
+    			target = GroundGearElevationState.Scoring;
+    		} else {
+    			target = GroundGearElevationState.Lowered;
+    		}
+    		SmartDashboard.putString("GroundGearTargetState", target.toString());
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run

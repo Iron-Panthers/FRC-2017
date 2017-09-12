@@ -71,7 +71,7 @@ public class GroundGear extends GearOpenable {
 //		hardware.groundGearLiftgroup.positionControl(targetState.ticks); // Target ticks
 		hardware.groundGearLiftgroup.profileControl(targetState.rotations);
 //		hardware.groundGearLiftgroup.setupVoltageMode();
-//		hardware.groundGearLiftgroup.set(0.1);
+//		hardware.groundGearLiftgroup.set(1);
 	}
 	public void setElevationState(GroundGearElevationState setState) {
 		// BE CAREFUL WITH THIS METHOD, ONLY CALL AFTER MOVEMENT

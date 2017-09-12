@@ -3,7 +3,7 @@ package org.usfirst.frc.team5026.robot;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveShiftGear;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveSwapForwards;
 import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearElevationControlSequence;
-import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearTestCommand;
+import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearScoreGear;
 import org.usfirst.frc.team5026.robot.commands.misc.LEDSignalGear;
 import org.usfirst.frc.team5026.util.GroundGearElevationState;
 import org.usfirst.frc.team5026.util.PantherJoystick;
@@ -37,6 +37,8 @@ public class OI {
 	public Button boardButton7;
 	public Button boardButton8;
 	public Button boardButton9;
+	public Button boardButton10;
+	public Button boardButton11;
 	
 	public OI() {
 		driveJoystick = new PantherJoystick(RobotMap.DRIVE_JOYSTICK);
@@ -54,6 +56,8 @@ public class OI {
 	    boardButton7 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_7);
 	    boardButton8 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_8);
 	    boardButton9 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_9);
+	    boardButton10 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_10);
+	    boardButton11 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_11);
 	    
 	    driveButton1 = new JoystickButton(driveJoystick, RobotMap.DRIVE_BUTTON_1); //TODO: Add RobotMappings
 	    driveButton2 = new JoystickButton(driveJoystick, RobotMap.DRIVE_BUTTON_2);
@@ -72,7 +76,8 @@ public class OI {
 		boardButton5.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Legal));
 		boardButton6.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Lowered));
 		boardButton7.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Scoring));
-		boardButton8.whenPressed(new GroundGearTestCommand(GroundGearElevationState.Lowered));
+		boardButton11.whenPressed(new GroundGearElevationControlSequence());
+		boardButton8.whenPressed(new GroundGearScoreGear());
 		
 		
 /*//		boardButton1.whileHeld(new ClimberSequence());
