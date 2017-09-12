@@ -42,8 +42,8 @@ public class Constants {
 	
 	// GROUND GEAR
 	public static final int GROUND_GEAR_LEGAL_TICKS = 0;
-	public static final int GROUND_GEAR_SCORING_TICKS = 5000;
-	public static final int GROUND_GEAR_LOWERED_TICKS = 20000;
+	public static final int GROUND_GEAR_SCORING_TICKS = 50000;
+	public static final int GROUND_GEAR_LOWERED_TICKS = 200000;
 	
 	public static final int GROUND_GEAR_STABILISATION_MAX_COUNT = 10;
 	public static final int GROUND_GEAR_TICK_TOLERANCE = 50;
@@ -54,14 +54,14 @@ public class Constants {
 	public static final boolean GROUND_GEAR_MOTOR_INVERTED = false;
 	public static final boolean GROUND_GEAR_SENSOR_INVERTED = false;
 	public static final int GROUND_GEAR_PID_PROFILE = 0;
-	public static final double GROUND_GEAR_P = 0.85;
+	public static final double GROUND_GEAR_P = 0.65;
 	public static final double GROUND_GEAR_I = 0;
 	public static final double GROUND_GEAR_D = 0;
 	public static final double GROUND_GEAR_F = 0.01152806; // Calculated by doing 100% of full speed is equivalent to 100% PWM
 	public static final double GROUND_GEAR_R = 0;
 	public static final double GROUND_GEAR_N = 0;
-	public static final double GROUND_GEAR_A = 1000; // acceleration
-	public static final double GROUND_GEAR_V = 150; // velocity
+	public static final double GROUND_GEAR_A = 500; // acceleration
+	public static final double GROUND_GEAR_V = 400; // velocity
 	public static final double[] GROUND_GEAR_PIDFRNAV = {GROUND_GEAR_P, GROUND_GEAR_I, GROUND_GEAR_D, GROUND_GEAR_F, GROUND_GEAR_R, GROUND_GEAR_N, GROUND_GEAR_A, GROUND_GEAR_V};
 	
 	public static final double GROUND_GEAR_N_SCORING = 0;

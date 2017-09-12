@@ -76,7 +76,7 @@ public class OI {
 		boardButton5.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Legal));
 		boardButton6.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Lowered));
 		boardButton7.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Scoring));
-		boardButton11.whenPressed(new GroundGearElevationControlSequence());
+		boardButton11.whenPressed(new GroundGearElevationControlSequence()); // This does a toggle
 		boardButton8.whenPressed(new GroundGearScoreGear());
 		
 		
