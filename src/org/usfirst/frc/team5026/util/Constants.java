@@ -42,15 +42,15 @@ public class Constants {
 	
 	// GROUND GEAR
 	public static final int GROUND_GEAR_LEGAL_TICKS = 0;
-	public static final int GROUND_GEAR_SCORING_TICKS = 50000;
-	public static final int GROUND_GEAR_LOWERED_TICKS = 200000;
+	public static final int GROUND_GEAR_SCORING_TICKS = -60000;
+	public static final int GROUND_GEAR_LOWERED_TICKS = -132000;
 	
 	public static final int GROUND_GEAR_STABILISATION_MAX_COUNT = 10;
-	public static final int GROUND_GEAR_TICK_TOLERANCE = 50;
+	public static final int GROUND_GEAR_TICK_TOLERANCE = 70;
 	public static final double GROUND_GEAR_OUTPUT_TOLERANCE = 0.05;
 	
-	public static final double GROUND_GEAR_INTAKE_SPEED = 0.5;
-	public static final double GROUND_GEAR_OUTTAKE_SPEED = -0.5;
+	public static final double GROUND_GEAR_INTAKE_SPEED = -0.4;
+	public static final double GROUND_GEAR_OUTTAKE_SPEED = 0.3;
 	public static final boolean GROUND_GEAR_MOTOR_INVERTED = false;
 	public static final boolean GROUND_GEAR_SENSOR_INVERTED = false;
 	public static final int GROUND_GEAR_PID_PROFILE = 0;
@@ -61,12 +61,12 @@ public class Constants {
 	public static final double GROUND_GEAR_R = 0;
 	public static final double GROUND_GEAR_N = 0;
 	public static final double GROUND_GEAR_A = 500; // acceleration
-	public static final double GROUND_GEAR_V = 400; // velocity
+	public static final double GROUND_GEAR_V = 1600; // velocity
 	public static final double[] GROUND_GEAR_PIDFRNAV = {GROUND_GEAR_P, GROUND_GEAR_I, GROUND_GEAR_D, GROUND_GEAR_F, GROUND_GEAR_R, GROUND_GEAR_N, GROUND_GEAR_A, GROUND_GEAR_V};
 	
 	public static final double GROUND_GEAR_N_SCORING = 0;
-	public static final double GROUND_GEAR_A_SCORING = 10; // Rotations / min * sec; acceleration
-	public static final double GROUND_GEAR_V_SCORING = 2; // Rotations / min; velocity
+	public static final double GROUND_GEAR_A_SCORING = 500; // Rotations / min * sec; acceleration
+	public static final double GROUND_GEAR_V_SCORING = 1000; // Rotations / min; velocity
 	public static final double[] GROUND_GEAR_SCORING_PIDFRNAV = {GROUND_GEAR_P, GROUND_GEAR_I, GROUND_GEAR_D, GROUND_GEAR_F, GROUND_GEAR_R, GROUND_GEAR_N_SCORING, GROUND_GEAR_A_SCORING, GROUND_GEAR_V_SCORING};
 	
 	//Intake Constants

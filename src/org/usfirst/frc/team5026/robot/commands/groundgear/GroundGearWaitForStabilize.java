@@ -96,7 +96,7 @@ public class GroundGearWaitForStabilize extends Command {
     protected void end() {
     	System.out.println("Complete!");
     	SmartDashboard.putBoolean("GroundGearMovement Complete", true);
-    	Robot.groundgear.stopLift();
+//    	Robot.groundgear.stopLift();
     	Robot.groundgear.setElevationState(target);
     }
 
@@ -104,6 +104,6 @@ public class GroundGearWaitForStabilize extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     	System.out.println("INTERRUPTED!");
-    	Robot.groundgear.stopLift();
+//    	Robot.groundgear.stopLift();
     }
 }
