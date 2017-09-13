@@ -14,7 +14,7 @@ public class RobotMap {
 	public static final int CLIMBER_PDPMOTOR_LEFT = 15;
 	
 	// INTAKE MOTORS
-	public static final int INTAKE_MOTOR = 0;
+	//public static final int INTAKE_MOTOR = 0;
 	
 	// DRIVE MOTORS
 	public static final int DRIVE_MOTOR_LEFT_ENCODER = 4;
@@ -29,7 +29,7 @@ public class RobotMap {
 	public static final int DRIVE_RIGHT_BANNER = 0;
 	
 	//GROUND GEAR
-	public static final int GROUND_GEAR_MOTOR_INTAKE = 3; // Tried a new Spark port to avoid overwritting IntakeMotor (regardless that it no longer exists) 
+	public static final int GROUND_GEAR_MOTOR_INTAKE = 0; // Using old Intake Talon 
 	public static final int GROUND_GEAR_MOTOR_LIFT = 7;
 	public static final int GROUND_GEAR_SENSOR = 3;
 	

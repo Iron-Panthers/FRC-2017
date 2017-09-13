@@ -3,6 +3,8 @@ package org.usfirst.frc.team5026.robot;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveShiftGear;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveSwapForwards;
 import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearElevationControlSequence;
+import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearIntake;
+import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearOuttake;
 import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearScoreGear;
 import org.usfirst.frc.team5026.robot.commands.misc.LEDSignalGear;
 import org.usfirst.frc.team5026.util.GroundGearElevationState;
@@ -70,8 +72,8 @@ public class OI {
 		driveButton3.whenPressed(new DriveShiftGear());
 		driveButton2.whileHeld(new LEDSignalGear());
 		
-//		boardButton2.whileHeld(new GroundGearOuttake());
-//		boardButton3.whileHeld(new GroundGearIntake());
+		boardButton2.whileHeld(new GroundGearOuttake());
+		boardButton3.whileHeld(new GroundGearIntake());
 //		boardButton4.whenPressed(new GroundGearStop()); //donut use
 		boardButton5.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Legal));
 		boardButton6.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Lowered));

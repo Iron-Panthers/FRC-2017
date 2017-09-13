@@ -47,7 +47,7 @@ public class Hardware {
 	public DigitalInput driveLeftBanner;
 	public DigitalInput driveRightBanner;
 	
-	public Spark groundGearIntake;
+	public Talon groundGearIntake;
 	public CANTalon groundGearLift;
 	public DriveMotorGroup groundGearLiftgroup; // This is because there is no PIDMotorGroup, it is just DriveMotorGroup for now
 	public DigitalInput groundGearBanner;
@@ -83,13 +83,13 @@ public class Hardware {
 		gearClampSensor = new DigitalInput(RobotMap.GEAR_CLAMP_SENSOR);
 		
 		// Intake
-		intake = new Talon(RobotMap.INTAKE_MOTOR);
+		//intake = new Talon(RobotMap.INTAKE_MOTOR);
 		
 		// LEDs
 		led = new LEDDisplay(RobotMap.CAN_LED_PORT);
 		
 		// Ground Gear
-		groundGearIntake = new Spark(RobotMap.GROUND_GEAR_MOTOR_INTAKE);
+		groundGearIntake = new Talon(RobotMap.GROUND_GEAR_MOTOR_INTAKE);
 		groundGearLift = new CANTalon(RobotMap.GROUND_GEAR_MOTOR_LIFT);
 		groundGearLiftgroup = new DriveMotorGroup(Constants.GROUND_GEAR_MOTOR_INVERTED, Constants.GROUND_GEAR_SENSOR_INVERTED, Constants.GROUND_GEAR_PIDFRNAV, 0, groundGearLift);
 		groundGearBanner = new DigitalInput(RobotMap.GROUND_GEAR_SENSOR);
