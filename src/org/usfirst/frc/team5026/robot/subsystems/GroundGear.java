@@ -22,10 +22,13 @@ public class GroundGear extends GearOpenable {
 	public GroundGear() {
 		hardware = Robot.hardware;
 		hardware.groundGearLiftgroup.resetPosition();
+		hardware.groundGearLiftgroup.setProfile(1, Constants.GROUND_GEAR_SCORING_PIDFRNAV); // Sets up scoring profile
+		hardware.groundGearLiftgroup.setProfile(0); // Makes sure we are on the correct profile as to not override scoring profile
+		setup();
 		
 		setElevationState(GroundGearElevationState.Legal); // Starts in a legal position
 		setIntakeState(GroundGearIntakeState.Neutral); // Not sucking in when starting
-		setup();
+		
 	}
 	
 	@Override
@@ -59,6 +62,7 @@ public class GroundGear extends GearOpenable {
 
 	public void setup() {
 		hardware.groundGearLift.enable();
+		hardware.groundGearLiftgroup.setProfile(0);
 		hardware.groundGearLiftgroup.setupProfileMode();
 		hardware.groundGearLiftgroup.setpidfrnav(Constants.GROUND_GEAR_PIDFRNAV);
 		
@@ -75,11 +79,9 @@ public class GroundGear extends GearOpenable {
 	}
 	public void setElevationState(GroundGearElevationState setState) {
 		// BE CAREFUL WITH THIS METHOD, ONLY CALL AFTER MOVEMENT
+		isOpen = true;
 		if (setState == GroundGearElevationState.Legal) {
 			isOpen = false;
-		}
-		else {
-			isOpen = true;
 		}
 		elevationState = setState;
 		SmartDashboard.putString("Ground Gear Elevation State", elevationState.toString());
@@ -93,8 +95,7 @@ public class GroundGear extends GearOpenable {
 	}
 	public void slowScore() {
 		if (elevationState == GroundGearElevationState.Scoring) {
-			hardware.groundGearLiftgroup.setpidfrnav(Constants.GROUND_GEAR_SCORING_PIDFRNAV);
-			hardware.groundGearLiftgroup.setupProfileMode();
+			hardware.groundGearLiftgroup.setProfile(1);
 			outtakeGear(); // Might be too fast, is not controlled seperately from standard outtake speed
 			hardware.groundGearLiftgroup.profileControl(GroundGearElevationState.Lowered.ticks);
 		}

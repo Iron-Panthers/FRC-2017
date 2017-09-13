@@ -93,6 +93,22 @@ public class DriveMotorGroup implements SpeedController {
 		encoderMotor.set(value);
 	}
 	
+	public void setProfile(int profile, double[] pidfrnav) {
+		encoderMotor.setProfile(profile);
+		encoderMotor.setF(pidfrnav[3]);
+	    encoderMotor.setP(pidfrnav[0]);
+	    encoderMotor.setI(pidfrnav[1]);
+	    encoderMotor.setD(pidfrnav[2]);
+	    encoderMotor.setVoltageRampRate(pidfrnav[4]);
+	    configNominalOutputVoltage(pidfrnav[5], -pidfrnav[5]);
+	    encoderMotor.setMotionMagicAcceleration(pidfrnav[6]);
+	    encoderMotor.setMotionMagicCruiseVelocity(pidfrnav[7]);
+	}
+	
+	public void setProfile(int profile) {
+		encoderMotor.setProfile(profile);
+	}
+	
 	public void setpidfrnav(double[] pidfrnav) {
 		this.pidfrnav = pidfrnav;
 	}

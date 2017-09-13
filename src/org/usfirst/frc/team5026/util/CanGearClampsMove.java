@@ -11,4 +11,8 @@ public class CanGearClampsMove {
 		}
 		return false;
 	}
+	
+	public static boolean canOtherMove(GearOpenable otherClamp) {
+		return !otherClamp.isOpen;
+	}
 }

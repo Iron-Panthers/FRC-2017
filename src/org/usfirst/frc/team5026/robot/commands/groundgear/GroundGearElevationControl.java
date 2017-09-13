@@ -49,6 +49,10 @@ public class GroundGearElevationControl extends Command {
 //    	} else {
 //    		allowed = CanGearClampsMove.checkMovement(Robot.groundgear, Robot.gearclamp);
 //    	}
+    	allowed = CanGearClampsMove.canOtherMove(Robot.gearclamp); // Checks to see if the ground gear can run by checking to see if the clamp is open
+    	if (target == GroundGearElevationState.Legal) {
+    		allowed = true;
+    	}
     	if (allowed) {
     		// Safe error checking, checks gear movement before continuing
     		Robot.groundgear.travelToState(target);
