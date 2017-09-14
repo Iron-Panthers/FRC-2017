@@ -6,10 +6,10 @@ package org.usfirst.frc.team5026.util;
  */
 
 public class MotionProfilePath {
-  public MotionProfilePoints[] points; // Keeps a list of all points
+  public MotionProfilePoint[] points; // Keeps a list of all points
   public int currentIndex = 0; // Keeps track of the current profile point targetted (saves processing speed long term)
   
-  public MotionProfilePath (MotionProfilePoints... p) {
+  public MotionProfilePath (MotionProfilePoint... p) {
     points = p;
   }
   public MotionProfilePoint getClosestPointOnPath(double targetX, double targetY) {
