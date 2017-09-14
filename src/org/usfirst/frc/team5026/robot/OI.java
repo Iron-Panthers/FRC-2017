@@ -1,16 +1,17 @@
 package org.usfirst.frc.team5026.robot;
 
-import org.usfirst.frc.team5026.robot.commands.autonomous.AutoCallCurrent;
-import org.usfirst.frc.team5026.robot.commands.climber.ClimberCycleSpeed;
 import org.usfirst.frc.team5026.robot.commands.climber.ClimberRappel;
 import org.usfirst.frc.team5026.robot.commands.climber.ClimberSequence;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveShiftGear;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveSwapForwards;
 import org.usfirst.frc.team5026.robot.commands.gear.GearClampCommand;
 import org.usfirst.frc.team5026.robot.commands.gear.GearUnClampCommand;
-import org.usfirst.frc.team5026.robot.commands.intake.IntakeIn;
-import org.usfirst.frc.team5026.robot.commands.intake.IntakeOut;
+import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearElevationControlSequence;
+import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearIntake;
+import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearIntakeWithBannerElevation;
+import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearOuttake;
 import org.usfirst.frc.team5026.robot.commands.misc.LEDSignalGear;
+import org.usfirst.frc.team5026.util.GroundGearElevationState;
 import org.usfirst.frc.team5026.util.PantherJoystick;
 
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -42,6 +43,8 @@ public class OI {
 	public Button boardButton7;
 	public Button boardButton8;
 	public Button boardButton9;
+	public Button boardButton10;
+	public Button boardButton11;
 	
 	public OI() {
 		driveJoystick = new PantherJoystick(RobotMap.DRIVE_JOYSTICK);
@@ -59,6 +62,8 @@ public class OI {
 	    boardButton7 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_7);
 	    boardButton8 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_8);
 	    boardButton9 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_9);
+	    boardButton10 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_10);
+	    boardButton11 = new JoystickButton(buttonBoard, RobotMap.BOARD_BUTTON_11);
 	    
 	    driveButton1 = new JoystickButton(driveJoystick, RobotMap.DRIVE_BUTTON_1); //TODO: Add RobotMappings
 	    driveButton2 = new JoystickButton(driveJoystick, RobotMap.DRIVE_BUTTON_2);
@@ -75,12 +80,30 @@ public class OI {
 		
 		
 		boardButton1.whileHeld(new ClimberSequence());
-		boardButton2.whenPressed(new ClimberCycleSpeed());
-		boardButton4.whileHeld(new IntakeIn());
-		boardButton5.whileHeld(new IntakeOut());
+		boardButton2.whileHeld(new GroundGearOuttake());
+		boardButton3.whileHeld(new GroundGearIntake());
+//		boardButton4.whenPressed(new GroundGearStop()); //donut use
+		boardButton5.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Legal));
+		boardButton6.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Lowered));
+		boardButton7.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Scoring));
+		boardButton8.whileHeld(new ClimberRappel());
+		boardButton8.whenPressed(new GroundGearIntakeWithBannerElevation());
+		boardButton9.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.DriveMode));
+		boardButton10.whenPressed(new GearUnClampCommand());
+		boardButton11.whenPressed(new GearClampCommand());
+//		boardButton11.whenPressed(new GroundGearElevationControlSequence()); // This does a toggle
+//		boardButton10.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.DriveMode));
+//		boardButton12.whenPressed(new GroundGearIntakeWithBannerElevation());
+		
+		
+/*//		boardButton1.whileHeld(new ClimberSequence());
+//		boardButton2.whenPressed(new ClimberCycleSpeed());
+		boardButton2.whileHeld(new ClimberClimbSpeed());
+//		boardButton4.whileHeld(new IntakeIn());
+//		boardButton5.whileHeld(new IntakeOut());
 		boardButton6.whenPressed(new GearClampCommand());
 		boardButton7.whenPressed(new GearUnClampCommand());
 		boardButton8.whileHeld(new ClimberRappel());
-		boardButton9.whenPressed(new AutoCallCurrent());
+		boardButton9.whenPressed(new AutoCallCurrent());*/
 	}
 }

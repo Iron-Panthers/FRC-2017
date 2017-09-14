@@ -40,6 +40,36 @@ public class Constants {
 	
 	public static final double CLIMBER_STALL_LIMIT = 5.0;	//=[NEED TESTING]= The current(A) at which the climber motors stall.
 	
+	// GROUND GEAR
+	public static final int GROUND_GEAR_LEGAL_TICKS = 0;
+	public static final int GROUND_GEAR_SCORING_TICKS = -76600;
+	public static final int GROUND_GEAR_DRIVEMODE_TICKS = -130000;
+	public static final int GROUND_GEAR_LOWERED_TICKS = -140000;
+	
+	public static final int GROUND_GEAR_STABILISATION_MAX_COUNT = 10;
+	public static final int GROUND_GEAR_TICK_TOLERANCE = 120;
+	public static final double GROUND_GEAR_OUTPUT_TOLERANCE = 0.05;
+	
+	public static final double GROUND_GEAR_INTAKE_SPEED = -0.4;
+	public static final double GROUND_GEAR_OUTTAKE_SPEED = 0.3;
+	public static final boolean GROUND_GEAR_MOTOR_INVERTED = false;
+	public static final boolean GROUND_GEAR_SENSOR_INVERTED = false;
+	public static final int GROUND_GEAR_PID_PROFILE = 0;
+	public static final double GROUND_GEAR_P = 0.65;
+	public static final double GROUND_GEAR_I = 0;
+	public static final double GROUND_GEAR_D = 0;
+	public static final double GROUND_GEAR_F = 0.01152806; // Calculated by doing 100% of full speed is equivalent to 100% PWM
+	public static final double GROUND_GEAR_R = 0;
+	public static final double GROUND_GEAR_N = 0;
+	public static final double GROUND_GEAR_A = 500; // acceleration
+	public static final double GROUND_GEAR_V = 1600; // velocity
+	public static final double[] GROUND_GEAR_PIDFRNAV = {GROUND_GEAR_P, GROUND_GEAR_I, GROUND_GEAR_D, GROUND_GEAR_F, GROUND_GEAR_R, GROUND_GEAR_N, GROUND_GEAR_A, GROUND_GEAR_V};
+	
+	public static final double GROUND_GEAR_N_SCORING = 0;
+	public static final double GROUND_GEAR_A_SCORING = 500; // Rotations / min * sec; acceleration
+	public static final double GROUND_GEAR_V_SCORING = 1000; // Rotations / min; velocity
+	public static final double[] GROUND_GEAR_SCORING_PIDFRNAV = {GROUND_GEAR_P, GROUND_GEAR_I, GROUND_GEAR_D, GROUND_GEAR_F, GROUND_GEAR_R, GROUND_GEAR_N_SCORING, GROUND_GEAR_A_SCORING, GROUND_GEAR_V_SCORING};
+	
 	//Intake Constants
 	public static final double INTAKE_INTAKE_SPEED = 1;
 	public static final double INTAKE_OUTTAKE_SPEED = -1;
@@ -178,5 +208,6 @@ public class Constants {
 	 * measured (unloaded): 1834
 	 * measured (loaded, on field): 1200
 	 */
+	
 	
 }

@@ -20,6 +20,7 @@ import org.usfirst.frc.team5026.robot.commands.misc.JoystickChoose;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
+import org.usfirst.frc.team5026.robot.subsystems.GroundGear;
 import org.usfirst.frc.team5026.robot.subsystems.Intake;
 import org.usfirst.frc.team5026.util.Constants;
 import org.usfirst.frc.team5026.util.Hardware;
@@ -48,6 +49,7 @@ public class Robot extends IterativeRobot {
 	public static GearClamp gearclamp;
 	public static Climber climber;
 	public static Intake intake;
+	public static GroundGear groundgear;
 	
 	Command autoCommand;
 	public static SendableChooser <Command> autoChooser = new SendableChooser<>();
@@ -61,13 +63,13 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		hardware = new Hardware();
-		initSubsystems();
 		SmartDashboard.putData(Scheduler.getInstance());
 		joyChooser.addDefault("Red Joystick", new JoystickChoose(JoystickType.RED));
 		// The name should be joystick type, the object is: new JoystickChoose(proper joystick type);
 		joyChooser.addObject("Blue Joystick", new JoystickChoose(JoystickType.BLUE));
 		joyChooser.addObject("Spinny Joystick", new JoystickChoose(JoystickType.SPINNY));
 		SmartDashboard.putData("Joystick Type", joyChooser);
+		initSubsystems();
 		SmartDashboard.putData(climber);
 		displayMods();
 		CameraServer camera = CameraServer.getInstance();
@@ -78,6 +80,7 @@ public class Robot extends IterativeRobot {
 		drive = new Drive();
 		climber = new Climber();
 		gearclamp = new GearClamp();
+		groundgear = new GroundGear();
 		intake = new Intake();
 		oi.mapButtonBoard();
 	}
