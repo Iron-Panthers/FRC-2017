@@ -26,12 +26,12 @@ public class RobotMap {
 	
 	// DRIVE SENSORS
 	public static final int DRIVE_LEFT_BANNER = 1;
-	public static final int DRIVE_RIGHT_BANNER = 0;
+	public static final int DRIVE_RIGHT_BANNER = 2;
 	
 	//GROUND GEAR
 	public static final int GROUND_GEAR_MOTOR_INTAKE = 0; // Using old Intake Talon 
 	public static final int GROUND_GEAR_MOTOR_LIFT = 7;
-	public static final int GROUND_GEAR_SENSOR = 3;
+	public static final int GROUND_GEAR_SENSOR = 0;
 	
 	// SOLENOIDS
 	public static final int SOLENOID_SHIFTER_FORWARD = 2;
@@ -62,7 +62,7 @@ public class RobotMap {
 	// GEAR
 	public static final int GEAR_PISTON_FORWARD = 0;
 	public static final int GEAR_PISTON_REVERSE = 1;
-	public static final int GEAR_CLAMP_SENSOR = 2;
+	public static final int GEAR_CLAMP_SENSOR = 3;
 	
 	// LED
 	public static final int CAN_LED_PORT = 3;

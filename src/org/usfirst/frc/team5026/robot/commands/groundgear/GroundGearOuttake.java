@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class GroundGearOuttake extends Command{
 
 	public GroundGearOuttake() {
-		requires(Robot.groundgear);
+//		requires(Robot.groundgear);
 	}
 	@Override
 	protected void initialize(){

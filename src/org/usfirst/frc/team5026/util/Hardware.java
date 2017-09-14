@@ -86,7 +86,7 @@ public class Hardware {
 		//intake = new Talon(RobotMap.INTAKE_MOTOR);
 		
 		// LEDs
-		led = new LEDDisplay(RobotMap.CAN_LED_PORT);
+		//led = new LEDDisplay(RobotMap.CAN_LED_PORT);
 		
 		// Ground Gear
 		groundGearIntake = new Talon(RobotMap.GROUND_GEAR_MOTOR_INTAKE);

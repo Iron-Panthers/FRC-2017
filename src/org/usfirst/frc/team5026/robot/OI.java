@@ -1,11 +1,15 @@
 package org.usfirst.frc.team5026.robot;
 
+import org.usfirst.frc.team5026.robot.commands.climber.ClimberRappel;
+import org.usfirst.frc.team5026.robot.commands.climber.ClimberSequence;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveShiftGear;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveSwapForwards;
+import org.usfirst.frc.team5026.robot.commands.gear.GearClampCommand;
+import org.usfirst.frc.team5026.robot.commands.gear.GearUnClampCommand;
 import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearElevationControlSequence;
 import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearIntake;
+import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearIntakeWithBannerElevation;
 import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearOuttake;
-import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearScoreGear;
 import org.usfirst.frc.team5026.robot.commands.misc.LEDSignalGear;
 import org.usfirst.frc.team5026.util.GroundGearElevationState;
 import org.usfirst.frc.team5026.util.PantherJoystick;
@@ -72,14 +76,21 @@ public class OI {
 		driveButton3.whenPressed(new DriveShiftGear());
 		driveButton2.whileHeld(new LEDSignalGear());
 		
+		boardButton1.whileHeld(new ClimberSequence());
 		boardButton2.whileHeld(new GroundGearOuttake());
 		boardButton3.whileHeld(new GroundGearIntake());
 //		boardButton4.whenPressed(new GroundGearStop()); //donut use
 		boardButton5.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Legal));
 		boardButton6.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Lowered));
 		boardButton7.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Scoring));
-		boardButton11.whenPressed(new GroundGearElevationControlSequence()); // This does a toggle
-		boardButton8.whenPressed(new GroundGearScoreGear());
+		boardButton8.whileHeld(new ClimberRappel());
+		boardButton8.whenPressed(new GroundGearIntakeWithBannerElevation());
+		boardButton9.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.DriveMode));
+		boardButton10.whenPressed(new GearUnClampCommand());
+		boardButton11.whenPressed(new GearClampCommand());
+//		boardButton11.whenPressed(new GroundGearElevationControlSequence()); // This does a toggle
+//		boardButton10.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.DriveMode));
+//		boardButton12.whenPressed(new GroundGearIntakeWithBannerElevation());
 		
 		
 /*//		boardButton1.whileHeld(new ClimberSequence());

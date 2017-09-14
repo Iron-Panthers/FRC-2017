@@ -42,11 +42,12 @@ public class Constants {
 	
 	// GROUND GEAR
 	public static final int GROUND_GEAR_LEGAL_TICKS = 0;
-	public static final int GROUND_GEAR_SCORING_TICKS = -60000;
-	public static final int GROUND_GEAR_LOWERED_TICKS = -132000;
+	public static final int GROUND_GEAR_SCORING_TICKS = -76600;
+	public static final int GROUND_GEAR_DRIVEMODE_TICKS = -130000;
+	public static final int GROUND_GEAR_LOWERED_TICKS = -140000;
 	
 	public static final int GROUND_GEAR_STABILISATION_MAX_COUNT = 10;
-	public static final int GROUND_GEAR_TICK_TOLERANCE = 70;
+	public static final int GROUND_GEAR_TICK_TOLERANCE = 120;
 	public static final double GROUND_GEAR_OUTPUT_TOLERANCE = 0.05;
 	
 	public static final double GROUND_GEAR_INTAKE_SPEED = -0.4;
