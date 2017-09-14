@@ -3,6 +3,7 @@ package org.usfirst.frc.team5026.util;
 import com.ctre.CANTalon;
 import com.ctre.CANTalon.FeedbackDevice;
 import com.ctre.CANTalon.TalonControlMode;
+import com.ctre.CANTalon.TrajectoryPoint;
 
 import edu.wpi.first.wpilibj.SpeedController;
 
