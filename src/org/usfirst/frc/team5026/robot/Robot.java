@@ -206,6 +206,10 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		SmartDashboard.putBoolean("Left Banner", hardware.driveLeftBanner.get());
 		SmartDashboard.putBoolean("Right banner", hardware.driveRightBanner.get());
+		SmartDashboard.putNumber("Pot", hardware.pot.get());  //ground = 0.22, on to peg = 0.55, inside robot = 0.87
+		
+		
+		
 		Scheduler.getInstance().run();		
 	}
 

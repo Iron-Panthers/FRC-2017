@@ -5,11 +5,11 @@ import org.usfirst.frc.team5026.robot.RobotMap;
 import com.ctre.CANTalon;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SPI.Port;
-import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 
@@ -48,11 +48,12 @@ public class Hardware {
 	public DigitalInput driveRightBanner;
 	
 	public Talon groundGearIntake;
-	public CANTalon groundGearLift;
-	public DriveMotorGroup groundGearLiftgroup; // This is because there is no PIDMotorGroup, it is just DriveMotorGroup for now
+	public Talon groundGearLift;
 	public DigitalInput groundGearBanner;
 	
 	public LEDDisplay led;
+	
+	public AnalogPotentiometer pot;
 
 	public Hardware() {
 		// Drive Motors
@@ -90,9 +91,9 @@ public class Hardware {
 		
 		// Ground Gear
 		groundGearIntake = new Talon(RobotMap.GROUND_GEAR_MOTOR_INTAKE);
-		groundGearLift = new CANTalon(RobotMap.GROUND_GEAR_MOTOR_LIFT);
-		groundGearLiftgroup = new DriveMotorGroup(Constants.GROUND_GEAR_MOTOR_INVERTED, Constants.GROUND_GEAR_SENSOR_INVERTED, Constants.GROUND_GEAR_PIDFRNAV, 0, groundGearLift);
+		groundGearLift = new Talon(RobotMap.GROUND_GEAR_MOTOR_LIFT);
 		groundGearBanner = new DigitalInput(RobotMap.GROUND_GEAR_SENSOR);
+		pot = new AnalogPotentiometer(RobotMap.GROUND_GEAR_POT);
 	}
 	public void buildGyro(int tries) {
 		System.out.println("RECONSTRUCTING TRY: "+tries);

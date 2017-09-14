@@ -10,6 +10,7 @@ import org.usfirst.frc.team5026.util.Hardware;
 
 import com.ctre.CANTalon;
 
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class GroundGear extends GearOpenable {
@@ -21,9 +22,6 @@ public class GroundGear extends GearOpenable {
 	
 	public GroundGear() {
 		hardware = Robot.hardware;
-		hardware.groundGearLiftgroup.resetPosition();
-		hardware.groundGearLiftgroup.setProfile(1, Constants.GROUND_GEAR_SCORING_PIDFRNAV); // Sets up scoring profile
-		hardware.groundGearLiftgroup.setProfile(0); // Makes sure we are on the correct profile as to not override scoring profile
 		setup();
 		
 		setElevationState(GroundGearElevationState.Legal); // Starts in a legal position
@@ -61,19 +59,39 @@ public class GroundGear extends GearOpenable {
 	}
 
 	public void setup() {
-		hardware.groundGearLift.enable();
-		hardware.groundGearLiftgroup.setProfile(0);
-		hardware.groundGearLiftgroup.setupProfileMode();
-		hardware.groundGearLiftgroup.setpidfrnav(Constants.GROUND_GEAR_PIDFRNAV);
+		hardware.groundGearLift.set(0);	
+	}
+	
+	public double deltaToTargetState(GroundGearElevationState targetState) {
+		if (targetState == elevationState) {
+			return 0;
+		}
+		
+		double wantedPot = targetState.potValue;
+		double delta = wantedPot - hardware.pot.get();
+		return delta;
+	}
+	
+	public void moveTowardsState(GroundGearElevationState targetState) {
+		double delta = deltaToTargetState(targetState);
+		
+		if (delta > 0) { //go into robot more
+			hardware.groundGearLift.set(0.1);
+		} else { //go out of robot more
+			hardware.groundGearLift.set(-0.1);
+		}
 		
 	}
+	
+	
 	public void travelToState(GroundGearElevationState targetState) {
 		if (targetState == elevationState) {
 			// We are already at that state
 			return;
-		}
+		}		
+		
 //		hardware.groundGearLiftgroup.positionControl(targetState.ticks); // Target ticks
-		hardware.groundGearLiftgroup.profileControl(targetState.rotations);
+//		hardware.groundGearLiftgroup.profileControl(targetState.rotations);
 //		hardware.groundGearLiftgroup.setupVoltageMode();
 //		hardware.groundGearLiftgroup.set(1);
 	}
@@ -87,7 +105,7 @@ public class GroundGear extends GearOpenable {
 		SmartDashboard.putString("Ground Gear Elevation State", elevationState.toString());
 	}
 	public void stopLift() {
-		hardware.groundGearLift.disable();
+		hardware.groundGearLift.set(0);
 	}
 	public void stopIntake() {
 		hardware.groundGearIntake.set(0);
@@ -95,16 +113,16 @@ public class GroundGear extends GearOpenable {
 	}
 	public void slowScore() {
 		if (elevationState == GroundGearElevationState.Scoring) {
-			hardware.groundGearLiftgroup.setProfile(1);
+			//hardware.groundGearLiftgroup.setProfile(1);
 			outtakeGear(); // Might be too fast, is not controlled seperately from standard outtake speed
-			hardware.groundGearLiftgroup.profileControl(GroundGearElevationState.Lowered.ticks);
+			//hardware.groundGearLiftgroup.profileControl(GroundGearElevationState.Lowered.ticks);
 		}
 	}
 	public boolean hasGear() {
 		return hardware.groundGearBanner.get();
 	}
 
-	public CANTalon getElevationMotor() {
+	public Talon getElevationMotor() {
 		return hardware.groundGearLift;
 	}
 

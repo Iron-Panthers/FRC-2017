@@ -5,10 +5,8 @@ public enum GroundGearElevationState {
 	Scoring(Constants.GROUND_GEAR_SCORING_TICKS),
 	Lowered(Constants.GROUND_GEAR_LOWERED_TICKS);
 	
-	public int ticks;
-	public double rotations;
-	private GroundGearElevationState (int t) {
-		ticks = t;
-		rotations = ticks / (Constants.ENCODER_TICKS_PER_ROTATION * 4.0); // 4.0 if quadature
+	public double potValue;
+	private GroundGearElevationState (double t) {
+		potValue = t;
 	}
 }

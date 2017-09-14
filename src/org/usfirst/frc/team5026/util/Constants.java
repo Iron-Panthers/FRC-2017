@@ -41,9 +41,9 @@ public class Constants {
 	public static final double CLIMBER_STALL_LIMIT = 5.0;	//=[NEED TESTING]= The current(A) at which the climber motors stall.
 	
 	// GROUND GEAR
-	public static final int GROUND_GEAR_LEGAL_TICKS = 0;
-	public static final int GROUND_GEAR_SCORING_TICKS = -60000;
-	public static final int GROUND_GEAR_LOWERED_TICKS = -132000;
+	public static final double GROUND_GEAR_LEGAL_TICKS = 0.87;
+	public static final double GROUND_GEAR_SCORING_TICKS = 0.55;
+	public static final double GROUND_GEAR_LOWERED_TICKS = 0.22;
 	
 	public static final int GROUND_GEAR_STABILISATION_MAX_COUNT = 10;
 	public static final int GROUND_GEAR_TICK_TOLERANCE = 70;

@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5026.robot.commands.groundgear;
 
+import org.usfirst.frc.team5026.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -8,8 +10,8 @@ import edu.wpi.first.wpilibj.command.Command;
 public class GroundGearScoreGear extends Command {
 
     public GroundGearScoreGear() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        requires(Robot.groundgear);
+//        requires(Robot.drive); // May want to require drive to slowly drive backwards, will lost likely be part of a sequence, however
     }
 
     // Called just before this Command runs the first time
