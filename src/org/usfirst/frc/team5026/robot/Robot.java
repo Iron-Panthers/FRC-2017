@@ -25,6 +25,7 @@ import org.usfirst.frc.team5026.robot.subsystems.Intake;
 import org.usfirst.frc.team5026.util.Constants;
 import org.usfirst.frc.team5026.util.Hardware;
 import org.usfirst.frc.team5026.util.JoystickType;
+import org.usfirst.frc.team5026.util.motionprofile.KinematicModel;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;

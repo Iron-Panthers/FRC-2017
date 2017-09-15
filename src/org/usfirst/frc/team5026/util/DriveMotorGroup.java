@@ -81,6 +81,9 @@ public class DriveMotorGroup implements SpeedController {
 	    encoderMotor.setMotionMagicAcceleration(pidfrnav[6]);
 	    encoderMotor.setMotionMagicCruiseVelocity(pidfrnav[7]);
 	}
+	public void setupMotionProfileMode() {
+		encoderMotor.changeControlMode(TalonControlMode.MotionProfile);
+	}
 	public void positionControl(double target) {
     	encoderMotor.changeControlMode(TalonControlMode.Position);
     	encoderMotor.set(target);
@@ -93,7 +96,11 @@ public class DriveMotorGroup implements SpeedController {
 		encoderMotor.changeControlMode(TalonControlMode.PercentVbus);
 		encoderMotor.set(value);
 	}
-	
+	public void motionProfileControl() {
+		// The motor is already fed the values!!! no target!
+		encoderMotor.enable();
+		encoderMotor.processMotionProfileBuffer();
+	}
 	public void setpidfrnav(double[] pidfrnav) {
 		this.pidfrnav = pidfrnav;
 	}

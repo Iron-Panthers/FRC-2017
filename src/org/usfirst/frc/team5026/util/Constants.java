@@ -208,6 +208,9 @@ public class Constants {
 	 * measured (unloaded): 1834
 	 * measured (loaded, on field): 1200
 	 */
+	public static final double DELTA_TIME = 0.01; // Seconds
+	public static final double MOTION_PROFILE_VELOCITY = 20; // Inches/seconds
+	public static final double ROBOT_WIDTH = 30; // Inches
 	
 	
 }

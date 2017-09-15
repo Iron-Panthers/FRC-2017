@@ -8,14 +8,16 @@ import org.usfirst.frc.team5026.util.GearPosition;
 import org.usfirst.frc.team5026.util.Hardware;
 import org.usfirst.frc.team5026.util.LEDDisplay;
 import org.usfirst.frc.team5026.util.PantherJoystick;
+import org.usfirst.frc.team5026.util.motionprofile.KinematicModel;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class Drive extends Subsystem {
+public class Drive extends Subsystem implements KinematicModel {
 	private RobotDrive drive;
 	
 	private PantherJoystick joystick;
@@ -35,6 +37,10 @@ public class Drive extends Subsystem {
 	public double startingRightEncoderPos;
 	public double targetLeftEncoderPos;
 	public double targetRightEncoderPos;
+	
+	public double x = 0; // REAL WORLD X
+	public double y = 0; // REAL WORLD Y
+	
 	private boolean backwards;
 	
 	public Drive() {
@@ -206,5 +212,38 @@ public class Drive extends Subsystem {
 	public void profileDriveInches(double targetLeft, double targetRight) {
 		left.profileControl((targetLeft * Constants.ENCODER_TICKS_PER_INCH) / (Constants.ENCODER_TICKS_PER_ROTATION * 4.0)); //4x because quadature enc
 		right.profileControl((targetRight * Constants.ENCODER_TICKS_PER_INCH) / (Constants.ENCODER_TICKS_PER_ROTATION * 4.0));
+	}
+	public void updatePosition(double deltaTime) {
+		// Runs every DELTA_TIME
+		x += getVelocity() * Math.sin(getRotationInRadians()) * deltaTime;
+		y += getVelocity() * Math.cos(getRotationInRadians()) * deltaTime;
+		SmartDashboard.putNumber("X Value of Robot", x);
+		SmartDashboard.putNumber("Y Value of Robot", y);
+	}
+	@Override
+	public double getWidth() {
+		return Constants.ROBOT_WIDTH;
+	}
+	@Override
+	public double[] getCenter() {
+		// Needs an accumulator function 
+		double[] out = new double[2];
+		out[0] = x;
+		out[1] = y;
+		return out;
+	}
+	@Override
+	public double getRotationInRadians() {
+		if (hardware.gyro != null) 
+			return hardware.gyro.getAngle() / 180.0 * Math.PI;
+		return 0;
+	}
+	@Override
+	public double getVelocity() {
+		// Convert velocity to inches/sec or whatever value is in Constants.
+		double avg = (left.getEncMotor().getSpeed() + right.getEncMotor().getSpeed()) / 2;
+		// TODO CONVERSION
+		avg *= Constants.INCHES_PER_ENCODER_REV * 10; // 10 is for conversion from 100ms to 1s
+		return avg;
 	}
 }
