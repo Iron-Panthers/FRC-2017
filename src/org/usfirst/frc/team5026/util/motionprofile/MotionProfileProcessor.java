@@ -1,4 +1,6 @@
-package org.usfirst.frc.team5026.util;
+package org.usfirst.frc.team5026.util.motionprofile;
+
+import org.usfirst.frc.team5026.util.Constants;
 
 /*
  * Overall goal:
@@ -23,10 +25,8 @@ package org.usfirst.frc.team5026.util;
 public class MotionProfileProcessor {
 	public KinematicModel robot;
 	public MotionProfilePath currentPath;
-	public MotionProfilePoint targetPoint;
-	public double[][] smallLeftPath; // ex: (2,4),(3,4); params are: (x,velocity) along the constructed curve to the target point
-	public double[][] smallCenterPath;
-	public double[][] smallRightPath;
+	public MotionProfileSmallCurve smallPath;
+//	public MotionProfileSegment targetPoint;
 	
 	public MotionProfileProcessor(KinematicModel r) {
 		robot = r;
@@ -34,18 +34,38 @@ public class MotionProfileProcessor {
 	public void setpath(MotionProfilePath path) {
 		currentPath = path;
 	}
-	public MotionProfilePoint getPointClosestToDistance(double distance) {
+	public MotionProfileSegment getPointClosestToDistance(double distance) {
 		double[] c = robot.getCenter();
-		double r = robot.getRotation();
-		double x = c[0] + distance * Math.sin(r * Math.PI / 180.0); // Converts to radians, finds distance forwards (using current robot heading)
-		double y = c[1] + distance * Math.cos(r * Math.PI / 180.0);
+		double r = robot.getRotationInRadians();
+//		double x = c[0] + distance * Math.sin(r * Math.PI / 180.0); // Converts to radians, finds distance forwards (using current robot heading)
+//		double y = c[1] + distance * Math.cos(r * Math.PI / 180.0);
+		double x = c[0] + distance * Math.sin(r);
+		double y = c[1] + distance * Math.cos(r);
 		return currentPath.getClosestPointOnPath(x, y);
 	}
-	public void setTarget(MotionProfilePoint p) {
-		targetPoint = p;
-	}
-	public MotionProfilePoint findClosestPoint() {
+//	public void setTarget(MotionProfileSegment p) {
+//		targetPoint = p;
+//	}
+	public MotionProfileSegment findClosestPoint() {
 		double[] c = robot.getCenter();
 		return currentPath.getClosestPointOnPath(c[0], c[1]);
 	}
+	public MotionProfileSegment findActualPosition() {
+		double[] c = robot.getCenter();
+		return new MotionProfileSegment(c[0], c[1], robot.getRotationInRadians(), robot.getVelocity(), Constants.DELTA_TIME);
+	}
+	public MotionProfileSmallCurve getPathForPoint(double distance) {
+		MotionProfileSmallCurve spline = new MotionProfileSmallCurve();
+		spline.constructSplines(getPointClosestToDistance(distance), findActualPosition());
+		return spline;
+	}
+	public MotionProfileSmallCurve getPathForPoint(MotionProfileSegment s) {
+		MotionProfileSmallCurve spline = new MotionProfileSmallCurve();
+		spline.constructSplines(findActualPosition(), s);
+		return spline;
+	}
+	public void setsmallpath(MotionProfileSmallCurve spline) {
+		smallPath = spline;
+	}
+	
 }
