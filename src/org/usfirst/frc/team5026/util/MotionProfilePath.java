@@ -14,7 +14,7 @@ public class MotionProfilePath {
   }
   public MotionProfilePoint getClosestPointOnPath(double targetX, double targetY) {
     double lastDistance = 10000; // Sets the last distance to a large number initially.
-    MotionProfilePoint targetPoint; // Uses MotionProfilePoint as a targetPoint
+    MotionProfilePoint targetPoint = points[points.length-1]; // Uses MotionProfilePoint as a targetPoint, default last point
     for (int i = currentIndex; i < points.length; i++) {
       // Iterates over all points to determine closest point to the path.
       double dist = points[i].distance(targetX, targetY); // Distance formula
@@ -29,5 +29,8 @@ public class MotionProfilePath {
   }
   public void updateCurrentIndex() {
     currentIndex++; // Updates currentIndex after a point been successfully travelled to. In this way, by starting at 0 we include the current point as well.
+  }
+  public void setCurrentIndex(int ind) {
+	  currentIndex = ind;
   }
 }

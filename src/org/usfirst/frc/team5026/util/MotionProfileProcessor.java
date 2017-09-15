@@ -21,5 +21,31 @@ package org.usfirst.frc.team5026.util;
  * The Talon SRX takes in parameters of type x,t. We fill the Talon SRX MP buffer with these points, then follow the curve until we reach our final point, or our fixed distance finds a new path point to target, which will then be added to the buffer.
  */
 public class MotionProfileProcessor {
-
+	public KinematicModel robot;
+	public MotionProfilePath currentPath;
+	public MotionProfilePoint targetPoint;
+	public double[][] smallLeftPath; // ex: (2,4),(3,4); params are: (x,velocity) along the constructed curve to the target point
+	public double[][] smallCenterPath;
+	public double[][] smallRightPath;
+	
+	public MotionProfileProcessor(KinematicModel r) {
+		robot = r;
+	}
+	public void setpath(MotionProfilePath path) {
+		currentPath = path;
+	}
+	public MotionProfilePoint getPointClosestToDistance(double distance) {
+		double[] c = robot.getCenter();
+		double r = robot.getRotation();
+		double x = c[0] + distance * Math.sin(r * Math.PI / 180.0); // Converts to radians, finds distance forwards (using current robot heading)
+		double y = c[1] + distance * Math.cos(r * Math.PI / 180.0);
+		return currentPath.getClosestPointOnPath(x, y);
+	}
+	public void setTarget(MotionProfilePoint p) {
+		targetPoint = p;
+	}
+	public MotionProfilePoint findClosestPoint() {
+		double[] c = robot.getCenter();
+		return currentPath.getClosestPointOnPath(c[0], c[1]);
+	}
 }
