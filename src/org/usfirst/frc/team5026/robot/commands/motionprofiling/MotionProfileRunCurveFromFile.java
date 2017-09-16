@@ -7,6 +7,7 @@ import com.ctre.CANTalon.MotionProfileStatus;
 import com.ctre.CANTalon.TrajectoryPoint;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -24,7 +25,7 @@ public class MotionProfileRunCurveFromFile extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	TrajectoryPoint[][] overall = MotionProfileWritePath.readFile("/home/lvuser/Path.mpp");
+    	TrajectoryPoint[][] overall = MotionProfileWritePath.readFile(SmartDashboard.getString("MP Save File", "/home/lvuser/Path.mpp"));
     	
     	lefts = overall[0];
     	rights = overall[1];

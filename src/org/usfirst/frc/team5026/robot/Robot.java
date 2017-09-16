@@ -72,6 +72,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Joystick Type", joyChooser);
 		initSubsystems();
 		SmartDashboard.putData(climber);
+		SmartDashboard.putString("MP Save File", "/home/lvuser/Path.mpp");
 		displayMods();
 		CameraServer camera = CameraServer.getInstance();
 		camera.startAutomaticCapture("cam1", 0);

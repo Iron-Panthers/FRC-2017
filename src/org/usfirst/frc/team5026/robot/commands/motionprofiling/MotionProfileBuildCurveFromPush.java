@@ -9,6 +9,7 @@ import org.usfirst.frc.team5026.util.motionprofile.MotionProfileWritePath;
 import com.ctre.CANTalon.TrajectoryPoint;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -48,7 +49,7 @@ public class MotionProfileBuildCurveFromPush extends Command {
     protected void interrupted() {
     	// It is a whileheld, so this will happen to end it
     	addPoint(true);
-    	MotionProfileWritePath.writeFile(lefts, rights, "/home/lvuser/Path.mpp");
+    	MotionProfileWritePath.writeFile(lefts, rights, SmartDashboard.getString("MP Save File", "/home/lvuser/Path.mpp"));
     	Robot.drive.left.setBrakeMode(true);
     	Robot.drive.right.setBrakeMode(true);
     }
