@@ -73,11 +73,11 @@ public class Drive extends Subsystem {
 		switch (p) {
 		case LOW:
 			shifter.set(Value.kReverse);
-			led.writeRegister(Constants.LED_SHIFT_INDEX, Constants.LED_SHIFT_HIGH);
+//			led.writeRegister(Constants.LED_SHIFT_INDEX, Constants.LED_SHIFT_HIGH);
 			break;
 		case HIGH:
 			shifter.set(Value.kForward);
-			led.writeRegister(Constants.LED_SHIFT_INDEX, Constants.LED_SHIFT_LOW);
+//			led.writeRegister(Constants.LED_SHIFT_INDEX, Constants.LED_SHIFT_LOW);
 			break;
 		}
 		pos = p;

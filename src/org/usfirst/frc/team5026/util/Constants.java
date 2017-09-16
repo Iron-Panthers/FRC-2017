@@ -62,7 +62,7 @@ public class Constants {
 	public static final double GROUND_GEAR_R = 0;
 	public static final double GROUND_GEAR_N = 0;
 	public static final double GROUND_GEAR_A = 500; // acceleration
-	public static final double GROUND_GEAR_V = 1600; // velocity
+	public static final double GROUND_GEAR_V = 2000; // velocity
 	public static final double[] GROUND_GEAR_PIDFRNAV = {GROUND_GEAR_P, GROUND_GEAR_I, GROUND_GEAR_D, GROUND_GEAR_F, GROUND_GEAR_R, GROUND_GEAR_N, GROUND_GEAR_A, GROUND_GEAR_V};
 	
 	public static final double GROUND_GEAR_N_SCORING = 0;

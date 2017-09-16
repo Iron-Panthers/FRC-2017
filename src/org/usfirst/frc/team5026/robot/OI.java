@@ -74,7 +74,7 @@ public class OI {
 	public void mapButtonBoard() {
 		driveButton1.whileHeld(new DriveSwapForwards());
 		driveButton3.whenPressed(new DriveShiftGear());
-		driveButton2.whileHeld(new LEDSignalGear());
+//		driveButton2.whileHeld(new LEDSignalGear());
 		
 		boardButton1.whileHeld(new ClimberSequence());
 		boardButton2.whileHeld(new GroundGearOuttake());
@@ -83,7 +83,7 @@ public class OI {
 		boardButton5.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Legal));
 		boardButton6.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Lowered));
 		boardButton7.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Scoring));
-		boardButton8.whileHeld(new ClimberRappel());
+//		boardButton8.whileHeld(new ClimberRappel());
 		boardButton8.whenPressed(new GroundGearIntakeWithBannerElevation());
 		boardButton9.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.DriveMode));
 		boardButton10.whenPressed(new GearUnClampCommand());
