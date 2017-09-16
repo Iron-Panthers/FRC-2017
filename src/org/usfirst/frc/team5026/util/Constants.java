@@ -61,7 +61,7 @@ public class Constants {
 	public static final double GROUND_GEAR_F = 0.01152806; // Calculated by doing 100% of full speed is equivalent to 100% PWM
 	public static final double GROUND_GEAR_R = 0;
 	public static final double GROUND_GEAR_N = 0;
-	public static final double GROUND_GEAR_A = 500; // acceleration
+	public static final double GROUND_GEAR_A = 1000; // acceleration
 	public static final double GROUND_GEAR_V = 2000; // velocity
 	public static final double[] GROUND_GEAR_PIDFRNAV = {GROUND_GEAR_P, GROUND_GEAR_I, GROUND_GEAR_D, GROUND_GEAR_F, GROUND_GEAR_R, GROUND_GEAR_N, GROUND_GEAR_A, GROUND_GEAR_V};
 	
@@ -128,9 +128,9 @@ public class Constants {
 	public static double AUTO_BOILER_ANGLE_RED = -60; 
 	
 	//DriveCarveToPegFromLoadingZoneRed
-	public static double AUTO_LOADING_TARGET_FAR_RED = -84; //12.8
-	public static double AUTO_LOADING_TARGET_CLOSE_RED = -84; //9.1
-	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_RED = -67; //4.5
+	public static double AUTO_LOADING_TARGET_FAR_RED = -78.5; //12.8
+	public static double AUTO_LOADING_TARGET_CLOSE_RED = -78.5; //9.1
+	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_RED = -76; //4.5
 	public static int AUTO_LOADING_CARVE_COUNT_RED = 25;
 	public static int AUTO_LOADING_STRAIGHT_COUNT_RED = 25;
 	public static double AUTO_LOADING_ANGLE_RED = 60; 
@@ -157,9 +157,9 @@ public class Constants {
 	public static double AUTO_BOILER_ANGLE_BLUE = 60;	
 	
 	//DriveCarveToPegFromLoadingZoneBlue
-	public static double AUTO_LOADING_TARGET_FAR_BLUE = -76; //12.8
-	public static double AUTO_LOADING_TARGET_CLOSE_BLUE = -76; //9.1
-	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_BLUE = -70; //4.5
+	public static double AUTO_LOADING_TARGET_FAR_BLUE = -75; //12.8
+	public static double AUTO_LOADING_TARGET_CLOSE_BLUE = -75; //9.1
+	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_BLUE = -75; //4.5
 	public static int AUTO_LOADING_CARVE_COUNT_BLUE = 25;
 	public static int AUTO_LOADING_STRAIGHT_COUNT_BLUE = 25;
 	public static double AUTO_LOADING_ANGLE_BLUE = -60;
