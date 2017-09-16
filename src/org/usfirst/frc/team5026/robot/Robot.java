@@ -131,7 +131,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-		joyChooser.getSelected().start();
+//		joyChooser.getSelected().start();
 	}
 
 	/**
