@@ -100,6 +100,7 @@ public class GroundGear extends GearOpenable {
 		}
 	}
 	public boolean hasGear() {
+		System.out.println(hardware.groundGearBanner.get());
 		return hardware.groundGearBanner.get();
 	}
 
