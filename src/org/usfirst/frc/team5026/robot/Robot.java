@@ -17,6 +17,7 @@ import org.usfirst.frc.team5026.robot.commands.autonomous.sequences.AutoRedDrive
 import org.usfirst.frc.team5026.robot.commands.autonomous.sequences.AutoRedDriveCarveRightToPegFromLoadingZoneWithGyro;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveTurnXDegrees;
 import org.usfirst.frc.team5026.robot.commands.misc.JoystickChoose;
+import org.usfirst.frc.team5026.robot.commands.motionprofiling.MotionProfileRunCurveFromFile;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
@@ -25,7 +26,6 @@ import org.usfirst.frc.team5026.robot.subsystems.Intake;
 import org.usfirst.frc.team5026.util.Constants;
 import org.usfirst.frc.team5026.util.Hardware;
 import org.usfirst.frc.team5026.util.JoystickType;
-import org.usfirst.frc.team5026.util.motionprofile.KinematicModel;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -118,6 +118,7 @@ public class Robot extends IterativeRobot {
 		autoChooser.addObject("Auto Drop Gear", new AutoDriveDistanceMotionProfilingInches("Auto Drop Gear Left","Auto Drop Gear Right", Constants.AUTO_MIDDLE_TARGET_COUNT));
 		autoChooser.addObject("Auto Gyro Loop", new DriveTurnXDegrees(60, false));
 		autoChooser.addObject("Auto Gyro Loop -", new DriveTurnXDegrees(-60, false));
+		autoChooser.addObject("Auto Path Follow", new MotionProfileRunCurveFromFile());
 		
 		SmartDashboard.putData("Autonomous Chooser", autoChooser);
 		
