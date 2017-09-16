@@ -48,6 +48,9 @@ public class GroundGearElevationControl extends Command {
     		allowed = true;
     	} else {
     		allowed = CanGearClampsMove.checkMovement(Robot.groundgear, Robot.gearclamp);
+    		if (!allowed && Robot.groundgear.isOpen && !Robot.gearclamp.isOpen) {
+    			allowed = true;
+    		}
     	}
     	SmartDashboard.putBoolean("Either gear movement", allowed);
     	if (allowed) {
