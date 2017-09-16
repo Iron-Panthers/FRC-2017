@@ -39,6 +39,9 @@ public class MotionProfileRunCurveFromFile extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	MotionProfileStatus mStatus = new MotionProfileStatus();
+    	Robot.drive.left.getEncMotor().getMotionProfileStatus(mStatus);
+    	System.out.println(mStatus.activePoint.position);
     	while (!Robot.drive.left.getEncMotor().isMotionProfileTopLevelBufferFull() && lindex < lefts.size()) {
     		Robot.drive.left.getEncMotor().pushMotionProfileTrajectory(lefts.get(lindex));
     		lindex++;
@@ -57,7 +60,7 @@ public class MotionProfileRunCurveFromFile extends Command {
     	MotionProfileStatus mStatusR = new MotionProfileStatus();
     	Robot.drive.left.getEncMotor().getMotionProfileStatus(mStatusL);
     	Robot.drive.right.getEncMotor().getMotionProfileStatus(mStatusR);
-    	return mStatusL.activePoint == lefts.get(lefts.size() - 1) && mStatusR.activePoint == rights.get(rights.size() - 1);
+    	return mStatusL.activePoint.position == lefts.get(lefts.size() - 1).position && mStatusR.activePoint.position == rights.get(rights.size() - 1).position;
     }
 
     // Called once after isFinished returns true

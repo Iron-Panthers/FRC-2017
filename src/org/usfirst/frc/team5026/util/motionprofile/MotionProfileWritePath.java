@@ -48,12 +48,10 @@ public class MotionProfileWritePath {
 		}
 		try {
 			FileWriter fw = new FileWriter(f);
-			BufferedWriter bw = new BufferedWriter(fw);
 			for (int i = 0; i < lefts.size(); i++) {
-				bw.write("p:"+lefts.get(i).position+":v:"+lefts.get(i).velocity+":t:"+lefts.get(i).timeDurMs+":last:"+lefts.get(i).isLastPoint+"\n");
-				bw.write("p:"+rights.get(i).position+":v:"+rights.get(i).velocity+":t:"+rights.get(i).timeDurMs+":last:"+rights.get(i).isLastPoint+"\n");
+				fw.write("p:"+lefts.get(i).position+":v:"+lefts.get(i).velocity+":t:"+lefts.get(i).timeDurMs+":last:"+lefts.get(i).isLastPoint+"\r\n");
+				fw.write("p:"+rights.get(i).position+":v:"+rights.get(i).velocity+":t:"+rights.get(i).timeDurMs+":last:"+rights.get(i).isLastPoint+"\r\n");
 			}
-			bw.close();
 			fw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
