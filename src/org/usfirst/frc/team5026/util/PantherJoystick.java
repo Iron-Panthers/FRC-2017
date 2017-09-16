@@ -18,7 +18,7 @@ public class PantherJoystick extends Joystick{
    
   int joystickThrottleValue; 
   public boolean goingForward; 
-  private JoystickType joystickType; 
+  private JoystickType joystickType = JoystickType.RED; // Yo you better fix this later foo 
    
   public PantherJoystick(int port) { 
     super(port); 

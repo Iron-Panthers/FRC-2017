@@ -17,6 +17,8 @@ public class JoystickChoose extends Command {
 	}
 	protected void initialize() {
 		Robot.oi.driveJoystick.setJoystickType(joystickType); // pass in joystick type
+		Robot.oi.buttonBoard.setJoystickType(joystickType);
+		System.out.println(joystickType.toString());
 	}
 
 	@Override

@@ -20,6 +20,7 @@ public class GroundGear extends GearOpenable {
 	
 	
 	public GroundGear() {
+		isOpen = false;
 		hardware = Robot.hardware;
 		hardware.groundGearLiftgroup.resetPosition();
 		
