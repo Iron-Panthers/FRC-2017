@@ -44,18 +44,19 @@ public class GroundGearElevationControl extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	boolean allowed = true;
-//    	if (target == GroundGearElevationState.Legal) {
-//    		allowed = true;
-//    	} else {
-//    		allowed = CanGearClampsMove.checkMovement(Robot.groundgear, Robot.gearclamp);
-//    	}
+    	if (target == GroundGearElevationState.Legal) {
+    		allowed = true;
+    	} else {
+    		allowed = CanGearClampsMove.checkMovement(Robot.groundgear, Robot.gearclamp);
+    	}
+    	SmartDashboard.putBoolean("Either gear movement", allowed);
     	if (allowed) {
     		// Safe error checking, checks gear movement before continuing
     		Robot.groundgear.travelToState(target);
     	}
     	else {
     		// If there is illegal movement, should not be done! Cancels the command (calls interrupted)
-    		this.cancel();
+    		return;
     	}
     }
 

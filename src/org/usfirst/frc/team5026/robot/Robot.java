@@ -73,8 +73,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData(climber);
 		displayMods();
 		CameraServer camera = CameraServer.getInstance();
-		camera.startAutomaticCapture("cam1", 0);
-		camera.startAutomaticCapture("cam2", 1);
+		camera.startAutomaticCapture("cam0", 0);
+		camera.startAutomaticCapture("cam1", 1);
 	}
 	
 	private void initSubsystems() {
@@ -101,6 +101,8 @@ public class Robot extends IterativeRobot {
 		// Everytime u write a new auto, do autoChooser.addObject("NAME OF AUTO", new AUTOCOMMAND);
 		// Do that here
 		autoChooser.addObject("Both: Middle peg", new AutoDriveDistanceMotionProfilingInches("Auto Mid Left", "Auto Mid Right", Constants.AUTO_MIDDLE_TARGET_COUNT));
+		
+		
 		autoChooser.addObject("Red: Right peg", new AutoRedDriveCarveLeftToPegFromBoiler());
 		autoChooser.addObject("Red: Left peg", new AutoRedDriveCarveRightToPegFromLoadingZone());
 		autoChooser.addObject("Blue: Right peg", new AutoBlueDriveCarveLeftToPegFromLoadingZone());
@@ -109,10 +111,14 @@ public class Robot extends IterativeRobot {
 		autoChooser.addObject("Red: Left peg with Banner", new AutoRedDriveCarveRightToPegFromLoadingZoneBanner());
 		autoChooser.addObject("Blue: Right peg with Banner", new AutoBlueDriveCarveLeftToPegFromLoadingZoneBanner());
 		autoChooser.addObject("Blue: Left peg with Banner", new AutoBlueDriveCarveRightToPegFromBoilerBanner());
+		
+		
 		autoChooser.addObject("Red: Right peg with Gyro", new AutoRedDriveCarveLeftToPegFromBoilerWithGyro());
 		autoChooser.addObject("Red: Left peg with Gyro", new AutoRedDriveCarveRightToPegFromLoadingZoneWithGyro());
 		autoChooser.addObject("Blue: Right peg with Gyro", new AutoBlueDriveCarveLeftToPegFromLoadingZoneWithGyro());
 		autoChooser.addObject("Blue: Left peg with Gyro", new AutoBlueDriveCarveRightToPegFromBoilerWithGyro());
+		
+		
 		autoChooser.addObject("Auto Drop Gear", new AutoDriveDistanceMotionProfilingInches("Auto Drop Gear Left","Auto Drop Gear Right", Constants.AUTO_MIDDLE_TARGET_COUNT));
 		autoChooser.addObject("Auto Gyro Loop", new DriveTurnXDegrees(60, false));
 		autoChooser.addObject("Auto Gyro Loop -", new DriveTurnXDegrees(-60, false));
