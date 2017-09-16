@@ -34,8 +34,8 @@ public class RobotMap {
 	public static final int GROUND_GEAR_SENSOR = 4;
 	
 	// SOLENOIDS
-	public static final int SOLENOID_SHIFTER_FORWARD = 0;
-	public static final int SOLENOID_SHIFTER_REVERSE = 1;
+	public static final int SOLENOID_SHIFTER_FORWARD = 2;
+	public static final int SOLENOID_SHIFTER_REVERSE = 3;
 	
 	// JOYSTICK BUTTONS
 	public static final int DRIVE_JOYSTICK = 0;

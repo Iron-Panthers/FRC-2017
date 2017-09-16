@@ -1,5 +1,8 @@
 package org.usfirst.frc.team5026.robot.commands.motionprofiling;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.usfirst.frc.team5026.robot.Robot;
 import org.usfirst.frc.team5026.util.motionprofile.MotionProfileWritePath;
 
@@ -13,8 +16,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class MotionProfileRunCurveFromFile extends Command {
-	TrajectoryPoint[] lefts;
-	TrajectoryPoint[] rights;
+	List<TrajectoryPoint> lefts;
+	List<TrajectoryPoint> rights;
 	
 	int lindex = 0;
 	int rindex = 0;
@@ -25,10 +28,10 @@ public class MotionProfileRunCurveFromFile extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	TrajectoryPoint[][] overall = MotionProfileWritePath.readFile(SmartDashboard.getString("MP Save File", "/home/lvuser/Path.mpp"));
+    	ArrayList<ArrayList<TrajectoryPoint>> overall = MotionProfileWritePath.readFile(SmartDashboard.getString("MP Save File", "/home/lvuser/Path.mpp"));
     	
-    	lefts = overall[0];
-    	rights = overall[1];
+    	lefts = overall.get(0);
+    	rights = overall.get(1);
     	
     	Robot.drive.left.setupMotionProfileMode();
     	Robot.drive.right.setupMotionProfileMode();
@@ -36,12 +39,12 @@ public class MotionProfileRunCurveFromFile extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	while (!Robot.drive.left.getEncMotor().isMotionProfileTopLevelBufferFull() && lindex < lefts.length) {
-    		Robot.drive.left.getEncMotor().pushMotionProfileTrajectory(lefts[lindex]);
+    	while (!Robot.drive.left.getEncMotor().isMotionProfileTopLevelBufferFull() && lindex < lefts.size()) {
+    		Robot.drive.left.getEncMotor().pushMotionProfileTrajectory(lefts.get(lindex));
     		lindex++;
     	}
-    	while (!Robot.drive.right.getEncMotor().isMotionProfileTopLevelBufferFull() && rindex < rights.length) {
-    		Robot.drive.right.getEncMotor().pushMotionProfileTrajectory(rights[rindex]);
+    	while (!Robot.drive.right.getEncMotor().isMotionProfileTopLevelBufferFull() && rindex < rights.size()) {
+    		Robot.drive.right.getEncMotor().pushMotionProfileTrajectory(rights.get(rindex));
     		rindex++;
     	}
     	Robot.drive.left.motionProfileControl();
@@ -54,7 +57,7 @@ public class MotionProfileRunCurveFromFile extends Command {
     	MotionProfileStatus mStatusR = new MotionProfileStatus();
     	Robot.drive.left.getEncMotor().getMotionProfileStatus(mStatusL);
     	Robot.drive.right.getEncMotor().getMotionProfileStatus(mStatusR);
-    	return mStatusL.activePoint == lefts[lefts.length - 1] && mStatusR.activePoint == rights[rights.length - 1];
+    	return mStatusL.activePoint == lefts.get(lefts.size() - 1) && mStatusR.activePoint == rights.get(rights.size() - 1);
     }
 
     // Called once after isFinished returns true

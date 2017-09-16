@@ -59,7 +59,7 @@ public class MotionProfileWritePath {
 			e.printStackTrace();
 		}
 	}
-	public static TrajectoryPoint[][] readFile(String filename) {
+	public static ArrayList<ArrayList<TrajectoryPoint>> readFile(String filename) {
 		List<TrajectoryPoint> lefts = new ArrayList<TrajectoryPoint>();
 		List<TrajectoryPoint> rights = new ArrayList<TrajectoryPoint>();
 		try {
@@ -83,12 +83,8 @@ public class MotionProfileWritePath {
 				lNum+=2;
 			}
 			reader.close();
-			TrajectoryPoint[] a = null;
-			TrajectoryPoint[] b = null;
-			lefts.toArray(a);
-			rights.toArray(b);
 			
-			TrajectoryPoint[][] out = {a,b};
+			ArrayList<ArrayList<TrajectoryPoint>> out = new ArrayList<ArrayList<TrajectoryPoint>>();
 			return out;
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
