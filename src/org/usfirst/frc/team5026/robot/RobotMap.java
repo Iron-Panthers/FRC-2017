@@ -31,7 +31,7 @@ public class RobotMap {
 	//GROUND GEAR
 	public static final int GROUND_GEAR_MOTOR_INTAKE = 0; // Using old Intake Talon 
 	public static final int GROUND_GEAR_MOTOR_LIFT = 7;
-	public static final int GROUND_GEAR_SENSOR = 0;
+	public static final int GROUND_GEAR_SENSOR = 4;
 	
 	// SOLENOIDS
 	public static final int SOLENOID_SHIFTER_FORWARD = 0;

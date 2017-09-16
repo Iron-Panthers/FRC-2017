@@ -21,15 +21,15 @@ public class GroundGearIntake extends Command{
 	protected void execute(){
 	}
 	protected boolean isFinished() {
-		//if (!runAndEnd) {
+		if (!runAndEnd) {
 			//return false;
-			//return Robot.groundgear.hasGear(); // This will end either if the button is released, or the ground gear gets the gear.
+			return Robot.groundgear.hasGear(); // This will end either if the button is released, or the ground gear gets the gear.
 			// If the button is released, interrupt is called. Otherwise, end is called
-		//}
+		}
 		return false;
 	}
 	protected void end(){
-		//if (!runAndEnd)
+		if (!runAndEnd)
 		Robot.groundgear.stopIntake();
 		// Only stops if you want to end
 	}
