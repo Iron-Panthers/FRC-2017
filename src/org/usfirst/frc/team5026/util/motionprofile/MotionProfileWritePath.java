@@ -60,8 +60,8 @@ public class MotionProfileWritePath {
 		}
 	}
 	public static ArrayList<ArrayList<TrajectoryPoint>> readFile(String filename) {
-		List<TrajectoryPoint> lefts = new ArrayList<TrajectoryPoint>();
-		List<TrajectoryPoint> rights = new ArrayList<TrajectoryPoint>();
+		ArrayList<TrajectoryPoint> lefts = new ArrayList<TrajectoryPoint>();
+		ArrayList<TrajectoryPoint> rights = new ArrayList<TrajectoryPoint>();
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(filename));
 			String line;
@@ -85,6 +85,8 @@ public class MotionProfileWritePath {
 			reader.close();
 			
 			ArrayList<ArrayList<TrajectoryPoint>> out = new ArrayList<ArrayList<TrajectoryPoint>>();
+			out.add(lefts);
+			out.add(rights);
 			return out;
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
