@@ -147,6 +147,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Autonomous Chooser", autoChooser);
 		
 		drive.setBrakeMode(false);
+		new JoystickChoose(JoystickType.RED).start();
 	}
 
 	@Override
