@@ -11,6 +11,8 @@ import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearIntake;
 import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearIntakeWithBannerElevation;
 import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearOuttake;
 import org.usfirst.frc.team5026.robot.commands.misc.LEDSignalGear;
+import org.usfirst.frc.team5026.robot.commands.motionprofiling.MotionProfileBuildCurveFromPush;
+import org.usfirst.frc.team5026.robot.commands.motionprofiling.MotionProfileRunCurveFromFile;
 import org.usfirst.frc.team5026.util.GroundGearElevationState;
 import org.usfirst.frc.team5026.util.PantherJoystick;
 
@@ -89,8 +91,10 @@ public class OI {
 		boardButton8.whileHeld(new ClimberRappel());
 		boardButton8.whenPressed(new GroundGearIntakeWithBannerElevation());
 		boardButton9.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.DriveMode));
-		boardButton10.whenPressed(new GearUnClampCommand());
-		boardButton11.whenPressed(new GearClampCommand());
+//		boardButton10.whenPressed(new GearUnClampCommand());
+//		boardButton11.whenPressed(new GearClampCommand());
+		boardButton11.whileHeld(new MotionProfileBuildCurveFromPush());
+		boardButton10.whenPressed(new MotionProfileRunCurveFromFile());
 //		boardButton11.whenPressed(new GroundGearElevationControlSequence()); // This does a toggle
 //		boardButton10.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.DriveMode));
 //		boardButton12.whenPressed(new GroundGearIntakeWithBannerElevation());

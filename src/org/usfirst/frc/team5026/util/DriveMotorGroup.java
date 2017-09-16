@@ -99,6 +99,7 @@ public class DriveMotorGroup implements SpeedController {
 	public void motionProfileControl() {
 		// The motor is already fed the values!!! no target!
 		encoderMotor.enable();
+//		encoderMotor.changeMotionControlFramePeriod(10);
 		encoderMotor.processMotionProfileBuffer();
 	}
 	public void setpidfrnav(double[] pidfrnav) {
