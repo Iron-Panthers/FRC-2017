@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,16 +47,38 @@ public class MotionProfileWritePath {
 				e.printStackTrace();
 			}
 		}
+		
 		try {
-			FileWriter fw = new FileWriter(f);
+			PrintWriter pw = new PrintWriter(f);
+			StringBuilder sb = new StringBuilder();
+			sb.append("position");
+			sb.append(",");
+			sb.append("velocity");
+			sb.append(",");
+			sb.append("time");
+			sb.append(",");
+			sb.append("last");
+			sb.append("\n");
+			
 			for (int i = 0; i < lefts.size(); i++) {
-				fw.write("p:"+lefts.get(i).position+":v:"+lefts.get(i).velocity+":t:"+lefts.get(i).timeDurMs+":last:"+lefts.get(i).isLastPoint+"\r\n");
-				fw.write("p:"+rights.get(i).position+":v:"+rights.get(i).velocity+":t:"+rights.get(i).timeDurMs+":last:"+rights.get(i).isLastPoint+"\r\n");
+				writeToSb(lefts.get(i), sb);
+				writeToSb(rights.get(i), sb);
 			}
-			fw.close();
+			pw.write(sb.toString());
+			pw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	public static void writeToSb(TrajectoryPoint p, StringBuilder sb) {
+		sb.append(p.position);
+		sb.append(",");
+		sb.append(p.velocity);
+		sb.append(",");
+		sb.append(p.timeDurMs);
+		sb.append(",");
+		sb.append(p.isLastPoint);
+		sb.append("\n");
 	}
 	public static ArrayList<ArrayList<TrajectoryPoint>> readFile(String filename) {
 		ArrayList<TrajectoryPoint> lefts = new ArrayList<TrajectoryPoint>();
@@ -63,17 +86,18 @@ public class MotionProfileWritePath {
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(filename));
 			String line;
-			int lNum = 0;
+			String fLine = reader.readLine();
+			int lNum = 1;
 			while ((line = reader.readLine()) != null) {
 //				System.out.print(line);
-				String[] strFormat = line.split(":");
+				String[] strFormat = line.split(",");
 				TrajectoryPoint p = new TrajectoryPoint();
-				p.position = Double.parseDouble(strFormat[1]); // pos
-				p.velocity = Double.parseDouble(strFormat[3]);
+				p.position = Double.parseDouble(strFormat[0]); // pos
+				p.velocity = Double.parseDouble(strFormat[1]);
 				p.profileSlotSelect = 0;
-				p.timeDurMs = Integer.parseInt(strFormat[5]);
-				p.isLastPoint = Boolean.parseBoolean(strFormat[7]);
-				if (lNum % 2 == 0) {
+				p.timeDurMs = Integer.parseInt(strFormat[2]);
+				p.isLastPoint = Boolean.parseBoolean(strFormat[3]);
+				if (lNum % 2 == 1) {
 					lefts.add(p);
 				} else {
 					rights.add(p);
