@@ -6,6 +6,7 @@ import java.util.List;
 import org.usfirst.frc.team5026.robot.Robot;
 import org.usfirst.frc.team5026.util.motionprofile.MotionProfileWritePath;
 
+import com.ctre.CANTalon;
 import com.ctre.CANTalon.MotionProfileStatus;
 import com.ctre.CANTalon.TrajectoryPoint;
 
@@ -43,12 +44,12 @@ public class MotionProfileRunCurveFromFile extends Command {
     protected void execute() {
     	MotionProfileStatus mStatus = new MotionProfileStatus();
     	Robot.drive.left.getEncMotor().getMotionProfileStatus(mStatus);
-    	System.out.println(lefts.get(lindex));
-    	while (!Robot.drive.left.getEncMotor().isMotionProfileTopLevelBufferFull() && lindex < lefts.size()) {
+    	System.out.println("Lefts Index: "+lindex+" is "+lefts.get(lindex)+" with pos: "+lefts.get(lindex).position);
+    	while (!Robot.drive.left.getEncMotor().isMotionProfileTopLevelBufferFull() && lindex < lefts.size()-1) {
     		Robot.drive.left.getEncMotor().pushMotionProfileTrajectory(lefts.get(lindex));
     		lindex++;
     	}
-    	while (!Robot.drive.right.getEncMotor().isMotionProfileTopLevelBufferFull() && rindex < rights.size()) {
+    	while (!Robot.drive.right.getEncMotor().isMotionProfileTopLevelBufferFull() && rindex < rights.size()-1) {
     		Robot.drive.right.getEncMotor().pushMotionProfileTrajectory(rights.get(rindex));
     		rindex++;
     	}
@@ -58,16 +59,22 @@ public class MotionProfileRunCurveFromFile extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+//    	return true;
     	MotionProfileStatus mStatusL = new MotionProfileStatus();
     	MotionProfileStatus mStatusR = new MotionProfileStatus();
     	Robot.drive.left.getEncMotor().getMotionProfileStatus(mStatusL);
+    	System.out.println(mStatusL.activePoint.position+"\t"+mStatusL.activePoint.velocity);
     	Robot.drive.right.getEncMotor().getMotionProfileStatus(mStatusR);
-    	return mStatusL.activePoint.position == lefts.get(lefts.size() - 1).position && mStatusR.activePoint.position == rights.get(rights.size() - 1).position;
+    	return Robot.drive.left.getEncMotor().getMotionProfileTopLevelBufferCount() <= 2 && Robot.drive.right.getEncMotor().getMotionProfileTopLevelBufferCount() <= 2;
+//    	return lefts.size() == 0 && rights.size() == 0;
+//    	return mStatusL.activePoint.position == lefts.get(lefts.size() - 1).position && mStatusR.activePoint.position == rights.get(rights.size() - 1).position;
     }
 
     // Called once after isFinished returns true
     protected void end() {
     	System.out.println("Done with path");
+    	Robot.drive.left.getEncMotor().set(CANTalon.SetValueMotionProfile.Disable.value);
+    	Robot.drive.right.getEncMotor().set(CANTalon.SetValueMotionProfile.Disable.value);
     	Robot.drive.left.getEncMotor().disable();
     	Robot.drive.right.getEncMotor().disable();
     }
@@ -76,5 +83,9 @@ public class MotionProfileRunCurveFromFile extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     	System.out.println("Interrtuped path!");
+    	Robot.drive.left.getEncMotor().set(CANTalon.SetValueMotionProfile.Disable.value);
+    	Robot.drive.right.getEncMotor().set(CANTalon.SetValueMotionProfile.Disable.value);
+    	Robot.drive.left.getEncMotor().disable();
+    	Robot.drive.right.getEncMotor().disable();
     }
 }

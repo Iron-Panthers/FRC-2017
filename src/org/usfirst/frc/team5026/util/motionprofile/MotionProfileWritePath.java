@@ -61,8 +61,8 @@ public class MotionProfileWritePath {
 			sb.append(" ");
 			
 			for (int i = 0; i < lefts.size(); i++) {
-				writeToSb(lefts.get(i), sb);
-				writeToSb(rights.get(i), sb);
+				sb.append(writeToSb(lefts.get(i)));
+				sb.append(writeToSb(rights.get(i)));
 			}
 			pw.write(sb.toString());
 			System.out.println(sb.toString());
@@ -71,7 +71,8 @@ public class MotionProfileWritePath {
 			e.printStackTrace();
 		}
 	}
-	public static void writeToSb(TrajectoryPoint p, StringBuilder sb) {
+	public static String writeToSb(TrajectoryPoint p) {
+		StringBuilder sb = new StringBuilder();
 		sb.append(p.position);
 		sb.append(",");
 		sb.append(p.velocity);
@@ -80,6 +81,7 @@ public class MotionProfileWritePath {
 		sb.append(",");
 		sb.append(p.isLastPoint);
 		sb.append(" ");
+		return sb.toString();
 	}
 	public static ArrayList<ArrayList<TrajectoryPoint>> readFile(String filename) {
 		ArrayList<TrajectoryPoint> lefts = new ArrayList<TrajectoryPoint>();
@@ -89,7 +91,6 @@ public class MotionProfileWritePath {
 			String line;
 			String fLine = reader.readLine();
 			String[] lines = fLine.split(" ");
-			int lNum = 1;
 //			while ((line = reader.readLine()) != null) {
 			for (int i=1; i < lines.length; i++) {
 //				System.out.print(line);
@@ -101,12 +102,11 @@ public class MotionProfileWritePath {
 				p.profileSlotSelect = 0;
 				p.timeDurMs = Integer.parseInt(strFormat[2]);
 				p.isLastPoint = Boolean.parseBoolean(strFormat[3]);
-				if (lNum % 2 == 1) {
+				if (i % 2 == 1) {
 					lefts.add(p);
 				} else {
 					rights.add(p);
 				}
-				lNum+=2;
 			}
 			reader.close();
 			
