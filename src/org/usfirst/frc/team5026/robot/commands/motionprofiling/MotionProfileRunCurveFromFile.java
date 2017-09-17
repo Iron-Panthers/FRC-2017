@@ -36,6 +36,8 @@ public class MotionProfileRunCurveFromFile extends Command {
     	lefts = overall.get(0);
     	rights = overall.get(1);
     	
+    	System.out.println(lefts);
+    	
     	Robot.drive.left.setupMotionProfileMode();
     	Robot.drive.right.setupMotionProfileMode();
     	lindex = 0;
@@ -61,42 +63,19 @@ public class MotionProfileRunCurveFromFile extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-//    	return true;
+    	
     	MotionProfileStatus mStatusL = new MotionProfileStatus();
     	MotionProfileStatus mStatusR = new MotionProfileStatus();
     	Robot.drive.left.getEncMotor().getMotionProfileStatus(mStatusL);
     	System.out.println(mStatusL.activePoint.position+"\t"+mStatusR.activePoint.position);
     	SmartDashboard.putNumber("CANTalon buffer size", Robot.drive.left.getEncMotor().getMotionProfileTopLevelBufferCount());
-//    	SmartDashboard.putData("Active Point", new Sendable() {
-//    		private ITable t;
-//			@Override
-//			public void initTable(ITable subtable) {
-//				double[] outL = new double[5];
-//				double[] outR = new double[5];
-//				outL[0] = mStatusL.activePoint.position;
-//				outL[1] = mStatusL.activePoint.velocity;
-//				outL[2] = mStatusL.activePoint.timeDurMs;
-//				
-//				outR[0] = mStatusR.activePoint.position;
-//				outR[1] = mStatusR.activePoint.velocity;
-//				outR[2] = mStatusR.activePoint.timeDurMs;
-//				
-//				subtable.putNumberArray("Active point Left", outL);
-//				subtable.putNumberArray("Active point Right", outR);
-//			}
-//
-//			@Override
-//			public ITable getTable() {
-//				
-//				return t;
-//			}
-//
-//			@Override
-//			public String getSmartDashboardType() {
-//				return "Text box";
-//			}});
     	Robot.drive.right.getEncMotor().getMotionProfileStatus(mStatusR);
+    	SmartDashboard.putNumber("Active point pos", mStatusR.activePoint.position);
+    	SmartDashboard.putNumber("Active point velocity", mStatusR.activePoint.velocity);
+    	SmartDashboard.putBoolean("Active point is valid", mStatusR.activePointValid);
+//    	return true;
     	return Robot.drive.left.getEncMotor().getMotionProfileTopLevelBufferCount() <= 2 && Robot.drive.right.getEncMotor().getMotionProfileTopLevelBufferCount() <= 2;
+
 //    	return lefts.size() == 0 && rights.size() == 0;
 //    	return mStatusL.activePoint.position == lefts.get(lefts.size() - 1).position && mStatusR.activePoint.position == rights.get(rights.size() - 1).position;
     }

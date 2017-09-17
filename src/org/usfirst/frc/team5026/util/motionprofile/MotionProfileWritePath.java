@@ -13,6 +13,8 @@ import java.util.List;
 
 import com.ctre.CANTalon.TrajectoryPoint;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 public class MotionProfileWritePath {
 	public static void writeFile(MotionProfilePath p, String filename) {
 		// filename ex: /home/lvuser/Path.mpp
@@ -102,6 +104,8 @@ public class MotionProfileWritePath {
 				p.profileSlotSelect = 0;
 				p.timeDurMs = Integer.parseInt(strFormat[2]);
 				p.isLastPoint = Boolean.parseBoolean(strFormat[3]);
+				p.velocityOnly = false;
+				p.zeroPos = false;
 				if (i % 2 == 1) {
 					lefts.add(p);
 				} else {
