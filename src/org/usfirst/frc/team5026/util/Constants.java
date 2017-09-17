@@ -61,8 +61,8 @@ public class Constants {
 	public static final double GROUND_GEAR_F = 0.01152806; // Calculated by doing 100% of full speed is equivalent to 100% PWM
 	public static final double GROUND_GEAR_R = 0;
 	public static final double GROUND_GEAR_N = 0;
-	public static final double GROUND_GEAR_A = 1000; // acceleration
-	public static final double GROUND_GEAR_V = 2000; // velocity
+	public static final double GROUND_GEAR_A = 5000; // acceleration
+	public static final double GROUND_GEAR_V = 3000; // velocity
 	public static final double[] GROUND_GEAR_PIDFRNAV = {GROUND_GEAR_P, GROUND_GEAR_I, GROUND_GEAR_D, GROUND_GEAR_F, GROUND_GEAR_R, GROUND_GEAR_N, GROUND_GEAR_A, GROUND_GEAR_V};
 	
 	public static final double GROUND_GEAR_N_SCORING = 0;

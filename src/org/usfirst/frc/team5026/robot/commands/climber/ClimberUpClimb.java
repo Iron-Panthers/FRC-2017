@@ -20,7 +20,11 @@ public class ClimberUpClimb extends Command {
 
     protected void execute() {
 //    	climber.climbScaling();
-    	climber.setClimbMotors(-2.0 * Robot.oi.buttonBoard.getY() / 3.0);
+    	double val = -Robot.oi.buttonBoard.getY() + 1;
+    	if (val >= 0.8) {
+    		val = 0.8;
+    	}
+    	climber.setClimbMotors(val);
     }
 
     protected boolean isFinished() {
