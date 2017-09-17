@@ -58,7 +58,7 @@ public class MotionProfileWritePath {
 			sb.append("time");
 			sb.append(",");
 			sb.append("last");
-			sb.append("\n");
+			sb.append(" ");
 			
 			for (int i = 0; i < lefts.size(); i++) {
 				writeToSb(lefts.get(i), sb);
@@ -79,7 +79,7 @@ public class MotionProfileWritePath {
 		sb.append(p.timeDurMs);
 		sb.append(",");
 		sb.append(p.isLastPoint);
-		sb.append("\n");
+		sb.append(" ");
 	}
 	public static ArrayList<ArrayList<TrajectoryPoint>> readFile(String filename) {
 		ArrayList<TrajectoryPoint> lefts = new ArrayList<TrajectoryPoint>();
@@ -88,9 +88,12 @@ public class MotionProfileWritePath {
 			BufferedReader reader = new BufferedReader(new FileReader(filename));
 			String line;
 			String fLine = reader.readLine();
+			String[] lines = fLine.split(" ");
 			int lNum = 1;
-			while ((line = reader.readLine()) != null) {
+//			while ((line = reader.readLine()) != null) {
+			for (int i=1; i < lines.length; i++) {
 //				System.out.print(line);
+				line = lines[i];
 				String[] strFormat = line.split(",");
 				TrajectoryPoint p = new TrajectoryPoint();
 				p.position = Double.parseDouble(strFormat[0]); // pos
