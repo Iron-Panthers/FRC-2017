@@ -35,13 +35,15 @@ public class MotionProfileRunCurveFromFile extends Command {
     	
     	Robot.drive.left.setupMotionProfileMode();
     	Robot.drive.right.setupMotionProfileMode();
+    	lindex = 0;
+    	rindex = 0;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	MotionProfileStatus mStatus = new MotionProfileStatus();
     	Robot.drive.left.getEncMotor().getMotionProfileStatus(mStatus);
-    	System.out.println(mStatus.activePoint.position);
+    	System.out.println(lefts.get(lindex));
     	while (!Robot.drive.left.getEncMotor().isMotionProfileTopLevelBufferFull() && lindex < lefts.size()) {
     		Robot.drive.left.getEncMotor().pushMotionProfileTrajectory(lefts.get(lindex));
     		lindex++;
