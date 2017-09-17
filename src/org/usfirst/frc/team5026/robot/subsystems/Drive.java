@@ -81,7 +81,6 @@ public class Drive extends Subsystem {
 			break;
 		}
 		pos = p;
-		System.out.println(p.toString());
 	}
 	
 	public void useArcadeDrive(double yAxis, double xAxis) {
