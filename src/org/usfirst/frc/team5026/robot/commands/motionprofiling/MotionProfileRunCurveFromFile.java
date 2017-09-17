@@ -10,8 +10,10 @@ import com.ctre.CANTalon;
 import com.ctre.CANTalon.MotionProfileStatus;
 import com.ctre.CANTalon.TrajectoryPoint;
 
+import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.tables.ITable;
 
 /**
  *
@@ -63,7 +65,36 @@ public class MotionProfileRunCurveFromFile extends Command {
     	MotionProfileStatus mStatusL = new MotionProfileStatus();
     	MotionProfileStatus mStatusR = new MotionProfileStatus();
     	Robot.drive.left.getEncMotor().getMotionProfileStatus(mStatusL);
-    	System.out.println(mStatusL.activePoint.position+"\t"+mStatusL.activePoint.velocity);
+    	System.out.println(mStatusL.activePoint.position+"\t"+mStatusR.activePoint.position);
+    	SmartDashboard.putNumber("CANTalon buffer size", Robot.drive.left.getEncMotor().getMotionProfileTopLevelBufferCount());
+//    	SmartDashboard.putData("Active Point", new Sendable() {
+//    		private ITable t;
+//			@Override
+//			public void initTable(ITable subtable) {
+//				double[] outL = new double[5];
+//				double[] outR = new double[5];
+//				outL[0] = mStatusL.activePoint.position;
+//				outL[1] = mStatusL.activePoint.velocity;
+//				outL[2] = mStatusL.activePoint.timeDurMs;
+//				
+//				outR[0] = mStatusR.activePoint.position;
+//				outR[1] = mStatusR.activePoint.velocity;
+//				outR[2] = mStatusR.activePoint.timeDurMs;
+//				
+//				subtable.putNumberArray("Active point Left", outL);
+//				subtable.putNumberArray("Active point Right", outR);
+//			}
+//
+//			@Override
+//			public ITable getTable() {
+//				
+//				return t;
+//			}
+//
+//			@Override
+//			public String getSmartDashboardType() {
+//				return "Text box";
+//			}});
     	Robot.drive.right.getEncMotor().getMotionProfileStatus(mStatusR);
     	return Robot.drive.left.getEncMotor().getMotionProfileTopLevelBufferCount() <= 2 && Robot.drive.right.getEncMotor().getMotionProfileTopLevelBufferCount() <= 2;
 //    	return lefts.size() == 0 && rights.size() == 0;

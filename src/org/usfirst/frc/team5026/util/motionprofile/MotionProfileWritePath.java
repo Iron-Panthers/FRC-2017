@@ -111,7 +111,8 @@ public class MotionProfileWritePath {
 			reader.close();
 			
 			ArrayList<ArrayList<TrajectoryPoint>> out = new ArrayList<ArrayList<TrajectoryPoint>>();
-			System.out.println(lefts); // Print everything to check format...
+			System.out.println("L:"+lefts.size()+"\tR:"+rights.size());
+//			System.out.println(lefts); // Print everything to check format...
 			out.add(lefts);
 			out.add(rights);
 			return out;
