@@ -65,6 +65,7 @@ public class MotionProfileWritePath {
 				writeToSb(rights.get(i), sb);
 			}
 			pw.write(sb.toString());
+			System.out.println(sb.toString());
 			pw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
