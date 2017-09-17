@@ -58,8 +58,8 @@ public class MotionProfileWritePath {
 			sb.append("velocity");
 			sb.append(",");
 			sb.append("time");
-			sb.append(",");
-			sb.append("last");
+//			sb.append(",");
+//			sb.append("last");
 			sb.append(" ");
 			
 			for (int i = 0; i < lefts.size(); i++) {
@@ -80,8 +80,8 @@ public class MotionProfileWritePath {
 		sb.append(p.velocity);
 		sb.append(",");
 		sb.append(p.timeDurMs);
-		sb.append(",");
-		sb.append(p.isLastPoint);
+//		sb.append(",");
+//		sb.append(p.isLastPoint);
 		sb.append(" ");
 		return sb.toString();
 	}
@@ -103,9 +103,21 @@ public class MotionProfileWritePath {
 				p.velocity = Double.parseDouble(strFormat[1]);
 				p.profileSlotSelect = 0;
 				p.timeDurMs = Integer.parseInt(strFormat[2]);
-				p.isLastPoint = Boolean.parseBoolean(strFormat[3]);
+				if (i >= lines.length-2) {
+					p.isLastPoint = true;
+				} else {
+					p.isLastPoint = false;
+				}
+//				p.isLastPoint = Boolean.parseBoolean(strFormat[3]);
 				p.velocityOnly = false;
-				p.zeroPos = false;
+				if (i <= 1) {
+					p.zeroPos = true;
+				} else {
+					p.zeroPos = false;
+				}
+//				System.out.println(p.position);
+//				System.out.println(p.velocity);
+//				System.out.println();
 				if (i % 2 == 1) {
 					lefts.add(p);
 				} else {
