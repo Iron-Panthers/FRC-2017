@@ -171,6 +171,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		autoCommand = autoChooser.getSelected();
+		hardware.gyro.reset();
 		autoCommand.start();
 		drive.setBrakeMode(true);
 		SmartDashboard.putBoolean("Running", true);
