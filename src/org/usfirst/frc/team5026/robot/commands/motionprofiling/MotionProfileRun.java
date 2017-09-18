@@ -1,6 +1,14 @@
 package org.usfirst.frc.team5026.robot.commands.motionprofiling;
 
 import org.usfirst.frc.team5026.robot.Robot;
+import org.usfirst.frc.team5026.util.Constants;
+import org.usfirst.frc.team5026.util.motionprofile.MotionProfilePath;
+import org.usfirst.frc.team5026.util.motionprofile.MotionProfileProcessor;
+
+import com.ctre.CANTalon;
+import com.ctre.CANTalon.TrajectoryPoint;
+
+import java.util.ArrayList;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -8,18 +16,30 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class MotionProfileRun extends Command {
+	MotionProfileProcessor mpp = new MotionProfileProcessor(Robot.drive);
 
-    public MotionProfileRun() {
+    public MotionProfileRun(MotionProfilePath motp) {
         requires(Robot.drive); // Only to make sure no driving happens while doing this.
+        mpp.setpath(motp);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.drive.left.setupMotionProfileMode();
+    	Robot.drive.right.setupMotionProfileMode();
     	
+    	mpp.setsmallpath(mpp.getPathForPoint(Constants.MOTION_PROFILE_LOOK_DISTANCE));
+//    	ArrayList<ArrayList<TrajectoryPoint>> traj = mpp.smallPath.getTrajectoryPoints();
+//    	lefts = traj.get(0);
+//    	rights = traj.get(1);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.drive.updatePosition(Constants.DELTA_TIME);
+    	
+    	Robot.drive.left.motionProfileControl();
+    	Robot.drive.right.motionProfileControl();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -29,6 +49,8 @@ public class MotionProfileRun extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.drive.left.getEncMotor().set(CANTalon.SetValueMotionProfile.Disable.value);
+    	Robot.drive.right.getEncMotor().set(CANTalon.SetValueMotionProfile.Disable.value);
     }
 
     // Called when another command which requires one or more of the same

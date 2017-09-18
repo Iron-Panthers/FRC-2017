@@ -151,6 +151,16 @@ public class MotionProfileSmallCurve {
 
 		return yp_hat;
 	}
+	
+	public double[] leftAndRightAt(double percentage) {
+		// Theta prediction should be used here to do this properly... Hard to determine perp. velocity vector for left and right positions
+		double[] vals = getXandY(percentage);
+		for (int i = 0; i < vals.length; i++) {
+			vals[i] += i % 2 == 0 ? 1: -1 * derivativeAt(percentage);
+		}
+		// This actually DOESN'T work!!! TODO
+		return vals;
+	}
 
 	private double secondDerivativeAt(double percentage) {
 		percentage = Math.max(Math.min(percentage, 1), 0);

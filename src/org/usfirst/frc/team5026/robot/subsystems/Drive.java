@@ -215,6 +215,11 @@ public class Drive extends Subsystem implements KinematicModel {
 	}
 	public void updatePosition(double deltaTime) {
 		// Runs every DELTA_TIME
+		if (left.getEncPosition() == 0 && right.getEncPosition() == 0) {
+			// Reset x and y position on reset
+			x = 0;
+			y = 0;
+		}
 		x += getVelocity() * Math.sin(getRotationInRadians()) * deltaTime;
 		y += getVelocity() * Math.cos(getRotationInRadians()) * deltaTime;
 		SmartDashboard.putNumber("X Value of Robot", x);
