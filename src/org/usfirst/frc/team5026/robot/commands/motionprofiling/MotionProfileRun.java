@@ -2,6 +2,7 @@ package org.usfirst.frc.team5026.robot.commands.motionprofiling;
 
 import org.usfirst.frc.team5026.robot.Robot;
 import org.usfirst.frc.team5026.util.Constants;
+import org.usfirst.frc.team5026.util.motionprofile.MotionProfileBufferer;
 import org.usfirst.frc.team5026.util.motionprofile.MotionProfilePath;
 import org.usfirst.frc.team5026.util.motionprofile.MotionProfileProcessor;
 
@@ -16,11 +17,14 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class MotionProfileRun extends Command {
-	MotionProfileProcessor mpp = new MotionProfileProcessor(Robot.drive);
-
+	MotionProfileBufferer mpb;
+	MotionProfileProcessor proc;
+	
     public MotionProfileRun(MotionProfilePath motp) {
         requires(Robot.drive); // Only to make sure no driving happens while doing this.
-        mpp.setpath(motp);
+        proc = new MotionProfileProcessor(Robot.drive);
+        proc.setpath(motp);
+        mpb = new MotionProfileBufferer(Robot.drive.left, Robot.drive.right, Constants.MOTION_PROFILE_LOOK_DISTANCE);
     }
 
     // Called just before this Command runs the first time
@@ -28,7 +32,9 @@ public class MotionProfileRun extends Command {
     	Robot.drive.left.setupMotionProfileMode();
     	Robot.drive.right.setupMotionProfileMode();
     	
-    	mpp.setsmallpath(mpp.getPathForPoint(Constants.MOTION_PROFILE_LOOK_DISTANCE));
+    	mpb.fillTalon(proc, Robot.drive.left);
+    	mpb.fillTalon(proc, Robot.drive.right);
+    	
 //    	ArrayList<ArrayList<TrajectoryPoint>> traj = mpp.smallPath.getTrajectoryPoints();
 //    	lefts = traj.get(0);
 //    	rights = traj.get(1);
@@ -40,10 +46,21 @@ public class MotionProfileRun extends Command {
     	
     	Robot.drive.left.motionProfileControl();
     	Robot.drive.right.motionProfileControl();
+    	CANTalon.MotionProfileStatus statusL = new CANTalon.MotionProfileStatus();
+    	CANTalon.MotionProfileStatus statusR = new CANTalon.MotionProfileStatus();
+    	Robot.drive.left.getEncMotor().getMotionProfileStatus(statusL);
+    	Robot.drive.right.getEncMotor().getMotionProfileStatus(statusR);
+    	if (statusL.btmBufferCnt == 2 && statusR.btmBufferCnt <= 2) {
+    		// Refill the buffer from current spot
+    		// Also rezero and create offset to use
+    		mpb.fillTalon(proc, Robot.drive.left);
+    		mpb.fillTalon(proc, Robot.drive.right);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	
         return false;
     }
 

@@ -56,8 +56,13 @@ public class MotionProfileBufferer {
 		for (int i = 1; i <= numSegments; i++) {
 			TrajectoryPoint LtPoint = new TrajectoryPoint();
 			TrajectoryPoint RtPoint = new TrajectoryPoint();
+			if (i==1) {
+				LtPoint.zeroPos = true;
+				RtPoint.zeroPos = true;
+			}
 			LtPoint.velocity = start.vel + deltaV * i;
 			RtPoint.velocity = start.vel + deltaV * i; // Convert to rp100ms
+			// Unfortunately, this doesn't do it right. It uses only the CURRENT heading, instead of the predicted heading.
 			LtPoint.position = spline.valueAt((double)(i)/numSegments) - proc.robot.getWidth() / 2 + LtPoint.velocity * Math.sin(proc.robot.getRotationInRadians()); // Convert to rot
 			RtPoint.position = spline.valueAt((double)(i)/numSegments) + proc.robot.getWidth() / 2 + RtPoint.velocity * Math.cos(proc.robot.getRotationInRadians());
 			LtPoint.timeDurMs = (int)(Constants.DELTA_TIME * 1000); // Conversion from seconds to ms
