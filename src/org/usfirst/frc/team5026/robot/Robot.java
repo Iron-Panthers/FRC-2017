@@ -119,10 +119,11 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putBoolean("Running", false);
 		
 //		autoChooser.addDefault("Nothing", new AutoDoNothing());
-		autoChooser.addDefault("Default", new AutoBlueDriveCarveLeftToPegFromLoadingZoneWithGyro());
+//		autoChooser.addDefault("Default", new AutoBlueDriveCarveLeftToPegFromLoadingZoneWithGyro());
 		// Everytime u write a new auto, do autoChooser.addObject("NAME OF AUTO", new AUTOCOMMAND);
 		// Do that here
-		autoChooser.addObject("Both: Middle peg", new AutoDriveDistanceMotionProfilingInches("Auto Mid Left", "Auto Mid Right", Constants.AUTO_MIDDLE_TARGET_COUNT));
+		// Our default is now the middle peg. That way we at least drive past the baseline in the case of auto failure...
+		autoChooser.addDefault("Both: Middle peg", new AutoDriveDistanceMotionProfilingInches("Auto Mid Left", "Auto Mid Right", Constants.AUTO_MIDDLE_TARGET_COUNT));
 		
 		
 		autoChooser.addObject("Red: Right peg", new AutoRedDriveCarveLeftToPegFromBoiler());
