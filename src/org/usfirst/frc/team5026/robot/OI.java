@@ -83,8 +83,8 @@ public class OI {
 		boardButton5.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Legal));
 		boardButton6.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Lowered));
 		boardButton7.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Scoring));
-//		boardButton8.whileHeld(new ClimberRappel());
-		boardButton8.whenPressed(new GroundGearIntakeWithBannerElevation());
+		boardButton8.whileHeld(new ClimberRappel());
+//		boardButton8.whenPressed(new GroundGearIntakeWithBannerElevation());
 		boardButton9.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.DriveMode));
 		boardButton10.whenPressed(new GearUnClampCommand());
 		boardButton11.whenPressed(new GearClampCommand());

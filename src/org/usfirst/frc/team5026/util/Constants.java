@@ -70,6 +70,8 @@ public class Constants {
 	public static final double GROUND_GEAR_V_SCORING = 1000; // Rotations / min; velocity
 	public static final double[] GROUND_GEAR_SCORING_PIDFRNAV = {GROUND_GEAR_P, GROUND_GEAR_I, GROUND_GEAR_D, GROUND_GEAR_F, GROUND_GEAR_R, GROUND_GEAR_N_SCORING, GROUND_GEAR_A_SCORING, GROUND_GEAR_V_SCORING};
 	
+	public static final double GROUND_GEAR_SCORING_DISTANCE = -15; // 15 inches away from the peg!
+	
 	//Intake Constants
 	public static final double INTAKE_INTAKE_SPEED = 1;
 	public static final double INTAKE_OUTTAKE_SPEED = -1;
