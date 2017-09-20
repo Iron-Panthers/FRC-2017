@@ -8,9 +8,8 @@ import org.usfirst.frc.team5026.robot.commands.gear.GearClampCommand;
 import org.usfirst.frc.team5026.robot.commands.gear.GearUnClampCommand;
 import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearElevationControlSequence;
 import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearIntake;
-import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearIntakeWithBannerElevation;
 import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearOuttake;
-import org.usfirst.frc.team5026.robot.commands.misc.LEDSignalGear;
+import org.usfirst.frc.team5026.robot.commands.misc.GroundGearScoreGearWhileDrivingBackward;
 import org.usfirst.frc.team5026.util.GroundGearElevationState;
 import org.usfirst.frc.team5026.util.PantherJoystick;
 
@@ -74,6 +73,7 @@ public class OI {
 	public void mapButtonBoard() {
 		driveButton1.whileHeld(new DriveSwapForwards());
 		driveButton3.whenPressed(new DriveShiftGear());
+		driveButton4.whenPressed(new GroundGearScoreGearWhileDrivingBackward());
 //		driveButton2.whileHeld(new LEDSignalGear());
 		
 		boardButton1.whileHeld(new ClimberSequence());
