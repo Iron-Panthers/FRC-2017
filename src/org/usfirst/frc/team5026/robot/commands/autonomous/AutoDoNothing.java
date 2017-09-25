@@ -1,33 +1,34 @@
-package org.usfirst.frc.team5026.robot.commands.misc;
+package org.usfirst.frc.team5026.robot.commands.autonomous;
 
-import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.command.TimedCommand;
+import org.usfirst.frc.team5026.robot.Robot;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class RunMotorForTime extends TimedCommand {
-	
-	private SpeedController motor;
-	private double power;
-	
-    public RunMotorForTime(SpeedController motor, double power, double time) {
-    	super(time);
-    	this.power = power;
+public class AutoDoNothing extends Command {
+
+    public AutoDoNothing() {
+        requires(Robot.drive);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	motor.set(this.power);
+    	Robot.drive.stopMotors();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     }
 
+    // Make this return true when this Command no longer needs to run execute()
+    protected boolean isFinished() {
+        return true;
+    }
+
     // Called once after isFinished returns true
     protected void end() {
-    	motor.set(0);
     }
 
     // Called when another command which requires one or more of the same

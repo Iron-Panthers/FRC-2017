@@ -1,4 +1,4 @@
-package org.usfirst.frc.team5026.robot.commands;
+package org.usfirst.frc.team5026.robot.commands.misc;
 
 import org.usfirst.frc.team5026.robot.Robot;
 import org.usfirst.frc.team5026.util.JoystickType;
@@ -17,6 +17,8 @@ public class JoystickChoose extends Command {
 	}
 	protected void initialize() {
 		Robot.oi.driveJoystick.setJoystickType(joystickType); // pass in joystick type
+		Robot.oi.buttonBoard.setJoystickType(joystickType);
+		System.out.println(joystickType.toString());
 	}
 
 	@Override

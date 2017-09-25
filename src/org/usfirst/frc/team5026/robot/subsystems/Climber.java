@@ -58,6 +58,12 @@ public class Climber extends Subsystem {
 	    }
 	}
 	
+	public void climbFast() {
+		// Follows an exponential curve for joystick
+		double joystickY = -Robot.oi.buttonBoard.getY();
+		setClimbMotors(Math.pow(3, joystickY) / 3.0); // exponential curve. See link at: https://www.desmos.com/calculator/t3ynilnywg
+	}
+	
 	public boolean hasResistance() {
 		rightMotorOutput = pdp.getCurrent(RobotMap.CLIMBER_PDPMOTOR_RIGHT);
 		leftMotorOutput = pdp.getCurrent(RobotMap.CLIMBER_PDPMOTOR_LEFT);
