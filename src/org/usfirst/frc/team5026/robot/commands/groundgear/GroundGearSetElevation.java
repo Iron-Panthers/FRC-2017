@@ -11,6 +11,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class GroundGearSetElevation extends Command {
 
+	private static final double potThreshold = 0.08;
+	private static final double movePower = 0.3;
+	
 	private GroundGearElevationState targetState;
 	
     public GroundGearSetElevation(GroundGearElevationState targetState) {
@@ -25,16 +28,22 @@ public class GroundGearSetElevation extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.groundgear.moveTowardsState(targetState);
+    	double delta = deltaToTargetState();
+    	
+    	if (delta < 0) {
+    		Robot.groundgear.setLiftPower(-movePower);
+    	} else {
+    		Robot.groundgear.setLiftPower(movePower);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        double delta = Robot.groundgear.deltaToTargetState(targetState);
+        double delta = deltaToTargetState();
         
         SmartDashboard.putNumber("PotDelta", delta);
         
-        if (Math.abs(delta) < 0.03) { //go into robot more
+        if (Math.abs(delta) < potThreshold) { //go into robot more
         	Robot.groundgear.elevationState = targetState;
         	SmartDashboard.putString("PotLimit", "reached");
 			return true;
@@ -45,12 +54,17 @@ public class GroundGearSetElevation extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.groundgear.stopLift();
+    	Robot.groundgear.setLiftPower(0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	Robot.groundgear.stopIntake();
+    	Robot.groundgear.setLiftPower(0);
+    }
+    
+    
+    private double deltaToTargetState() {
+		return Robot.hardware.pot.get() - targetState.potValue;
     }
 }

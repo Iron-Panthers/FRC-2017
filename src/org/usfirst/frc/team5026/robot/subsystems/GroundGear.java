@@ -1,16 +1,13 @@
 package org.usfirst.frc.team5026.robot.subsystems;
 
 import org.usfirst.frc.team5026.robot.Robot;
-import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearStop;
+import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearStayElevation;
 import org.usfirst.frc.team5026.util.Constants;
 import org.usfirst.frc.team5026.util.GearOpenable;
 import org.usfirst.frc.team5026.util.GroundGearElevationState;
 import org.usfirst.frc.team5026.util.GroundGearIntakeState;
 import org.usfirst.frc.team5026.util.Hardware;
 
-import com.ctre.CANTalon;
-
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class GroundGear extends GearOpenable {
@@ -24,15 +21,12 @@ public class GroundGear extends GearOpenable {
 		hardware = Robot.hardware;
 		setup();
 		
-		setElevationState(GroundGearElevationState.Legal); // Starts in a legal position
 		setIntakeState(GroundGearIntakeState.Neutral); // Not sucking in when starting
-		
 	}
 	
 	@Override
 	protected void initDefaultCommand() {
-		// This might be too redundant
-//		setDefaultCommand(new GroundGearStop());
+		setDefaultCommand(new GroundGearStayElevation());
 	}
 	
 	public void intakeGear() {
@@ -62,55 +56,15 @@ public class GroundGear extends GearOpenable {
 		hardware.groundGearLift.set(0);	
 	}
 	
-	public double deltaToTargetState(GroundGearElevationState targetState) {
-		if (targetState == elevationState) {
-			return 0;
-		}
-		
-		double wantedPot = targetState.potValue;
-		double delta = wantedPot - hardware.pot.get();
-		return delta;
+	public void setLiftPower(double power) {
+		hardware.groundGearLift.set(power);
 	}
-	
-	public void moveTowardsState(GroundGearElevationState targetState) {
-		double delta = deltaToTargetState(targetState);
-		
-		if (delta > 0) { //go into robot more
-			hardware.groundGearLift.set(0.1);
-		} else { //go out of robot more
-			hardware.groundGearLift.set(-0.1);
-		}
-		
-	}
-	
-	
-	public void travelToState(GroundGearElevationState targetState) {
-		if (targetState == elevationState) {
-			// We are already at that state
-			return;
-		}		
-		
-//		hardware.groundGearLiftgroup.positionControl(targetState.ticks); // Target ticks
-//		hardware.groundGearLiftgroup.profileControl(targetState.rotations);
-//		hardware.groundGearLiftgroup.setupVoltageMode();
-//		hardware.groundGearLiftgroup.set(1);
-	}
-	public void setElevationState(GroundGearElevationState setState) {
-		// BE CAREFUL WITH THIS METHOD, ONLY CALL AFTER MOVEMENT
-		isOpen = true;
-		if (setState == GroundGearElevationState.Legal) {
-			isOpen = false;
-		}
-		elevationState = setState;
-		SmartDashboard.putString("Ground Gear Elevation State", elevationState.toString());
-	}
-	public void stopLift() {
-		hardware.groundGearLift.set(0);
-	}
+
 	public void stopIntake() {
 		hardware.groundGearIntake.set(0);
 		intakeState = GroundGearIntakeState.Neutral;
 	}
+	
 	public void slowScore() {
 		if (elevationState == GroundGearElevationState.Scoring) {
 			//hardware.groundGearLiftgroup.setProfile(1);
@@ -118,12 +72,9 @@ public class GroundGear extends GearOpenable {
 			//hardware.groundGearLiftgroup.profileControl(GroundGearElevationState.Lowered.ticks);
 		}
 	}
+	
 	public boolean hasGear() {
 		return hardware.groundGearBanner.get();
-	}
-
-	public Talon getElevationMotor() {
-		return hardware.groundGearLift;
 	}
 
 }
