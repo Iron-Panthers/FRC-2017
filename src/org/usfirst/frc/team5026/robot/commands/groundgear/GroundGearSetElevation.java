@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class GroundGearSetElevation extends Command {
 
 	private static final double potThreshold = 0.08;
-	private static final double movePower = 0.3;
+	private static final double movePower = 0.6;
 	
 	private GroundGearElevationState targetState;
 	
