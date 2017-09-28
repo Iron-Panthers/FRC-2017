@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class GroundGearSetElevation extends Command {
 
 	private static final double potThreshold = 0.08;
-	private static final double movePower = 0.6;
+	private static final double movePower = 0.5;
 	
 	private GroundGearElevationState targetState;
 	
@@ -31,9 +31,9 @@ public class GroundGearSetElevation extends Command {
     	double delta = deltaToTargetState();
     	
     	if (delta < 0) {
-    		Robot.groundgear.setLiftPower(-movePower);
-    	} else {
     		Robot.groundgear.setLiftPower(movePower);
+    	} else {
+    		Robot.groundgear.setLiftPower(-movePower);
     	}
     }
 

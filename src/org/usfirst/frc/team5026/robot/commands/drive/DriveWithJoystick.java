@@ -3,8 +3,6 @@ package org.usfirst.frc.team5026.robot.commands.drive;
 import org.usfirst.frc.team5026.robot.Robot;
 import org.usfirst.frc.team5026.util.PantherJoystick;
 
-import com.ctre.CANTalon.TalonControlMode;
-
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
