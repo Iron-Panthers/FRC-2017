@@ -17,12 +17,12 @@ public class RobotMap {
 	//public static final int INTAKE_MOTOR = 0;
 	
 	// DRIVE MOTORS
-	public static final int DRIVE_MOTOR_LEFT_ENCODER = 4;
-	public static final int DRIVE_MOTOR_LEFT_2 = 13;
-	public static final int DRIVE_MOTOR_LEFT_3 = 14;
-	public static final int DRIVE_MOTOR_RIGHT_ENCODER = 1;
-	public static final int DRIVE_MOTOR_RIGHT_2 = 0;
-	public static final int DRIVE_MOTOR_RIGHT_3 = 1;
+	public static final int DRIVE_MOTOR_LEFT_ENCODER = 5;
+	public static final int DRIVE_MOTOR_LEFT_2 = 6;
+	public static final int DRIVE_MOTOR_LEFT_3 = 0;
+	public static final int DRIVE_MOTOR_RIGHT_ENCODER = 4;
+	public static final int DRIVE_MOTOR_RIGHT_2 = 7;
+	public static final int DRIVE_MOTOR_RIGHT_3 = 0;
 	
 	// DRIVE SENSORS
 	public static final int DRIVE_LEFT_BANNER = 1;
