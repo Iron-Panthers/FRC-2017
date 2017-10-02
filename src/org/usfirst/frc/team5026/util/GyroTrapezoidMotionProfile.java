@@ -57,6 +57,7 @@ public class GyroTrapezoidMotionProfile {
 		double out = p * (currentPosError) + i * (totalPosError) + d * (currentPosError - lastPosError) + f * (currentVelError);
 		
 		lastPosError = currentPosError;
+		totalPosError += currentPosError;
 		return out;
 	}
 }
