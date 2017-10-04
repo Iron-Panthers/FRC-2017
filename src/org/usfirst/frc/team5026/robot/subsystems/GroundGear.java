@@ -90,7 +90,8 @@ public class GroundGear extends GearOpenable {
 	}
 	public void stopIntake() {
 		hardware.groundGearIntake.set(0);
-		intakeState = GroundGearIntakeState.Neutral;
+//		intakeState = GroundGearIntakeState.Neutral;
+		setIntakeState(GroundGearIntakeState.Neutral);
 	}
 	public void slowScore() {
 		if (elevationState == GroundGearElevationState.Scoring) {

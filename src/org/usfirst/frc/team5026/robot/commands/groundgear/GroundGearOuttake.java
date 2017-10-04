@@ -21,7 +21,8 @@ public class GroundGearOuttake extends Command{
 	protected void end(){
 		Robot.groundgear.stopIntake();
 	}
-	protected void interrupt(){
+	protected void interrupted(){
+		Robot.groundgear.stopIntake();
 	}
 
 }

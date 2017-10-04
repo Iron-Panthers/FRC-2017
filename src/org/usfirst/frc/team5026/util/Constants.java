@@ -210,6 +210,6 @@ public class Constants {
 	 * measured (unloaded): 1834
 	 * measured (loaded, on field): 1200
 	 */
-	
+	public static final int DRIVE_MAX_COUNT = 25;
 	
 }

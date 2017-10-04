@@ -16,9 +16,10 @@ public class GroundGearIntake extends Command{
 	}
 	@Override
 	protected void initialize(){
-		Robot.groundgear.intakeGear();
+		
 	}
 	protected void execute(){
+		Robot.groundgear.intakeGear();
 	}
 	protected boolean isFinished() {
 		if (!runAndEnd) {
@@ -33,7 +34,8 @@ public class GroundGearIntake extends Command{
 		Robot.groundgear.stopIntake();
 		// Only stops if you want to end
 	}
-	protected void interrupt(){
+	protected void interrupted(){
+		Robot.groundgear.stopIntake();
 	}
 
 }

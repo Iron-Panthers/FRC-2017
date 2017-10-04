@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5026.robot.commands.autonomous;
 
 import org.usfirst.frc.team5026.robot.Robot;
+import org.usfirst.frc.team5026.util.Constants;
 import org.usfirst.frc.team5026.util.GearPosition;
 
 import com.ctre.CANTalon;
@@ -31,6 +32,7 @@ public class AutoDriveDistanceMotionProfilingInches extends Command {
         this.targetRight = targetRight;
         left = Robot.drive.left.getEncMotor();
         right = Robot.drive.right.getEncMotor();
+        countMax = Constants.DRIVE_MAX_COUNT;
     }
     
     public AutoDriveDistanceMotionProfilingInches(String s1, String s2, int count) {
@@ -46,6 +48,7 @@ public class AutoDriveDistanceMotionProfilingInches extends Command {
     	count = 0;
     	//Robot.drive.setGear(GearPosition.LOW);
     	Robot.hardware.gyro.reset(); // For use with gyro autos
+    	System.out.println("BEGIN!");
     	SmartDashboard.putNumber("IsFinished", 0); //0: not done, 1: ended normally, 2: interrupted
     	Robot.drive.left.resetPosition();
     	Robot.drive.right.resetPosition();
