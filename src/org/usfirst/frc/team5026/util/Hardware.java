@@ -66,9 +66,6 @@ public class Hardware {
 		leftMotor = new DriveMotorGroup(invertMotorLeft, invertSensorLeft, Constants.PIDFR_LEFT, Constants.TELEOP_RAMP_LEFT, leftMotor_1, leftMotor_2, leftMotor_3);
 		rightMotor = new DriveMotorGroup(invertMotorRight, invertSensorRight, Constants.PIDFR_RIGHT, Constants.TELEOP_RAMP_RIGHT, rightMotor_1, rightMotor_2, rightMotor_3);
 		
-		// Drive Sensors
-		buildGyro(0);
-		
 		driveLeftBanner = new DigitalInput(RobotMap.DRIVE_LEFT_BANNER);
 		driveRightBanner = new DigitalInput(RobotMap.DRIVE_RIGHT_BANNER);
 		
@@ -94,6 +91,9 @@ public class Hardware {
 		groundGearLift = new Talon(RobotMap.GROUND_GEAR_MOTOR_LIFT);
 		groundGearBanner = new DigitalInput(RobotMap.GROUND_GEAR_SENSOR);
 		pot = new AnalogPotentiometer(RobotMap.GROUND_GEAR_POT);
+		
+		// Drive Sensors
+		buildGyro(0);
 	}
 	public void buildGyro(int tries) {
 		System.out.println("RECONSTRUCTING TRY: "+tries);

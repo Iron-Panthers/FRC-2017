@@ -1,16 +1,19 @@
 package org.usfirst.frc.team5026.robot.commands.groundgear;
 
 import org.usfirst.frc.team5026.robot.Robot;
+import org.usfirst.frc.team5026.util.Constants;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
 public class GroundGearStayElevation extends Command {
 	
-	private double potVal;
-	private static double p = 0.05;
+	private static double p;
+	private static double d;
+	private static double lastError;
 
     public GroundGearStayElevation() {
         requires(Robot.groundgear);
@@ -18,13 +21,25 @@ public class GroundGearStayElevation extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	this.potVal = Robot.hardware.pot.get();
+    	p = SmartDashboard.getNumber("GroundGear P", 3.2);
+    	d = SmartDashboard.getNumber("GroundGear D", 0.032);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double error = Robot.hardware.pot.get() - this.potVal;
-    	double power = error * p;
+    	double error = Robot.groundgear.elevationState.potValue - Robot.hardware.pot.get();
+    	double dEE = (error - lastError) / 2;
+    	double power;
+    	
+    	if (error < 0) {
+    		power = error * p + dEE * d - Constants.GROUND_GEAR_LIFT_DEADZONE;
+    	} else {
+    		power = error * p + dEE * d + Constants.GROUND_GEAR_LIFT_DEADZONE;
+    	}
+    	
+    	SmartDashboard.putNumber("pot error", error);
+    	SmartDashboard.putNumber("pot power", power);
+    	
     	Robot.groundgear.setLiftPower(power);
     }
 

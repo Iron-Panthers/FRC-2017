@@ -161,39 +161,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putBoolean("Running", true);
 	}
 	private void displayMods() {
-		sDisplay("Auto Rotation P", Constants.AUTO_TURN_P);
-		sDisplay("Auto Angle Rotation Tolerance", Constants.AUTO_TURN_ANGLE_TOLERANCE);
-		
-		sDisplay("Banner Buffer", Constants.AUTO_BANNER_BUFFER);
-		
-		sDisplay("Auto Mid Left", Constants.AUTO_MIDDLE_TARGET_LEFT);
-		sDisplay("Auto Mid Right", Constants.AUTO_MIDDLE_TARGET_RIGHT);
-		
-		sDisplay("Auto Boiler Close Red", Constants.AUTO_BOILER_TARGET_CLOSE_RED);
-		sDisplay("Auto Boiler Far Red", Constants.AUTO_BOILER_TARGET_FAR_RED);
-		sDisplay("Auto Boiler Extra Distance Red", Constants.AUTO_BOILER_AFTER_TURN_TO_PEG_RED);
-		sDisplay("Auto Loading Close Red", Constants.AUTO_LOADING_TARGET_CLOSE_RED);
-		sDisplay("Auto Loading Far Red", Constants.AUTO_LOADING_TARGET_FAR_RED);
-		sDisplay("Auto Loading Extra Distance Red", Constants.AUTO_LOADING_AFTER_TURN_TO_PEG_RED);
-		
-		sDisplay("Auto Boiler Close Blue", Constants.AUTO_BOILER_TARGET_CLOSE_BLUE);
-		sDisplay("Auto Boiler Far Blue", Constants.AUTO_BOILER_TARGET_FAR_BLUE);
-		sDisplay("Auto Boiler Extra Distance Blue", Constants.AUTO_BOILER_AFTER_TURN_TO_PEG_BLUE);
-		sDisplay("Auto Loading Close Blue", Constants.AUTO_LOADING_TARGET_CLOSE_BLUE);
-		sDisplay("Auto Loading Far Blue", Constants.AUTO_LOADING_TARGET_FAR_BLUE);
-		sDisplay("Auto Loading Extra Distance Blue", Constants.AUTO_LOADING_AFTER_TURN_TO_PEG_BLUE);
-		
-		sDisplay("Auto Drop Gear Left", Constants.AUTO_DROP_GEAR_LEFT);
-		sDisplay("Auto Drop Gear Right", Constants.AUTO_DROP_GEAR_RIGHT);
-		
-		sDisplay("LEFT P", Constants.P_LEFT);
-		sDisplay("LEFT D", Constants.D_LEFT);
-		sDisplay("LEFT RAMP", Constants.RAMP_LEFT);
-		sDisplay("TELEOP LEFT RAMP", Constants.TELEOP_RAMP_LEFT);
-		sDisplay("RIGHT P", Constants.P_RIGHT);
-		sDisplay("RIGHT D", Constants.D_RIGHT);
-		sDisplay("TELEOP RIGHT RAMP", Constants.TELEOP_RAMP_RIGHT);
-		sDisplay("Auto Drive Stabilization Tolerance (Ticks)", Constants.DRIVE_STABILIZATION_TOLERANCE);
+		sDisplay("GroundGear P", 3.2);
+		sDisplay("GroundGear D", 0.032);
 	}
 	private void sDisplay(String n, double v) {
 		SmartDashboard.putNumber(n, v);

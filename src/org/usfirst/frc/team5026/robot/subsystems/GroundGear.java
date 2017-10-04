@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class GroundGear extends GearOpenable {
 
 	private Hardware hardware;
-	public GroundGearElevationState elevationState; 
+	public GroundGearElevationState elevationState = GroundGearElevationState.Legal; 
 	public GroundGearIntakeState intakeState; 
 	
 	

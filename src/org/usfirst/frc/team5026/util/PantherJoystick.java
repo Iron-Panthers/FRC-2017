@@ -1,6 +1,9 @@
 package org.usfirst.frc.team5026.util; 
  
-import edu.wpi.first.wpilibj.Joystick; 
+import org.usfirst.frc.team5026.robot.Robot;
+
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard; 
  
 /*  
  * @param magnitude is the magnitude of the vector of the joystick from the center.  
@@ -30,6 +33,8 @@ public class PantherJoystick extends Joystick{
 	if (Math.abs(val) < joystickType.deadzoneX) {
 		return 0;
 	}
+	//SmartDashboard.putNumber("Gyro angle", Robot.hardware.gyro.getAngle());
+	System.out.println(Robot.hardware.gyro.getAngle());
     return val;
   } 
    
