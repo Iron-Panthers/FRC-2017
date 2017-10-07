@@ -82,10 +82,10 @@ public class OI {
 //		boardButton4.whenPressed(new GroundGearStop()); //donut use
 		boardButton5.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Legal));
 		boardButton6.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Lowered));
-		boardButton7.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Scoring));
+		boardButton7.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.DriveMode));
 		boardButton8.whileHeld(new ClimberRappel());
 //		boardButton8.whenPressed(new GroundGearIntakeWithBannerElevation());
-		boardButton9.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.DriveMode));
+		boardButton9.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Scoring));
 		boardButton10.whenPressed(new GearUnClampCommand());
 		boardButton11.whenPressed(new GearClampCommand());
 //		boardButton11.whenPressed(new GroundGearElevationControlSequence()); // This does a toggle
