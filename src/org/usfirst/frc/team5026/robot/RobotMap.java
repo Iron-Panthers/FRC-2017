@@ -34,8 +34,8 @@ public class RobotMap {
 	public static final int GROUND_GEAR_SENSOR = 3;
 	
 	// SOLENOIDS
-	public static final int SOLENOID_SHIFTER_FORWARD = 2;
-	public static final int SOLENOID_SHIFTER_REVERSE = 3;
+	public static final int SOLENOID_SHIFTER_FORWARD = 0;
+	public static final int SOLENOID_SHIFTER_REVERSE = 1;
 	
 	// JOYSTICK BUTTONS
 	public static final int DRIVE_JOYSTICK = 0;
@@ -62,8 +62,8 @@ public class RobotMap {
 	public static final int DRIVE_BUTTON_7 = 7;
 	
 	// GEAR
-	public static final int GEAR_PISTON_FORWARD = 0;
-	public static final int GEAR_PISTON_REVERSE = 1;
+	public static final int GEAR_PISTON_FORWARD = 2;
+	public static final int GEAR_PISTON_REVERSE = 3;
 	public static final int GEAR_CLAMP_SENSOR = 2;
 	public static final int GROUND_GEAR_POT = 0;
 	

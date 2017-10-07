@@ -161,8 +161,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putBoolean("Running", true);
 	}
 	private void displayMods() {
-		sDisplay("GroundGear P", 3.2);
-		sDisplay("GroundGear D", 0.032);
+		sDisplay("GroundGear P", 0);
+		sDisplay("GroundGear D", 0);
 	}
 	private void sDisplay(String n, double v) {
 		SmartDashboard.putNumber(n, v);
@@ -176,8 +176,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putBoolean("Left Banner", hardware.driveLeftBanner.get());
 		SmartDashboard.putBoolean("Right banner", hardware.driveRightBanner.get());
 		SmartDashboard.putNumber("Pot", hardware.pot.get());  //ground = 0.22, on to peg = 0.55, inside robot = 0.87
-		
-		
+		SmartDashboard.putNumber("gyro heading", hardware.gyro.getAngle());
 		
 		Scheduler.getInstance().run();		
 	}

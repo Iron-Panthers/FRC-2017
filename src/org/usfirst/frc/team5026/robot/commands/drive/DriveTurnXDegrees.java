@@ -33,8 +33,9 @@ public class DriveTurnXDegrees extends Command {
     	count = 0;
     	Robot.drive.left.setupVoltageMode();
     	Robot.drive.right.setupVoltageMode();
-    	if (reset)
-    	Robot.hardware.gyro.reset();
+    	if (reset) {
+    		Robot.hardware.gyro.reset();
+    	}
     }
 
     

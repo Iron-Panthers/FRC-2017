@@ -74,6 +74,7 @@ public class Hardware {
 		
 		// Climber
 		climberRightMotor = new Talon(RobotMap.CLIMBER_MOTOR_RIGHT);
+		climberRightMotor.setInverted(true);
 		climberLeftMotor = new Talon(RobotMap.CLIMBER_MOTOR_LEFT);
 		
 		// Gear
