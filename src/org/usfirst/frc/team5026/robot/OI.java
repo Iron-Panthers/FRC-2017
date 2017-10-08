@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5026.robot;
 
+import org.usfirst.frc.team5026.robot.commands.autonomous.AutoDriveDistanceMotionProfilingInches;
 import org.usfirst.frc.team5026.robot.commands.climber.ClimberSequence;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveShiftGear;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveSwapForwards;
@@ -11,6 +12,7 @@ import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearOuttake;
 import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearScoreGear;
 import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearSetElevation;
 import org.usfirst.frc.team5026.robot.commands.misc.LEDSignalGear;
+import org.usfirst.frc.team5026.util.Constants;
 import org.usfirst.frc.team5026.util.GroundGearElevationState;
 import org.usfirst.frc.team5026.util.PantherJoystick;
 
@@ -77,6 +79,8 @@ public class OI {
 		driveButton1.whileHeld(new DriveSwapForwards());
 		driveButton2.whenPressed(new DriveShiftGear());
 		driveButton3.whenPressed(new DriveTurnXDegrees(0, false));
+	
+		boardButton9.whenPressed(new AutoDriveDistanceMotionProfilingInches("Auto Mid Left", "Auto Mid Right", Constants.AUTO_MIDDLE_TARGET_COUNT));
 		
 		//boardButton9.whenPressed(new GroundGearSetElevation(GroundGearElevationState.Legal));
 		//boardButton10.whenPressed(new GroundGearSetElevation(GroundGearElevationState.Lowered));
