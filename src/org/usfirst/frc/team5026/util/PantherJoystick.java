@@ -29,12 +29,15 @@ public class PantherJoystick extends Joystick{
   } 
    
   public double getScaledDeadzoneX() { 
-	double val = this.getDeadzoneJoystickValue(this.getMagnitude(), this.getX() * joystickType.scalingX, joystickType.deadzoneX); 
+	int invert = 1;  
+	if (this.getY() > joystickType.deadzoneY ) {
+		invert = -1;
+	}
+	  
+	double val = this.getDeadzoneJoystickValue(this.getMagnitude(), this.getX() * invert * joystickType.scalingX, joystickType.deadzoneX); 
 	if (Math.abs(val) < joystickType.deadzoneX) {
 		return 0;
 	}
-	//SmartDashboard.putNumber("Gyro angle", Robot.hardware.gyro.getAngle());
-	System.out.println(Robot.hardware.gyro.getAngle());
     return val;
   } 
    
