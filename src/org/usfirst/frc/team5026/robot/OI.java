@@ -76,10 +76,12 @@ public class OI {
 		driveButton4.whenPressed(new GroundGearScoreGearWhileDrivingBackward());
 //		driveButton2.whileHeld(new LEDSignalGear());
 		
-		boardButton1.whileHeld(new ClimberSequence());
+		//Attack 3 Joystick Mapping
+		/*boardButton1.whileHeld(new ClimberSequence());
 		boardButton2.whileHeld(new GroundGearOuttake());
 		boardButton3.whileHeld(new GroundGearIntake());
 //		boardButton4.whenPressed(new GroundGearStop()); //donut use
+		boardButton4.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Lowered)); //redundancy bc blue joystick button6 doesn't register
 		boardButton5.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Legal));
 		boardButton6.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Lowered));
 		boardButton7.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.DriveMode));
@@ -91,6 +93,19 @@ public class OI {
 //		boardButton11.whenPressed(new GroundGearElevationControlSequence()); // This does a toggle
 //		boardButton10.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.DriveMode));
 //		boardButton12.whenPressed(new GroundGearIntakeWithBannerElevation());
+		*/
+		
+		//GamePad Joystick Mapping
+		boardButton1.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Lowered));
+		boardButton2.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Legal));
+		boardButton3.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.DriveMode));
+		boardButton4.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Scoring));
+		boardButton5.whileHeld(new GroundGearOuttake());
+		boardButton6.whileHeld(new GroundGearIntake());
+		boardButton7.whenPressed(new GearUnClampCommand());
+		boardButton8.whenPressed(new GearClampCommand());
+		boardButton9.whileHeld(new ClimberSequence());
+		boardButton10.whileHeld(new ClimberRappel());
 		
 		
 /*//		boardButton1.whileHeld(new ClimberSequence());
