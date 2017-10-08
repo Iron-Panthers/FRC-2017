@@ -6,7 +6,7 @@ public class Constants {
 	public static final float X_SCALING_RED = 0.7f; 
 	public static final float Y_SCALING_RED = 0.85f;  
 	public static final float DEADZONE_X_RED = 0.0563f; 
-	public static final float DEADZONE_Y_RED = 0.0512f; 
+	public static final float DEADZONE_Y_RED = 0.2f; //0.0512f; 
 	public static final float DEADZONE_Y_MAX_RED = 0.829f; 
 	public static final float DEADZONE_BOWTIE_SCALING_RED = 0.03f; 
 
@@ -14,7 +14,7 @@ public class Constants {
 	public static final float X_SCALING_BLUE = 0.7f; 
 	public static final float Y_SCALING_BLUE = 0.85f;  
 	public static final float DEADZONE_X_BLUE = 0.0563f; 
-	public static final float DEADZONE_Y_BLUE = 0.0512f; 
+	public static final float DEADZONE_Y_BLUE = 0.2f; // 0.0512f; 
 	public static final float DEADZONE_Y_MAX_BLUE = 0.829f; 
 	public static final float DEADZONE_BOWTIE_SCALING_BLUE = 0.03f; 
 

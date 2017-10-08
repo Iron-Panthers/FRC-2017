@@ -29,13 +29,15 @@ public class PantherJoystick extends Joystick{
   } 
    
   public double getScaledDeadzoneX() { 
-	int invert = 1;  
+	int invert = 1; 
+	SmartDashboard.putNumber("Real Joy X", this.getX());
+	SmartDashboard.putNumber("Real Joy Y", this.getY());
 	if (this.getY() > joystickType.deadzoneY ) {
 		invert = -1;
 	}
 	  
 	double val = this.getDeadzoneJoystickValue(this.getMagnitude(), this.getX() * invert * joystickType.scalingX, joystickType.deadzoneX); 
-	if (Math.abs(val) < joystickType.deadzoneX) {
+	if (Math.abs(val) < joystickType.deadzoneX) { // FIX THIS MAGIC NUMBER
 		return 0;
 	}
     return val;
