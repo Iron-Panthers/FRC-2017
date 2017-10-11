@@ -85,6 +85,11 @@ public class Constants {
 	public static final Color LED_DRIVE_REVERSE = Color.GOLD;
 	public static final Color LED_GEAR_RELEASE = Color.GREEN;
 	
+	//Shooter PID Constants
+	public static final double SHOOTER_P = 0.5;
+	public static final double SHOOTER_I = 0;
+	public static final double SHOOTER_D = 0;
+	
 	// Gyro Constants
 	public static final double AUTO_TURN_ANGLE_TOLERANCE = 1;
 	public static final double AUTO_TURN_SPEED = 0.5;

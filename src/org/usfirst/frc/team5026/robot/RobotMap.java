@@ -67,6 +67,11 @@ public class RobotMap {
 	public static final int GEAR_CLAMP_SENSOR = 2;
 	public static final int GROUND_GEAR_POT = 0;
 	
+	// SHOOTER
+	public static final int SHOOTER_MOTOR = 3;
+	public static final int SHOOTER_ENCODER_1 = 0;
+	public static final int SHOOTER_ENCODER_2 = 1;
+	
 	// LED
 	public static final int CAN_LED_PORT = 3;
 }

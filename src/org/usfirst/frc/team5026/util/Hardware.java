@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SPI.Port;
 import edu.wpi.first.wpilibj.Talon;
@@ -29,6 +30,9 @@ public class Hardware {
 	
 	public Talon climberRightMotor;
 	public Talon climberLeftMotor;
+	
+	public Talon shooterMotor;
+	public Encoder shooterEncoder;
 	
 	public boolean climberLeftInverted = true;
 	public boolean climberRightInverted = true;
@@ -92,6 +96,10 @@ public class Hardware {
 		groundGearLift = new Talon(RobotMap.GROUND_GEAR_MOTOR_LIFT);
 		groundGearBanner = new DigitalInput(RobotMap.GROUND_GEAR_SENSOR);
 		pot = new AnalogPotentiometer(RobotMap.GROUND_GEAR_POT);
+		
+		// Shooter
+		shooterMotor = new Talon(RobotMap.SHOOTER_MOTOR);
+		shooterEncoder = new Encoder(RobotMap.SHOOTER_ENCODER_1, RobotMap.SHOOTER_ENCODER_2);
 		
 		// Drive Sensors
 		buildGyro(0);
