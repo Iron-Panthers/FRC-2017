@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5026.robot.subsystems;
 
 import org.usfirst.frc.team5026.robot.Robot;
+import org.usfirst.frc.team5026.robot.commands.shooter.JoystickShooterSpeed;
 import org.usfirst.frc.team5026.util.Constants;
 
 import edu.wpi.first.wpilibj.Encoder;
@@ -21,16 +22,10 @@ public class Shooter extends PIDSubsystem {
     	
     	encoder = Robot.hardware.shooterEncoder;
     	motor = Robot.hardware.shooterMotor;
-    	
-        // Use these to get going:
-        // setSetpoint() -  Sets where the PID controller should move the system
-        //                  to
-        // enable() - Enables the PID controller.
     }
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new JoystickShooterSpeed());
     }
 
     protected double returnPIDInput() {
