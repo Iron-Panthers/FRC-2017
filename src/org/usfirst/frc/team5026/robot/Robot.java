@@ -163,6 +163,8 @@ public class Robot extends IterativeRobot {
 	private void displayMods() {
 		sDisplay("GroundGear P", 0);
 		sDisplay("GroundGear D", 0);
+		sDisplay("Auto Mid Left", Constants.AUTO_MIDDLE_TARGET_LEFT);
+		sDisplay("Auto Mid Right", Constants.AUTO_MIDDLE_TARGET_RIGHT);
 	}
 	private void sDisplay(String n, double v) {
 		SmartDashboard.putNumber(n, v);
