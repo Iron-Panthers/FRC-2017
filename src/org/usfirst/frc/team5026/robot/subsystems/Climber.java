@@ -39,6 +39,8 @@ public class Climber extends Subsystem {
 		postMotorOutput();
 		leftClimb.set(speed);
 		rightClimb.set(speed);		//use setInverted(true)
+		
+		Robot.hardware.groundGearLift.set(1);
 	}
 	
 	public void stopClimb() {
