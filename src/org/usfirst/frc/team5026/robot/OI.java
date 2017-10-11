@@ -77,7 +77,7 @@ public class OI {
 //		driveButton2.whileHeld(new LEDSignalGear());
 		
 		//Attack 3 Joystick Mapping
-		/*boardButton1.whileHeld(new ClimberSequence());
+		boardButton1.whileHeld(new ClimberSequence());
 		boardButton2.whileHeld(new GroundGearOuttake());
 		boardButton3.whileHeld(new GroundGearIntake());
 //		boardButton4.whenPressed(new GroundGearStop()); //donut use
@@ -93,20 +93,19 @@ public class OI {
 //		boardButton11.whenPressed(new GroundGearElevationControlSequence()); // This does a toggle
 //		boardButton10.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.DriveMode));
 //		boardButton12.whenPressed(new GroundGearIntakeWithBannerElevation());
-		*/
+		
 		
 		//GamePad Joystick Mapping
-		boardButton1.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Lowered));
-		boardButton2.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Legal));
-		boardButton3.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.DriveMode));
-		boardButton4.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Scoring));
-		boardButton5.whileHeld(new GroundGearOuttake());
-		boardButton6.whileHeld(new GroundGearIntake());
-		boardButton7.whenPressed(new GearUnClampCommand());
-		boardButton8.whenPressed(new GearClampCommand());
-		boardButton9.whileHeld(new ClimberSequence());
-		boardButton10.whileHeld(new ClimberRappel());
-		
+//		//boardButton1.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Lowered));
+//		boardButton2.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Legal));
+//		boardButton3.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.DriveMode));
+//		boardButton4.whenPressed(new GroundGearElevationControlSequence(GroundGearElevationState.Scoring));
+//		boardButton5.whileHeld(new GroundGearOuttake());
+//		boardButton6.whileHeld(new GroundGearIntake());
+//		boardButton7.whenPressed(new GearUnClampCommand());
+//		boardButton8.whenPressed(new GearClampCommand());
+//		boardButton1.whileHeld(new ClimberSequence());
+//		boardButton10.whileHeld(new ClimberRappel());		
 		
 /*//		boardButton1.whileHeld(new ClimberSequence());
 //		boardButton2.whenPressed(new ClimberCycleSpeed());
