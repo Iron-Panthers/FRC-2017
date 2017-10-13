@@ -126,14 +126,14 @@ public class Robot extends IterativeRobot {
 		autoChooser.addDefault("Both: Middle peg", new AutoDriveDistanceMotionProfilingInches("Auto Mid Left", "Auto Mid Right", Constants.AUTO_MIDDLE_TARGET_COUNT));
 		
 		
-		autoChooser.addObject("Red: Right peg", new AutoRedDriveCarveLeftToPegFromBoiler());
-		autoChooser.addObject("Red: Left peg", new AutoRedDriveCarveRightToPegFromLoadingZone());
-		autoChooser.addObject("Blue: Right peg", new AutoBlueDriveCarveLeftToPegFromLoadingZone());
-		autoChooser.addObject("Blue: Left peg", new AutoBlueDriveCarveRightToPegFromBoiler());
-		autoChooser.addObject("Red: Right peg with Banner", new AutoRedDriveCarveLeftToPegFromBoilerBanner());
-		autoChooser.addObject("Red: Left peg with Banner", new AutoRedDriveCarveRightToPegFromLoadingZoneBanner());
-		autoChooser.addObject("Blue: Right peg with Banner", new AutoBlueDriveCarveLeftToPegFromLoadingZoneBanner());
-		autoChooser.addObject("Blue: Left peg with Banner", new AutoBlueDriveCarveRightToPegFromBoilerBanner());
+//		autoChooser.addObject("Red: Right peg", new AutoRedDriveCarveLeftToPegFromBoiler());
+//		autoChooser.addObject("Red: Left peg", new AutoRedDriveCarveRightToPegFromLoadingZone());
+//		autoChooser.addObject("Blue: Right peg", new AutoBlueDriveCarveLeftToPegFromLoadingZone());
+//		autoChooser.addObject("Blue: Left peg", new AutoBlueDriveCarveRightToPegFromBoiler());
+//		autoChooser.addObject("Red: Right peg with Banner", new AutoRedDriveCarveLeftToPegFromBoilerBanner());
+//		autoChooser.addObject("Red: Left peg with Banner", new AutoRedDriveCarveRightToPegFromLoadingZoneBanner());
+//		autoChooser.addObject("Blue: Right peg with Banner", new AutoBlueDriveCarveLeftToPegFromLoadingZoneBanner());
+//		autoChooser.addObject("Blue: Left peg with Banner", new AutoBlueDriveCarveRightToPegFromBoilerBanner());
 		
 		
 		autoChooser.addObject("Red: Right peg with Gyro", new AutoRedDriveCarveLeftToPegFromBoilerWithGyro());
@@ -194,6 +194,7 @@ public class Robot extends IterativeRobot {
 	}
 	private void displayMods() {
 		sDisplay("Auto Rotation P", Constants.AUTO_TURN_P);
+		sDisplay("Auto Rotation I", Constants.AUTO_TURN_I);
 		sDisplay("Auto Angle Rotation Tolerance", Constants.AUTO_TURN_ANGLE_TOLERANCE);
 		
 		sDisplay("Banner Buffer", Constants.AUTO_BANNER_BUFFER);

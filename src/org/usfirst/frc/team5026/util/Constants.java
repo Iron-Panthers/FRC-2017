@@ -87,10 +87,13 @@ public class Constants {
 	public static final Color LED_GEAR_RELEASE = Color.GREEN;
 	
 	// Gyro Constants
-	public static final double AUTO_TURN_ANGLE_TOLERANCE = 1;
-	public static final double AUTO_TURN_SPEED = 0.5;
+	public static final double DELTA_TIME = 0.02;
+	public static final double AUTO_TURN_ANGLE_TOLERANCE = 0.05;
+	public static final double AUTO_TURN_SPEED = 1;
+	public static final double OMEGA = 40;// deg / s
 	public static final int AUTO_TURN_COUNT = 5;
 	public static final double AUTO_TURN_P = 0.1;
+	public static final double AUTO_TURN_I = 0;
 	
 	// Encoder constants
 	public static final double WHEEL_DIAMETER = 4;	//in inches
@@ -211,5 +214,6 @@ public class Constants {
 	 * measured (loaded, on field): 1200
 	 */
 	public static final int DRIVE_MAX_COUNT = 25;
+	
 	
 }

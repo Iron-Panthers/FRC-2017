@@ -14,8 +14,11 @@ public class DriveTurnXDegrees extends Command {
 	private double degrees;
 	private int count;
 	double p;
+	double i;
 	double tol;
 	boolean reset;
+	double predicted;
+	double totalError;
 
 	public DriveTurnXDegrees() {
 		requires(Robot.drive);
@@ -28,22 +31,36 @@ public class DriveTurnXDegrees extends Command {
 
 
     protected void initialize() {
-    	p = SmartDashboard.getNumber("Auto Rotation P", 0);
+    	p = SmartDashboard.getNumber("Auto Rotation P", Constants.AUTO_TURN_P);
+    	i = SmartDashboard.getNumber("Auto Rotation I", Constants.AUTO_TURN_I);
     	tol = SmartDashboard.getNumber("Auto Angle Rotation Tolerance", 0);
     	count = 0;
     	Robot.drive.left.setupVoltageMode();
     	Robot.drive.right.setupVoltageMode();
+    	predicted = 0;
+    	totalError = 0;
     	if (reset)
     	Robot.hardware.gyro.reset();
     }
 
     
     protected void execute() {
-    	double angle = Robot.hardware.gyro.getAngle();
-    	Robot.drive.setLeftRightMotors(Constants.AUTO_TURN_SPEED * -(degrees - angle) * p, Constants.AUTO_TURN_SPEED * (degrees -  angle) * p);
+    	double omega = predicted > 0 ? Constants.OMEGA : -Constants.OMEGA;
+    	predicted = predicted + omega * Constants.DELTA_TIME;
+    	if (Math.abs(predicted) > Math.abs(degrees)) {
+    		predicted = degrees;
+    	}
+    	double current = Robot.hardware.gyro.getAngle();
+    	
+    	double left = -Constants.AUTO_TURN_SPEED - ((predicted - current) * p + (totalError) * i); // forwards is actually negative
+    	double right = Constants.AUTO_TURN_SPEED + ((predicted - current) * p + (totalError) * i);
+    	
+    	totalError += (predicted - current);
+    	Robot.drive.setLeftRightMotors(left,right);
     	if (Math.abs(Robot.hardware.gyro.getAngle() - degrees) <= tol) {
     		count++;
     	}
+    	SmartDashboard.putNumber("Gyro prediction", predicted);
     	SmartDashboard.putNumber("Gyro angle", Robot.hardware.gyro.getAngle());
     }
 
