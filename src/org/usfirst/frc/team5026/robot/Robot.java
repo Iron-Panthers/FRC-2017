@@ -123,7 +123,7 @@ public class Robot extends IterativeRobot {
 		// Everytime u write a new auto, do autoChooser.addObject("NAME OF AUTO", new AUTOCOMMAND);
 		// Do that here
 		// Our default is now the middle peg. That way we at least drive past the baseline in the case of auto failure...
-		autoChooser.addDefault("Both: Middle peg", new AutoDriveDistanceMotionProfilingInches("Auto Mid Left", "Auto Mid Right", Constants.AUTO_MIDDLE_TARGET_COUNT));
+//		autoChooser.addDefault("Both: Middle peg", new AutoDriveDistanceMotionProfilingInches("Auto Mid Left", "Auto Mid Right", Constants.AUTO_MIDDLE_TARGET_COUNT));
 		
 		
 //		autoChooser.addObject("Red: Right peg", new AutoRedDriveCarveLeftToPegFromBoiler());
@@ -143,7 +143,7 @@ public class Robot extends IterativeRobot {
 		
 		
 		autoChooser.addObject("Auto Drop Gear", new AutoDriveDistanceMotionProfilingInches("Auto Drop Gear Left","Auto Drop Gear Right", Constants.AUTO_MIDDLE_TARGET_COUNT));
-		autoChooser.addObject("Auto Gyro Loop", new DriveTurnXDegrees(60, false));
+		autoChooser.addDefault("Auto Gyro Loop", new DriveTurnXDegrees(60, false));
 		autoChooser.addObject("Auto Gyro Loop -", new DriveTurnXDegrees(-60, false));
 		
 		SmartDashboard.putData("Autonomous Chooser", autoChooser);
@@ -195,6 +195,7 @@ public class Robot extends IterativeRobot {
 	private void displayMods() {
 		sDisplay("Auto Rotation P", Constants.AUTO_TURN_P);
 		sDisplay("Auto Rotation I", Constants.AUTO_TURN_I);
+		sDisplay("Auto Turn Omega", Constants.OMEGA);
 		sDisplay("Auto Angle Rotation Tolerance", Constants.AUTO_TURN_ANGLE_TOLERANCE);
 		
 		sDisplay("Banner Buffer", Constants.AUTO_BANNER_BUFFER);

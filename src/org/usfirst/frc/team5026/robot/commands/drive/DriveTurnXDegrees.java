@@ -19,6 +19,7 @@ public class DriveTurnXDegrees extends Command {
 	boolean reset;
 	double predicted;
 	double totalError;
+	double omega;
 
 	public DriveTurnXDegrees() {
 		requires(Robot.drive);
@@ -34,6 +35,8 @@ public class DriveTurnXDegrees extends Command {
     	p = SmartDashboard.getNumber("Auto Rotation P", Constants.AUTO_TURN_P);
     	i = SmartDashboard.getNumber("Auto Rotation I", Constants.AUTO_TURN_I);
     	tol = SmartDashboard.getNumber("Auto Angle Rotation Tolerance", 0);
+    	omega = SmartDashboard.getNumber("Auto Turn Omega", Constants.OMEGA);
+    	if (degrees < 0) omega = -omega;
     	count = 0;
     	Robot.drive.left.setupVoltageMode();
     	Robot.drive.right.setupVoltageMode();
@@ -45,15 +48,15 @@ public class DriveTurnXDegrees extends Command {
 
     
     protected void execute() {
-    	double omega = predicted > 0 ? Constants.OMEGA : -Constants.OMEGA;
+//    	double omega = predicted >= 0 ? Constants.OMEGA : -Constants.OMEGA;
     	predicted = predicted + omega * Constants.DELTA_TIME;
     	if (Math.abs(predicted) > Math.abs(degrees)) {
     		predicted = degrees;
     	}
     	double current = Robot.hardware.gyro.getAngle();
     	
-    	double left = -Constants.AUTO_TURN_SPEED - ((predicted - current) * p + (totalError) * i); // forwards is actually negative
-    	double right = Constants.AUTO_TURN_SPEED + ((predicted - current) * p + (totalError) * i);
+    	double left = -((predicted - current) * p + (totalError) * i); // forwards is actually negative
+    	double right = ((predicted - current) * p + (totalError) * i);
     	
     	totalError += (predicted - current);
     	Robot.drive.setLeftRightMotors(left,right);
