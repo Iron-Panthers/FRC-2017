@@ -3,7 +3,7 @@ package org.usfirst.frc.team5026.util;
 public class Constants { 
 	// Joystick Constants 
 	//RED 
-	public static final float X_SCALING_RED = 0.7f; 
+	public static final float X_SCALING_RED = 0.8f; 
 	public static final float Y_SCALING_RED = 0.85f;  
 	public static final float DEADZONE_X_RED = 0.0563f; 
 	public static final float DEADZONE_Y_RED = 0.0512f; 
@@ -11,7 +11,7 @@ public class Constants {
 	public static final float DEADZONE_BOWTIE_SCALING_RED = 0.03f; 
 
 	//BLUE 
-	public static final float X_SCALING_BLUE = 0.7f; 
+	public static final float X_SCALING_BLUE = 0.8f; 
 	public static final float Y_SCALING_BLUE = 0.85f;  
 	public static final float DEADZONE_X_BLUE = 0.0563f; 
 	public static final float DEADZONE_Y_BLUE = 0.0512f; 
@@ -43,8 +43,8 @@ public class Constants {
 	// GROUND GEAR
 	public static final int GROUND_GEAR_LEGAL_TICKS = 0;
 	public static final int GROUND_GEAR_SCORING_TICKS = -76600;
-	public static final int GROUND_GEAR_DRIVEMODE_TICKS = -130000;
-	public static final int GROUND_GEAR_LOWERED_TICKS = -140000;
+	public static final int GROUND_GEAR_DRIVEMODE_TICKS = -125000;
+	public static final int GROUND_GEAR_LOWERED_TICKS = -130000;
 	
 	public static final int GROUND_GEAR_STABILISATION_MAX_COUNT = 10;
 	public static final int GROUND_GEAR_TICK_TOLERANCE = 120;
