@@ -6,7 +6,6 @@ import org.usfirst.frc.team5026.robot.commands.drive.DriveSwapForwards;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveTurnXDegrees;
 import org.usfirst.frc.team5026.robot.commands.gear.GearClampCommand;
 import org.usfirst.frc.team5026.robot.commands.gear.GearUnClampCommand;
-import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearScoreGear;
 import org.usfirst.frc.team5026.robot.commands.shooter.FlatShooterSpeed;
 import org.usfirst.frc.team5026.util.PantherJoystick;
 
@@ -78,12 +77,10 @@ public class OI {
 		//boardButton10.whenPressed(new GroundGearSetElevation(GroundGearElevationState.Lowered));
 		//boardButton11.whenPressed(new GroundGearSetElevation(GroundGearElevationState.Scoring));
 		
-		boardButton2.whileHeld(new FlatShooterSpeed());
+		boardButton2.whenPressed(new FlatShooterSpeed());
 		//boardButton3.whileHeld(new GroundGearIntake());
 //		boardButton4.whenPressed(new GroundGearStop()); //donut use
-		
-		boardButton8.whenPressed(new GroundGearScoreGear());
-		
+				
 		
 		boardButton1.whileHeld(new ClimberSequence());
 /*		boardButton2.whenPressed(new ClimberCycleSpeed());

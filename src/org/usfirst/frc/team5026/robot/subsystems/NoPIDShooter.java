@@ -19,10 +19,10 @@ public class NoPIDShooter extends Subsystem {
     }
 
     public void initDefaultCommand() {
-        setDefaultCommand(new FlatShooterSpeed());
     }
 
     public void setPower(double power) {
+    	System.out.println(power);
     	motor.set(power);
     }
 

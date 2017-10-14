@@ -5,8 +5,8 @@ public class CanGearClampsMove {
 	public CanGearClampsMove(){
 	}
 	
-	public static boolean checkMovement(GearOpenable groundClamp, GearOpenable upperClamp){
-		if(!groundClamp.isOpen && !upperClamp.isOpen){
+	public static boolean checkMovement(GearOpenable upperClamp){
+		if(!upperClamp.isOpen){
 			return true;
 		}
 		return false;

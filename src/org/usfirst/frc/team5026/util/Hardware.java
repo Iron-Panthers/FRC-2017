@@ -93,7 +93,7 @@ public class Hardware {
 		
 		// Ground Gear
 		groundGearIntake = new Talon(RobotMap.GROUND_GEAR_MOTOR_INTAKE);
-		groundGearLift = new Talon(RobotMap.GROUND_GEAR_MOTOR_LIFT);
+		//groundGearLift = new Talon(RobotMap.GROUND_GEAR_MOTOR_LIFT);
 		groundGearBanner = new DigitalInput(RobotMap.GROUND_GEAR_SENSOR);
 		pot = new AnalogPotentiometer(RobotMap.GROUND_GEAR_POT);
 		

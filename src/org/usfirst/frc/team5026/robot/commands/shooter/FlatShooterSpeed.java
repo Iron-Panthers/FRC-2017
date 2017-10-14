@@ -16,6 +16,7 @@ public class FlatShooterSpeed extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	System.out.println("SUVCC");
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -25,7 +26,7 @@ public class FlatShooterSpeed extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return !Robot.oi.boardButton2.get();
     }
 
     // Called once after isFinished returns true

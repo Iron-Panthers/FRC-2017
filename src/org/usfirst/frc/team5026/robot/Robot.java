@@ -20,10 +20,8 @@ import org.usfirst.frc.team5026.robot.commands.misc.JoystickChoose;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
-import org.usfirst.frc.team5026.robot.subsystems.GroundGear;
 import org.usfirst.frc.team5026.robot.subsystems.Intake;
 import org.usfirst.frc.team5026.robot.subsystems.NoPIDShooter;
-import org.usfirst.frc.team5026.robot.subsystems.Shooter;
 import org.usfirst.frc.team5026.util.Constants;
 import org.usfirst.frc.team5026.util.Hardware;
 import org.usfirst.frc.team5026.util.JoystickType;
@@ -50,9 +48,8 @@ public class Robot extends IterativeRobot {
 	public static GearClamp gearclamp;
 	public static Climber climber;
 	public static Intake intake;
-	public static GroundGear groundgear;
 	public static NoPIDShooter shooter;
-	public static Shooter pidShooter;
+	//public static Shooter pidShooter;
 	
 	Command autoCommand;
 	public static SendableChooser <Command> autoChooser = new SendableChooser<>();
@@ -83,7 +80,6 @@ public class Robot extends IterativeRobot {
 		drive = new Drive();
 		climber = new Climber();
 		gearclamp = new GearClamp();
-		groundgear = new GroundGear();
 		intake = new Intake();
 		shooter = new NoPIDShooter();
 		oi.mapButtonBoard();
@@ -180,7 +176,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putBoolean("Left Banner", hardware.driveLeftBanner.get());
 		SmartDashboard.putBoolean("Right banner", hardware.driveRightBanner.get());
 		SmartDashboard.putNumber("Pot", hardware.pot.get());  //ground = 0.22, on to peg = 0.55, inside robot = 0.87
-		SmartDashboard.putNumber("gyro heading", hardware.gyro.getAngle());
+		//SmartDashboard.putNumber("gyro heading", hardware.gyro.getAngle());
 		
 		Scheduler.getInstance().run();		
 	}
