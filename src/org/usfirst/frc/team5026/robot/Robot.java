@@ -22,12 +22,12 @@ import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
 import org.usfirst.frc.team5026.robot.subsystems.GroundGear;
 import org.usfirst.frc.team5026.robot.subsystems.Intake;
+import org.usfirst.frc.team5026.robot.subsystems.NoPIDShooter;
 import org.usfirst.frc.team5026.robot.subsystems.Shooter;
 import org.usfirst.frc.team5026.util.Constants;
 import org.usfirst.frc.team5026.util.Hardware;
 import org.usfirst.frc.team5026.util.JoystickType;
 
-import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -51,7 +51,8 @@ public class Robot extends IterativeRobot {
 	public static Climber climber;
 	public static Intake intake;
 	public static GroundGear groundgear;
-	public static Shooter shooter;
+	public static NoPIDShooter shooter;
+	public static Shooter pidShooter;
 	
 	Command autoCommand;
 	public static SendableChooser <Command> autoChooser = new SendableChooser<>();
@@ -74,7 +75,7 @@ public class Robot extends IterativeRobot {
 		initSubsystems();
 		SmartDashboard.putData(climber);
 		displayMods();
-		CameraServer camera = CameraServer.getInstance();
+		//CameraServer camera = CameraServer.getInstance();
 //		camera.startAutomaticCapture("cam1", 0);
 	}
 	
@@ -84,7 +85,7 @@ public class Robot extends IterativeRobot {
 		gearclamp = new GearClamp();
 		groundgear = new GroundGear();
 		intake = new Intake();
-		shooter = new Shooter();
+		shooter = new NoPIDShooter();
 		oi.mapButtonBoard();
 	}
 

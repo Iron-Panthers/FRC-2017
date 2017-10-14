@@ -90,6 +90,7 @@ public class Constants {
 	public static final double SHOOTER_I = 0;
 	public static final double SHOOTER_D = 0;
 	public static final double SHOOTER_JOYSTICK_TO_RATE = 1000;
+	public static final double SHOOTER_WANTED_POWER = 0.85;
 	
 	// Gyro Constants
 	public static final double AUTO_TURN_ANGLE_TOLERANCE = 1;

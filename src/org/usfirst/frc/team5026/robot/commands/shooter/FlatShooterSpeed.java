@@ -1,7 +1,6 @@
 package org.usfirst.frc.team5026.robot.commands.shooter;
 
 import org.usfirst.frc.team5026.robot.Robot;
-import org.usfirst.frc.team5026.robot.RobotMap;
 import org.usfirst.frc.team5026.util.Constants;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -9,30 +8,21 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class JoystickShooterSpeed extends Command {
+public class FlatShooterSpeed extends Command {
 
-    public JoystickShooterSpeed() {
-        requires(Robot.pidShooter);
+    public FlatShooterSpeed() {
+        requires(Robot.shooter);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.pidShooter.setSetpoint(0);
-    	Robot.pidShooter.enable();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (Robot.oi.buttonBoard.getRawButton(RobotMap.BOARD_BUTTON_2)) {
-    		Robot.pidShooter.setSetpoint(joyYToRate( Robot.oi.buttonBoard.getScaledDeadzoneY() ));
-    	}
+    	Robot.shooter.setPower(Constants.SHOOTER_WANTED_POWER);
     }
 
-    private double joyYToRate(double joyY) {
-    	double adjustedJoyY = (joyY + 1) / 2;
-    	return adjustedJoyY * Constants.SHOOTER_JOYSTICK_TO_RATE;
-    }
-    
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return false;
@@ -40,12 +30,11 @@ public class JoystickShooterSpeed extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.pidShooter.disable();
+    	Robot.shooter.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	Robot.pidShooter.disable();
     }
 }

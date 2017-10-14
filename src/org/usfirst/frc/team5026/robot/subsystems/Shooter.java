@@ -15,6 +15,7 @@ public class Shooter extends PIDSubsystem {
 
 	private Encoder encoder;
 	private Talon motor;
+	private double wantedPower = 0;
 	
     // Initialize your subsystem here
     public Shooter() {
@@ -27,9 +28,17 @@ public class Shooter extends PIDSubsystem {
     public void initDefaultCommand() {
         setDefaultCommand(new JoystickShooterSpeed());
     }
+    
+    public void setPower(double power) {
+    	wantedPower = Constants.SHOOTER_JOYSTICK_TO_RATE;
+    }
+    
+    public void stop() {
+    	wantedPower = 0;
+    }
 
     protected double returnPIDInput() {
-        return encoder.getRate();
+        return encoder.getRate() - wantedPower;
     }
 
     protected void usePIDOutput(double output) {

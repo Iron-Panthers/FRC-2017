@@ -99,10 +99,10 @@ public class Hardware {
 		
 		// Shooter
 		shooterMotor = new Talon(RobotMap.SHOOTER_MOTOR);
-		shooterEncoder = new Encoder(RobotMap.SHOOTER_ENCODER_1, RobotMap.SHOOTER_ENCODER_2);
+		//shooterEncoder = new Encoder(RobotMap.SHOOTER_ENCODER_1, RobotMap.SHOOTER_ENCODER_2);
 		
 		// Drive Sensors
-		buildGyro(0);
+		//buildGyro(0);
 	}
 	public void buildGyro(int tries) {
 		System.out.println("RECONSTRUCTING TRY: "+tries);

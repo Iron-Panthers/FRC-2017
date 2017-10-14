@@ -6,12 +6,8 @@ import org.usfirst.frc.team5026.robot.commands.drive.DriveSwapForwards;
 import org.usfirst.frc.team5026.robot.commands.drive.DriveTurnXDegrees;
 import org.usfirst.frc.team5026.robot.commands.gear.GearClampCommand;
 import org.usfirst.frc.team5026.robot.commands.gear.GearUnClampCommand;
-import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearIntake;
-import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearOuttake;
 import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearScoreGear;
-import org.usfirst.frc.team5026.robot.commands.groundgear.GroundGearSetElevation;
-import org.usfirst.frc.team5026.robot.commands.misc.LEDSignalGear;
-import org.usfirst.frc.team5026.util.GroundGearElevationState;
+import org.usfirst.frc.team5026.robot.commands.shooter.FlatShooterSpeed;
 import org.usfirst.frc.team5026.util.PantherJoystick;
 
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -82,8 +78,8 @@ public class OI {
 		//boardButton10.whenPressed(new GroundGearSetElevation(GroundGearElevationState.Lowered));
 		//boardButton11.whenPressed(new GroundGearSetElevation(GroundGearElevationState.Scoring));
 		
-		boardButton2.whileHeld(new GroundGearOuttake());
-		boardButton3.whileHeld(new GroundGearIntake());
+		boardButton2.whileHeld(new FlatShooterSpeed());
+		//boardButton3.whileHeld(new GroundGearIntake());
 //		boardButton4.whenPressed(new GroundGearStop()); //donut use
 		
 		boardButton8.whenPressed(new GroundGearScoreGear());
