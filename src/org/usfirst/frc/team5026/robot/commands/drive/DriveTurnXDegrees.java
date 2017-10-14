@@ -2,6 +2,7 @@ package org.usfirst.frc.team5026.robot.commands.drive;
 
 import org.usfirst.frc.team5026.robot.Robot;
 import org.usfirst.frc.team5026.util.Constants;
+import org.usfirst.frc.team5026.util.GearPosition;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -32,6 +33,7 @@ public class DriveTurnXDegrees extends Command {
 
 
     protected void initialize() {
+    	Robot.drive.setGear(GearPosition.LOW);
     	p = SmartDashboard.getNumber("Auto Rotation P", Constants.AUTO_TURN_P);
     	i = SmartDashboard.getNumber("Auto Rotation I", Constants.AUTO_TURN_I);
     	tol = SmartDashboard.getNumber("Auto Angle Rotation Tolerance", 0);
@@ -63,6 +65,7 @@ public class DriveTurnXDegrees extends Command {
     	if (Math.abs(Robot.hardware.gyro.getAngle() - degrees) <= tol) {
     		count++;
     	}
+    	SmartDashboard.putNumber("Gyro error", (predicted - current));
     	SmartDashboard.putNumber("Gyro prediction", predicted);
     	SmartDashboard.putNumber("Gyro angle", Robot.hardware.gyro.getAngle());
     }
