@@ -13,7 +13,7 @@ public class AutoBlueDriveCarveLeftToPegFromLoadingZoneWithGyro extends CommandG
 
     public AutoBlueDriveCarveLeftToPegFromLoadingZoneWithGyro() {
     	addSequential(new AutoDriveDistanceMotionProfilingInches("Auto Loading Far Blue", "Auto Loading Close Blue", Constants.AUTO_LOADING_CARVE_COUNT_BLUE));
-    	addSequential(new DriveTurnXDegrees(Constants.AUTO_LOADING_ANGLE_BLUE, false)); // CONSTANT
+    	addSequential(new DriveTurnXDegrees(Constants.AUTO_LOADING_ANGLE_BLUE, true)); // CONSTANT
     	addSequential(new AutoDriveDistanceMotionProfilingInches("Auto Loading Extra Distance Blue", "Auto Loading Extra Distance Blue", Constants.AUTO_LOADING_STRAIGHT_COUNT_BLUE));
         // Add Commands here:
         // e.g. addSequential(new Command1());
