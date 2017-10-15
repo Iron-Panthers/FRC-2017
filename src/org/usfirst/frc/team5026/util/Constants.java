@@ -133,8 +133,8 @@ public class Constants {
 	public static double AUTO_BOILER_ANGLE_RED = -60; 
 	
 	//DriveCarveToPegFromLoadingZoneRed
-	public static double AUTO_LOADING_TARGET_FAR_RED = -79.5; //12.8
-	public static double AUTO_LOADING_TARGET_CLOSE_RED = -79.5; //9.1
+	public static double AUTO_LOADING_TARGET_FAR_RED = -75; //12.8
+	public static double AUTO_LOADING_TARGET_CLOSE_RED = -75; //9.1
 	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_RED = -76; //4.5
 	public static int AUTO_LOADING_CARVE_COUNT_RED = 25;
 	public static int AUTO_LOADING_STRAIGHT_COUNT_RED = 25;
@@ -162,8 +162,8 @@ public class Constants {
 	public static double AUTO_BOILER_ANGLE_BLUE = 60;	
 	
 	//DriveCarveToPegFromLoadingZoneBlue
-	public static double AUTO_LOADING_TARGET_FAR_BLUE = -75; //12.8
-	public static double AUTO_LOADING_TARGET_CLOSE_BLUE = -75; //9.1
+	public static double AUTO_LOADING_TARGET_FAR_BLUE = -74; //12.8
+	public static double AUTO_LOADING_TARGET_CLOSE_BLUE = -74; //9.1
 	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_BLUE = -75; //4.5
 	public static int AUTO_LOADING_CARVE_COUNT_BLUE = 25;
 	public static int AUTO_LOADING_STRAIGHT_COUNT_BLUE = 25;
