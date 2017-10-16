@@ -19,7 +19,13 @@ public class ClimberUpClimb extends Command {
     }
 
     protected void execute() {
-    	climber.climbScaling();
+//    	climber.climbScaling();
+    	climber.climbFast();
+//    	double val = -Robot.oi.buttonBoard.getY() + 1;
+//    	if (val >= 0.8) {
+//    		val = 0.8;
+//    	}
+//    	climber.setClimbMotors(val);
     }
 
     protected boolean isFinished() {

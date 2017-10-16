@@ -3,7 +3,7 @@ package org.usfirst.frc.team5026.util;
 public class Constants { 
 	// Joystick Constants 
 	//RED 
-	public static final float X_SCALING_RED = 0.7f; 
+	public static final float X_SCALING_RED = 0.8f; 
 	public static final float Y_SCALING_RED = 0.85f;  
 	public static final float DEADZONE_X_RED = 0.0563f; 
 	public static final float DEADZONE_Y_RED = 0.0512f; 
@@ -11,7 +11,7 @@ public class Constants {
 	public static final float DEADZONE_BOWTIE_SCALING_RED = 0.03f; 
 
 	//BLUE 
-	public static final float X_SCALING_BLUE = 0.7f; 
+	public static final float X_SCALING_BLUE = 0.8f; 
 	public static final float Y_SCALING_BLUE = 0.85f;  
 	public static final float DEADZONE_X_BLUE = 0.0563f; 
 	public static final float DEADZONE_Y_BLUE = 0.0512f; 
@@ -40,6 +40,38 @@ public class Constants {
 	
 	public static final double CLIMBER_STALL_LIMIT = 5.0;	//=[NEED TESTING]= The current(A) at which the climber motors stall.
 	
+	// GROUND GEAR
+	public static final int GROUND_GEAR_LEGAL_TICKS = 0;
+	public static final int GROUND_GEAR_SCORING_TICKS = -64000;
+	public static final int GROUND_GEAR_DRIVEMODE_TICKS = -125000;
+	public static final int GROUND_GEAR_LOWERED_TICKS = -134000;
+	
+	public static final int GROUND_GEAR_STABILISATION_MAX_COUNT = 10;
+	public static final int GROUND_GEAR_TICK_TOLERANCE = 120;
+	public static final double GROUND_GEAR_OUTPUT_TOLERANCE = 0.05;
+	
+	public static final double GROUND_GEAR_INTAKE_SPEED = -0.4;
+	public static final double GROUND_GEAR_OUTTAKE_SPEED = 0.3;
+	public static final boolean GROUND_GEAR_MOTOR_INVERTED = false;
+	public static final boolean GROUND_GEAR_SENSOR_INVERTED = false;
+	public static final int GROUND_GEAR_PID_PROFILE = 0;
+	public static final double GROUND_GEAR_P = 0.65;
+	public static final double GROUND_GEAR_I = 0;
+	public static final double GROUND_GEAR_D = 0;
+	public static final double GROUND_GEAR_F = 0.01152806; // Calculated by doing 100% of full speed is equivalent to 100% PWM
+	public static final double GROUND_GEAR_R = 0;
+	public static final double GROUND_GEAR_N = 0;
+	public static final double GROUND_GEAR_A = 5000; // acceleration
+	public static final double GROUND_GEAR_V = 3000; // velocity
+	public static final double[] GROUND_GEAR_PIDFRNAV = {GROUND_GEAR_P, GROUND_GEAR_I, GROUND_GEAR_D, GROUND_GEAR_F, GROUND_GEAR_R, GROUND_GEAR_N, GROUND_GEAR_A, GROUND_GEAR_V};
+	
+	public static final double GROUND_GEAR_N_SCORING = 0;
+	public static final double GROUND_GEAR_A_SCORING = 500; // Rotations / min * sec; acceleration
+	public static final double GROUND_GEAR_V_SCORING = 1000; // Rotations / min; velocity
+	public static final double[] GROUND_GEAR_SCORING_PIDFRNAV = {GROUND_GEAR_P, GROUND_GEAR_I, GROUND_GEAR_D, GROUND_GEAR_F, GROUND_GEAR_R, GROUND_GEAR_N_SCORING, GROUND_GEAR_A_SCORING, GROUND_GEAR_V_SCORING};
+	
+	public static final double GROUND_GEAR_SCORING_DISTANCE = -15; // 15 inches away from the peg!
+	
 	//Intake Constants
 	public static final double INTAKE_INTAKE_SPEED = 1;
 	public static final double INTAKE_OUTTAKE_SPEED = -1;
@@ -55,10 +87,13 @@ public class Constants {
 	public static final Color LED_GEAR_RELEASE = Color.GREEN;
 	
 	// Gyro Constants
-	public static final double AUTO_TURN_ANGLE_TOLERANCE = 1;
-	public static final double AUTO_TURN_SPEED = 0.5;
+	public static final double DELTA_TIME = 0.02;
+	public static final double AUTO_TURN_ANGLE_TOLERANCE = 0.1;
+	public static final double AUTO_TURN_SPEED = 1;
+	public static final double OMEGA = 40;// deg / s
 	public static final int AUTO_TURN_COUNT = 5;
-	public static final double AUTO_TURN_P = 0.1;
+	public static final double AUTO_TURN_P = 0.035;
+	public static final double AUTO_TURN_I = 0.002;
 	
 	// Encoder constants
 	public static final double WHEEL_DIAMETER = 4;	//in inches
@@ -98,9 +133,9 @@ public class Constants {
 	public static double AUTO_BOILER_ANGLE_RED = -60; 
 	
 	//DriveCarveToPegFromLoadingZoneRed
-	public static double AUTO_LOADING_TARGET_FAR_RED = -84; //12.8
-	public static double AUTO_LOADING_TARGET_CLOSE_RED = -84; //9.1
-	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_RED = -65; //4.5
+	public static double AUTO_LOADING_TARGET_FAR_RED = -75.75; //12.8
+	public static double AUTO_LOADING_TARGET_CLOSE_RED = -75.75; //9.1
+	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_RED = -76; //4.5
 	public static int AUTO_LOADING_CARVE_COUNT_RED = 25;
 	public static int AUTO_LOADING_STRAIGHT_COUNT_RED = 25;
 	public static double AUTO_LOADING_ANGLE_RED = 60; 
@@ -127,9 +162,9 @@ public class Constants {
 	public static double AUTO_BOILER_ANGLE_BLUE = 60;	
 	
 	//DriveCarveToPegFromLoadingZoneBlue
-	public static double AUTO_LOADING_TARGET_FAR_BLUE = -76; //12.8
-	public static double AUTO_LOADING_TARGET_CLOSE_BLUE = -76; //9.1
-	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_BLUE = -68; //4.5
+	public static double AUTO_LOADING_TARGET_FAR_BLUE = -74; //12.8
+	public static double AUTO_LOADING_TARGET_CLOSE_BLUE = -74; //9.1
+	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_BLUE = -75; //4.5
 	public static int AUTO_LOADING_CARVE_COUNT_BLUE = 25;
 	public static int AUTO_LOADING_STRAIGHT_COUNT_BLUE = 25;
 	public static double AUTO_LOADING_ANGLE_BLUE = -60;
@@ -178,5 +213,7 @@ public class Constants {
 	 * measured (unloaded): 1834
 	 * measured (loaded, on field): 1200
 	 */
+	public static final int DRIVE_MAX_COUNT = 25;
+	
 	
 }

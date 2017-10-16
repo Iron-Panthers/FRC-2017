@@ -14,7 +14,7 @@ public class RobotMap {
 	public static final int CLIMBER_PDPMOTOR_LEFT = 15;
 	
 	// INTAKE MOTORS
-	public static final int INTAKE_MOTOR = 0;
+	//public static final int INTAKE_MOTOR = 0;
 	
 	// DRIVE MOTORS
 	public static final int DRIVE_MOTOR_LEFT_ENCODER = 4;
@@ -26,7 +26,12 @@ public class RobotMap {
 	
 	// DRIVE SENSORS
 	public static final int DRIVE_LEFT_BANNER = 1;
-	public static final int DRIVE_RIGHT_BANNER = 0;
+	public static final int DRIVE_RIGHT_BANNER = 2;
+	
+	//GROUND GEAR
+	public static final int GROUND_GEAR_MOTOR_INTAKE = 0; // Using old Intake Talon 
+	public static final int GROUND_GEAR_MOTOR_LIFT = 7;
+	public static final int GROUND_GEAR_SENSOR = 4;
 	
 	// SOLENOIDS
 	public static final int SOLENOID_SHIFTER_FORWARD = 2;
@@ -45,6 +50,8 @@ public class RobotMap {
 	public static final int BOARD_BUTTON_7 = 7;
 	public static final int BOARD_BUTTON_8 = 8;
 	public static final int BOARD_BUTTON_9 = 9;
+	public static final int BOARD_BUTTON_10 = 10;
+	public static final int BOARD_BUTTON_11 = 11;
 	
 	public static final int DRIVE_BUTTON_1 = 1;
 	public static final int DRIVE_BUTTON_2 = 2;
@@ -55,7 +62,7 @@ public class RobotMap {
 	// GEAR
 	public static final int GEAR_PISTON_FORWARD = 0;
 	public static final int GEAR_PISTON_REVERSE = 1;
-	public static final int GEAR_CLAMP_SENSOR = 2;
+	public static final int GEAR_CLAMP_SENSOR = 3;
 	
 	// LED
 	public static final int CAN_LED_PORT = 3;

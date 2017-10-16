@@ -20,11 +20,15 @@ import org.usfirst.frc.team5026.robot.commands.misc.JoystickChoose;
 import org.usfirst.frc.team5026.robot.subsystems.Climber;
 import org.usfirst.frc.team5026.robot.subsystems.Drive;
 import org.usfirst.frc.team5026.robot.subsystems.GearClamp;
+import org.usfirst.frc.team5026.robot.subsystems.GroundGear;
 import org.usfirst.frc.team5026.robot.subsystems.Intake;
 import org.usfirst.frc.team5026.util.Constants;
 import org.usfirst.frc.team5026.util.Hardware;
 import org.usfirst.frc.team5026.util.JoystickType;
 
+import edu.wpi.cscore.CvSink;
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.cscore.VideoSink;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -48,11 +52,19 @@ public class Robot extends IterativeRobot {
 	public static GearClamp gearclamp;
 	public static Climber climber;
 	public static Intake intake;
+	public static GroundGear groundgear;
 	
 	Command autoCommand;
 	public static SendableChooser <Command> autoChooser = new SendableChooser<>();
 	public static SendableChooser <Command> joyChooser = new SendableChooser<>();
 
+	// New Camera stuff!
+	public static UsbCamera cam1;
+	public static UsbCamera cam2;
+	
+	public static CvSink cvsink1;
+	public static CvSink cvsink2;
+	public static VideoSink server;
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -61,23 +73,36 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		hardware = new Hardware();
-		initSubsystems();
 		SmartDashboard.putData(Scheduler.getInstance());
 		joyChooser.addDefault("Red Joystick", new JoystickChoose(JoystickType.RED));
 		// The name should be joystick type, the object is: new JoystickChoose(proper joystick type);
 		joyChooser.addObject("Blue Joystick", new JoystickChoose(JoystickType.BLUE));
 		joyChooser.addObject("Spinny Joystick", new JoystickChoose(JoystickType.SPINNY));
 		SmartDashboard.putData("Joystick Type", joyChooser);
+		initSubsystems();
 		SmartDashboard.putData(climber);
 		displayMods();
+		startCamera();
+	}
+	private static void startCamera() {
 		CameraServer camera = CameraServer.getInstance();
-		camera.startAutomaticCapture("cam1", 0);
+		cam1 = camera.startAutomaticCapture("cam0", 0);
+		cam2 = camera.startAutomaticCapture("cam1", 1);
+		server = camera.getServer();
+		cvsink1 = new CvSink("cam1cv");
+		cvsink2 = new CvSink("cam2cv");
+		cvsink1.setSource(cam1);
+		cvsink1.setEnabled(true);
+		cvsink2.setSource(cam2);
+		cvsink2.setEnabled(true);
+//		server.setSource(cam1);
 	}
 	
 	private void initSubsystems() {
 		drive = new Drive();
 		climber = new Climber();
 		gearclamp = new GearClamp();
+		groundgear = new GroundGear();
 		intake = new Intake();
 		oi.mapButtonBoard();
 	}
@@ -93,35 +118,44 @@ public class Robot extends IterativeRobot {
 		
 		SmartDashboard.putBoolean("Running", false);
 		
-		autoChooser.addDefault("Nothing", new AutoDoNothing());
+//		autoChooser.addDefault("Nothing", new AutoDoNothing());
+//		autoChooser.addDefault("Default", new AutoBlueDriveCarveLeftToPegFromLoadingZoneWithGyro());
 		// Everytime u write a new auto, do autoChooser.addObject("NAME OF AUTO", new AUTOCOMMAND);
 		// Do that here
-		autoChooser.addObject("Both: Middle peg", new AutoDriveDistanceMotionProfilingInches("Auto Mid Left", "Auto Mid Right", Constants.AUTO_MIDDLE_TARGET_COUNT));
-		autoChooser.addObject("Red: Right peg", new AutoRedDriveCarveLeftToPegFromBoiler());
-		autoChooser.addObject("Red: Left peg", new AutoRedDriveCarveRightToPegFromLoadingZone());
-		autoChooser.addObject("Blue: Right peg", new AutoBlueDriveCarveLeftToPegFromLoadingZone());
-		autoChooser.addObject("Blue: Left peg", new AutoBlueDriveCarveRightToPegFromBoiler());
-		autoChooser.addObject("Red: Right peg with Banner", new AutoRedDriveCarveLeftToPegFromBoilerBanner());
-		autoChooser.addObject("Red: Left peg with Banner", new AutoRedDriveCarveRightToPegFromLoadingZoneBanner());
-		autoChooser.addObject("Blue: Right peg with Banner", new AutoBlueDriveCarveLeftToPegFromLoadingZoneBanner());
-		autoChooser.addObject("Blue: Left peg with Banner", new AutoBlueDriveCarveRightToPegFromBoilerBanner());
+		// Our default is now the middle peg. That way we at least drive past the baseline in the case of auto failure...
+		autoChooser.addDefault("Both: Middle peg", new AutoDriveDistanceMotionProfilingInches("Auto Mid Left", "Auto Mid Right", Constants.AUTO_MIDDLE_TARGET_COUNT));
+		
+		
+//		autoChooser.addObject("Red: Right peg", new AutoRedDriveCarveLeftToPegFromBoiler());
+//		autoChooser.addObject("Red: Left peg", new AutoRedDriveCarveRightToPegFromLoadingZone());
+//		autoChooser.addObject("Blue: Right peg", new AutoBlueDriveCarveLeftToPegFromLoadingZone());
+//		autoChooser.addObject("Blue: Left peg", new AutoBlueDriveCarveRightToPegFromBoiler());
+//		autoChooser.addObject("Red: Right peg with Banner", new AutoRedDriveCarveLeftToPegFromBoilerBanner());
+//		autoChooser.addObject("Red: Left peg with Banner", new AutoRedDriveCarveRightToPegFromLoadingZoneBanner());
+//		autoChooser.addObject("Blue: Right peg with Banner", new AutoBlueDriveCarveLeftToPegFromLoadingZoneBanner());
+//		autoChooser.addObject("Blue: Left peg with Banner", new AutoBlueDriveCarveRightToPegFromBoilerBanner());
+		
+		
 		autoChooser.addObject("Red: Right peg with Gyro", new AutoRedDriveCarveLeftToPegFromBoilerWithGyro());
 		autoChooser.addObject("Red: Left peg with Gyro", new AutoRedDriveCarveRightToPegFromLoadingZoneWithGyro());
 		autoChooser.addObject("Blue: Right peg with Gyro", new AutoBlueDriveCarveLeftToPegFromLoadingZoneWithGyro());
 		autoChooser.addObject("Blue: Left peg with Gyro", new AutoBlueDriveCarveRightToPegFromBoilerWithGyro());
+		
+		
 		autoChooser.addObject("Auto Drop Gear", new AutoDriveDistanceMotionProfilingInches("Auto Drop Gear Left","Auto Drop Gear Right", Constants.AUTO_MIDDLE_TARGET_COUNT));
-		autoChooser.addObject("Auto Gyro Loop", new DriveTurnXDegrees(60, false));
-		autoChooser.addObject("Auto Gyro Loop -", new DriveTurnXDegrees(-60, false));
+		autoChooser.addObject("Auto Gyro Loop", new DriveTurnXDegrees(60, true));
+		autoChooser.addObject("Auto Gyro Loop -", new DriveTurnXDegrees(-60, true));
 		
 		SmartDashboard.putData("Autonomous Chooser", autoChooser);
 		
 		drive.setBrakeMode(false);
+		new JoystickChoose(JoystickType.RED).start();
 	}
 
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-		joyChooser.getSelected().start();
+//		joyChooser.getSelected().start();
 	}
 
 	/**
@@ -138,6 +172,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		autoCommand = autoChooser.getSelected();
+		hardware.gyro.reset();
 		autoCommand.start();
 		drive.setBrakeMode(true);
 		SmartDashboard.putBoolean("Running", true);
@@ -159,6 +194,8 @@ public class Robot extends IterativeRobot {
 	}
 	private void displayMods() {
 		sDisplay("Auto Rotation P", Constants.AUTO_TURN_P);
+		sDisplay("Auto Rotation I", Constants.AUTO_TURN_I);
+		sDisplay("Auto Turn Omega", Constants.OMEGA);
 		sDisplay("Auto Angle Rotation Tolerance", Constants.AUTO_TURN_ANGLE_TOLERANCE);
 		
 		sDisplay("Banner Buffer", Constants.AUTO_BANNER_BUFFER);

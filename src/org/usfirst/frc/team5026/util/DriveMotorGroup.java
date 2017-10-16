@@ -93,6 +93,10 @@ public class DriveMotorGroup implements SpeedController {
 		encoderMotor.set(value);
 	}
 	
+	public void setpidfrnav(double[] pidfrnav) {
+		this.pidfrnav = pidfrnav;
+	}
+	
 	@Override
 	public void pidWrite(double output) {		
 	}

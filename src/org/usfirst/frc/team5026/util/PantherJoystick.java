@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5026.util; 
  
-import edu.wpi.first.wpilibj.Joystick; 
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard; 
  
 /*  
  * @param magnitude is the magnitude of the vector of the joystick from the center.  
@@ -17,7 +18,7 @@ public class PantherJoystick extends Joystick{
    
   int joystickThrottleValue; 
   public boolean goingForward; 
-  private JoystickType joystickType; 
+  private JoystickType joystickType = JoystickType.RED; // Yo you better fix this later foo 
    
   public PantherJoystick(int port) { 
     super(port); 
@@ -26,6 +27,9 @@ public class PantherJoystick extends Joystick{
   } 
    
   public double getScaledDeadzoneX() { 
+	SmartDashboard.putNumber("joystickType scalingX", joystickType.scalingX);
+	SmartDashboard.putNumber("raw X", this.getX());
+	SmartDashboard.putNumber("getX times scalingX", (this.getX() * joystickType.scalingX));
 	double val = this.getDeadzoneJoystickValue(this.getMagnitude(), this.getX() * joystickType.scalingX, joystickType.deadzoneX); 
 	if (Math.abs(val) < joystickType.deadzoneX) {
 		return 0;
@@ -55,6 +59,8 @@ public class PantherJoystick extends Joystick{
    
   public double getDeadzoneJoystickValue(double magnitude, double xy, float deadzone) { 
 	// Need to fix so that the x doesnt change when we move drastically in the y
+	    SmartDashboard.putNumber("Magnitude", magnitude);
+	    SmartDashboard.putNumber("XY", xy);
     if (magnitude < deadzone) { 
       return 0; 
     } 

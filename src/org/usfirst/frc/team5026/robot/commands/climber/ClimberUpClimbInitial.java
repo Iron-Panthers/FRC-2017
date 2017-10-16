@@ -19,7 +19,8 @@ public class ClimberUpClimbInitial extends Command {
     }
 
     protected void execute() {
-        climber.climbScaling();
+//        climber.climbScaling();
+    	climber.climbFast();
     }
 
     protected boolean isFinished() {
