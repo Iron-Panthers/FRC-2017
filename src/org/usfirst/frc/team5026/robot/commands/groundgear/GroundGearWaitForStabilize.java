@@ -104,6 +104,7 @@ public class GroundGearWaitForStabilize extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     	System.out.println("INTERRUPTED!");
+    	Robot.groundgear.setElevationState(target);
 //    	Robot.groundgear.stopLift();
     }
 }

@@ -44,8 +44,10 @@ public class DriveTurnXDegrees extends Command {
     	Robot.drive.right.setupVoltageMode();
     	predicted = 0;
     	totalError = 0;
-    	if (reset)
-    	Robot.hardware.gyro.reset();
+    	if (reset) {
+    		Robot.hardware.gyro.reset();
+    		System.out.println("RESET GYRO!");
+    	}
     }
 
     
@@ -68,6 +70,7 @@ public class DriveTurnXDegrees extends Command {
     	SmartDashboard.putNumber("Gyro error", (predicted - current));
     	SmartDashboard.putNumber("Gyro prediction", predicted);
     	SmartDashboard.putNumber("Gyro angle", Robot.hardware.gyro.getAngle());
+//    	System.out.println(current);
     }
 
     
@@ -78,6 +81,7 @@ public class DriveTurnXDegrees extends Command {
 
 
     protected void end() {
+    	System.out.println("GYRO END: "+Robot.hardware.gyro.getAngle());
     	Robot.drive.stopMotors();
     }
 

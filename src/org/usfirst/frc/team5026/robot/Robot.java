@@ -143,8 +143,8 @@ public class Robot extends IterativeRobot {
 		
 		
 		autoChooser.addObject("Auto Drop Gear", new AutoDriveDistanceMotionProfilingInches("Auto Drop Gear Left","Auto Drop Gear Right", Constants.AUTO_MIDDLE_TARGET_COUNT));
-		autoChooser.addObject("Auto Gyro Loop", new DriveTurnXDegrees(60, false));
-		autoChooser.addObject("Auto Gyro Loop -", new DriveTurnXDegrees(-60, false));
+		autoChooser.addObject("Auto Gyro Loop", new DriveTurnXDegrees(60, true));
+		autoChooser.addObject("Auto Gyro Loop -", new DriveTurnXDegrees(-60, true));
 		
 		SmartDashboard.putData("Autonomous Chooser", autoChooser);
 		

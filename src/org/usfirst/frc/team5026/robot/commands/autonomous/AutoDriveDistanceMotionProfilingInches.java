@@ -89,6 +89,7 @@ public class AutoDriveDistanceMotionProfilingInches extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	SmartDashboard.putNumber("IsFinished", 1);
+    	Robot.hardware.gyro.reset();
     	Robot.drive.endPositionDrive();
     }
 

@@ -42,9 +42,9 @@ public class Constants {
 	
 	// GROUND GEAR
 	public static final int GROUND_GEAR_LEGAL_TICKS = 0;
-	public static final int GROUND_GEAR_SCORING_TICKS = -76600;
+	public static final int GROUND_GEAR_SCORING_TICKS = -64000;
 	public static final int GROUND_GEAR_DRIVEMODE_TICKS = -125000;
-	public static final int GROUND_GEAR_LOWERED_TICKS = -130000;
+	public static final int GROUND_GEAR_LOWERED_TICKS = -134000;
 	
 	public static final int GROUND_GEAR_STABILISATION_MAX_COUNT = 10;
 	public static final int GROUND_GEAR_TICK_TOLERANCE = 120;
@@ -92,8 +92,8 @@ public class Constants {
 	public static final double AUTO_TURN_SPEED = 1;
 	public static final double OMEGA = 40;// deg / s
 	public static final int AUTO_TURN_COUNT = 5;
-	public static final double AUTO_TURN_P = 0.05;
-	public static final double AUTO_TURN_I = 0.005;
+	public static final double AUTO_TURN_P = 0.035;
+	public static final double AUTO_TURN_I = 0.002;
 	
 	// Encoder constants
 	public static final double WHEEL_DIAMETER = 4;	//in inches
@@ -133,8 +133,8 @@ public class Constants {
 	public static double AUTO_BOILER_ANGLE_RED = -60; 
 	
 	//DriveCarveToPegFromLoadingZoneRed
-	public static double AUTO_LOADING_TARGET_FAR_RED = -75; //12.8
-	public static double AUTO_LOADING_TARGET_CLOSE_RED = -75; //9.1
+	public static double AUTO_LOADING_TARGET_FAR_RED = -75.75; //12.8
+	public static double AUTO_LOADING_TARGET_CLOSE_RED = -75.75; //9.1
 	public static double AUTO_LOADING_AFTER_TURN_TO_PEG_RED = -76; //4.5
 	public static int AUTO_LOADING_CARVE_COUNT_RED = 25;
 	public static int AUTO_LOADING_STRAIGHT_COUNT_RED = 25;
